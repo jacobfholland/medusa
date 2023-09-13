@@ -1,6 +1,6 @@
-from database.logger import logger
-from utils.printable import Printable
-from utils.utils import require_envs
+from app.database.logger import logger
+from app.utils.printable import Printable
+from app.utils.utils import require_envs
 from .config import DatabaseConfig as Config
 from sqlalchemy.exc import ArgumentError
 from sqlalchemy import create_engine

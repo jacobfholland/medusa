@@ -1,8 +1,8 @@
-from database.base import Base
+from app.database.base import Base
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy import Column, DateTime, Integer, String
 from datetime import datetime
-from utils.utils import generate_uuid
+from app.utils.utils import generate_uuid
 
 
 class Model(Base):

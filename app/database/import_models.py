@@ -5,8 +5,8 @@ import importlib.util
 import sys
 from typing import Dict, List, Type, Union, Any
 from config.app import Config
-from database.logger import logger
-from database.model import Model
+from app.database.logger import logger
+from app.database.model import Model
 
 
 def check_project_directory(project_directory: str) -> bool:

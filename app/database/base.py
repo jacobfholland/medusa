@@ -1,4 +1,4 @@
-from database.database import Database
+from app.database.database import Database
 
 
 # Creates the SQLAlachemy declarative base while avoiding circular import errors

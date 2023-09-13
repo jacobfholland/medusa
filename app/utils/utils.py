@@ -1,6 +1,6 @@
 from typing import Callable, List
 import uuid
-from logger.logger import logger
+from app.logger.logger import logger
 import sys
 
 
