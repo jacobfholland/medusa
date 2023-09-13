@@ -6,12 +6,18 @@ from utils.utils import generate_uuid
 
 
 class Model(Base):
+    """An abstract base class for all SQLAlchemy models in this project. 
+    Contains common fields that are expected to be in all derived models.
+    """
+
     __abstract__ = True
     id = Column(Integer, primary_key=True)
     uuid = Column(String, default=generate_uuid)
     created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow,
-                        onupdate=datetime.utcnow)
+    updated_at = Column(
+        DateTime, default=datetime.utcnow,
+        onupdate=datetime.utcnow
+    )
 
     @declared_attr
     def __tablename__(cls) -> str:

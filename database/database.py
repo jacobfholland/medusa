@@ -10,32 +10,27 @@ from sqlalchemy.orm.decl_api import DeclarativeMeta
 import sys
 from sqlalchemy.orm.scoping import scoped_session
 from sqlalchemy.engine.base import Engine
-import ast
-import importlib
-import os
 import sys
-from pathlib import Path
-import os
-import glob
-import importlib.util
 
 
 class Database(Printable):
-    """Handles database connection and session creation using SQLAlchemy.
+    """Singleton class that handles the database connection and session creation using SQLAlchemy.
+    All models and attributes are bound during initialization.
 
     Attributes:
-        uri: A string representing the database URI.
-        engine: An SQLAlchemy Engine object.
-        db: A scoped session object.
-        base: The declarative base for SQLAlchemy models.
+        _instance (bool): Used to determine if the database has previously been instantiated.
+        _all_models (list): All models that were imported during initialization.
+        uri (str): A string representing the full database connection URI.
+        engine (Engine): SQLAlchemy Engine object responsible for executing queries.
+        db (scoped_session): A SQLAlchemy scoped session object to manage individual sessions.
+        base (DeclarativeMeta): The SQLAlchemy declarative base object for model creation.
     """
 
     _instance = None
 
-    def __init__(self):
-        self.all_models = []
-
     def __new__(cls):
+        """Ensures that only a single instance of the Database class exists."""
+
         if cls._instance is None:
             cls._instance = super(Database, cls).__new__(cls)
             cls._instance.all_models = []
@@ -43,7 +38,14 @@ class Database(Printable):
         return cls._instance
 
     def init_db(self, models: dict = None) -> None:
-        """Initializes the Database class and sets up the database."""
+        """Initializes the database connection and creates tables for models.
+
+        Args:
+            models (dict, optional): A dictionary of model classes to be created.
+
+        Notes:
+            Initializes the SQLAlchemy engine, creates scoped sessions, and initiates tables.
+        """
 
         logger.info("Initializing database")
         self.uri = self.generate_uri()
@@ -54,18 +56,20 @@ class Database(Printable):
             for model in self.all_models:
                 model.metadata.create_all(self.engine)
         self.base.metadata.create_all(bind=self.engine)
-        print(vars(self.base.metadata))
         logger.debug(self.__str__())
         logger.info("Database initialization complete")
 
     def database_type(self, db_type: str) -> str:
-        """Determines the database type and returns the appropriate URL.
+        """Determines the database type based on the provided string and returns the appropriate connection URI.
 
         Args:
-            db_type: A string representing the type of the database.
+            db_type (str): A string representing the database type (e.g., "sqlite", "mysql").
 
         Returns:
-            A string representing the appropriate database URL.
+            str: Connection URI for the specified database type.
+
+        Raises:
+            SystemExit: If the database type is unrecognized.
         """
 
         if db_type == "sqlite":
@@ -77,34 +81,49 @@ class Database(Printable):
 
     @require_envs(Config, ["DATABASE_TYPE", "DATABASE_NAME"])
     def sqlite(self) -> str:
-        """Generates the SQLite database URL.
+        """Generates the SQLite connection URI using environment variables.
 
         Returns:
-            A string representing the SQLite database URL.
+            str: The SQLite database connection URI.
+
+        Environment Variables:
+            DATABASE_PATH (str)[opt]: Optional storage path for the database
+            DATABASE_TYPE (str): The type of the database
+            DATABASE_NAME (str): The name of the database
         """
 
         if Config.DATABASE_PATH:
             return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_PATH}/{Config.DATABASE_NAME}.db"
         return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_NAME}.db"
 
-    @require_envs(Config, ["DATABASE_TYPE", "DATABASE_HOST", "DATABASE_NAME", "DATABASE_PORT"])
+    @require_envs(Config, ["DATABASE_TYPE", "DATABASE_HOSTNAME", "DATABASE_NAME", "DATABASE_PORT"])
     def standard(self) -> str:
-        """Generates the standard (MySQL, PostgreSQL, Oracle, etc.) database URL.
+        """Generates the standard connection URI for databases like MySQL, PostgreSQL, Oracle, etc.
 
         Returns:
-            A string representing the standard database URL.
+            str: The standard database connection URI.
+
+        Environment Variables:
+            DATABASE_USER (str)[opt]: The database user credential
+            DATABASE_PASSWORD (str)[opt]: The database password credential
+            DATABASE_HOSTNAME (str): The database hostname
+            DATABASE_PORT (int): The database connection port
+            DATABASE_TYPE (str): The type of the database
+            DATABASE_NAME (str): The name of the database
         """
 
         if Config.DATABASE_USER and Config.DATABASE_PASSWORD:
-            return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_USER}:{Config.DATABASE_PASSWORD}@{Config.DATABASE_HOST}:{Config.DATABASE_PORT}/{Config.DATABASE_NAME}"
-        return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_HOST}/{Config.DATABASE_NAME}"
+            return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_USER}:{Config.DATABASE_PASSWORD}@{Config.DATABASE_HOSTNAME}:{Config.DATABASE_PORT}/{Config.DATABASE_NAME}"
+        return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_HOSTNAME}/{Config.DATABASE_NAME}"
 
     @require_envs(Config, ["DATABASE_TYPE"])
     def generate_uri(self) -> str:
-        """Generates the database URL based on environment variables.
+        """Constructs the database URI by calling the appropriate URI generation method based on the database type.
 
         Returns:
-            A string representing the database URL.
+            str: The database connection URI.
+        Environment Variables:
+            DATABASE_TYPE (str): The type of the database
         """
 
         uri = self.database_type(Config.DATABASE_TYPE)
@@ -112,14 +131,14 @@ class Database(Printable):
         return uri
 
     def generate_engine(self) -> Engine:
-        """Creates and returns an SQLAlchemy Engine.
+        """Creates an SQLAlchemy Engine for query execution.
 
         Returns:
-            An SQLAlchemy Engine object.
+            Engine: An SQLAlchemy Engine object.
 
         Raises:
-            ArgumentError: If the database URI is malformed.
-            Exception: For generic exceptions.
+            ArgumentError: If the URI for database connection is malformed.
+            SystemExit: For generic exceptions that cause engine creation to fail.
         """
 
         try:
@@ -135,13 +154,13 @@ class Database(Printable):
             sys.exit(1)
 
     def generate_database(self) -> scoped_session:
-        """Creates and returns a scoped session.
+        """Creates and returns a scoped session for transaction management.
 
         Returns:
-            A scoped_session object.
+            scoped_session: A SQLAlchemy scoped_session object.
 
         Raises:
-            Exception: For generic exceptions.
+            SystemExit: If an exception occurs during the creation of the scoped session.
         """
 
         try:
@@ -158,13 +177,13 @@ class Database(Printable):
             logger.error(f"Failed to screate scoped session: {e}")
 
     def generate_base(self) -> DeclarativeMeta:
-        """Creates and returns an SQLAlchemy declarative base.
+        """Generates the SQLAlchemy declarative base for defining models.
 
         Returns:
-            A DeclarativeMeta object representing the SQLAlchemy declarative base.
+            DeclarativeMeta: The SQLAlchemy declarative base.
 
         Raises:
-            Exception: For generic exceptions.
+            SystemExit: If an exception occurs while creating the declarative base.
         """
 
         try:
