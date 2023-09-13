@@ -87,7 +87,7 @@ class Database(Printable):
             str: The SQLite database connection URI.
 
         Environment Variables:
-            DATABASE_PATH (str)[opt]: Optional storage path for the database
+            DATABASE_PATH (str, optional): Optional storage path for the database
             DATABASE_TYPE (str): The type of the database
             DATABASE_NAME (str): The name of the database
         """
@@ -104,8 +104,8 @@ class Database(Printable):
             str: The standard database connection URI.
 
         Environment Variables:
-            DATABASE_USER (str)[opt]: The database user credential
-            DATABASE_PASSWORD (str)[opt]: The database password credential
+            DATABASE_USER (str, optional): The database user credential
+            DATABASE_PASSWORD (str, optional): The database password credential
             DATABASE_HOSTNAME (str): The database hostname
             DATABASE_PORT (int): The database connection port
             DATABASE_TYPE (str): The type of the database
@@ -148,10 +148,10 @@ class Database(Printable):
         except ArgumentError:
             logger.error(
                 "Failed to create database engine due to malformed database URI")
-            sys.exit(1)
+            return sys.exit(1)
         except Exception as e:
             logger.error(f"Failed to create database engine: {e}")
-            sys.exit(1)
+            return sys.exit(1)
 
     def generate_database(self) -> scoped_session:
         """Creates and returns a scoped session for transaction management.
@@ -175,6 +175,7 @@ class Database(Printable):
             return db
         except Exception as e:
             logger.error(f"Failed to screate scoped session: {e}")
+            return sys.exit(1)
 
     def generate_base(self) -> DeclarativeMeta:
         """Generates the SQLAlchemy declarative base for defining models.
@@ -193,3 +194,4 @@ class Database(Printable):
             return base
         except Exception as e:
             logger.error(f"Failed to connect to {self.uri}: {e}")
+            return sys.exit(1)
