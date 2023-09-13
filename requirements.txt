@@ -1,0 +1,6 @@
+coloredlogs==15.0.1
+greenlet==2.0.2
+humanfriendly==10.0
+python-dotenv==1.0.0
+SQLAlchemy==2.0.20
+typing_extensions==4.7.1
