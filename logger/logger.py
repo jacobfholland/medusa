@@ -5,7 +5,18 @@ import coloredlogs
 from config.app import Config
 
 
-def setup_logger(name, config):
+def setup_logger(name: str, config: Config) -> logging.Logger:
+    """
+    Set up a logger with the given name and configuration.
+
+    Args:
+        name (str): The name of the logger.
+        config (Config): An instance of the Config class containing logging settings.
+
+    Returns:
+        logging.Logger: A configured logger instance.
+    """
+
     log_levels = {
         "DEBUG": logging.DEBUG,
         "INFO": logging.INFO,

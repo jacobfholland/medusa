@@ -1,20 +1,21 @@
-import ast
-import glob
-import os
+from typing import Callable, List
 import uuid
 from logger.logger import logger
 import sys
-import ast
-import importlib
-import os
-import sys
-from pathlib import Path
-import os
-import glob
-import importlib.util
 
 
-def require_envs(config, envs):
+def require_envs(config: object, envs: List[str]) -> Callable:
+    """
+    A decorator that checks if the specified environment variables are present in the config object.
+
+    Args:
+        config (object): The configuration object that should contain the environment variables.
+        envs (List[str]): A list of environment variable names to check for.
+
+    Returns:
+        Callable: The decorated function.
+    """
+
     def decorator(func):
         def wrapper(*args, **kwargs):
             false_envs = [
@@ -31,7 +32,7 @@ def require_envs(config, envs):
     return decorator
 
 
-def generate_uuid():
+def generate_uuid() -> str:
     """
     Generate a unique identifier using uuid.
 

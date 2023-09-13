@@ -16,13 +16,14 @@ def load_envs(directory):
 
 
 FILE_DIRECTORY = os.path.abspath(__file__)
-PROJECT_DIR = strip(FILE_DIRECTORY)
+APP_DIR = strip(FILE_DIRECTORY)
 
-load_envs(PROJECT_DIR)
+load_envs(APP_DIR)
 
 
 class Config:
     APP_NAME = os.environ.get("APP_NAME")
+    APP_DIR = APP_DIR
 
     LOG_LEVEL = os.environ.get("LOG_LEVEL").upper()
     LOG_PATH = os.environ.get("LOG_PATH")
