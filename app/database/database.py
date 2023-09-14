@@ -28,16 +28,7 @@ class Database(Printable):
 
     _instance = None
 
-    def __new__(cls):
-        """Ensures that only a single instance of the Database class exists."""
-
-        if cls._instance is None:
-            cls._instance = super(Database, cls).__new__(cls)
-            cls._instance.all_models = []
-            cls._instance.init_db()
-        return cls._instance
-
-    def init_db(self, models: dict = None) -> None:
+    def __init__(self, models: dict = None) -> None:
         """Initializes the database connection and creates tables for models.
 
         Args:
@@ -48,6 +39,7 @@ class Database(Printable):
         """
 
         logger.info("Initializing database")
+        self.all_models = []
         self.uri = self.generate_uri()
         self.engine = self.generate_engine()
         self.db = self.generate_database()

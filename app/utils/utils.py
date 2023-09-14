@@ -1,3 +1,4 @@
+import functools
 from typing import Callable, List
 import uuid
 from app.logger.logger import logger
@@ -16,19 +17,25 @@ def require_envs(config: object, envs: List[str]) -> Callable:
         Callable: The decorated function.
     """
 
+    def check_envs(config, envs):
+        false_envs = [
+            env for env in envs
+            if not vars(config).get(env)
+        ]
+        if false_envs:
+            logger.error(
+                f"Missing required environment variables: {', '.join(false_envs)}"
+            )
+            return sys.exit(1)
+        return True
+
     def decorator(func):
+        @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            false_envs = [
-                env for env in envs
-                if not vars(config).get(env)
-            ]
-            if false_envs:
-                logger.error(
-                    f"Missing required environment variables: {', '.join(false_envs)}"
-                )
-                return sys.exit(1)
-            return func(*args, **kwargs)
+            if check_envs(config, envs):
+                return func(*args, **kwargs)
         return wrapper
+
     return decorator
 
 

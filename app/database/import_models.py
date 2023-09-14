@@ -86,7 +86,7 @@ def import_models(database_instance: Union[Type, Any]) -> Dict[str, Any]:
                 if 'Model' in parent_names:
                     class_obj = import_class_from_file(python_file, node.name)
                     if class_obj is not Model:
-                        models[node.name] = class_obj
+                        models[node.name] = class_obj()
                         database_instance.all_models.append(class_obj)
                         logger.debug(
                             f"Staging class {node.name} from {python_file} for import")
