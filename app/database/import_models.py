@@ -59,7 +59,7 @@ def import_class_from_file(python_file: str, class_name: str) -> Any:
     return getattr(temp_module, class_name)
 
 
-def import_models(database_instance: Union[Type, Any]) -> Dict[str, Any]:
+def import_models() -> Dict[str, Any]:
     """
     Import all models that inherit from 'Model' from all Python files
     in a specified project directory.
@@ -74,7 +74,7 @@ def import_models(database_instance: Union[Type, Any]) -> Dict[str, Any]:
     if not check_project_directory(Config.APP_DIR):
         return sys.exit(1)
     logger.info("Initializing model import")
-    models = {}
+    models = []
     python_files = filter_python_files(Config.APP_DIR)
     for python_file in python_files:
         with open(python_file, 'r') as f:
@@ -86,10 +86,9 @@ def import_models(database_instance: Union[Type, Any]) -> Dict[str, Any]:
                 if 'Model' in parent_names:
                     class_obj = import_class_from_file(python_file, node.name)
                     if class_obj is not Model:
-                        models[node.name] = class_obj()
-                        database_instance.all_models.append(class_obj)
+                        models.append(class_obj())
                         logger.debug(
                             f"Staging class {node.name} from {python_file} for import")
-    logger.debug(models)
+    logger.debug(f"Models({models})")
     logger.info("Model import completed")
     return models

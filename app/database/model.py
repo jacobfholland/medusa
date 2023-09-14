@@ -6,13 +6,9 @@ from datetime import datetime
 from app.database.route import Route
 from app.utils.route import route
 from app.utils.utils import generate_uuid
-from app.server.werzeug import url_map
-from werkzeug.routing import Rule
-from werkzeug.wrappers import Response
-import json
 
 
-class Model(Base, Route):
+class Model(Route, Base):
     """An abstract base class for all SQLAlchemy models in this project. 
     Contains common fields that are expected to be in all derived models.
     """
@@ -25,6 +21,9 @@ class Model(Base, Route):
         DateTime, default=datetime.utcnow,
         onupdate=datetime.utcnow
     )
+
+    def __init__(self):
+        super().__init__()
 
     @declared_attr
     def __tablename__(cls) -> str:
@@ -48,23 +47,3 @@ class Model(Base, Route):
         """
 
         return {'extend_existing': True}
-
-    # @classmethod
-    # @route("/create", methods=['POST'])
-    # def create(self.__class__):
-    #     return "<html>OK<html>"
-
-    @classmethod
-    @route("/get", methods=['GET'])
-    def get(self):
-        return "<html>OK<html>"
-
-    # @classmethod
-    # @route("/update", methods=['PUT', 'PATCH'])
-    # def update(self):
-    #     return "<html>OK<html>"
-
-    # @classmethod
-    # @route("/delete", methods=['DELETE'])
-    # def delete(self):
-    #     return "<html>OK<html>"

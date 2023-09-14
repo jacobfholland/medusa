@@ -28,7 +28,7 @@ class Database(Printable):
 
     _instance = None
 
-    def __init__(self, models: dict = None) -> None:
+    def __init__(self, models: list = []) -> None:
         """Initializes the database connection and creates tables for models.
 
         Args:
@@ -39,17 +39,18 @@ class Database(Printable):
         """
 
         logger.info("Initializing database")
-        self.all_models = []
         self.uri = self.generate_uri()
         self.engine = self.generate_engine()
         self.db = self.generate_database()
         self.base = self.generate_base()
-        if self.all_models:
-            for model in self.all_models:
-                model.metadata.create_all(self.engine)
+        self.bind_models(models)
         self.base.metadata.create_all(bind=self.engine)
         logger.debug(self.__str__())
         logger.info("Database initialization complete")
+
+    def bind_models(self, models: dict) -> None:
+        for model in models:
+            model.metadata.create_all(self.engine)
 
     def database_type(self, db_type: str) -> str:
         """Determines the database type based on the provided string and returns the appropriate connection URI.

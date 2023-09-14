@@ -8,10 +8,9 @@ logger.warning("Starting application")
 
 
 def database():
+
     from app.database.database import Database
-    db = Database()
-    import_models(db)
-    # db.init_db()
+    db = Database(import_models())
 
 
 database()
