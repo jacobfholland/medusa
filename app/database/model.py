@@ -4,6 +4,7 @@ from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy import Column, DateTime, Integer, String
 from datetime import datetime
 from app.database.route import Route
+from app.utils.format import snake_case
 from app.utils.route import route
 from app.utils.utils import generate_uuid
 
@@ -34,7 +35,7 @@ class Model(Route, Base):
             str: The table name for the model, derived from the class name.
         """
 
-        return cls.__name__.lower()
+        return snake_case(cls.__name__)
 
     @declared_attr
     def __table_args__(cls) -> dict:
