@@ -1,11 +1,9 @@
-import functools
 from app.database.base import Base
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy import Column, DateTime, Integer, String
 from datetime import datetime
-from app.database.route import Route
+from app.route.route import Route
 from app.utils.format import snake_case
-from app.utils.route import route
 from app.utils.utils import generate_uuid
 
 

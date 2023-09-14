@@ -1,6 +1,6 @@
 from app.server.werzeug import url_map
 from app.utils.route import route
-from app.server.logger import logger
+from .logger import logger
 from app.utils.format import snake_case
 
 
