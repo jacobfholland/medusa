@@ -2,6 +2,7 @@ from app.database.base import Base
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy import Column, DateTime, Integer, String
 from datetime import datetime
+from app.route.decorators import route
 from app.route.route import Route
 from app.utils.format import snake_case
 from app.utils.utils import generate_uuid
@@ -46,3 +47,20 @@ class Model(Route, Base):
         """
 
         return {'extend_existing': True}
+
+    def register_crud(self):
+        @route(self, "/create", methods=["POST"])
+        def create(request):
+            return "<html>OK<html>"
+
+        @route(self, "/get", methods=["GET"])
+        def get(request):
+            return "<html>OK<html>"
+
+        @route(self, "/update", methods=["PUT", "PATCH"])
+        def update(request):
+            return "<html>OK<html>"
+
+        @route(self, "/delete", methods=["DELETE"])
+        def delete(request):
+            return "<html>OK<html>"

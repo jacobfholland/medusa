@@ -89,6 +89,6 @@ def import_models() -> Dict[str, Any]:
                         models.append(class_obj())
                         logger.debug(
                             f"Staging class {node.name} from {python_file} for import")
-    logger.debug(f"Models({models})")
+    logger.debug(models)
     logger.info("Model import completed")
     return models
