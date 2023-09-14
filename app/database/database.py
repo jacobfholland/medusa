@@ -46,7 +46,7 @@ class Database(Printable):
         self.bind_models(models)
         self.base.metadata.create_all(bind=self.engine)
         logger.debug(self.__str__())
-        logger.info("Database initialization complete")
+        logger.info("Database initialization completed")
 
     def bind_models(self, models: dict) -> None:
         for model in models:

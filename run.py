@@ -1,3 +1,4 @@
+from config.app import Config
 from app.logger.logger import logger
 from app.database.import_models import import_models
 from app.server.werzeug import run
@@ -8,7 +9,6 @@ logger.warning("Starting application")
 
 
 def database():
-
     from app.database.database import Database
     db = Database(import_models())
 
