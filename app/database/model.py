@@ -23,6 +23,8 @@ class Model(Route, Base):
     )
 
     def __init__(self):
+        if not self.__class__.__name__ == "Model":
+            self.register_crud()
         super().__init__()
 
     @declared_attr

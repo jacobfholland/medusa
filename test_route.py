@@ -3,9 +3,9 @@ from app.route.route import Route
 
 
 class TestRoute(Route):
-    __url_prefix__ = "/hello"
+    __url_prefix__ = ""
 
     def routes(self):
-        @route(self, "/get", methods=["GET"])
+        @route(self, "/hello", methods=["GET"])
         def hello(request):
             return "<html>Hello<html>"

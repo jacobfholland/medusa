@@ -9,7 +9,6 @@ class Route:
     def __init__(self):
         self.url_map = url_map
         try:
-            self.register_crud()
             self.routes()
         except Exception as e:
             logger.error(
