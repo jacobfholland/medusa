@@ -1,7 +1,7 @@
-from app.server.werzeug import url_map
+from app.server.server import url_map
 from .logger import logger
 import functools
-from app.server.werzeug import url_map
+from app.server.server import url_map
 from werkzeug.routing import Rule
 from werkzeug.wrappers import Response
 import json

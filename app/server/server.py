@@ -1,5 +1,4 @@
-import logging
-from werkzeug.wrappers import Request, Response
+from werkzeug.wrappers import Request
 from werkzeug.routing import Map
 from werkzeug.serving import run_simple
 from werkzeug.exceptions import HTTPException

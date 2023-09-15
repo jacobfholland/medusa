@@ -1,5 +1,5 @@
-from app.route.decorators import route
-from app.route.route import Route
+from app.server.decorators import route
+from app.server.route import Route
 
 
 class TestRoute(Route):

@@ -1,7 +1,7 @@
 from config.app import Config
 from app.logger.logger import logger
 from app.database.import_models import import_models_routes
-from app.server.werzeug import run
+from app.server.server import run
 from app.utils.merge import merge
 
 
