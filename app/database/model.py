@@ -3,11 +3,12 @@ from datetime import datetime
 from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
 
-from .base import Base
 from app.server.decorators import route
 from app.server.route import Route
 from app.utils.format import snake_case
 from app.utils.utils import generate_uuid
+
+from .base import Base
 
 
 class Model(Route, Base):

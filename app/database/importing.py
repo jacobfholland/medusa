@@ -5,8 +5,9 @@ import os
 import sys
 from typing import Any, Dict, List, Type, Union
 
-from .logger import logger
 from config.app import Config
+
+from .logger import logger
 
 
 def check_project_directory(project_directory: str) -> bool:

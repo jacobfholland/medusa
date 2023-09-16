@@ -4,10 +4,10 @@ import json
 from werkzeug.routing import Rule
 from werkzeug.wrappers import Response
 
-from .server import url_map
 from app.utils.json import serializer
 
 from .logger import logger
+from .server import url_map
 
 
 def route(obj, rule, methods=['GET'], *args, **kwargs):

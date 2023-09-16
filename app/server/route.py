@@ -1,8 +1,8 @@
-from .decorators import route
-from .server import url_map
 from app.utils.format import snake_case
 
+from .decorators import route
 from .logger import logger
+from .server import url_map
 
 
 class Route:

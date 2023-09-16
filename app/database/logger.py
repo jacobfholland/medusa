@@ -3,5 +3,4 @@ from config.app import Config
 
 from .config import DatabaseConfig
 
-
 logger = setup_logger(f"{Config.APP_NAME.lower()}.database", DatabaseConfig)
