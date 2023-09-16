@@ -1,5 +1,5 @@
-from app.logger.logger import setup_logger
-from config.app import Config
+from app.config import Config
+from app.logger import setup_logger
 
 from .config import DatabaseConfig
 

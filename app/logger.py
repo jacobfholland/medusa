@@ -2,7 +2,7 @@ import logging
 
 import coloredlogs
 
-from config.app import Config
+from app.config import Config
 
 LOG_LEVELS = {
     "DEBUG": logging.DEBUG,

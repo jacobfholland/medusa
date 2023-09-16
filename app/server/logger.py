@@ -1,7 +1,9 @@
-from app.logger.logger import FORMATTER, LOG_LEVELS, setup_logger
-from config.app import Config
 import logging
+
 import coloredlogs
+
+from app.config import Config
+from app.logger import FORMATTER, LOG_LEVELS, setup_logger
 
 
 def setup_werkzeug_logger(config: Config):

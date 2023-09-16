@@ -3,7 +3,7 @@ import sys
 import uuid
 from typing import Callable, List
 
-from app.logger.logger import logger
+from .logger import logger
 
 
 def require_envs(config: object, envs: List[str]) -> Callable:

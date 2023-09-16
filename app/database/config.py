@@ -1,6 +1,6 @@
 import os
 
-from config.app import Config
+from app.config import Config
 
 
 class DatabaseConfig(Config):
