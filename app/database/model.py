@@ -5,10 +5,10 @@ from sqlalchemy.ext.declarative import declared_attr
 
 from app.server.decorators import route
 from app.server.route import Route
-from app.utils.format import snake_case
-from app.utils.utils import generate_uuid
+from utils.format import snake_case
+from utils.utils import generate_uuid
 
-from .base import Base
+from .base import Base, Engine
 
 
 class Model(Route, Base):
@@ -26,6 +26,7 @@ class Model(Route, Base):
     )
 
     def __init__(self):
+        self.metadata.create_all(Engine)
         if not self.__class__.__name__ == "Model":
             self.register_crud()
         super().__init__()

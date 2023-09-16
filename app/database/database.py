@@ -8,7 +8,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.orm.decl_api import DeclarativeMeta
 from sqlalchemy.orm.scoping import scoped_session
 
-from app.utils.utils import require_envs
+from utils.utils import require_envs
 
 from .config import DatabaseConfig as Config
 from .logger import logger

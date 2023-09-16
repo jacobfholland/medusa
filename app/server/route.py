@@ -1,4 +1,4 @@
-from app.utils.format import snake_case
+from utils.format import snake_case
 
 from .decorators import route
 from .logger import logger
