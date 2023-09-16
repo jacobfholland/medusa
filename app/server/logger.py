@@ -5,7 +5,6 @@ import coloredlogs
 
 
 def setup_werkzeug_logger(config: Config):
-    # TODO - Move this to `server` package
     werkzeug_logger = logging.getLogger('werkzeug')
     werkzeug_logger.handlers.clear()
     werkzeug_logger.setLevel(LOG_LEVELS.get(config.LOG_LEVEL))
