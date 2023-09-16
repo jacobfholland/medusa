@@ -24,6 +24,5 @@ def setup_werkzeug_logger(config: Config):
     werkzeug_logger.name = f"{Config.APP_NAME.lower()}.werkzeug"
 
 
-# Create the database logger
 werkzeuf_logger = setup_werkzeug_logger(Config)
 logger = setup_logger(f"{Config.APP_NAME.lower()}.route", Config)
