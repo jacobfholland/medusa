@@ -6,8 +6,10 @@ from config.app import Config
 
 logger.warning(f"Starting application {Config.APP_NAME}")
 
-import_routes()
-import_models()
+
+if Config.APP_DATABASE:
+    import_models()
 
 if Config.APP_SERVER:
+    import_routes()
     run()
