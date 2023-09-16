@@ -1,7 +1,6 @@
 import functools
 import sys
 import uuid
-from datetime import datetime
 from typing import Callable, List
 
 from app.logger.logger import logger

@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
 
-from app.database.base import Base
+from .base import Base
 from app.server.decorators import route
 from app.server.route import Route
 from app.utils.format import snake_case
@@ -53,6 +53,7 @@ class Model(Route, Base):
         return {'extend_existing': True}
 
     def register_crud(self):
+        # TODO - Move this to `server` package so its not required for import in database package
         @route(self, "/create", methods=["POST"])
         def create(request):
             return "<html>OK<html>"

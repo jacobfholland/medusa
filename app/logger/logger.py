@@ -53,6 +53,7 @@ def setup_logger(name: str, config: Config) -> logging.Logger:
 
 
 def setup_werkzeug_logger(config: Config):
+    # TODO - Move this to `server` package
     werkzeug_logger = logging.getLogger('werkzeug')
 
     # Clear existing handlers to avoid duplication

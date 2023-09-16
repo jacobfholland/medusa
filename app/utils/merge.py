@@ -1,8 +1,6 @@
 import functools
 
-from flask import request
-
-from app.utils.validation import is_iterable, is_model
+from .validation import is_iterable, is_model
 
 
 def merge(*args: any, **kwargs: any) -> dict:

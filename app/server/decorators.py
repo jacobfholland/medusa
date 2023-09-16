@@ -4,7 +4,7 @@ import json
 from werkzeug.routing import Rule
 from werkzeug.wrappers import Response
 
-from app.server.server import url_map
+from .server import url_map
 from app.utils.json import serializer
 
 from .logger import logger

@@ -5,7 +5,7 @@ import os
 import sys
 from typing import Any, Dict, List, Type, Union
 
-from app.database.logger import logger
+from .logger import logger
 from config.app import Config
 
 

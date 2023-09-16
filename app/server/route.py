@@ -1,5 +1,5 @@
-from app.server.decorators import route
-from app.server.server import url_map
+from .decorators import route
+from .server import url_map
 from app.utils.format import snake_case
 
 from .logger import logger
