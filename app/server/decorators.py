@@ -1,11 +1,13 @@
-from app.server.server import url_map
-from .logger import logger
 import functools
-from app.server.server import url_map
+import json
+
 from werkzeug.routing import Rule
 from werkzeug.wrappers import Response
-import json
+
+from app.server.server import url_map
 from app.utils.json import serializer
+
+from .logger import logger
 
 
 def route(obj, rule, methods=['GET'], *args, **kwargs):
@@ -27,7 +29,7 @@ def route(obj, rule, methods=['GET'], *args, **kwargs):
             if not any([rule == r.rule for r in url_map.iter_rules()]):
                 url_map.add(Rule(rule, endpoint=wrapped, methods=methods))
             return wrapped
-        logger.debug(f"Registered class {obj.__class__.__name__} route {rule}")
+        logger.debug(f"Registered route {obj.__class__.__name__} route {rule}")
         return decorator
     except Exception as e:
         logger.error(

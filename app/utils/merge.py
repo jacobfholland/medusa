@@ -1,5 +1,7 @@
 import functools
+
 from flask import request
+
 from app.utils.validation import is_iterable, is_model
 
 

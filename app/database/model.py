@@ -1,7 +1,9 @@
-from app.database.base import Base
-from sqlalchemy.ext.declarative import declared_attr
-from sqlalchemy import Column, DateTime, Integer, String
 from datetime import datetime
+
+from sqlalchemy import Column, DateTime, Integer, String
+from sqlalchemy.ext.declarative import declared_attr
+
+from app.database.base import Base
 from app.server.decorators import route
 from app.server.route import Route
 from app.utils.format import snake_case

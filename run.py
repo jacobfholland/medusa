@@ -1,17 +1,15 @@
-from config.app import Config
+
+from app.database.importing import import_models, import_routes
 from app.logger.logger import logger
-from app.database.import_models import import_models_routes
+from config.app import Config
+
 from app.server.server import run
-from app.utils.merge import merge
 
 
-logger.warning("Starting application")
+logger.warning(f"Starting application {Config.APP_NAME}")
 
+import_routes()
+import_models()
 
-def database():
-    from app.database.database import Database
-    db = Database(import_models_routes())
-
-
-database()
-run()
+if Config.APP_SERVER:
+    run()

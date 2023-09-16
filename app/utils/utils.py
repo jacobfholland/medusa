@@ -1,9 +1,10 @@
-from datetime import datetime
 import functools
-from typing import Callable, List
-import uuid
-from app.logger.logger import logger
 import sys
+import uuid
+from datetime import datetime
+from typing import Callable, List
+
+from app.logger.logger import logger
 
 
 def require_envs(config: object, envs: List[str]) -> Callable:

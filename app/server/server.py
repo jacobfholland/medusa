@@ -1,9 +1,9 @@
-from werkzeug.wrappers import Request
+from werkzeug.exceptions import HTTPException
 from werkzeug.routing import Map
 from werkzeug.serving import run_simple
-from werkzeug.exceptions import HTTPException
-from .logger import logger
+from werkzeug.wrappers import Request
 
+from .logger import logger
 
 url_map = Map()
 

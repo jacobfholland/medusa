@@ -1,56 +1,41 @@
-from app.database.logger import logger
-from app.utils.printable import Printable
-from app.utils.utils import require_envs
-from .config import DatabaseConfig as Config
-from sqlalchemy.exc import ArgumentError
+import sys
+
 from sqlalchemy import create_engine
+from sqlalchemy.engine.base import Engine
+from sqlalchemy.exc import ArgumentError
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.orm.decl_api import DeclarativeMeta
-import sys
 from sqlalchemy.orm.scoping import scoped_session
-from sqlalchemy.engine.base import Engine
-import sys
+
+from app.database.logger import logger
+from app.utils.utils import require_envs
+
+from .config import DatabaseConfig as Config
 
 
-class Database(Printable):
-    """Singleton class that handles the database connection and session creation using SQLAlchemy.
-    All models and attributes are bound during initialization.
-
-    Attributes:
-        _instance (bool): Used to determine if the database has previously been instantiated.
-        _all_models (list): All models that were imported during initialization.
-        uri (str): A string representing the full database connection URI.
-        engine (Engine): SQLAlchemy Engine object responsible for executing queries.
-        db (scoped_session): A SQLAlchemy scoped session object to manage individual sessions.
-        base (DeclarativeMeta): The SQLAlchemy declarative base object for model creation.
-    """
-
-    _instance = None
-
-    def __init__(self, models: list = []) -> None:
-        """Initializes the database connection and creates tables for models.
-
-        Args:
-            models (dict, optional): A dictionary of model classes to be created.
-
-        Notes:
-            Initializes the SQLAlchemy engine, creates scoped sessions, and initiates tables.
-        """
-
+class Database:
+    def __init__(self) -> None:
         logger.info("Initializing database")
         self.uri = self.generate_uri()
-        self.engine = self.generate_engine()
-        self.db = self.generate_database()
-        self.base = self.generate_base()
-        self.bind_models(models)
-        self.base.metadata.create_all(bind=self.engine)
-        logger.debug(self.__str__())
+        self.engine = self.generate_engine(self.uri)
+        self.db = self.generate_database(self.engine)
+        self.base = self.generate_base(self.uri, self.db)
         logger.info("Database initialization completed")
 
-    def bind_models(self, models: dict) -> None:
-        for model in models:
-            model.metadata.create_all(self.engine)
+    @require_envs(Config, ["DATABASE_TYPE"])
+    def generate_uri(self) -> str:
+        """Constructs the database URI by calling the appropriate URI generation method based on the database type.
+
+        Returns:
+            str: The database connection URI.
+        Environment Variables:
+            DATABASE_TYPE (str): The type of the database
+        """
+
+        uri = self.database_type(Config.DATABASE_TYPE)
+        logger.debug(f"Generated database URI: {uri}")
+        return uri
 
     def database_type(self, db_type: str) -> str:
         """Determines the database type based on the provided string and returns the appropriate connection URI.
@@ -109,21 +94,7 @@ class Database(Printable):
             return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_USER}:{Config.DATABASE_PASSWORD}@{Config.DATABASE_HOSTNAME}:{Config.DATABASE_PORT}/{Config.DATABASE_NAME}"
         return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_HOSTNAME}/{Config.DATABASE_NAME}"
 
-    @require_envs(Config, ["DATABASE_TYPE"])
-    def generate_uri(self) -> str:
-        """Constructs the database URI by calling the appropriate URI generation method based on the database type.
-
-        Returns:
-            str: The database connection URI.
-        Environment Variables:
-            DATABASE_TYPE (str): The type of the database
-        """
-
-        uri = self.database_type(Config.DATABASE_TYPE)
-        logger.debug(f"Generated database URI: {uri}")
-        return uri
-
-    def generate_engine(self) -> Engine:
+    def generate_engine(self, uri) -> Engine:
         """Creates an SQLAlchemy Engine for query execution.
 
         Returns:
@@ -135,7 +106,7 @@ class Database(Printable):
         """
 
         try:
-            engine = create_engine(self.uri)
+            engine = create_engine(uri)
             logger.debug("Database engine created")
             return engine
         except ArgumentError:
@@ -146,7 +117,7 @@ class Database(Printable):
             logger.error(f"Failed to create database engine: {e}")
             return sys.exit(1)
 
-    def generate_database(self) -> scoped_session:
+    def generate_database(self, engine) -> scoped_session:
         """Creates and returns a scoped session for transaction management.
 
         Returns:
@@ -161,7 +132,7 @@ class Database(Printable):
                 sessionmaker(
                     autocommit=False,
                     autoflush=False,
-                    bind=self.engine,
+                    bind=engine,
                 )
             )
             logger.debug("Scoped session created")
@@ -170,7 +141,7 @@ class Database(Printable):
             logger.error(f"Failed to screate scoped session: {e}")
             return sys.exit(1)
 
-    def generate_base(self) -> DeclarativeMeta:
+    def generate_base(self, uri, db) -> DeclarativeMeta:
         """Generates the SQLAlchemy declarative base for defining models.
 
         Returns:
@@ -182,9 +153,9 @@ class Database(Printable):
 
         try:
             base = declarative_base()
-            base.query = self.db.query_property()
+            base.query = db.query_property()
             logger.debug("SQLAlchemy declarative base and query created")
             return base
         except Exception as e:
-            logger.error(f"Failed to connect to {self.uri}: {e}")
+            logger.error(f"Failed to connect to {uri}: {e}")
             return sys.exit(1)

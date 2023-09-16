@@ -1,11 +1,12 @@
-import os
 import ast
 import glob
 import importlib.util
+import os
 import sys
-from typing import Dict, List, Type, Union, Any
-from config.app import Config
+from typing import Any, Dict, List, Type, Union
+
 from app.database.logger import logger
+from config.app import Config
 
 
 def check_project_directory(project_directory: str) -> bool:
@@ -58,11 +59,39 @@ def import_class_from_file(python_file: str, class_name: str) -> Any:
     return getattr(module, class_name)
 
 
-def import_models_routes() -> Dict[str, Any]:
+def import_routes() -> Dict[str, Any]:
     if not check_project_directory(Config.APP_DIR):
         return sys.exit(1)
-    logger.info("Initializing model imports")
+    logger.info("Initializing register routes")
     routes = []
+    python_files = filter_python_files(Config.APP_DIR)
+    for python_file in python_files:
+        with open(python_file, 'r') as f:
+            tree = ast.parse(f.read(), filename=python_file)
+        for node in ast.walk(tree):
+
+            if isinstance(node, ast.ClassDef):
+
+                parent_names = [
+                    base.id for base in node.bases if isinstance(base, ast.Name)]
+
+                if "Route" in parent_names and not node.name == "Model":
+                    class_obj = import_class_from_file(
+                        python_file, node.name
+                    )()
+                    routes.append(class_obj)
+                    logger.debug(
+                        f"Imported routes for {node.name} from {python_file} for import")
+    logger.debug(routes)
+    logger.info("Registering routes completed")
+    return routes
+
+
+def import_models() -> Dict[str, Any]:
+    if not check_project_directory(Config.APP_DIR):
+        return sys.exit(1)
+    logger.info("Initializing models import")
+    models = []
     python_files = filter_python_files(Config.APP_DIR)
     for python_file in python_files:
         with open(python_file, 'r') as f:
@@ -71,15 +100,13 @@ def import_models_routes() -> Dict[str, Any]:
             if isinstance(node, ast.ClassDef):
                 parent_names = [
                     base.id for base in node.bases if isinstance(base, ast.Name)]
-                if "Route" in parent_names or "Model" in parent_names:
-                    if "Base" not in parent_names:
-                        class_obj = import_class_from_file(
-                            python_file, node.name
-                        )()
-                        if not "Route" in parent_names:
-                            routes.append(class_obj)
-                        logger.debug(
-                            f"Staging class {node.name} from {python_file} for import")
-    logger.debug(routes)
-    logger.info("Model imports completed")
-    return routes
+                if "Model" in parent_names:
+                    class_obj = import_class_from_file(
+                        python_file, node.name
+                    )
+                    models.append(class_obj())
+                    logger.debug(
+                        f"Imported models for {node.name} from {python_file} for import")
+    logger.debug(models)
+    logger.info("Importing models completed")
+    return models
