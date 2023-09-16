@@ -1,14 +1,18 @@
 from datetime import datetime
-
+from .logger import logger
 from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
 
-from app.server.decorators import route
-from app.server.route import Route
+
 from utils.format import snake_case
-from utils.utils import generate_uuid
+from utils.format import generate_uuid
 
 from .base import Base, Engine
+
+try:
+    from app.server.route import Route
+except ImportError:
+    from utils.dummy import Route as Route
 
 
 class Model(Route, Base):
@@ -55,19 +59,25 @@ class Model(Route, Base):
         return {'extend_existing': True}
 
     def register_crud(self):
-        # TODO - Move this to `server` package so its not required for import in database package
-        @route(self, "/create", methods=["POST"])
-        def create(request):
-            return "<html>OK<html>"
+        try:
+            from app.server.decorators import route
 
-        @route(self, "/get", methods=["GET"])
-        def get(request):
-            return "<html>OK<html>"
+            @route(self, "/create", methods=["POST"])
+            def create(request):
+                return "<html>OK<html>"
 
-        @route(self, "/update", methods=["PUT", "PATCH"])
-        def update(request):
-            return "<html>OK<html>"
+            @route(self, "/get", methods=["GET"])
+            def get(request):
+                return "<html>OK<html>"
 
-        @route(self, "/delete", methods=["DELETE"])
-        def delete(request):
-            return "<html>OK<html>"
+            @route(self, "/update", methods=["PUT", "PATCH"])
+            def update(request):
+                return "<html>OK<html>"
+
+            @route(self, "/delete", methods=["DELETE"])
+            def delete(request):
+                return "<html>OK<html>"
+        except ImportError:
+            logger.warning(
+                f"Failed to register CRUD routes for {self.__class__.__name__}"
+            )

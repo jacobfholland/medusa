@@ -38,14 +38,3 @@ def require_envs(config: object, envs: List[str]) -> Callable:
         return wrapper
 
     return decorator
-
-
-def generate_uuid() -> str:
-    """
-    Generate a unique identifier using uuid.
-
-    Returns:
-        str: Generated unique identifier.
-    """
-
-    return str(uuid.uuid4())

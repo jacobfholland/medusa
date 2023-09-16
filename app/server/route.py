@@ -12,7 +12,7 @@ class Route:
             self.routes()
         except Exception as e:
             logger.error(
-                f"Failed to register CRUD routes for {self.__class__.__name__}: {e}")
+                f"Failed to register routes for {self.__class__.__name__}: {e}")
 
     @property
     def __url_prefix__(self):
