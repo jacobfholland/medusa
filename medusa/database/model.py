@@ -1,18 +1,18 @@
 from datetime import datetime
 from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
-from app.database.base import Base, Engine
-from app.database.config import DatabaseConfig as Config
-from app.database.logger import logger
-from app.utils.format import generate_uuid, snake_case
+from medusa.database.base import Base, Engine
+from medusa.database.config import DatabaseConfig as Config
+from medusa.database.logger import logger
+from medusa.utils.format import generate_uuid, snake_case
 
 
 # Attempt to use `Route` functionality if `Server` package is installed
 # If package is missing, will use an empty class to not break the inheritance
 try:
-    from app.server.route import Route
+    from medusa.server.route import Route
 except ImportError:
-    from app.utils.dummy import DummyRoute as Route
+    from medusa.utils.dummy import DummyRoute as Route
 
 
 class Model(Route, Base):
@@ -118,7 +118,7 @@ class Model(Route, Base):
         """
 
         try:
-            from app.server.decorator import route
+            from medusa.server.decorator import route
             if Config.APP_SERVER:
                 @route(cls, "/create", methods=["POST"])
                 def create(request):

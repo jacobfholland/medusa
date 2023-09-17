@@ -1,4 +1,4 @@
-from app.utils.format import snake_case
+from medusa.utils.format import snake_case
 
 
 class Route:

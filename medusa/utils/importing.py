@@ -133,7 +133,7 @@ def import_model(node: ast.AST, python_file: str, models: List[str]) -> None:
         if 'Model' in [base.__name__ for base in class_obj.mro()]:
             if not cls_name == "Model":
                 try:
-                    from app.database.database import Database
+                    from medusa.database.database import Database
                     class_obj.register_model()
                     models.append(cls_name)
                     logger.debug(
@@ -163,7 +163,7 @@ def import_route(node: ast.AST, python_file: str, routes: List[str]) -> None:
             class_obj = import_class_from_file(python_file, node.name)
             cls_name = class_obj.__name__
             try:
-                from app.server.server import Server
+                from medusa.server.server import Server
                 class_obj.routes()
                 routes.append(cls_name)
                 logger.debug(

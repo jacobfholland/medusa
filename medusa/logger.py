@@ -2,7 +2,7 @@ import logging
 
 import coloredlogs
 
-from app.config import Config
+from medusa.config import Config
 
 LOG_LEVELS = {
     "DEBUG": logging.DEBUG,

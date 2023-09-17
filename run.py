@@ -1,7 +1,7 @@
 
-from app.config import Config
-from app.logger import logger
-from app.utils.importing import import_classes, import_model, import_route
+from medusa.config import Config
+from medusa.logger import logger
+from medusa.utils.importing import import_classes, import_model, import_route
 
 logger.warning(f"Starting {Config.APP_NAME} application")
 
@@ -15,7 +15,7 @@ else:
 if Config.APP_SERVER:
     logger.info(f"Application server enabled")
     import_classes(import_route, "route")
-    from app.server.server import Server
+    from medusa.server.server import Server
     Server().run()
 else:
     logger.warning(f"Application server disabled")

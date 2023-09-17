@@ -3,7 +3,7 @@ from werkzeug.exceptions import HTTPException
 from werkzeug.routing import Map
 from werkzeug.serving import run_simple
 from werkzeug.wrappers import Request
-from app.server.logger import logger
+from medusa.server.logger import logger
 
 
 url_map = Map()  # Application URL Map (registered endpointds)

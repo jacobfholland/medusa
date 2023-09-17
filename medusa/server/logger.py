@@ -1,7 +1,7 @@
 import logging
 import coloredlogs
 
-from app.logger import FORMATTER, LOG_LEVELS, setup_logger
+from medusa.logger import FORMATTER, LOG_LEVELS, setup_logger
 from .config import ServerConfig as Config
 
 

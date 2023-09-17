@@ -1,6 +1,6 @@
 from .config import UtilsConfig as Config
 
-from app.logger import setup_logger
+from medusa.logger import setup_logger
 
 
 # Create a logger instance

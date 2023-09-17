@@ -1,5 +1,5 @@
-from app.server.decorator import route
-from app.server.route import Route
+from medusa.server.decorator import route
+from medusa.server.route import Route
 from werkzeug.wrappers import Request, Response
 from typing import Callable
 

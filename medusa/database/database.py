@@ -9,9 +9,9 @@ from sqlalchemy.orm.decl_api import DeclarativeMeta
 from sqlalchemy.orm.scoping import scoped_session
 
 # Uses absolute paths for auto-import functionality
-from app.database.config import DatabaseConfig as Config
-from app.database.logger import logger
-from app.utils.decorator import require_envs
+from medusa.database.config import DatabaseConfig as Config
+from medusa.database.logger import logger
+from medusa.utils.decorator import require_envs
 
 
 class Database:

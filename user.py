@@ -1,5 +1,5 @@
-from app.database.model import Model
-from app.server.decorator import route
+from medusa.database.model import Model
+from medusa.server.decorator import route
 
 
 class User(Model):

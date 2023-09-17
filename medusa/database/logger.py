@@ -1,4 +1,4 @@
-from app.logger import setup_logger
+from medusa.logger import setup_logger
 
 from .config import DatabaseConfig as Config
 

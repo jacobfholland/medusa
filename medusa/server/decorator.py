@@ -5,7 +5,7 @@ from typing import Callable, List
 from werkzeug.routing import Rule
 from werkzeug.wrappers import Response
 
-from app.utils.json import serializer
+from medusa.utils.json import serializer
 
 from .logger import logger
 from .server import url_map

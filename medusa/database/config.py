@@ -1,6 +1,6 @@
 import os
 
-from app.config import Config
+from medusa.config import Config
 
 
 class DatabaseConfig(Config):
