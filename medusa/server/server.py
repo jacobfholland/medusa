@@ -1,10 +1,11 @@
 import sys
+
 from werkzeug.exceptions import HTTPException
 from werkzeug.routing import Map
 from werkzeug.serving import run_simple
 from werkzeug.wrappers import Request
-from medusa.server.logger import logger
 
+from medusa.server.logger import logger
 
 url_map = Map()  # Application URL Map (registered endpointds)
 
@@ -41,7 +42,6 @@ class Server:
             response = e
             logger.error(
                 f"Endpoint: {request.path}, Method: {request.method}, Response Status: {e}")
-
         return response(environ, start_response)
 
     def run(self) -> None:

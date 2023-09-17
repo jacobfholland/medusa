@@ -1,7 +1,9 @@
+from typing import Callable
+
+from werkzeug.wrappers import Request, Response
+
 from medusa.server.decorator import route
 from medusa.server.route import Route
-from werkzeug.wrappers import Request, Response
-from typing import Callable
 
 
 class Root(Route):

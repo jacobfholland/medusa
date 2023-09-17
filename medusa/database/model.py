@@ -1,11 +1,13 @@
 from datetime import datetime
+
 from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
+
+# Uses absolute paths for auto-import functionality
 from medusa.database.base import Base, Engine
 from medusa.database.config import DatabaseConfig as Config
 from medusa.database.logger import logger
 from medusa.utils.format import generate_uuid, snake_case
-
 
 # Attempt to use `Route` functionality if `Server` package is installed
 # If package is missing, will use an empty class to not break the inheritance
