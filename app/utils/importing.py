@@ -11,8 +11,7 @@ from .logger import logger
 
 
 def check_project_directory(project_directory: str) -> bool:
-    """
-    Check if the specified project directory exists.
+    """Check if the specified project directory exists.
 
     Args:
         project_directory (str): The path to the project directory to check.
@@ -29,8 +28,7 @@ def check_project_directory(project_directory: str) -> bool:
 
 
 def filter_python_files(project_directory: str) -> List[str]:
-    """
-    Get all Python files in a project directory recursively.
+    """Get all Python files in a project directory recursively.
 
     Args:
         project_directory (str): The path to the project directory.
@@ -43,8 +41,7 @@ def filter_python_files(project_directory: str) -> List[str]:
 
 
 def import_class_from_file(python_file: str, class_name: str) -> Any:
-    """
-    Import a Python class from a file.
+    """Import a Python class from a file.
 
     Args:
         python_file (str): The path to the Python file.
@@ -106,11 +103,11 @@ def import_route(node, python_file, routes):
     if isinstance(node, ast.ClassDef):
         parent_names = [
             base.id for base in node.bases if isinstance(base, ast.Name)]
-        class_obj = import_class_from_file(
-            python_file, node.name
-        )
-        cls_name = class_obj.__name__
         if "Route" in parent_names and not node.name == "Model":
+            class_obj = import_class_from_file(
+                python_file, node.name
+            )
+            cls_name = class_obj.__name__
             try:
                 from app.server.server import Server
                 class_obj.routes()
