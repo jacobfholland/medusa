@@ -4,8 +4,7 @@ from app.utils.format import snake_case
 class Route:
     @classmethod
     def __url_prefix__(cls) -> str:
-        """
-        Generate the URL prefix for the route based on the class name. Defaults to 
+        """Generate the URL prefix for the route based on the class name. Defaults to 
         `/<class_name>` but is meant to be overridden in subclasses to define a specific
         URL prefix
 
@@ -17,11 +16,13 @@ class Route:
 
     @classmethod
     def routes(cls) -> None:
-        """
-        Define routes for handling HTTP requests.
+        """Define routes for the `Route``.
 
-        Note:
-            This method is meant to be overridden in subclasses to define specific routes.
+        Args:
+            cls (type): The class associated with the routes. Must always be `cls`.
+
+        Returns:
+            bool: True if routes are successfully defined.
         """
 
         pass

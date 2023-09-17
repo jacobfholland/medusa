@@ -11,16 +11,15 @@ from .logger import logger
 from .server import url_map
 
 
-def route(cls: type, rule: str, methods: List[str] = ["GET"], *args, **kwargs) -> Callable:
+def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = None) -> Callable:
     """
     A decorator for registering routes in the server.
 
     Args:
-        cls (type): The class associated with the route.
+        cls (type): The class associated with the route. Must always be `cls`.
         rule (str): The URL rule for the route.
-        methods (List[str], optional): The HTTP methods supported by the route (default is ['GET']).
-        *args: Additional positional arguments.
-        **kwargs: Additional keyword arguments, including 'url_prefix' to specify a custom URL prefix.
+        methods (List[str], optional): The HTTP methods supported by the route. Defaults to `['GET']`.
+        url_prefix (str): The URL prefix for the route. Defaults to `None`.
 
     Returns:
         Callable: The decorator function.
@@ -30,10 +29,9 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], *args, **kwargs) -
     """
 
     try:
-        prefix = kwargs.get("url_prefix")
-        if not prefix:
-            prefix = cls.__url_prefix__()
-        rule = f"{prefix}{rule}"
+        if not url_prefix:
+            url_prefix = cls.__url_prefix__()
+        rule = f"{url_prefix}{rule}"
 
         def decorator(f: Callable) -> Callable:
             @functools.wraps(f)

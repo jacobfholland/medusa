@@ -8,8 +8,20 @@ class User(Model):
 
     @classmethod
     def routes(cls):
-        @route(cls, "/get", methods=["GET"])
-        def get(request):
-            return "<html>USER GET<html>"
+        """Defines custom User routes
 
+        Args:
+            cls (type): The class associated with the routes. Must always be `cls`.
+
+        Returns:
+            super(): Parent `routes()` method
+        """
+
+        @route(cls, "/login", methods=["GET"])
+        def login(request):
+            return "<html>LOGIN<html>"
+
+        @route(cls, "/logout", methods=["POST"])
+        def logout(request):
+            return "<html>LOGOUT<html>"
         return super().routes()

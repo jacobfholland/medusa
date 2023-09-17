@@ -85,12 +85,15 @@ class Model(Route, Base):
 
     @classmethod
     def routes(cls) -> bool:
-        """Define CRUD routes for the model.
+        """Define routes for the model.
 
         If the app server is enabled, this method defines routes for CRUD on model instances.
 
+        Args:
+            cls (type): The class associated with the routes. Must always be `cls`.
+
         Returns:
-            bool: True if routes are successfully defined.
+            super(): Parent `routes()` method
         """
 
         try:
@@ -98,19 +101,55 @@ class Model(Route, Base):
             if Config.APP_SERVER:
                 @route(cls, "/create", methods=["POST"])
                 def create(request):
+                    """Handler function for the create endpoint.
+
+                    Args:
+                        request (Request): The HTTP request object.
+
+                    Returns:
+                        Response: The HTTP response object.
+                    """
+
                     return "<html>OK<html>"
 
                 @route(cls, "/get", methods=["GET"])
                 def get(request):
+                    """Handler function for the get endpoint.
+
+                    Args:
+                        request (Request): The HTTP request object.
+
+                    Returns:
+                        Response: The HTTP response object.
+                    """
+
                     return "<html>MODEL GET<html>"
 
                 @route(cls, "/update", methods=["PUT", "PATCH"])
                 def update(request):
+                    """Handler function for the update endpoint.
+
+                    Args:
+                        request (Request): The HTTP request object.
+
+                    Returns:
+                        Response: The HTTP response object.
+                    """
+
                     return "<html>OK<html>"
 
                 @route(cls, "/delete", methods=["DELETE"])
                 def delete(request):
+                    """Handler function for the delete endpoint.
+
+                    Args:
+                        request (Request): The HTTP request object.
+
+                    Returns:
+                        Response: The HTTP response object.
+                    """
+
                     return "<html>OK<html>"
         except ImportError:
             pass
-        return True
+        return super().routes()
