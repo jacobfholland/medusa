@@ -6,8 +6,8 @@ from werkzeug.wrappers import Response
 
 from utils.json import serializer
 
-from app.server.logger import logger
-from app.server.server import url_map
+from .logger import logger
+from .server import url_map
 
 
 def route(cls, rule, methods=['GET'], *args, **kwargs):

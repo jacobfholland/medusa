@@ -1,5 +1,4 @@
 from utils.format import snake_case
-from functools import wraps
 
 
 class Route:

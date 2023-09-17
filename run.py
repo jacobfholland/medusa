@@ -1,8 +1,7 @@
 
 from app.config import Config
 from app.logger import logger
-from utils.importing import import_model, import_classes, import_route
-
+from utils.importing import import_classes, import_model, import_route
 
 logger.warning(f"Starting application {Config.APP_NAME}")
 

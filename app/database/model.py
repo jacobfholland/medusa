@@ -1,12 +1,12 @@
 from datetime import datetime
+
 from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
 
-from app.database.base import Base, Engine
-from app.database.logger import logger
+from utils.format import generate_uuid, snake_case
 
-from utils.format import snake_case
-from utils.format import generate_uuid
+from .base import Base, Engine
+from .logger import logger
 
 # Attempt to utilize the Server package for registering CRUD routes
 try:

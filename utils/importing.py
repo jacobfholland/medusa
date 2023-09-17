@@ -4,8 +4,10 @@ import importlib.util
 import os
 import sys
 from typing import Any, Dict, List
+
 from app.config import Config
-from utils.logger import logger
+
+from .logger import logger
 
 
 def check_project_directory(project_directory: str) -> bool:

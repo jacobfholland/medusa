@@ -1,5 +1,5 @@
 import inspect
-from typing import Any, Dict, List, Set, Tuple, Union
+from typing import Any
 
 
 def is_iterable(arg: Any) -> bool:
