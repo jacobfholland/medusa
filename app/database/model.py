@@ -73,7 +73,7 @@ class Model(Route, Base):
             )
         except Exception as e:
             logger.error(
-                f"Unable to generate database table for {cls.__name__}"
+                f"Unable to generate database table for {cls.__name__} {e}"
             )
         if not cls.__name__ == "Model" and Config.APP_SERVER:
             cls.routes()
