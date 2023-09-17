@@ -1,3 +1,4 @@
+from app.config import Config
 from app.utils.format import snake_case
 
 

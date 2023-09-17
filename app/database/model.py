@@ -7,7 +7,7 @@ from sqlalchemy.ext.declarative import declared_attr
 from app.database.base import Base, Engine
 from app.database.logger import logger
 from app.utils.format import generate_uuid, snake_case
-
+from app.database.config import DatabaseConfig as Config
 # Attempt to utilize the Server package for registering CRUD routes
 try:
     from app.server.route import Route
@@ -40,7 +40,7 @@ class Model(Route, Base):
             logger.error(
                 f"Unable to generate database table for {cls.__name__}"
             )
-        if not cls.__name__ == "Model":
+        if not cls.__name__ == "Model" and Config.APP_SERVER:
             cls.routes()
 
     def __init__(self):
@@ -73,22 +73,22 @@ class Model(Route, Base):
     def routes(cls):
         try:
             from app.server.decorator import route
+            if Config.APP_SERVER:
+                @route(cls, "/create", methods=["POST"])
+                def create(request):
+                    return "<html>OK<html>"
 
-            @route(cls, "/create", methods=["POST"])
-            def create(request):
-                return "<html>OK<html>"
+                @route(cls, "/get", methods=["GET"])
+                def get(request):
+                    return "<html>MODEL GET<html>"
 
-            @route(cls, "/get", methods=["GET"])
-            def get(request):
-                return "<html>MODEL GET<html>"
+                @route(cls, "/update", methods=["PUT", "PATCH"])
+                def update(request):
+                    return "<html>OK<html>"
 
-            @route(cls, "/update", methods=["PUT", "PATCH"])
-            def update(request):
-                return "<html>OK<html>"
-
-            @route(cls, "/delete", methods=["DELETE"])
-            def delete(request):
-                return "<html>OK<html>"
+                @route(cls, "/delete", methods=["DELETE"])
+                def delete(request):
+                    return "<html>OK<html>"
         except ImportError:
             pass
         return True

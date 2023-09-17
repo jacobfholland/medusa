@@ -74,37 +74,50 @@ def import_classes(func, import_type) -> Dict[str, Any]:
             tree = ast.parse(f.read(), filename=python_file)
         for node in ast.walk(tree):
             func(node, python_file, classes)
-    logger.debug(classes)
     if import_type == "model":
+        logger.debug(f"Models({classes})")
         logger.info("Models import completed")
     elif import_type == "route":
+        logger.debug(f"Routes({classes})")
         logger.info("Route registration completed")
     return classes
 
 
 def import_model(node, python_file, models):
     if isinstance(node, ast.ClassDef):
-        # Import the class into the current namespace.
         class_obj = import_class_from_file(python_file, node.name)
-
-        # Check if "Model" is in the list of ancestors.
+        cls_name = class_obj.__name__
         if 'Model' in [base.__name__ for base in class_obj.mro()]:
-            class_obj.register_model()
-            models.append(class_obj.__name__)
-            logger.debug(
-                f"Imported model {node.name} from {python_file} for import"
-            )
+            if not cls_name == "Model":
+                try:
+                    from app.database.database import Database
+                    class_obj.register_model()
+                    models.append(cls_name)
+                    logger.debug(
+                        f"Imported model {node.name} from {python_file}"
+                    )
+                except ImportError as e:
+                    logger.warning(
+                        f"Did not import model {cls_name} Database package missing"
+                    )
 
 
 def import_route(node, python_file, routes):
     if isinstance(node, ast.ClassDef):
         parent_names = [
             base.id for base in node.bases if isinstance(base, ast.Name)]
+        class_obj = import_class_from_file(
+            python_file, node.name
+        )
+        cls_name = class_obj.__name__
         if "Route" in parent_names and not node.name == "Model":
-            class_obj = import_class_from_file(
-                python_file, node.name
-            )
-            class_obj.routes()
-            routes.append(class_obj.__name__)
-            logger.debug(
-                f"Registered routes for {node.name} from {python_file} for import")
+            try:
+                from app.server.server import Server
+                class_obj.routes()
+                routes.append(class_obj.__name__)
+                logger.debug(
+                    f"Registered routes for {node.name} from {python_file}")
+            except ImportError:
+                logger.warning(
+                    f"Did not register {cls_name} routes - Server package missing"
+                )
