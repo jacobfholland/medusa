@@ -1,7 +1,10 @@
+import ast
 import glob
-import importlib
+import importlib.util
 import os
-from typing import Any, List
+import sys
+from typing import Any, Dict, List
+from app.config import Config
 from utils.logger import logger
 
 
@@ -53,3 +56,53 @@ def import_class_from_file(python_file: str, class_name: str) -> Any:
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return getattr(module, class_name)
+
+
+def import_classes(func, import_type) -> Dict[str, Any]:
+    if not check_project_directory(Config.APP_DIR):
+        return sys.exit(1)
+    classes = []
+    python_files = filter_python_files(Config.APP_DIR)
+    if import_type == "model":
+        logger.info("Initializing models import")
+    elif import_type == "route":
+        logger.info("Registering routes")
+    for python_file in python_files:
+        with open(python_file, 'r') as f:
+            tree = ast.parse(f.read(), filename=python_file)
+        for node in ast.walk(tree):
+            func(node, python_file, classes)
+    logger.debug(classes)
+    if import_type == "model":
+        logger.info("Models import completed")
+    elif import_type == "route":
+        logger.info("Route registration completed")
+    return classes
+
+
+def import_model(node, python_file, models):
+    if isinstance(node, ast.ClassDef):
+        # Import the class into the current namespace.
+        class_obj = import_class_from_file(python_file, node.name)
+
+        # Check if "Model" is in the list of ancestors.
+        if 'Model' in [base.__name__ for base in class_obj.mro()]:
+            class_obj.register_model()
+            models.append(class_obj.__name__)
+            logger.debug(
+                f"Imported model {node.name} from {python_file} for import"
+            )
+
+
+def import_route(node, python_file, routes):
+    if isinstance(node, ast.ClassDef):
+        parent_names = [
+            base.id for base in node.bases if isinstance(base, ast.Name)]
+        if "Route" in parent_names and not node.name == "Model":
+            class_obj = import_class_from_file(
+                python_file, node.name
+            )
+            class_obj.routes()
+            routes.append(class_obj.__name__)
+            logger.debug(
+                f"Registered routes for {node.name} from {python_file} for import")

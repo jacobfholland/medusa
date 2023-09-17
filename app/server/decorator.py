@@ -29,7 +29,7 @@ def route(cls, rule, methods=['GET'], *args, **kwargs):
             if not any([rule == r.rule for r in url_map.iter_rules()]):
                 url_map.add(Rule(rule, endpoint=wrapped, methods=methods))
             return wrapped
-        logger.debug(f"Registered route {cls.__name__} route {rule}")
+        logger.debug(f"Registered {cls.__name__} route {rule}")
         return decorator
     except Exception as e:
         logger.error(

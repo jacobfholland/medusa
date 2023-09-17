@@ -1,8 +1,5 @@
 from utils.format import snake_case
-
-from app.server.decorators import route
-from app.server.logger import logger
-from app.server.server import url_map
+from functools import wraps
 
 
 class Route:
@@ -11,5 +8,5 @@ class Route:
         return f"/{snake_case(cls.__name__)}"
 
     @classmethod
-    def routes(self):
+    def routes(cls):
         pass

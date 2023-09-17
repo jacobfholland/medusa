@@ -3,6 +3,7 @@ from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
 
 from app.database.base import Base, Engine
+from app.database.logger import logger
 
 from utils.format import snake_case
 from utils.format import generate_uuid
@@ -20,7 +21,6 @@ class Model(Route, Base):
     """
 
     __abstract__ = True
-    __model__ = True
     id = Column(Integer, primary_key=True)
     uuid = Column(String, default=generate_uuid)
     created_at = Column(DateTime, default=datetime.utcnow)
@@ -31,9 +31,15 @@ class Model(Route, Base):
 
     @classmethod
     def register_model(cls):
-        cls.metadata.create_all(Engine)
+        try:
+            cls.metadata.create_all(Engine)
+            logger.debug(f"Synced database table {snake_case(cls.__name__)}")
+        except Exception as e:
+            logger.error(
+                f"Unable to generate database table for {cls.__name__}"
+            )
         if not cls.__name__ == "Model":
-            cls.register_crud()
+            cls.routes()
 
     def __init__(self):
         super().__init__()
@@ -62,9 +68,9 @@ class Model(Route, Base):
         return {'extend_existing': True}
 
     @classmethod
-    def register_crud(cls):
+    def routes(cls):
         try:
-            from app.server.decorators import route
+            from app.server.decorator import route
 
             @route(cls, "/create", methods=["POST"])
             def create(request):
@@ -72,7 +78,7 @@ class Model(Route, Base):
 
             @route(cls, "/get", methods=["GET"])
             def get(request):
-                return "<html>OK<html>"
+                return "<html>MODEL GET<html>"
 
             @route(cls, "/update", methods=["PUT", "PATCH"])
             def update(request):
@@ -83,3 +89,4 @@ class Model(Route, Base):
                 return "<html>OK<html>"
         except ImportError:
             pass
+        return True

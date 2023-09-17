@@ -1,4 +1,4 @@
-from app.server.decorators import route
+from app.server.decorator import route
 from app.server.route import Route
 from utils.format import snake_case
 

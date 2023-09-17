@@ -1,2 +1,5 @@
 class DummyRoute:
-    pass
+
+    @classmethod
+    def routes(cls):
+        pass
