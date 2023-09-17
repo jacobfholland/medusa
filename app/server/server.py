@@ -1,3 +1,4 @@
+import sys
 from werkzeug.exceptions import HTTPException
 from werkzeug.routing import Map
 from werkzeug.serving import run_simple
@@ -23,4 +24,8 @@ def application(environ, start_response):
 
 
 def run():
-    run_simple("127.0.0.1", 4000, application)
+    try:
+        run_simple("127.0.0.1", 4000, application)
+    except Exception as e:
+        logger.error("Unable to start server", e)
+        return sys.exit(1)

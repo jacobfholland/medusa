@@ -1,4 +1,4 @@
-from utils.format import snake_case
+from app.utils.format import snake_case
 
 
 class Route:

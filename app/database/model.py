@@ -3,17 +3,16 @@ from datetime import datetime
 from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
 
-from utils.format import generate_uuid, snake_case
-
 # Uses absolute paths for auto-import functionality
 from app.database.base import Base, Engine
 from app.database.logger import logger
+from app.utils.format import generate_uuid, snake_case
 
 # Attempt to utilize the Server package for registering CRUD routes
 try:
     from app.server.route import Route
 except ImportError:
-    from utils.dummy import DummyRoute as Route
+    from app.utils.dummy import DummyRoute as Route
 
 
 class Model(Route, Base):
