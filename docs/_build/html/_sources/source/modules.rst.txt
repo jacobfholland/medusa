@@ -1,0 +1,7 @@
+medusa
+======
+
+.. toctree::
+   :maxdepth: 4
+
+   medusa

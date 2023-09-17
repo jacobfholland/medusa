@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utils &mdash; Medusa 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Server" href="medusa.server.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Medusa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Packages:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="medusa.database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.decorator.require_envs"><code class="docutils literal notranslate"><span class="pre">require_envs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.dummy.DummyRoute"><code class="docutils literal notranslate"><span class="pre">DummyRoute</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.dummy.DummyRoute.routes"><code class="docutils literal notranslate"><span class="pre">DummyRoute.routes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.format.generate_uuid"><code class="docutils literal notranslate"><span class="pre">generate_uuid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.format.snake_case"><code class="docutils literal notranslate"><span class="pre">snake_case()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.importing.check_app_dir"><code class="docutils literal notranslate"><span class="pre">check_app_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.importing.import_class_from_file"><code class="docutils literal notranslate"><span class="pre">import_class_from_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.importing.import_classes"><code class="docutils literal notranslate"><span class="pre">import_classes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.importing.import_model"><code class="docutils literal notranslate"><span class="pre">import_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.importing.import_route"><code class="docutils literal notranslate"><span class="pre">import_route()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.importing.log_completed"><code class="docutils literal notranslate"><span class="pre">log_completed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.importing.log_starting"><code class="docutils literal notranslate"><span class="pre">log_starting()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.importing.python_files"><code class="docutils literal notranslate"><span class="pre">python_files()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.json.serializer"><code class="docutils literal notranslate"><span class="pre">serializer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.printable.Printable"><code class="docutils literal notranslate"><span class="pre">Printable</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.validation.is_iterable"><code class="docutils literal notranslate"><span class="pre">is_iterable()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medusa.utils.validation.is_model"><code class="docutils literal notranslate"><span class="pre">is_model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Medusa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Utils</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/medusa.utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-medusa.utils">
+<span id="utils"></span><h1>Utils<a class="headerlink" href="#module-medusa.utils" title="Link to this heading"></a></h1>
+<dl class="py function" id="module-medusa.utils.decorator">
+<dt class="sig sig-object py" id="medusa.utils.decorator.require_envs">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.decorator.</span></span><span class="sig-name descname"><span class="pre">require_envs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#medusa.utils.decorator.require_envs" title="Link to this definition"></a></dt>
+<dd><p>A decorator that checks if the specified environment variables are present.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>config (object): The configuration object that should contain the environment variables.
+envs (List[str]): A list of environment variable names to check for.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Callable: The decorated function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class" id="module-medusa.utils.dummy">
+<dt class="sig sig-object py" id="medusa.utils.dummy.DummyRoute">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.utils.dummy.</span></span><span class="sig-name descname"><span class="pre">DummyRoute</span></span><a class="headerlink" href="#medusa.utils.dummy.DummyRoute" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A dummy class to be imported when the Server package is otherwise not installed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="medusa.utils.dummy.DummyRoute.routes">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">routes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#medusa.utils.dummy.DummyRoute.routes" title="Link to this definition"></a></dt>
+<dd><p>Placeholder method for registering routes.</p>
+<p>Subclasses should override this method to register their specific routes with the server.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function" id="module-medusa.utils.format">
+<dt class="sig sig-object py" id="medusa.utils.format.generate_uuid">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.format.</span></span><span class="sig-name descname"><span class="pre">generate_uuid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.utils.format.generate_uuid" title="Link to this definition"></a></dt>
+<dd><p>Generate a unique identifier using UUID.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>str: The generated unique identifier.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.format.snake_case">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.format.</span></span><span class="sig-name descname"><span class="pre">snake_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.utils.format.snake_case" title="Link to this definition"></a></dt>
+<dd><p>Convert a string to snake_case.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>input_str (str): The input string to be converted.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: The snake_case representation of the input string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-medusa.utils.importing">
+<dt class="sig sig-object py" id="medusa.utils.importing.check_app_dir">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">check_app_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.importing.check_app_dir" title="Link to this definition"></a></dt>
+<dd><p>Check if the specified project directory exists.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>project_directory (str): The path to the project directory to check.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if the directory exists, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.importing.import_class_from_file">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">import_class_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">python_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#medusa.utils.importing.import_class_from_file" title="Link to this definition"></a></dt>
+<dd><p>Import a Python class from a file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>python_file (str): The path to the Python file.
+class_name (str): The name of the class to import.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Any: The imported class object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.importing.import_classes">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">import_classes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#medusa.utils.importing.import_classes" title="Link to this definition"></a></dt>
+<dd><p>Import classes from Python files in the project directory.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>func (callable): The import function (<cite>import_model</cite> or <cite>import_route</cite>).
+import_type (str): The type of import (<cite>“model”</cite> or <cite>“route”</cite>).</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[str]: List of imported class names.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.importing.import_model">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">import_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AST</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.importing.import_model" title="Link to this definition"></a></dt>
+<dd><p>Import models from Python files and register them if they inherit from the ‘Model’ base class.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+<dt>Args:</dt><dd><p>node (ast.AST): The AST node representing a class definition.
+python_file (str): The path to the Python file.
+models (List[str]): List of imported model class names.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ImportError: If the ‘Database’ package is missing, models won’t be registered.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.importing.import_route">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">import_route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AST</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">routes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.importing.import_route" title="Link to this definition"></a></dt>
+<dd><p>Register routes from Python files if they inherit from the ‘Route’ base class.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>node (ast.AST): The AST node representing a class definition.
+python_file (str): The path to the Python file.
+routes (List[str]): List of registered route class names.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+<dt>Raises:</dt><dd><p>ImportError: If the ‘Server’ package is missing, routes won’t be registered.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.importing.log_completed">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">log_completed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">import_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.importing.log_completed" title="Link to this definition"></a></dt>
+<dd><p>Log the completion of the import process.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+<dt>Args:</dt><dd><p>import_type (str): The type of import (“model” or “route”).
+classes (List[str]): List of imported class names.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.importing.log_starting">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">log_starting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">import_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.importing.log_starting" title="Link to this definition"></a></dt>
+<dd><p>Log the start of the import process.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+<dt>Args:</dt><dd><p>import_type (str): The type of import (“model” or “route”).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.importing.python_files">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">python_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#medusa.utils.importing.python_files" title="Link to this definition"></a></dt>
+<dd><p>Get all Python files in a project directory recursively.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>project_directory (str): The path to the project directory.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[str]: List of paths to Python files.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-medusa.utils.json">
+<dt class="sig sig-object py" id="medusa.utils.json.serializer">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">serializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">time</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.utils.json.serializer" title="Link to this definition"></a></dt>
+<dd><p>Serialize datetime, date, or time objects into string representations.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>obj (Union[datetime, date, time]): The object to be serialized.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: The serialized string representation of the input object.</p>
+</dd>
+<dt>Raises:</dt><dd><p>TypeError: If the input object is not a supported type for serialization.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-medusa.utils.logger"></span><dl class="py class" id="module-medusa.utils.printable">
+<dt class="sig sig-object py" id="medusa.utils.printable.Printable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.utils.printable.</span></span><span class="sig-name descname"><span class="pre">Printable</span></span><a class="headerlink" href="#medusa.utils.printable.Printable" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A mixin class for objects that can be represented as strings and have a printable representation.</p>
+<p>This class provides default implementations for the <cite>__str__</cite> and <cite>__repr__</cite> methods, which return a string
+representation of the object’s class name and its attributes.</p>
+</dd></dl>
+
+<dl class="py function" id="module-medusa.utils.validation">
+<dt class="sig sig-object py" id="medusa.utils.validation.is_iterable">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.validation.</span></span><span class="sig-name descname"><span class="pre">is_iterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.validation.is_iterable" title="Link to this definition"></a></dt>
+<dd><p>Checks if the given argument is iterable, or if it has ‘is_model’ key.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>arg (Any): Argument to check.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if the argument is iterable or has ‘is_model’ key, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.validation.is_model">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.validation.</span></span><span class="sig-name descname"><span class="pre">is_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.validation.is_model" title="Link to this definition"></a></dt>
+<dd><p>Checks if the given object is an instance of ‘Model’ class.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>obj (Any): Object to check.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if the object is an instance of ‘Model’, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="medusa.server.html" class="btn btn-neutral float-left" title="Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jacob Holland.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

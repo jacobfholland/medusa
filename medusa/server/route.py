@@ -6,9 +6,6 @@ class Route:
 
     This class provides a foundation for defining URL prefixes and routes for specific endpoints.
 
-    Attributes:
-        None
-
     Methods:
         __url_prefix__(): Generate the URL prefix for the route based on the class name.
         routes(): Define routes for the `Route` subclass.

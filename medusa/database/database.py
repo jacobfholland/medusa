@@ -21,10 +21,10 @@ class Database:
     and SQLAlchemy base for working with database models.
 
     Attributes:
-        uri (str): The database URI used for connection.
-        engine (Engine): The SQLAlchemy engine for database communication.
-        db (Session): The database session for interacting with the database.
-        base (Base): The SQLAlchemy base class for defining database models.
+        **uri** (str): The database URI used for connection.
+        **engine** (Engine): The SQLAlchemy engine for database communication.
+        **db** (Session): The database session for interacting with the database.
+        **base** (Base): The SQLAlchemy base class for defining database models.
     """
 
     def __init__(self) -> None:

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medusa &mdash; Medusa 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Medusa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Medusa</a><ul>
+<li><a class="reference internal" href="#two-main-components-database-and-server">Two Main Components: Database and Server</a><ul>
+<li><a class="reference internal" href="#database">Database</a></li>
+<li><a class="reference internal" href="#server">Server</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#easy-to-use">Easy to Use</a><ul>
+<li><a class="reference internal" href="#mix-and-match">Mix and Match</a></li>
+<li><a class="reference internal" href="#easy-configuration">Easy Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Medusa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Medusa</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/getting_started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="medusa">
+<h1>Medusa<a class="headerlink" href="#medusa" title="Link to this heading"></a></h1>
+<p>Medusa is a powerful Python framework designed to simplify and accelerate your web application development. It offers modular database usage and web routing functionality, making it an ideal choice for a wide range of Python applications. With Medusa, you can hit the ground running, eliminating the need for extensive prerequisite setup and enabling you to focus on building your application.</p>
+<section id="two-main-components-database-and-server">
+<h2>Two Main Components: Database and Server<a class="headerlink" href="#two-main-components-database-and-server" title="Link to this heading"></a></h2>
+<p>Medusa consists of two powerful main components: the <strong>Database</strong> and the <strong>Server</strong>. These components can be used independently to cater to your specific project needs or seamlessly combined to create a comprehensive web application.</p>
+<section id="database">
+<h3>Database<a class="headerlink" href="#database" title="Link to this heading"></a></h3>
+<p>The <strong>Database</strong> component is responsible for managing all database-related operations and functionality. It simplifies the process of working with databases by offering the following features:</p>
+<ul class="simple">
+<li><p><strong>Data Models</strong>: Define your data models effortlessly using Python classes. Medusa automates the generation of database tables based on these models.</p></li>
+<li><p><strong>CRUD Operations</strong>: Perform Create, Read, Update, and Delete (CRUD) operations on your data models with ease. Medusa streamlines database interactions, reducing boilerplate code.</p></li>
+<li><p><strong>Modular and Extensible</strong>: The Database component is designed to be modular and extensible. You can add custom data models and extend functionality as your project demands.</p></li>
+</ul>
+</section>
+<section id="server">
+<h3>Server<a class="headerlink" href="#server" title="Link to this heading"></a></h3>
+<p>The <strong>Server</strong> component handles all aspects related to API endpoints and web server functionality. It simplifies the process of setting up and managing web routes and is packed with features:</p>
+<ul class="simple">
+<li><p><strong>Web Routing</strong>: Define API endpoints, web pages, and routes with minimal effort. Medusa’s Server component makes it easy to structure your web application.</p></li>
+<li><p><strong>Cross-functionality</strong>: Used in combination with the Database component, the Server component auto-generates base-level Model endpoints, simplifying common operations like Create, Read, Update, and Delete (CRUD) for your data models. This automation reduces repetitive code and speeds up your development process.</p></li>
+<li><p><strong>Modular Design</strong>: The Server component follows a modular design, allowing you to add, remove, or override routes as needed. This makes it easy to adapt your application to changing requirements.</p></li>
+</ul>
+</section>
+</section>
+<section id="easy-to-use">
+<h2>Easy to Use<a class="headerlink" href="#easy-to-use" title="Link to this heading"></a></h2>
+<section id="mix-and-match">
+<h3>Mix and Match<a class="headerlink" href="#mix-and-match" title="Link to this heading"></a></h3>
+<p>One of the key advantages of Medusa is its flexibility. You can use the Database and Server components individually or together, depending on your project’s needs. Whether you’re building a database-driven application, a RESTful API, or a dynamic web application, Medusa has you covered.</p>
+</section>
+<section id="easy-configuration">
+<h3>Easy Configuration<a class="headerlink" href="#easy-configuration" title="Link to this heading"></a></h3>
+<p>Medusa provides a simple way to configure and control these components using environment variables. Check out the <a class="reference external" href="environment_variables">Environment Variables</a> section to learn more about how to customize and fine-tune your Medusa environment.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jacob Holland.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
