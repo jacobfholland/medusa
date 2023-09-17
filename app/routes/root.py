@@ -3,7 +3,7 @@ from app.server.route import Route
 from app.utils.format import snake_case
 
 
-class Home(Route):
+class Root(Route):
     def __init__(self):
         super().__init__()
 
