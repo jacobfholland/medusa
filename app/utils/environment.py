@@ -17,7 +17,21 @@ def require_envs(config: object, envs: List[str]) -> Callable:
         Callable: The decorated function.
     """
 
-    def check_envs(config, envs):
+    def check_envs(config: object, envs: List[str]) -> bool:
+        """
+        Check if the specified environment variables are present in the configuration object.
+
+        Args:
+            config (object): The configuration object.
+            envs (List[str]): A list of environment variable names to check.
+
+        Returns:
+            bool: True if all environment variables are present; False otherwise.
+
+        Raises:
+            SystemExit: If any of the required environment variables are missing, the function will exit with status code 1.
+        """
+
         false_envs = [
             env for env in envs
             if not vars(config).get(env)
@@ -26,10 +40,20 @@ def require_envs(config: object, envs: List[str]) -> Callable:
             logger.error(
                 f"Missing required environment variables: {', '.join(false_envs)}"
             )
-            return sys.exit(1)
+            sys.exit(1)
         return True
 
-    def decorator(func):
+    def decorator(func: Callable) -> Callable:
+        """
+        Decorator function to check environment variables before executing the decorated function.
+
+        Args:
+            func (Callable): The function to be decorated.
+
+        Returns:
+            Callable: The decorated function.
+        """
+
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             if check_envs(config, envs):

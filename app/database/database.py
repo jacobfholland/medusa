@@ -29,6 +29,7 @@ class Database:
 
         Returns:
             str: The database connection URI.
+
         Environment Variables:
             DATABASE_TYPE (str): The type of the database
         """
