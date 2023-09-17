@@ -33,7 +33,9 @@ class Model(Route, Base):
     def register_model(cls):
         try:
             cls.metadata.create_all(Engine)
-            logger.debug(f"Synced database table {snake_case(cls.__name__)}")
+            logger.debug(
+                f"Synced {cls.__name__} database table {snake_case(cls.__name__)}"
+            )
         except Exception as e:
             logger.error(
                 f"Unable to generate database table for {cls.__name__}"
