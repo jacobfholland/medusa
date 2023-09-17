@@ -6,8 +6,7 @@ from .logger import logger
 
 
 def require_envs(config: object, envs: List[str]) -> Callable:
-    """
-    A decorator that checks if the specified environment variables are present.
+    """A decorator that checks if the specified environment variables are present.
 
     Args:
         config (object): The configuration object that should contain the environment variables.

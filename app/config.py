@@ -36,6 +36,7 @@ def load_envs(directory: str) -> None:
 FILE_DIRECTORY = os.path.abspath(__file__)
 APP_DIR = strip(FILE_DIRECTORY)
 
+# Load environment variables
 load_envs(APP_DIR)
 
 

@@ -115,12 +115,16 @@ def log_completed(import_type: str, classes: List[str]) -> None:
 
 
 def import_model(node: ast.AST, python_file: str, models: List[str]) -> None:
-    """Import models from Python files.
+    """
+    Import models from Python files and register them if they inherit from the 'Model' base class.
 
     Args:
-        node (ast.AST): The AST node.
+        node (ast.AST): The AST node representing a class definition.
         python_file (str): The path to the Python file.
         models (List[str]): List of imported model class names.
+
+    Raises:
+        ImportError: If the 'Database' package is missing, models won't be registered.
     """
 
     if isinstance(node, ast.ClassDef):
@@ -140,12 +144,16 @@ def import_model(node: ast.AST, python_file: str, models: List[str]) -> None:
 
 
 def import_route(node: ast.AST, python_file: str, routes: List[str]) -> None:
-    """Register routes from Python files.
+    """
+    Register routes from Python files if they inherit from the 'Route' base class.
 
     Args:
-        node (ast.AST): The AST node.
+        node (ast.AST): The AST node representing a class definition.
         python_file (str): The path to the Python file.
         routes (List[str]): List of registered route class names.
+
+    Raises:
+        ImportError: If the 'Server' package is missing, routes won't be registered.
     """
 
     if isinstance(node, ast.ClassDef):

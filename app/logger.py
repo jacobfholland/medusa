@@ -28,14 +28,11 @@ def setup_logger(name: str, config: Config) -> logging.Logger:
         logging.Logger: A configured logger instance.
     """
 
-    # Set up a logger
     logger = logging.getLogger(name)
     logger.setLevel(LOG_LEVELS.get(config.LOG_LEVEL))
 
-    # Add colored handler for console output
     coloredlogs.install(level=config.LOG_LEVEL, logger=logger)
 
-    # Create a FileHandler for logging to a file
     file_handler = logging.FileHandler(f"{config.LOG_PATH}/{name.lower()}.log")
     file_handler.setLevel(LOG_LEVELS.get(config.LOG_LEVEL))
 
@@ -46,11 +43,11 @@ def setup_logger(name: str, config: Config) -> logging.Logger:
     file_handler.setFormatter(FORMATTER)
     app_file_handler.setFormatter(FORMATTER)
 
-    # Add the file handler to the logger
     logger.addHandler(file_handler)
     logger.addHandler(app_file_handler)
 
     return logger
 
 
+# Create a logger instance
 logger = setup_logger(f"{Config.APP_NAME.lower()}.app", Config)
