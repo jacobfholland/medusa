@@ -10,8 +10,9 @@ from sqlalchemy.orm.scoping import scoped_session
 
 from utils.environment import require_envs
 
-from .config import DatabaseConfig as Config
-from .logger import logger
+# Uses absolute paths for auto-import functionality
+from app.database.config import DatabaseConfig as Config
+from app.database.logger import logger
 
 
 class Database:

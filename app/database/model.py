@@ -5,8 +5,9 @@ from sqlalchemy.ext.declarative import declared_attr
 
 from utils.format import generate_uuid, snake_case
 
-from .base import Base, Engine
-from .logger import logger
+# Uses absolute paths for auto-import functionality
+from app.database.base import Base, Engine
+from app.database.logger import logger
 
 # Attempt to utilize the Server package for registering CRUD routes
 try:
