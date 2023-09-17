@@ -8,8 +8,8 @@ __pycache__/
 *.pyo
 *.pyd
 
-**.log
+
 
 # Ignored directories
 graveyard/
-storage/
+**.log
