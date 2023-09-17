@@ -76,7 +76,7 @@ Before you begin, make sure you have the following prerequisites installed on yo
 
 4. **Configure the Application**
 
-    You can create a `.env` file anywhere in the project directory. Or you can rename `.env-example` in the project directory to just `.env`. Fill out your environment variables accordingly.
+    You can create a `.env` file anywhere in the project directory. Or you can rename `env-example` in the project directory to just `.env`. Fill out your environment variables accordingly. Be sure to double check the entire file is named just `.env`, including the dot.
 
 5. **Run the Application**
     

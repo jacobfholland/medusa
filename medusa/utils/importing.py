@@ -9,7 +9,7 @@ from .config import UtilsConfig as Config
 from .logger import logger
 
 
-def check_project_directory(project_directory: str) -> bool:
+def check_app_dir(project_directory: str) -> bool:
     """Check if the specified project directory exists.
 
     Args:
@@ -26,7 +26,7 @@ def check_project_directory(project_directory: str) -> bool:
     return True
 
 
-def filter_python_files(project_directory: str) -> List[str]:
+def python_files(project_directory: str) -> List[str]:
     """Get all Python files in a project directory recursively.
 
     Args:
@@ -64,19 +64,19 @@ def import_classes(func: callable, import_type: str) -> List[str]:
     """Import classes from Python files in the project directory.
 
     Args:
-        func (callable): The import function (import_model or import_route).
-        import_type (str): The type of import ("model" or "route").
+        func (callable): The import function (`import_model` or `import_route`).
+        import_type (str): The type of import (`"model"` or `"route"`).
 
     Returns:
         List[str]: List of imported class names.
     """
 
-    if not check_project_directory(Config.APP_DIR):
+    if not check_app_dir(Config.APP_DIR):
         return sys.exit(1)
     classes = []
-    python_files = filter_python_files(Config.APP_DIR)
+    files = python_files(Config.APP_DIR)
     log_starting(import_type)
-    for python_file in python_files:
+    for python_file in files:
         with open(python_file, 'r') as f:
             tree = ast.parse(f.read(), filename=python_file)
         for node in ast.walk(tree):

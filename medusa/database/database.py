@@ -93,7 +93,7 @@ class Database:
             str: The SQLite in-memory database URI.
         """
 
-        logger.debug(f"Database type {Config.DATABASE_TYPE}")
+        logger.debug(f"Database type is {Config.DATABASE_TYPE}")
         return "sqlite:///:memory:"
 
     @require_envs(Config, ["DATABASE_TYPE", "DATABASE_NAME"])
@@ -111,7 +111,7 @@ class Database:
             DATABASE_NAME (str): The name of the database
         """
 
-        logger.debug(f"Database type {Config.DATABASE_TYPE}")
+        logger.debug(f"Database type is {Config.DATABASE_TYPE}")
         if Config.DATABASE_PATH:
             return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_PATH}/{Config.DATABASE_NAME}.db"
         return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_NAME}.db"
@@ -134,7 +134,7 @@ class Database:
             DATABASE_NAME (str): The name of the database
         """
 
-        logger.debug(f"Database type {Config.DATABASE_TYPE}")
+        logger.debug(f"Database type is {Config.DATABASE_TYPE}")
         if Config.DATABASE_USER and Config.DATABASE_PASSWORD:
             return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_USER}:{Config.DATABASE_PASSWORD}@{Config.DATABASE_HOSTNAME}:{Config.DATABASE_PORT}/{Config.DATABASE_NAME}"
         return f"{Config.DATABASE_TYPE}:///{Config.DATABASE_HOSTNAME}/{Config.DATABASE_NAME}"

@@ -18,6 +18,7 @@ class Root(Route):
         Returns:
             None
         """
+
         super().__init__()
 
     @classmethod
@@ -27,6 +28,7 @@ class Root(Route):
         Returns:
             str: The URL prefix for the root route (empty string).
         """
+
         return ""
 
     @classmethod
@@ -39,6 +41,7 @@ class Root(Route):
         Returns:
             super(): Parent `routes()` method
         """
+
         @route(cls, "/", methods=["GET"])
         def root(request: Request) -> Response:
             """Handler function for the root endpoint.
