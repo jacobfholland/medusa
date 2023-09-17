@@ -2,8 +2,9 @@ import logging
 
 import coloredlogs
 
-from app.config import Config
 from app.logger import FORMATTER, LOG_LEVELS, setup_logger
+
+from .config import ServerConfig as Config
 
 
 def setup_werkzeug_logger(config: Config):
