@@ -1,14 +1,22 @@
 import logging
-
 import coloredlogs
 
 from app.logger import FORMATTER, LOG_LEVELS, setup_logger
-
 from .config import ServerConfig as Config
 
 
-def setup_werkzeug_logger(config: Config):
-    # TODO - Can the original setup_logger be leveraged here somehow?
+def setup_werkzeug_logger(config: Config) -> None:
+    """
+    Set up the Werkzeug logger for the server. The Werkzeug logger already exists, so it intercepts the logger
+    and replaces it with a custom logger.
+
+    Args:
+        config (Config): The server configuration object.
+
+    Note:
+        This function configures and sets up the Werkzeug logger, including its log level and log file handler.
+    """
+
     werkzeug_logger = logging.getLogger('werkzeug')
     werkzeug_logger.handlers.clear()
     werkzeug_logger.setLevel(LOG_LEVELS.get(config.LOG_LEVEL))
@@ -27,5 +35,8 @@ def setup_werkzeug_logger(config: Config):
     werkzeug_logger.name = f"{Config.APP_NAME.lower()}.werkzeug"
 
 
-werkzeuf_logger = setup_werkzeug_logger(Config)
+# Intercepts and sets up the werkzeug logger
+werkzeug_logger = setup_werkzeug_logger(Config)
+
+# Create a logger instance
 logger = setup_logger(f"{Config.APP_NAME.lower()}.route", Config)
