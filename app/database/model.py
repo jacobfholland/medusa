@@ -15,15 +15,20 @@ except ImportError:
 class Model(Route, Base):
     """An abstract base class for all SQLAlchemy models in this project.
 
-    This class contains common fields that are expected to be present in all derived models.
+    Contains common fields that are expected to be present in all derived models.
     """
 
     __abstract__ = True
     id = Column(Integer, primary_key=True, doc="Primary key for the model.")
-    uuid = Column(String, default=generate_uuid,
-                  doc="UUID field for the model.")
-    created_at = Column(DateTime, default=datetime.utcnow,
-                        doc="Timestamp of creation.")
+    uuid = Column(
+        String, default=generate_uuid,
+        doc="UUID field for the model."
+    )
+    created_at = Column(
+        DateTime,
+        default=datetime.utcnow,
+        doc="Timestamp of creation."
+    )
     updated_at = Column(
         DateTime,
         default=datetime.utcnow,
@@ -35,7 +40,7 @@ class Model(Route, Base):
     def register_model(cls) -> None:
         """Register the model with the database.
 
-        This method creates the database table for the model and sets up CRUD routes if the app server is enabled.
+        Creates the database table for the model and sets up CRUD routes if the app server is enabled.
 
         Raises:
             Exception: If table creation fails.
@@ -60,7 +65,7 @@ class Model(Route, Base):
     def __tablename__(cls) -> str:
         """The database table name for the model.
 
-        This name is derived from the class name using snake_case.
+        Table name is derived from the class name using snake_case.
 
         Returns:
             str: The table name for the model.

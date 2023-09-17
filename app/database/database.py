@@ -27,6 +27,8 @@ class Database:
     def generate_uri(self) -> str:
         """Constructs the database URI by calling the appropriate URI generation method based on the database type.
 
+        Requires valid environment variables
+
         Returns:
             str: The database connection URI.
 
@@ -62,6 +64,8 @@ class Database:
     def sqlite(self) -> str:
         """Generates the SQLite connection URI using environment variables.
 
+        Requires valid environment variables
+
         Returns:
             str: The SQLite database connection URI.
 
@@ -78,6 +82,8 @@ class Database:
     @require_envs(Config, ["DATABASE_TYPE", "DATABASE_HOSTNAME", "DATABASE_NAME", "DATABASE_PORT"])
     def standard(self) -> str:
         """Generates the standard connection URI for databases like MySQL, PostgreSQL, Oracle, etc.
+
+        Requires valid environment variables
 
         Returns:
             str: The standard database connection URI.
