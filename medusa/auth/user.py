@@ -14,7 +14,11 @@ class User(Model):
     """
 
     def __init__(self) -> None:
-        """Initialize a new `User` instance."""
+        """Initialize a new `User` instance.
+
+        Returns:
+            None
+        """
         super().__init__()
 
     @classmethod

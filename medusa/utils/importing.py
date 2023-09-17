@@ -88,6 +88,9 @@ def import_classes(func: callable, import_type: str) -> List[str]:
 def log_starting(import_type: str) -> None:
     """Log the start of the import process.
 
+    Returns:
+            None
+
     Args:
         import_type (str): The type of import ("model" or "route").
     """
@@ -100,6 +103,9 @@ def log_starting(import_type: str) -> None:
 
 def log_completed(import_type: str, classes: List[str]) -> None:
     """Log the completion of the import process.
+
+    Returns:
+            None
 
     Args:
         import_type (str): The type of import ("model" or "route").
@@ -115,8 +121,10 @@ def log_completed(import_type: str, classes: List[str]) -> None:
 
 
 def import_model(node: ast.AST, python_file: str, models: List[str]) -> None:
-    """
-    Import models from Python files and register them if they inherit from the 'Model' base class.
+    """Import models from Python files and register them if they inherit from the 'Model' base class.
+
+    Returns:
+            None
 
     Args:
         node (ast.AST): The AST node representing a class definition.
@@ -144,13 +152,15 @@ def import_model(node: ast.AST, python_file: str, models: List[str]) -> None:
 
 
 def import_route(node: ast.AST, python_file: str, routes: List[str]) -> None:
-    """
-    Register routes from Python files if they inherit from the 'Route' base class.
+    """Register routes from Python files if they inherit from the 'Route' base class.
 
     Args:
         node (ast.AST): The AST node representing a class definition.
         python_file (str): The path to the Python file.
         routes (List[str]): List of registered route class names.
+
+    Returns:
+            None
 
     Raises:
         ImportError: If the 'Server' package is missing, routes won't be registered.

@@ -48,6 +48,9 @@ class Server:
         """
         Start the server and listen for incoming requests.
 
+        Returns:
+            None
+
         Raises:
             SystemExit: If an exception occurs while starting the server.
         """

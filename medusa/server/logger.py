@@ -14,8 +14,8 @@ def setup_werkzeug_logger(config: Config) -> None:
     Args:
         config (Config): The server configuration object.
 
-    Note:
-        This function configures and sets up the Werkzeug logger, including its log level and log file handler.
+    Returns:
+            None
     """
 
     werkzeug_logger = logging.getLogger('werkzeug')

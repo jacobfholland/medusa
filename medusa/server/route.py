@@ -40,7 +40,7 @@ class Route:
             cls (type): The class associated with the routes. Must always be `cls`.
 
         Returns:
-            bool: True if routes are successfully defined.
+            None
         """
 
         pass

@@ -32,6 +32,9 @@ class Database:
 
         This method sets up the database URI, engine, session, and base for database operations.
 
+        Returns:
+            None
+
         Raises:
             Exception: If there's an issue during database initialization.
         """

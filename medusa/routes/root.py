@@ -13,7 +13,11 @@ class Root(Route):
     """
 
     def __init__(self) -> None:
-        """Initialize a new Root instance."""
+        """Initialize a new Root instance.
+
+        Returns:
+            None
+        """
         super().__init__()
 
     @classmethod
@@ -28,6 +32,9 @@ class Root(Route):
     @classmethod
     def routes(cls) -> Callable:
         """Define routes for handling HTTP requests at the root endpoint.
+
+        Args:
+            cls (type): The class associated with the routes. Must always be `cls`.
 
         Returns:
             super(): Parent `routes()` method

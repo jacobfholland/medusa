@@ -64,6 +64,9 @@ class Model(Route, Base):
 
         Creates the database table for the model and sets up CRUD routes if the app server is enabled.
 
+        Returns:
+            None
+
         Raises:
             Exception: If table creation fails.
         """
@@ -81,7 +84,11 @@ class Model(Route, Base):
             cls.routes()
 
     def __init__(self) -> None:
-        """Initialize a new `Model` instance."""
+        """Initialize a new `Model` instance.
+
+        Returns:
+            None
+        """
         super().__init__()
 
     @declared_attr
