@@ -36,15 +36,6 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], *args, **kwargs) -
         rule = f"{prefix}{rule}"
 
         def decorator(f: Callable) -> Callable:
-            """
-            Decorator function for registering a route.
-
-            Args:
-                f (Callable): The function handling the route.
-
-            Returns:
-                Callable: The wrapped function for handling the route.
-            """
             @functools.wraps(f)
             def wrapped(request, *args, **kwargs):
                 result = f(request, *args, **kwargs)

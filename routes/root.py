@@ -9,10 +9,10 @@ class Home(Route):
 
     @classmethod
     def __url_prefix__(cls):
-        return f"/poop"
+        return f""
 
     @classmethod
     def routes(cls):
-        @route(cls, "/hello", methods=["GET"])
-        def hello(request):
-            return "<html>OK<html>"
+        @route(cls, "/", methods=["GET"])
+        def root(request):
+            return "<html>HOME<html>"
