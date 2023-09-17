@@ -1,15 +1,11 @@
 from datetime import datetime
-
 from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
-
-# Uses absolute paths for auto-import functionality
 from app.database.base import Base, Engine
 from app.database.config import DatabaseConfig as Config
 from app.database.logger import logger
 from app.utils.format import generate_uuid, snake_case
 
-# Attempt to utilize the Server package for registering CRUD routes
 try:
     from app.server.route import Route
 except ImportError:
@@ -17,21 +13,34 @@ except ImportError:
 
 
 class Model(Route, Base):
-    """An abstract base class for all SQLAlchemy models in this project. 
-    Contains common fields that are expected to be in all derived models.
+    """An abstract base class for all SQLAlchemy models in this project.
+
+    This class contains common fields that are expected to be present in all derived models.
     """
 
     __abstract__ = True
-    id = Column(Integer, primary_key=True)
-    uuid = Column(String, default=generate_uuid)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    id = Column(Integer, primary_key=True, doc="Primary key for the model.")
+    uuid = Column(String, default=generate_uuid,
+                  doc="UUID field for the model.")
+    created_at = Column(DateTime, default=datetime.utcnow,
+                        doc="Timestamp of creation.")
     updated_at = Column(
-        DateTime, default=datetime.utcnow,
-        onupdate=datetime.utcnow
+        DateTime,
+        default=datetime.utcnow,
+        onupdate=datetime.utcnow,
+        doc="Timestamp of the last update."
     )
 
     @classmethod
-    def register_model(cls):
+    def register_model(cls) -> None:
+        """Register the model with the database.
+
+        This method creates the database table for the model and sets up CRUD routes if the app server is enabled.
+
+        Raises:
+            Exception: If table creation fails.
+        """
+
         try:
             cls.metadata.create_all(Engine)
             logger.debug(
@@ -49,29 +58,36 @@ class Model(Route, Base):
 
     @declared_attr
     def __tablename__(cls) -> str:
-        """
-        The database table name for the model. Detected by SQLAlchemy.
+        """The database table name for the model.
+
+        This name is derived from the class name using snake_case.
 
         Returns:
-            str: The table name for the model, derived from the class name.
+            str: The table name for the model.
         """
 
         return snake_case(cls.__name__)
 
     @declared_attr
     def __table_args__(cls) -> dict:
-        """
-        Sets SQLAlchemy to extend a table that already exists instead of trying
-        to recreate it.
+        """Sets SQLAlchemy to extend an existing table instead of recreating it.
 
         Returns:
-            dict: Argument to extend existing tables (value Boolean)
+            dict: Arguments to extend existing tables (value Boolean).
         """
 
         return {'extend_existing': True}
 
     @classmethod
-    def routes(cls):
+    def routes(cls) -> bool:
+        """Define CRUD routes for the model.
+
+        If the app server is enabled, this method defines routes for CRUD on model instances.
+
+        Returns:
+            bool: True if routes are successfully defined.
+        """
+
         try:
             from app.server.decorator import route
             if Config.APP_SERVER:
