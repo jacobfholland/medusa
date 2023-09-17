@@ -6,15 +6,15 @@ from werkzeug.wrappers import Response
 
 from utils.json import serializer
 
-from .logger import logger
-from .server import url_map
+from app.server.logger import logger
+from app.server.server import url_map
 
 
-def route(obj, rule, methods=['GET'], *args, **kwargs):
+def route(cls, rule, methods=['GET'], *args, **kwargs):
     try:
         prefix = kwargs.get("url_prefix")
         if not prefix:
-            prefix = obj.__url_prefix__
+            prefix = cls.__url_prefix__()
         rule = f"{prefix}{rule}"
 
         def decorator(f):
@@ -29,8 +29,9 @@ def route(obj, rule, methods=['GET'], *args, **kwargs):
             if not any([rule == r.rule for r in url_map.iter_rules()]):
                 url_map.add(Rule(rule, endpoint=wrapped, methods=methods))
             return wrapped
-        logger.debug(f"Registered route {obj.__class__.__name__} route {rule}")
+        logger.debug(f"Registered route {cls.__name__} route {rule}")
         return decorator
     except Exception as e:
         logger.error(
-            f"Failed to register {obj.__class__.__name__} route {rule}")
+            f"Failed to register {cls.__name__} route {rule}")
+        pass

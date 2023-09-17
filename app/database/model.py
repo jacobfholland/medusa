@@ -1,18 +1,17 @@
 from datetime import datetime
-from .logger import logger
 from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
 
+from app.database.base import Base, Engine
 
 from utils.format import snake_case
 from utils.format import generate_uuid
 
-from .base import Base, Engine
-
+# Attempt to utilize the Server package for registering CRUD routes
 try:
     from app.server.route import Route
 except ImportError:
-    from utils.dummy import Route as Route
+    from utils.dummy import DummyRoute as Route
 
 
 class Model(Route, Base):
@@ -21,6 +20,7 @@ class Model(Route, Base):
     """
 
     __abstract__ = True
+    __model__ = True
     id = Column(Integer, primary_key=True)
     uuid = Column(String, default=generate_uuid)
     created_at = Column(DateTime, default=datetime.utcnow)
@@ -29,10 +29,13 @@ class Model(Route, Base):
         onupdate=datetime.utcnow
     )
 
+    @classmethod
+    def register_model(cls):
+        cls.metadata.create_all(Engine)
+        if not cls.__name__ == "Model":
+            cls.register_crud()
+
     def __init__(self):
-        self.metadata.create_all(Engine)
-        if not self.__class__.__name__ == "Model":
-            self.register_crud()
         super().__init__()
 
     @declared_attr
@@ -58,26 +61,25 @@ class Model(Route, Base):
 
         return {'extend_existing': True}
 
-    def register_crud(self):
+    @classmethod
+    def register_crud(cls):
         try:
             from app.server.decorators import route
 
-            @route(self, "/create", methods=["POST"])
+            @route(cls, "/create", methods=["POST"])
             def create(request):
                 return "<html>OK<html>"
 
-            @route(self, "/get", methods=["GET"])
+            @route(cls, "/get", methods=["GET"])
             def get(request):
                 return "<html>OK<html>"
 
-            @route(self, "/update", methods=["PUT", "PATCH"])
+            @route(cls, "/update", methods=["PUT", "PATCH"])
             def update(request):
                 return "<html>OK<html>"
 
-            @route(self, "/delete", methods=["DELETE"])
+            @route(cls, "/delete", methods=["DELETE"])
             def delete(request):
                 return "<html>OK<html>"
         except ImportError:
-            logger.warning(
-                f"Failed to register CRUD routes for {self.__class__.__name__}"
-            )
+            pass

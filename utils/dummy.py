@@ -1,2 +1,2 @@
-class Route:
+class DummyRoute:
     pass
