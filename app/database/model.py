@@ -15,7 +15,13 @@ except ImportError:
 class Model(Route, Base):
     """An abstract base class for all SQLAlchemy models in this project.
 
-    Contains common fields that are expected to be present in all derived models.
+    This class contains common fields that are expected to be present in all derived models.
+
+    Attributes:
+        id (Column): The primary key for the model.
+        uuid (Column): The UUID field for the model.
+        created_at (Column): The timestamp of creation.
+        updated_at (Column): The timestamp of the last update.
     """
 
     __abstract__ = True
