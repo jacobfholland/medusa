@@ -6,8 +6,7 @@ from .config import ServerConfig as Config
 
 
 def setup_werkzeug_logger(config: Config) -> None:
-    """
-    Set up the Werkzeug logger for the server. The Werkzeug logger already exists, so it intercepts the logger
+    """Set up the Werkzeug logger for the server. The Werkzeug logger already exists, so it intercepts the logger
     and replaces it with a custom logger.
 
     Args:

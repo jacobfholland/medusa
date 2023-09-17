@@ -4,8 +4,7 @@ from app.config import Config
 
 
 class DatabaseConfig(Config):
-    """
-    Configuration class for the database settings.
+    """Configuration class for the database settings.
 
     This class inherits from the `Config` class and defines database-related
     configuration parameters using environment variables.

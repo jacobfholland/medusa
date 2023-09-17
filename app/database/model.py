@@ -25,6 +25,17 @@ class Model(Route, Base):
         uuid (Column): The UUID field for the model.
         created_at (Column): The timestamp of creation.
         updated_at (Column): The timestamp of the last update.
+
+    Note:
+        All method overrides should return `super()`
+
+        Subclasses of `Model` should override the `create()` method to define specific create behavior.
+
+        Subclasses of `Model` should override the `get()` method to define specific get behavior.
+
+        Subclasses of `Model` should override the `update()` method to define specific update behavior.
+
+        Subclasses of `Model` should override the `delete()` method to define specific delete behavior.
     """
 
     __abstract__ = True  # Ignores database table creation
@@ -67,7 +78,8 @@ class Model(Route, Base):
         if not cls.__name__ == "Model" and Config.APP_SERVER:
             cls.routes()
 
-    def __init__(self):
+    def __init__(self) -> None:
+        """Initialize a new `Model` instance."""
         super().__init__()
 
     @declared_attr
@@ -160,5 +172,6 @@ class Model(Route, Base):
 
                     return "<html>OK<html>"
         except ImportError:
+            """Ignores CRUD routes if `Server` package is missing"""
             pass
         return super().routes()

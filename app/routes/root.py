@@ -10,7 +10,8 @@ class Root(Route):
     This class inherits from the `Route` base class and defines the root endpoint ("/").
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
+        """Initialize a new Root instance."""
         super().__init__()
 
     @classmethod

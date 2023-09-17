@@ -12,8 +12,7 @@ from .server import url_map
 
 
 def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = None) -> Callable:
-    """
-    A decorator for registering routes in the server.
+    """A decorator for registering routes in the server.
 
     Args:
         cls (type): The class associated with the route. Must always be `cls`.

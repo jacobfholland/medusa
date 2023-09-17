@@ -5,11 +5,21 @@ from werkzeug.serving import run_simple
 from werkzeug.wrappers import Request
 from app.server.logger import logger
 
-# Application URL Map (registered endpointds)
-url_map = Map()
+
+url_map = Map()  # Application URL Map (registered endpointds)
 
 
 class Server:
+    """
+    A class representing the WSGI server for the application.
+
+    This class is responsible for handling HTTP requests and starting the server.
+
+    Methods:
+        application(environ, start_response): Main application method for handling HTTP requests.
+        run(): Start the server and listen for incoming requests.
+    """
+
     def application(self, environ: dict, start_response: callable) -> callable:
         """
         Main application method for handling HTTP requests.
