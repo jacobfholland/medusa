@@ -15,7 +15,27 @@ from app.utils.decorator import require_envs
 
 
 class Database:
+    """Represents the database configuration and initialization.
+
+    This class is responsible for initializing the database engine, database object,
+    and SQLAlchemy base for working with database models.
+
+    Attributes:
+        uri (str): The database URI used for connection.
+        engine (Engine): The SQLAlchemy engine for database communication.
+        db (Session): The database session for interacting with the database.
+        base (Base): The SQLAlchemy base class for defining database models.
+    """
+
     def __init__(self) -> None:
+        """Initialize the Database instance.
+
+        This method sets up the database URI, engine, session, and base for database operations.
+
+        Raises:
+            Exception: If there's an issue during database initialization.
+        """
+
         logger.info("Initializing database")
         self.uri = self.generate_uri()
         self.engine = self.generate_engine(self.uri)

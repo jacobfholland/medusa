@@ -6,6 +6,9 @@ from app.database.config import DatabaseConfig as Config
 from app.database.logger import logger
 from app.utils.format import generate_uuid, snake_case
 
+
+# Attempt to use `Route` functionality if `Server` package is installed
+# If package is missing, will use an empty class to not break the inheritance
 try:
     from app.server.route import Route
 except ImportError:
@@ -24,7 +27,7 @@ class Model(Route, Base):
         updated_at (Column): The timestamp of the last update.
     """
 
-    __abstract__ = True
+    __abstract__ = True  # Ignores database table creation
     id = Column(Integer, primary_key=True, doc="Primary key for the model.")
     uuid = Column(
         String, default=generate_uuid,
