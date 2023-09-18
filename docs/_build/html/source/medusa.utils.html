@@ -134,10 +134,12 @@ representation of the object’s class name and its attributes.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.decorator.</span></span><span class="sig-name descname"><span class="pre">require_envs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#medusa.utils.decorator.require_envs" title="Link to this definition"></a></dt>
 <dd><p>A decorator that checks if the specified environment variables are present.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>config (object): The configuration object that should contain the environment variables.
-envs (List[str]): A list of environment variable names to check for.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>config</cite> (object): The configuration object that should contain the environment variables.</p></li>
+<li><p><cite>envs</cite> (List[str]): A list of environment variable names to check for.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Callable: The decorated function.</p>
+<dt>Returns:</dt><dd><p><cite>Callable</cite>: The decorated function.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -147,7 +149,7 @@ envs (List[str]): A list of environment variable names to check for.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.format.</span></span><span class="sig-name descname"><span class="pre">generate_uuid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.utils.format.generate_uuid" title="Link to this definition"></a></dt>
 <dd><p>Generate a unique identifier using UUID.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>str: The generated unique identifier.</p>
+<dt>Returns:</dt><dd><p><cite>str</cite>: The generated unique identifier.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -157,9 +159,11 @@ envs (List[str]): A list of environment variable names to check for.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.format.</span></span><span class="sig-name descname"><span class="pre">snake_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.utils.format.snake_case" title="Link to this definition"></a></dt>
 <dd><p>Convert a string to snake_case.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>input_str (str): The input string to be converted.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>input_str</cite> (str): The input string to be converted.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>str: The snake_case representation of the input string.</p>
+<dt>Returns:</dt><dd><p><cite>str</cite>: The snake_case representation of the input string.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -169,9 +173,11 @@ envs (List[str]): A list of environment variable names to check for.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">check_app_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.importing.check_app_dir" title="Link to this definition"></a></dt>
 <dd><p>Check if the specified project directory exists.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>project_directory (str): The path to the project directory to check.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>project_directory</cite> (str): The path to the project directory to check.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>bool: True if the directory exists, False otherwise.</p>
+<dt>Returns:</dt><dd><p><cite>bool</cite>: True if the directory exists, False otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -181,23 +187,27 @@ envs (List[str]): A list of environment variable names to check for.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">import_class_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">python_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#medusa.utils.importing.import_class_from_file" title="Link to this definition"></a></dt>
 <dd><p>Import a Python class from a file.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>python_file (str): The path to the Python file.
-class_name (str): The name of the class to import.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>python_file</cite> (str): The path to the Python file.</p></li>
+<li><p><cite>class_name</cite> (str): The name of the class to import.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Any: The imported class object.</p>
+<dt>Returns:</dt><dd><p><cite>Any</cite>: The imported class object.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="medusa.utils.importing.import_classes">
-<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">import_classes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#medusa.utils.importing.import_classes" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">import_classes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#medusa.utils.importing.import_classes" title="Link to this definition"></a></dt>
 <dd><p>Import classes from Python files in the project directory.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>func (callable): The import function (<cite>import_model</cite> or <cite>import_route</cite>).
-import_type (str): The type of import (<cite>“model”</cite> or <cite>“route”</cite>).</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>func</cite> (Callable): The import function (<cite>import_model</cite> or <cite>import_route</cite>).</p></li>
+<li><p><cite>import_type</cite> (str): The type of import (<cite>“model”</cite> or <cite>“route”</cite>).</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>List[str]: List of imported class names.</p>
+<dt>Returns:</dt><dd><p><cite>List[str]</cite>: List of imported class names.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -207,13 +217,17 @@ import_type (str): The type of import (<cite>“model”</cite> or <cite>“rout
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">import_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AST</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.importing.import_model" title="Link to this definition"></a></dt>
 <dd><p>Import models from Python files and register them if they inherit from the ‘Model’ base class.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>None</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>node</cite> (ast.AST): The AST node representing a class definition.</p></li>
+<li><p><cite>python_file</cite> (str): The path to the Python file.</p></li>
+<li><p><cite>models</cite> (List[str]): List of imported model class names.</p></li>
+</ul>
 </dd>
-<dt>Args:</dt><dd><p>node (ast.AST): The AST node representing a class definition.
-python_file (str): The path to the Python file.
-models (List[str]): List of imported model class names.</p>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>ImportError</cite>: If the ‘Database’ package is missing, models won’t be registered.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>ImportError: If the ‘Database’ package is missing, models won’t be registered.</p>
+<dt>Returns:</dt><dd><p><cite>None</cite></p>
 </dd>
 </dl>
 </dd></dl>
@@ -223,13 +237,17 @@ models (List[str]): List of imported model class names.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">import_route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AST</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">routes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.importing.import_route" title="Link to this definition"></a></dt>
 <dd><p>Register routes from Python files if they inherit from the ‘Route’ base class.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>node (ast.AST): The AST node representing a class definition.
-python_file (str): The path to the Python file.
-routes (List[str]): List of registered route class names.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>node</cite> (ast.AST): The AST node representing a class definition.</p></li>
+<li><p><cite>python_file</cite> (str): The path to the Python file.</p></li>
+<li><p><cite>routes</cite> (List[str]): List of registered route class names.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>None</p>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>ImportError</cite>: If the ‘Server’ package is missing, routes won’t be registered.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>ImportError: If the ‘Server’ package is missing, routes won’t be registered.</p>
+<dt>Returns:</dt><dd><p><cite>None</cite></p>
 </dd>
 </dl>
 </dd></dl>
@@ -239,10 +257,12 @@ routes (List[str]): List of registered route class names.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">log_completed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">import_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.importing.log_completed" title="Link to this definition"></a></dt>
 <dd><p>Log the completion of the import process.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>None</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>import_type</cite> (str): The type of import (“model” or “route”).</p></li>
+<li><p><cite>classes</cite> (List[str]): List of imported class names.</p></li>
+</ul>
 </dd>
-<dt>Args:</dt><dd><p>import_type (str): The type of import (“model” or “route”).
-classes (List[str]): List of imported class names.</p>
+<dt>Returns:</dt><dd><p><cite>None</cite></p>
 </dd>
 </dl>
 </dd></dl>
@@ -252,9 +272,11 @@ classes (List[str]): List of imported class names.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">log_starting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">import_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.importing.log_starting" title="Link to this definition"></a></dt>
 <dd><p>Log the start of the import process.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>None</p>
+<dt>Returns:</dt><dd><p><cite>None</cite></p>
 </dd>
-<dt>Args:</dt><dd><p>import_type (str): The type of import (“model” or “route”).</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>import_type</cite> (str): The type of import (“model” or “route”).</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -264,9 +286,11 @@ classes (List[str]): List of imported class names.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">python_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#medusa.utils.importing.python_files" title="Link to this definition"></a></dt>
 <dd><p>Get all Python files in a project directory recursively.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>project_directory (str): The path to the project directory.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>project_directory</cite> (str): The path to the project directory.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>List[str]: List of paths to Python files.</p>
+<dt>Returns:</dt><dd><p><cite>List[str]</cite>: List of paths to Python files.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -276,11 +300,15 @@ classes (List[str]): List of imported class names.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">serializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">time</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.utils.json.serializer" title="Link to this definition"></a></dt>
 <dd><p>Serialize datetime, date, or time objects into string representations.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>obj (Union[datetime, date, time]): The object to be serialized.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>obj</cite> (Union[datetime, date, time]): The object to be serialized.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>str: The serialized string representation of the input object.</p>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>TypeError</cite>: If the input object is not a supported type for serialization.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>TypeError: If the input object is not a supported type for serialization.</p>
+<dt>Returns:</dt><dd><p><cite>str</cite>: The serialized string representation of the input object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -290,9 +318,11 @@ classes (List[str]): List of imported class names.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.validation.</span></span><span class="sig-name descname"><span class="pre">is_iterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.validation.is_iterable" title="Link to this definition"></a></dt>
 <dd><p>Checks if the given argument is iterable, or if it has ‘is_model’ key.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>arg (Any): Argument to check.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>arg</cite> (Any): Argument to check.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>bool: True if the argument is iterable or has ‘is_model’ key, False otherwise.</p>
+<dt>Returns:</dt><dd><p><cite>bool</cite>: True if the argument is iterable or has ‘is_model’ key, False otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -302,9 +332,11 @@ classes (List[str]): List of imported class names.</p>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.validation.</span></span><span class="sig-name descname"><span class="pre">is_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.validation.is_model" title="Link to this definition"></a></dt>
 <dd><p>Checks if the given object is an instance of ‘Model’ class.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>obj (Any): Object to check.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>obj</cite> (Any): Object to check.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>bool: True if the object is an instance of ‘Model’, False otherwise.</p>
+<dt>Returns:</dt><dd><p><cite>bool</cite>: True if the object is an instance of ‘Model’, False otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
