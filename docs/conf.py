@@ -9,8 +9,8 @@
 # import medusa
 import os
 import sys
-sys.path.insert(0, '/home/jacob/code/medusa')
-print("This path is being added:", os.path.abspath('../medusa'))
+path = os.path.abspath("./..")
+sys.path.insert(0, path)
 
 
 project = 'Medusa'
