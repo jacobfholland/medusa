@@ -12,11 +12,11 @@ def run() -> None:
     environment variables.
 
     Raises:
-        ImportError: If the server package is missing.
-        Exception: If an unexpected error occurs while starting the server.
+        - `ImportError`: If the server package is missing.
+        - `Exception`: If an unexpected error occurs while starting the server.
 
     Returns:
-        None
+        `None`
     """
 
     logger.warning(f"Starting {Config.APP_NAME} application")

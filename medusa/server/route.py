@@ -7,14 +7,13 @@ class Route:
     This class provides a foundation for defining URL prefixes and routes for specific endpoints.
 
     Methods:
-        __url_prefix__(): Generate the URL prefix for the route based on the class name.
-        routes(): Define routes for the `Route` subclass.
+        - `__url_prefix__()`: Generate the URL prefix for the route based on the class name.
+        - `routes()`: Define routes for the `Route` subclass.
 
     Note:
-        Subclasses of `Route` should override the `__url_prefix__()` method to define specific
-        URL prefixes for their routes.
-
-        Subclasses of `Route` should override the `routes()` method to define specific routes.
+        - Subclasses of `Route` should override the `__url_prefix__()` method to define specific
+        - URL prefixes for their routes.
+        - Subclasses of `Route` should override the `routes()` method to define specific routes.
     """
 
     @classmethod
@@ -24,7 +23,7 @@ class Route:
         URL prefix
 
         Returns:
-            str: The generated URL prefix for the route.
+            `str`: The generated URL prefix for the route.
         """
 
         return f"/{snake_case(cls.__name__)}"
@@ -34,10 +33,10 @@ class Route:
         """Define routes for the `Route``.
 
         Args:
-            cls (type): The class associated with the routes. Must always be `cls`.
+            - `cls` (type): The class associated with the routes. Must always be `cls`.
 
         Returns:
-            None
+            `None`
         """
 
         pass

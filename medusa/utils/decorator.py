@@ -9,11 +9,11 @@ def require_envs(config: object, envs: List[str]) -> Callable:
     """A decorator that checks if the specified environment variables are present.
 
     Args:
-        config (object): The configuration object that should contain the environment variables.
-        envs (List[str]): A list of environment variable names to check for.
+        - `config` (object): The configuration object that should contain the environment variables.
+        - `envs` (List[str]): A list of environment variable names to check for.
 
     Returns:
-        Callable: The decorated function.
+        `Callable`: The decorated function.
     """
 
     def check_envs(config: object, envs: List[str]) -> bool:

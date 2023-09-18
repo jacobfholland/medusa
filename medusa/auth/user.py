@@ -9,15 +9,15 @@ class User(Model):
     for database models. It is used to define and interact with user data in the database.
 
     Methods:
-        __init__(): Initialize a new User instance.
-        routes(): Define custom User routes.
+        - `__init__()`: Initialize a new User instance.
+        - `routes()`: Define custom User routes.
     """
 
     def __init__(self) -> None:
         """Initialize a new `User` instance.
 
         Returns:
-            None
+            `None`
         """
         super().__init__()
 
@@ -27,10 +27,10 @@ class User(Model):
         Defines custom `User` routes.
 
         Args:
-            cls (type): The class associated with the routes. Must always be `cls`.
+            - `cls` (type): The class associated with the routes. Must always be `cls`.
 
         Returns:
-            super(): Parent `routes()` method.
+            `super()`: Parent `routes()` method.
         """
 
         @route(cls, "/login", methods=["GET"])

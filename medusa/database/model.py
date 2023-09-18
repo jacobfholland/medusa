@@ -23,10 +23,10 @@ class Model(Route, Base):
     This class contains common fields that are expected to be present in all derived models.
 
     Attributes:
-        - **id** (Column): The primary key for the model.
-        - **uuid** (Column): The UUID field for the model.
-        - **created_at** (Column): The timestamp of creation.
-        - **updated_at** (Column): The timestamp of the last update.
+        - `id` (Column): The primary key for the model.
+        - `uuid` (Column): The UUID field for the model.
+        - `created_at` (Column): The timestamp of creation.
+        - `updated_at` (Column): The timestamp of the last update.
 
     Note:
         - All method overrides should return `super()`
@@ -58,7 +58,7 @@ class Model(Route, Base):
         """Initialize a new `Model` instance.
 
         Returns:
-            None
+            `None`
         """
         super().__init__()
 
@@ -69,7 +69,7 @@ class Model(Route, Base):
         Table name is derived from the class name using snake_case.
 
         Returns:
-            str: The table name for the model.
+            `str`: The table name for the model.
         """
 
         return snake_case(cls.__name__)
@@ -79,7 +79,7 @@ class Model(Route, Base):
         """Sets SQLAlchemy to extend an existing table instead of recreating it.
 
         Returns:
-            dict: Arguments to extend existing tables (value Boolean).
+            `dict`: Arguments to extend existing tables (value Boolean).
         """
 
         return {'extend_existing': True}
@@ -91,10 +91,10 @@ class Model(Route, Base):
         If the app server is enabled, this method defines routes for CRUD on model instances.
 
         Args:
-            cls (type): The class associated with the routes. Must always be `cls`.
+            - `cls` (type): The class associated with the routes. Must always be `cls`.
 
         Returns:
-            super(): Parent `routes()` method
+            `super()`: Parent `routes()` method
         """
 
         try:
@@ -105,10 +105,10 @@ class Model(Route, Base):
                     """Handler function for the create endpoint.
 
                     Args:
-                        request (Request): The HTTP request object.
+                        - `request` (Request): The HTTP request object.
 
                     Returns:
-                        Response: The HTTP response object.
+                        `Response`: The HTTP response object.
                     """
 
                     return "<html>OK<html>"
@@ -118,10 +118,10 @@ class Model(Route, Base):
                     """Handler function for the get endpoint.
 
                     Args:
-                        request (Request): The HTTP request object.
+                        - `request` (Request): The HTTP request object.
 
                     Returns:
-                        Response: The HTTP response object.
+                        `Response`: The HTTP response object.
                     """
 
                     return "<html>MODEL GET<html>"
@@ -131,10 +131,10 @@ class Model(Route, Base):
                     """Handler function for the update endpoint.
 
                     Args:
-                        request (Request): The HTTP request object.
+                        - `request` (Request): The HTTP request object.
 
                     Returns:
-                        Response: The HTTP response object.
+                        `Response`: The HTTP response object.
                     """
 
                     return "<html>OK<html>"
@@ -144,10 +144,10 @@ class Model(Route, Base):
                     """Handler function for the delete endpoint.
 
                     Args:
-                        request (Request): The HTTP request object.
+                        - `request` (Request): The HTTP request object.
 
                     Returns:
-                        Response: The HTTP response object.
+                        `Response`: The HTTP response object.
                     """
 
                     return "<html>OK<html>"
@@ -162,11 +162,11 @@ class Model(Route, Base):
 
         Creates the database table for the model and sets up CRUD routes if the app server is enabled.
 
-        Returns:
-            None
-
         Raises:
-            Exception: If table creation fails.
+            - `Exception`: If table creation fails.
+
+        Returns:
+            `None`
         """
 
         try:

@@ -121,16 +121,18 @@
 configuration parameters using environment variables.</p>
 <dl class="simple">
 <dt>Attributes:</dt><dd><ul class="simple">
-<li><p><strong>DATABASE_NAME</strong> (str): The name of the database.</p></li>
-<li><p><strong>DATABASE_USER</strong> (str): The username for database authentication.</p></li>
-<li><p><strong>DATABASE_PASSWORD</strong> (str): The password for database authentication.</p></li>
-<li><p><strong>DATABASE_HOSTNAME</strong> (str): The host where the database server is located.</p></li>
-<li><p><strong>DATABASE_PORT</strong> (str): The port on which the database server is listening.</p></li>
-<li><p><strong>DATABASE_TYPE</strong> (str): The type or dialect of the database (e.g., ‘mysql’, ‘postgresql’).</p></li>
-<li><p><strong>DATABASE_TYPE</strong> (str): The path to the database file (if applicable).</p></li>
+<li><p><cite>DATABASE_NAME</cite> (str): The name of the database.</p></li>
+<li><p><cite>DATABASE_USER</cite> (str): The username for database authentication.</p></li>
+<li><p><cite>DATABASE_PASSWORD</cite> (str): The password for database authentication.</p></li>
+<li><p><cite>DATABASE_HOSTNAME</cite> (str): The host where the database server is located.</p></li>
+<li><p><cite>DATABASE_PORT</cite> (str): The port on which the database server is listening.</p></li>
+<li><p><cite>DATABASE_TYPE</cite> (str): The type or dialect of the database (e.g., ‘mysql’, ‘postgresql’).</p></li>
+<li><p><cite>DATABASE_TYPE</cite> (str): The path to the database file (if applicable).</p></li>
 </ul>
 </dd>
-<dt>Note:</dt><dd><p>All attribute values are obtained from corresponding environment variables.</p>
+<dt>Note:</dt><dd><ul class="simple">
+<li><p>All attribute values are obtained from corresponding environment variables.</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -179,10 +181,10 @@ configuration parameters using environment variables.</p>
 and SQLAlchemy base for working with database models.</p>
 <dl class="simple">
 <dt>Attributes:</dt><dd><ul class="simple">
-<li><p><strong>uri</strong> (str): The database URI used for connection.</p></li>
-<li><p><strong>engine</strong> (Engine): The SQLAlchemy engine for database communication.</p></li>
-<li><p><strong>db</strong> (Session): The database session for interacting with the database.</p></li>
-<li><p><strong>base</strong> (Base): The SQLAlchemy base class for defining database models.</p></li>
+<li><p><cite>uri</cite> (str): The database URI used for connection.</p></li>
+<li><p><cite>engine</cite> (Engine): The SQLAlchemy engine for database communication.</p></li>
+<li><p><cite>db</cite> (Session): The database session for interacting with the database.</p></li>
+<li><p><cite>base</cite> (Base): The SQLAlchemy base class for defining database models.</p></li>
 </ul>
 </dd>
 </dl>
@@ -191,11 +193,15 @@ and SQLAlchemy base for working with database models.</p>
 <span class="sig-name descname"><span class="pre">database_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.database.database.Database.database_type" title="Link to this definition"></a></dt>
 <dd><p>Determines the database type based on the provided string and returns the appropriate connection URI.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>db_type (str): A string representing the database type (e.g., “sqlite”, “mysql”).</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>db_type</cite> (str): A string representing the database type (e.g., “sqlite”, “mysql”).</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>str: Connection URI for the specified database type.</p>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>SystemExit</cite>: If the database type is unrecognized.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>SystemExit: If the database type is unrecognized.</p>
+<dt>Returns:</dt><dd><p><cite>str</cite>: Connection URI for the specified database type.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -205,9 +211,11 @@ and SQLAlchemy base for working with database models.</p>
 <span class="sig-name descname"><span class="pre">generate_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DeclarativeMeta</span></span></span><a class="headerlink" href="#medusa.database.database.Database.generate_base" title="Link to this definition"></a></dt>
 <dd><p>Generates the SQLAlchemy declarative base for defining models.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>DeclarativeMeta: The SQLAlchemy declarative base.</p>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>SystemExit</cite>: If an exception occurs while creating the declarative base.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>SystemExit: If an exception occurs while creating the declarative base.</p>
+<dt>Returns:</dt><dd><p>DeclarativeMeta: The SQLAlchemy declarative base.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -217,9 +225,11 @@ and SQLAlchemy base for working with database models.</p>
 <span class="sig-name descname"><span class="pre">generate_database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">scoped_session</span></span></span><a class="headerlink" href="#medusa.database.database.Database.generate_database" title="Link to this definition"></a></dt>
 <dd><p>Creates and returns a scoped session for transaction management.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>scoped_session: A SQLAlchemy scoped_session object.</p>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>SystemExit</cite>: If an exception occurs during the creation of the scoped session.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>SystemExit: If an exception occurs during the creation of the scoped session.</p>
+<dt>Returns:</dt><dd><p>scoped_session: A SQLAlchemy scoped_session object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -229,10 +239,12 @@ and SQLAlchemy base for working with database models.</p>
 <span class="sig-name descname"><span class="pre">generate_engine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Engine</span></span></span><a class="headerlink" href="#medusa.database.database.Database.generate_engine" title="Link to this definition"></a></dt>
 <dd><p>Creates an SQLAlchemy Engine for query execution.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>Engine: An SQLAlchemy Engine object.</p>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>ArgumentError</cite>: If the URI for database connection is malformed.</p></li>
+<li><p><cite>SystemExit</cite>: For generic exceptions that cause engine creation to fail.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>ArgumentError: If the URI for database connection is malformed.
-SystemExit: For generic exceptions that cause engine creation to fail.</p>
+<dt>Returns:</dt><dd><p>Engine: An SQLAlchemy Engine object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -241,13 +253,16 @@ SystemExit: For generic exceptions that cause engine creation to fail.</p>
 <dt class="sig sig-object py" id="medusa.database.database.Database.generate_uri">
 <span class="sig-name descname"><span class="pre">generate_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.database.database.Database.generate_uri" title="Link to this definition"></a></dt>
 <dd><p>Constructs the database URI by calling the appropriate URI generation method based on the database type.</p>
-<p>Requires valid environment variables</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>str: The database connection URI.</p>
+<dt>Note:</dt><dd><ul class="simple">
+<li><p>Requires valid environment variables</p></li>
+</ul>
 </dd>
 <dt>Environment Variables:</dt><dd><ul class="simple">
-<li><p><strong>DATABASE_TYPE</strong> (str): The type of the database</p></li>
+<li><p><cite>DATABASE_TYPE</cite> (str): The type of the database</p></li>
 </ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>str</cite>: The database connection URI.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -257,7 +272,9 @@ SystemExit: For generic exceptions that cause engine creation to fail.</p>
 <span class="sig-name descname"><span class="pre">memory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.database.database.Database.memory" title="Link to this definition"></a></dt>
 <dd><p>Create an SQLite in-memory database URI. Useful for unit testing.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>str: The SQLite in-memory database URI.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p><cite>str</cite>: The SQLite in-memory database URI.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -266,13 +283,18 @@ SystemExit: For generic exceptions that cause engine creation to fail.</p>
 <dt class="sig sig-object py" id="medusa.database.database.Database.sqlite">
 <span class="sig-name descname"><span class="pre">sqlite</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.database.database.Database.sqlite" title="Link to this definition"></a></dt>
 <dd><p>Generates the SQLite connection URI using environment variables.</p>
-<p>Requires valid environment variables</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>str: The SQLite database connection URI.</p>
+<dt>Note:</dt><dd><ul class="simple">
+<li><p>Requires valid environment variables</p></li>
+</ul>
 </dd>
-<dt>Environment Variables:</dt><dd><p>DATABASE_PATH (str, optional): Optional storage path for the database
-DATABASE_TYPE (str): The type of the database
-DATABASE_NAME (str): The name of the database</p>
+<dt>Environment Variables:</dt><dd><ul class="simple">
+<li><p><cite>DATABASE_PATH</cite> (str, optional): Optional storage path for the database</p></li>
+<li><p><cite>DATABASE_TYPE</cite> (str): The type of the database</p></li>
+<li><p><cite>DATABASE_NAME</cite> (str): The name of the database</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>str: The SQLite database connection URI.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -281,16 +303,21 @@ DATABASE_NAME (str): The name of the database</p>
 <dt class="sig sig-object py" id="medusa.database.database.Database.standard">
 <span class="sig-name descname"><span class="pre">standard</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.database.database.Database.standard" title="Link to this definition"></a></dt>
 <dd><p>Generates the standard connection URI for databases like MySQL, PostgreSQL, Oracle, etc.</p>
-<p>Requires valid environment variables</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>str: The standard database connection URI.</p>
+<dt>Note:</dt><dd><ul class="simple">
+<li><p>Requires valid environment variables</p></li>
+</ul>
 </dd>
-<dt>Environment Variables:</dt><dd><p>DATABASE_USER (str, optional): The database user credential
-DATABASE_PASSWORD (str, optional): The database password credential
-DATABASE_HOSTNAME (str): The database hostname
-DATABASE_PORT (int): The database connection port
-DATABASE_TYPE (str): The type of the database
-DATABASE_NAME (str): The name of the database</p>
+<dt>Environment Variables:</dt><dd><ul class="simple">
+<li><p><cite>DATABASE_USER</cite> (str, optional): The database user credential</p></li>
+<li><p><cite>DATABASE_PASSWORD</cite> (str, optional): The database password credential</p></li>
+<li><p><cite>DATABASE_HOSTNAME</cite> (str): The database hostname</p></li>
+<li><p><cite>DATABASE_PORT</cite> (int): The database connection port</p></li>
+<li><p><cite>DATABASE_TYPE</cite> (str): The type of the database</p></li>
+<li><p><cite>DATABASE_NAME</cite> (str): The name of the database</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>str: The standard database connection URI.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -305,10 +332,10 @@ DATABASE_NAME (str): The name of the database</p>
 <p>This class contains common fields that are expected to be present in all derived models.</p>
 <dl class="simple">
 <dt>Attributes:</dt><dd><ul class="simple">
-<li><p><strong>id</strong> (Column): The primary key for the model.</p></li>
-<li><p><strong>uuid</strong> (Column): The UUID field for the model.</p></li>
-<li><p><strong>created_at</strong> (Column): The timestamp of creation.</p></li>
-<li><p><strong>updated_at</strong> (Column): The timestamp of the last update.</p></li>
+<li><p><cite>id</cite> (Column): The primary key for the model.</p></li>
+<li><p><cite>uuid</cite> (Column): The UUID field for the model.</p></li>
+<li><p><cite>created_at</cite> (Column): The timestamp of creation.</p></li>
+<li><p><cite>updated_at</cite> (Column): The timestamp of the last update.</p></li>
 </ul>
 </dd>
 <dt>Note:</dt><dd><ul class="simple">
@@ -336,9 +363,11 @@ DATABASE_NAME (str): The name of the database</p>
 <dd><p>Register the model with the database.</p>
 <p>Creates the database table for the model and sets up CRUD routes if the app server is enabled.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>None</p>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>Exception</cite>: If table creation fails.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>Exception: If table creation fails.</p>
+<dt>Returns:</dt><dd><p><cite>None</cite></p>
 </dd>
 </dl>
 </dd></dl>
@@ -349,9 +378,11 @@ DATABASE_NAME (str): The name of the database</p>
 <dd><p>Define routes for the model.</p>
 <p>If the app server is enabled, this method defines routes for CRUD on model instances.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>cls (type): The class associated with the routes. Must always be <cite>cls</cite>.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>cls</cite> (type): The class associated with the routes. Must always be <cite>cls</cite>.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>super(): Parent <cite>routes()</cite> method</p>
+<dt>Returns:</dt><dd><p><cite>super()</cite>: Parent <cite>routes()</cite> method</p>
 </dd>
 </dl>
 </dd></dl>

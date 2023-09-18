@@ -16,7 +16,7 @@ class Root(Route):
         """Initialize a new Root instance.
 
         Returns:
-            None
+            `None`
         """
 
         super().__init__()
@@ -26,7 +26,7 @@ class Root(Route):
         """Define the URL prefix for the root route.
 
         Returns:
-            str: The URL prefix for the root route (empty string).
+            `str`: The URL prefix for the root route (empty string).
         """
 
         return ""
@@ -36,10 +36,10 @@ class Root(Route):
         """Define routes for handling HTTP requests at the root endpoint.
 
         Args:
-            cls (type): The class associated with the routes. Must always be `cls`.
+            - `cls` (type): The class associated with the routes. Must always be `cls`.
 
         Returns:
-            super(): Parent `routes()` method
+            `super()`: Parent `routes()` method
         """
 
         @route(cls, "/", methods=["GET"])
@@ -47,10 +47,10 @@ class Root(Route):
             """Handler function for the root endpoint.
 
             Args:
-                request (Request): The HTTP request object.
+                - `request` (Request): The HTTP request object.
 
             Returns:
-                Response: The HTTP response object.
+                `Response`: The HTTP response object.
             """
 
             return "<html>HOME<html>"

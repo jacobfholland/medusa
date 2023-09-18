@@ -17,15 +17,14 @@ FORMATTER = logging.Formatter(
 
 
 def setup_logger(name: str, config: Config) -> logging.Logger:
-    """
-    Set up a logger with the given name and configuration.
+    """Set up a logger with the given name and configuration.
 
     Args:
-        name (str): The name of the logger.
-        config (Config): An instance of the Config class containing logging settings.
+        - `name` (str): The name of the logger.
+        - `config` (Config): An instance of the Config class containing logging settings.
 
     Returns:
-        logging.Logger: A configured logger instance.
+        `Logger`: A configured logger instance.
     """
 
     logger = logging.getLogger(name)

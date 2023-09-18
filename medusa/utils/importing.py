@@ -3,7 +3,7 @@ import glob
 import importlib.util
 import os
 import sys
-from typing import Any, List
+from typing import Any, List, Callable
 
 from .config import UtilsConfig as Config
 from .logger import logger
@@ -13,10 +13,10 @@ def check_app_dir(project_directory: str) -> bool:
     """Check if the specified project directory exists.
 
     Args:
-        project_directory (str): The path to the project directory to check.
+        - `project_directory` (str): The path to the project directory to check.
 
     Returns:
-        bool: True if the directory exists, False otherwise.
+        `bool`: True if the directory exists, False otherwise.
     """
 
     if not os.path.exists(project_directory):
@@ -30,14 +30,14 @@ def python_files(project_directory: str) -> List[str]:
     """Get all Python files in a project directory recursively.
 
     Args:
-        project_directory (str): The path to the project directory.
+        - `project_directory` (str): The path to the project directory.
 
     Returns:
-        List[str]: List of paths to Python files.
+        `List[str]`: List of paths to Python files.
     """
 
     return [
-        f for f in glob.glob(f"{project_directory}/**/*.py", recursive=True)
+        f for f in glob.glob(f"{project_directory}/`/*.py", recursive=True)
         if "__pycache__" not in f
         and not any(env in f for env in ["venv", "env", ".env"])
     ]
@@ -47,11 +47,11 @@ def import_class_from_file(python_file: str, class_name: str) -> Any:
     """Import a Python class from a file.
 
     Args:
-        python_file (str): The path to the Python file.
-        class_name (str): The name of the class to import.
+        - `python_file` (str): The path to the Python file.
+        - `class_name` (str): The name of the class to import.
 
     Returns:
-        Any: The imported class object.
+        `Any`: The imported class object.
     """
 
     spec = importlib.util.spec_from_file_location("module", python_file)
@@ -60,15 +60,15 @@ def import_class_from_file(python_file: str, class_name: str) -> Any:
     return getattr(module, class_name)
 
 
-def import_classes(func: callable, import_type: str) -> List[str]:
+def import_classes(func: Callable, import_type: str) -> List[str]:
     """Import classes from Python files in the project directory.
 
     Args:
-        func (callable): The import function (`import_model` or `import_route`).
-        import_type (str): The type of import (`"model"` or `"route"`).
+        - `func` (Callable): The import function (`import_model` or `import_route`).
+        - `import_type` (str): The type of import (`"model"` or `"route"`).
 
     Returns:
-        List[str]: List of imported class names.
+        `List[str]`: List of imported class names.
     """
 
     if not check_app_dir(Config.APP_DIR):
@@ -89,10 +89,10 @@ def log_starting(import_type: str) -> None:
     """Log the start of the import process.
 
     Returns:
-            None
+        `None`
 
     Args:
-        import_type (str): The type of import ("model" or "route").
+        - `import_type` (str): The type of import ("model" or "route").
     """
 
     if import_type == "model":
@@ -104,12 +104,12 @@ def log_starting(import_type: str) -> None:
 def log_completed(import_type: str, classes: List[str]) -> None:
     """Log the completion of the import process.
 
-    Returns:
-            None
-
     Args:
-        import_type (str): The type of import ("model" or "route").
-        classes (List[str]): List of imported class names.
+        - `import_type` (str): The type of import ("model" or "route").
+        - `classes` (List[str]): List of imported class names.
+
+    Returns:
+        `None`
     """
 
     if import_type == "model":
@@ -123,16 +123,16 @@ def log_completed(import_type: str, classes: List[str]) -> None:
 def import_model(node: ast.AST, python_file: str, models: List[str]) -> None:
     """Import models from Python files and register them if they inherit from the 'Model' base class.
 
-    Returns:
-            None
-
     Args:
-        node (ast.AST): The AST node representing a class definition.
-        python_file (str): The path to the Python file.
-        models (List[str]): List of imported model class names.
+        - `node` (ast.AST): The AST node representing a class definition.
+        - `python_file` (str): The path to the Python file.
+        - `models` (List[str]): List of imported model class names.
 
     Raises:
-        ImportError: If the 'Database' package is missing, models won't be registered.
+        - `ImportError`: If the 'Database' package is missing, models won't be registered.
+
+    Returns:
+        `None`
     """
 
     if isinstance(node, ast.ClassDef):
@@ -155,15 +155,15 @@ def import_route(node: ast.AST, python_file: str, routes: List[str]) -> None:
     """Register routes from Python files if they inherit from the 'Route' base class.
 
     Args:
-        node (ast.AST): The AST node representing a class definition.
-        python_file (str): The path to the Python file.
-        routes (List[str]): List of registered route class names.
-
-    Returns:
-            None
+        - `node` (ast.AST): The AST node representing a class definition.
+        - `python_file` (str): The path to the Python file.
+        - `routes` (List[str]): List of registered route class names.
 
     Raises:
-        ImportError: If the 'Server' package is missing, routes won't be registered.
+        - `ImportError`: If the 'Server' package is missing, routes won't be registered.
+
+    Returns:
+        `None`
     """
 
     if isinstance(node, ast.ClassDef):

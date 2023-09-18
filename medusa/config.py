@@ -7,10 +7,10 @@ def strip(input: str) -> str:
     """Strip the last two components from a file path.
 
     Args:
-        input (str): Input file path.
+        - `input` (str): Input file path.
 
     Returns:
-        str: File path with the last two components removed.
+        `str`: File path with the last two components removed.
     """
 
     return "/".join(input.split("/")[:-2])
@@ -20,10 +20,10 @@ def load_envs(directory: str) -> None:
     """Load environment variables from .env files found in the specified directory and its subdirectories.
 
     Args:
-        directory (str): The directory where .env files should be searched and loaded from.
+        - `directory` (str): The directory where .env files should be searched and loaded from.
 
     Returns:
-        None
+        `None`
     """
 
     for root, _, files in os.walk(directory):
@@ -44,13 +44,10 @@ class Config:
     """Configuration class for the application.
 
     Attributes:
-        **APP_NAME** (str): The name of the application obtained from the environment variables.
-
-        **APP_DIR** (str): The application's directory path.
-
-        **LOG_LEVEL** (str): The log level for the application obtained from the environment variables.
-
-        **LOG_PATH** (str): The path where log files should be stored obtained from the environment variables.
+        - `APP_NAME` (str): The name of the application obtained from the environment variables.
+        - `APP_DIR` (str): The application's directory path.
+        - `LOG_LEVEL` (str): The log level for the application obtained from the environment variables.
+        - `LOG_PATH` (str): The path where log files should be stored obtained from the environment variables.
     """
 
     APP_NAME = os.environ.get("APP_NAME")

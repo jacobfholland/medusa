@@ -15,16 +15,15 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = 
     """A decorator for registering routes in the server.
 
     Args:
-        cls (type): The class associated with the route. Must always be `cls`.
-        rule (str): The URL rule for the route.
-        methods (List[str], optional): The HTTP methods supported by the route. Defaults to `['GET']`.
-        url_prefix (str): The URL prefix for the route. Defaults to `None`.
-
-    Returns:
-        Callable: The decorator function.
+        - `cls` (type): The class associated with the route. Must always be `cls`.
+        - `rule` (str): The URL rule for the route.
+        - `methods` (List[str], optional): The HTTP methods supported by the route. Defaults to `['GET']`.
+        - `url_prefix` (str): The URL prefix for the route. Defaults to `None`.
 
     Raises:
-        Exception: If there is an issue while registering the route, an exception is raised.
+        - `Exception`: If there is an issue while registering the route, an exception is raised.
+    Returns:
+        Callable: The decorator function.
     """
 
     try:

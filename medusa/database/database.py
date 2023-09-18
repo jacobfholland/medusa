@@ -21,10 +21,10 @@ class Database:
     and SQLAlchemy base for working with database models.
 
     Attributes:
-        - **uri** (str): The database URI used for connection.
-        - **engine** (Engine): The SQLAlchemy engine for database communication.
-        - **db** (Session): The database session for interacting with the database.
-        - **base** (Base): The SQLAlchemy base class for defining database models.
+        - `uri` (str): The database URI used for connection.
+        - `engine` (Engine): The SQLAlchemy engine for database communication.
+        - `db` (Session): The database session for interacting with the database.
+        - `base` (Base): The SQLAlchemy base class for defining database models.
     """
 
     def __init__(self) -> None:
@@ -32,11 +32,11 @@ class Database:
 
         This method sets up the database URI, engine, session, and base for database operations.
 
-        Returns:
-            None
-
         Raises:
-            Exception: If there's an issue during database initialization.
+            - `Exception`: If there's an issue during database initialization.
+
+        Returns:
+            `None`
         """
 
         logger.info("Initializing database")
@@ -50,13 +50,14 @@ class Database:
     def generate_uri(self) -> str:
         """Constructs the database URI by calling the appropriate URI generation method based on the database type.
 
-        Requires valid environment variables
-
-        Returns:
-            str: The database connection URI.
+        Note:
+            - Requires valid environment variables
 
         Environment Variables:
-            - **DATABASE_TYPE** (str): The type of the database
+            - `DATABASE_TYPE` (str): The type of the database
+
+        Returns:
+            `str`: The database connection URI.
         """
 
         uri = self.database_type(Config.DATABASE_TYPE)
@@ -67,13 +68,13 @@ class Database:
         """Determines the database type based on the provided string and returns the appropriate connection URI.
 
         Args:
-            db_type (str): A string representing the database type (e.g., "sqlite", "mysql").
-
-        Returns:
-            str: Connection URI for the specified database type.
+            - `db_type` (str): A string representing the database type (e.g., "sqlite", "mysql").
 
         Raises:
-            SystemExit: If the database type is unrecognized.
+            - `SystemExit`: If the database type is unrecognized.
+
+        Returns:
+            `str`: Connection URI for the specified database type.
         """
 
         if db_type == "sqlite":
@@ -90,7 +91,7 @@ class Database:
         """Create an SQLite in-memory database URI. Useful for unit testing.
 
         Returns:
-            str: The SQLite in-memory database URI.
+            `str`: The SQLite in-memory database URI.
         """
 
         logger.debug(f"Database type is {Config.DATABASE_TYPE}")
@@ -100,15 +101,16 @@ class Database:
     def sqlite(self) -> str:
         """Generates the SQLite connection URI using environment variables.
 
-        Requires valid environment variables
-
-        Returns:
-            str: The SQLite database connection URI.
+        Note:
+            - Requires valid environment variables
 
         Environment Variables:
-            DATABASE_PATH (str, optional): Optional storage path for the database
-            DATABASE_TYPE (str): The type of the database
-            DATABASE_NAME (str): The name of the database
+            - `DATABASE_PATH` (str, optional): Optional storage path for the database
+            - `DATABASE_TYPE` (str): The type of the database
+            - `DATABASE_NAME` (str): The name of the database
+
+        Returns:
+            `str`: The SQLite database connection URI.
         """
 
         logger.debug(f"Database type is {Config.DATABASE_TYPE}")
@@ -120,18 +122,19 @@ class Database:
     def standard(self) -> str:
         """Generates the standard connection URI for databases like MySQL, PostgreSQL, Oracle, etc.
 
-        Requires valid environment variables
-
-        Returns:
-            str: The standard database connection URI.
+        Note:
+            - Requires valid environment variables
 
         Environment Variables:
-            DATABASE_USER (str, optional): The database user credential
-            DATABASE_PASSWORD (str, optional): The database password credential
-            DATABASE_HOSTNAME (str): The database hostname
-            DATABASE_PORT (int): The database connection port
-            DATABASE_TYPE (str): The type of the database
-            DATABASE_NAME (str): The name of the database
+            - `DATABASE_USER` (str, optional): The database user credential
+            - `DATABASE_PASSWORD` (str, optional): The database password credential
+            - `DATABASE_HOSTNAME` (str): The database hostname
+            - `DATABASE_PORT` (int): The database connection port
+            - `DATABASE_TYPE` (str): The type of the database
+            - `DATABASE_NAME` (str): The name of the database
+
+        Returns:
+            `str`: The standard database connection URI.
         """
 
         logger.debug(f"Database type is {Config.DATABASE_TYPE}")
@@ -142,12 +145,12 @@ class Database:
     def generate_engine(self, uri) -> Engine:
         """Creates an SQLAlchemy Engine for query execution.
 
-        Returns:
-            Engine: An SQLAlchemy Engine object.
-
         Raises:
-            ArgumentError: If the URI for database connection is malformed.
-            SystemExit: For generic exceptions that cause engine creation to fail.
+            - `ArgumentError`: If the URI for database connection is malformed.
+            - `SystemExit`: For generic exceptions that cause engine creation to fail.
+
+        Returns:
+            `Engine`: An SQLAlchemy Engine object.
         """
 
         try:
@@ -165,11 +168,11 @@ class Database:
     def generate_database(self, engine) -> scoped_session:
         """Creates and returns a scoped session for transaction management.
 
-        Returns:
-            scoped_session: A SQLAlchemy scoped_session object.
-
         Raises:
-            SystemExit: If an exception occurs during the creation of the scoped session.
+            - `SystemExit`: If an exception occurs during the creation of the scoped session.
+
+        Returns:
+            `scoped_session`: A SQLAlchemy scoped_session object.        
         """
 
         try:
@@ -189,11 +192,11 @@ class Database:
     def generate_base(self, uri, db) -> DeclarativeMeta:
         """Generates the SQLAlchemy declarative base for defining models.
 
-        Returns:
-            DeclarativeMeta: The SQLAlchemy declarative base.
-
         Raises:
-            SystemExit: If an exception occurs while creating the declarative base.
+            - `SystemExit`: If an exception occurs while creating the declarative base.
+
+        Returns:
+            `DeclarativeMeta`: The SQLAlchemy declarative base.
         """
 
         try:
