@@ -28,7 +28,7 @@ The **Server** component handles all aspects related to API endpoints and web se
 One of the key advantages of Medusa is its flexibility. You can use the Database and Server components individually or together, depending on your project's needs. Whether you're building a database-driven application, a RESTful API, or a dynamic web application, Medusa has you covered.
 
 ### Easy Configuration
-Medusa provides a simple way to configure and control these components using environment variables. Check out the [Environment Variables](/docs/environment_variables.md) section to learn more about how to customize and fine-tune your Medusa environment.
+Medusa provides a simple way to configure and control these components using environment variables. Check out the [Environment Variables](/docs/markdown/environment_variables.md) section to learn more about how to customize and fine-tune your Medusa environment.
 
 ## Full Documentation
 
