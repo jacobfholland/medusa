@@ -28,7 +28,7 @@ class Model(Route, Base):
         - `created_at` (Column): The timestamp of creation.
         - `updated_at` (Column): The timestamp of the last update.
 
-    Note:
+    Notes:
         - All method overrides should return `super()`
         - Subclasses of `Model` should override the `create()` method to define specific create behavior.
         - Subclasses of `Model` should override the `get()` method to define specific get behavior.

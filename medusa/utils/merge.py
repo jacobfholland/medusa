@@ -38,7 +38,7 @@ def merge_request_args_kwargs(request):
     new_kwargs = {}
     new_args = {}
     if request.headers.get('Content-Type') == 'application/json':
-        new_kwargs = merge(`request.json)
+        new_kwargs = merge(*request.json)
     for k in request.args:
         v = request.args.getlist(k)
         for val in v:
@@ -54,7 +54,7 @@ def merge_request(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         request_args, request_kwargs = merge_request_args_kwargs(request)
-        return func(`request_args, `request_kwargs)
+        return func(*request_args, **request_kwargs)
     return wrapper
 
 
@@ -146,7 +146,7 @@ def merge_filter(func):
         request_args, request_kwargs = merge_request_args_kwargs(request)
         request_args = [merge(request_args)]
         request_kwargs = merge(request_kwargs)
-        return func(*request_args, `request_kwargs)
+        return func(*request_args, **request_kwargs)
     return wrapper
 
 

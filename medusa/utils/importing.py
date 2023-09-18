@@ -9,37 +9,39 @@ from .config import UtilsConfig as Config
 from .logger import logger
 
 
-def check_app_dir(project_directory: str) -> bool:
+def check_dir(path: str) -> bool:
     """Check if the specified project directory exists.
 
     Args:
-        - `project_directory` (str): The path to the project directory to check.
+        - `path` (str): The path to the directory to check.
 
     Returns:
         `bool`: True if the directory exists, False otherwise.
     """
 
-    if not os.path.exists(project_directory):
+    if not os.path.exists(path):
         logger.error(
-            f"The specified project directory '{project_directory}' does not exist.")
+            f"The specified directory '{path}' does not exist.")
         return False
     return True
 
 
-def python_files(project_directory: str) -> List[str]:
+def python_files(path: str) -> List[str]:
     """Get all Python files in a project directory recursively.
 
     Args:
-        - `project_directory` (str): The path to the project directory.
+        - `path` (str): The path to the project directory.
 
     Returns:
         `List[str]`: List of paths to Python files.
     """
+    # Use os.path.join to construct file path
+    pattern = os.path.join(path, "**", "*.py")
 
     return [
-        f for f in glob.glob(f"{project_directory}/`/*.py", recursive=True)
+        f for f in glob.glob(pattern, recursive=True)
         if "__pycache__" not in f
-        and not any(env in f for env in ["venv", "env", ".env"])
+        and not any(ignore in f for ignore in ["venv", "env", ".env", "docs"])
     ]
 
 
@@ -71,10 +73,11 @@ def import_classes(func: Callable, import_type: str) -> List[str]:
         `List[str]`: List of imported class names.
     """
 
-    if not check_app_dir(Config.APP_DIR):
+    app_dir = Config.APP_DIR
+    if not check_dir(app_dir):
         return sys.exit(1)
     classes = []
-    files = python_files(Config.APP_DIR)
+    files = python_files(app_dir)
     log_starting(import_type)
     for python_file in files:
         with open(python_file, 'r') as f:
@@ -140,6 +143,7 @@ def import_model(node: ast.AST, python_file: str, models: List[str]) -> None:
         cls_name = class_obj.__name__
         if 'Model' in [base.__name__ for base in class_obj.mro()]:
             if not cls_name == "Model":
+
                 try:
                     from medusa.database.database import Database
                     class_obj.register_model()

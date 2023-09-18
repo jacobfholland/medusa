@@ -18,7 +18,7 @@ class DatabaseConfig(Config):
         - `DATABASE_TYPE` (str): The type or dialect of the database (e.g., 'mysql', 'postgresql').
         - `DATABASE_TYPE` (str): The path to the database file (if applicable).
 
-    Note:
+    Notes:
         - All attribute values are obtained from corresponding environment variables.
     """
 
