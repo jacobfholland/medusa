@@ -39,10 +39,15 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Packages:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="source/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="source/medusa.database.html">Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/medusa.server.html">Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/medusa.auth.html">Auth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/medusa.utils.html">Utils</a></li>
 </ul>
 
@@ -74,13 +79,16 @@
 
 <div class="genindex-jumpbox">
  <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#U"><strong>U</strong></a>
@@ -100,6 +108,14 @@
       <li><a href="source/medusa.html#medusa.config.Config.APP_SERVER">APP_SERVER (medusa.config.Config attribute)</a>
 </li>
       <li><a href="source/medusa.server.html#medusa.server.server.Server.application">application() (medusa.server.server.Server method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/medusa.database.html#medusa.database.base.Base">Base (class in medusa.database.base)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -148,6 +164,14 @@
       <li><a href="source/medusa.database.html#medusa.database.config.DatabaseConfig">DatabaseConfig (class in medusa.database.config)</a>
 </li>
       <li><a href="source/medusa.utils.html#medusa.utils.dummy.DummyRoute">DummyRoute (class in medusa.utils.dummy)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/medusa.database.html#medusa.database.base.Engine">Engine (in module medusa.database.base)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -217,13 +241,6 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    medusa
-
-      <ul>
-        <li><a href="source/medusa.html#module-medusa">module</a>
-</li>
-      </ul></li>
       <li>
     medusa.app
 
@@ -389,14 +406,14 @@
       </ul></li>
       <li><a href="source/medusa.database.html#medusa.database.database.Database.memory">memory() (medusa.database.database.Database method)</a>
 </li>
+      <li><a href="source/medusa.database.html#medusa.database.base.Base.metadata">metadata (medusa.database.base.Base attribute)</a>
+</li>
       <li><a href="source/medusa.database.html#medusa.database.model.Model">Model (class in medusa.database.model)</a>
 </li>
       <li>
     module
 
       <ul>
-        <li><a href="source/medusa.html#module-medusa">medusa</a>
-</li>
         <li><a href="source/medusa.html#module-medusa.app">medusa.app</a>
 </li>
         <li><a href="source/medusa.auth.html#module-medusa.auth.user">medusa.auth.user</a>
@@ -459,10 +476,20 @@
   </ul></td>
 </tr></table>
 
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/medusa.database.html#medusa.database.base.Base.query">query (medusa.database.base.Base attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/medusa.database.html#medusa.database.model.Model.register_model">register_model() (medusa.database.model.Model class method)</a>
+</li>
+      <li><a href="source/medusa.database.html#medusa.database.base.Base.registry">registry (medusa.database.base.Base attribute)</a>
 </li>
       <li><a href="source/medusa.utils.html#medusa.utils.decorator.require_envs">require_envs() (in module medusa.utils.decorator)</a>
 </li>
@@ -470,6 +497,8 @@
 </li>
       <li><a href="source/medusa.server.html#medusa.server.decorator.route">route() (in module medusa.server.decorator)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/medusa.auth.html#medusa.auth.user.User.routes">routes() (medusa.auth.user.User class method)</a>
 
       <ul>
@@ -480,8 +509,6 @@
         <li><a href="source/medusa.utils.html#medusa.utils.dummy.DummyRoute.routes">(medusa.utils.dummy.DummyRoute class method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/medusa.html#medusa.app.run">run() (in module medusa.app)</a>
 
       <ul>

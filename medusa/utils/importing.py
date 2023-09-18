@@ -88,11 +88,11 @@ def import_classes(func: Callable, import_type: str) -> List[str]:
 def log_starting(import_type: str) -> None:
     """Log the start of the import process.
 
-    Returns:
-        `None`
-
     Args:
         - `import_type` (str): The type of import ("model" or "route").
+
+    Returns:
+        `None`
     """
 
     if import_type == "model":

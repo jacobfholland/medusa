@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Medusa &mdash; Medusa 0.0.1 documentation</title>
+  <title>Getting Started &mdash; Medusa 0.0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,9 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Database" href="medusa.database.html" />
+    <link rel="prev" title="Indices and tables" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,10 +42,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Packages:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="medusa.database.html">Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.utils.html">Utils</a></li>
 </ul>
 
@@ -61,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Medusa</li>
+      <li class="breadcrumb-item active">Getting Started</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/source/getting_started.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -71,48 +82,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="medusa">
-<h1>Medusa<a class="headerlink" href="#medusa" title="Link to this heading"></a></h1>
-<p>Medusa is a powerful Python framework designed to simplify and accelerate your web application development. It offers modular database usage and web routing functionality, making it an ideal choice for a wide range of Python applications. With Medusa, you can hit the ground running, eliminating the need for extensive prerequisite setup and enabling you to focus on building your application.</p>
-<section id="two-main-components-database-and-server">
-<h2>Two Main Components: Database and Server<a class="headerlink" href="#two-main-components-database-and-server" title="Link to this heading"></a></h2>
-<p>Medusa consists of two powerful main components: the <strong>Database</strong> and the <strong>Server</strong>. These components can be used independently to cater to your specific project needs or seamlessly combined to create a comprehensive web application.</p>
-<section id="database">
-<h3>Database<a class="headerlink" href="#database" title="Link to this heading"></a></h3>
-<p>The <strong>Database</strong> component is responsible for managing all database-related operations and functionality. It simplifies the process of working with databases by offering the following features:</p>
+  <section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<p>Welcome to Medusa! Follow these simple steps to get started with our Python framework.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Before you begin, make sure you have the following prerequisites installed on your system:</p>
 <ul class="simple">
-<li><p><strong>Data Models</strong>: Define your data models effortlessly using Python classes. Medusa automates the generation of database tables based on these models.</p></li>
-<li><p><strong>CRUD Operations</strong>: Perform Create, Read, Update, and Delete (CRUD) operations on your data models with ease. Medusa streamlines database interactions, reducing boilerplate code.</p></li>
-<li><p><strong>Modular and Extensible</strong>: The Database component is designed to be modular and extensible. You can add custom data models and extend functionality as your project demands.</p></li>
+<li><p><a class="reference external" href="https://www.python.org/downloads/">Python</a>: Medusa is a Python framework, so you’ll need Python installed.</p></li>
 </ul>
 </section>
-<section id="server">
-<h3>Server<a class="headerlink" href="#server" title="Link to this heading"></a></h3>
-<p>The <strong>Server</strong> component handles all aspects related to API endpoints and web server functionality. It simplifies the process of setting up and managing web routes and is packed with features:</p>
-<ul class="simple">
-<li><p><strong>Web Routing</strong>: Define API endpoints, web pages, and routes with minimal effort. Medusa’s Server component makes it easy to structure your web application.</p></li>
-<li><p><strong>Cross-functionality</strong>: Used in combination with the Database component, the Server component auto-generates base-level Model endpoints, simplifying common operations like Create, Read, Update, and Delete (CRUD) for your data models. This automation reduces repetitive code and speeds up your development process.</p></li>
-<li><p><strong>Modular Design</strong>: The Server component follows a modular design, allowing you to add, remove, or override routes as needed. This makes it easy to adapt your application to changing requirements.</p></li>
-</ul>
-</section>
-</section>
-<section id="easy-to-use">
-<h2>Easy to Use<a class="headerlink" href="#easy-to-use" title="Link to this heading"></a></h2>
-<section id="mix-and-match">
-<h3>Mix and Match<a class="headerlink" href="#mix-and-match" title="Link to this heading"></a></h3>
-<p>One of the key advantages of Medusa is its flexibility. You can use the Database and Server components individually or together, depending on your project’s needs. Whether you’re building a database-driven application, a RESTful API, or a dynamic web application, Medusa has you covered.</p>
-</section>
-<section id="easy-configuration">
-<h3>Easy Configuration<a class="headerlink" href="#easy-configuration" title="Link to this heading"></a></h3>
-<p>Medusa provides a simple way to configure and control these components using environment variables. Check out the <a class="reference external" href="environment_variables">Environment Variables</a> section to learn more about how to customize and fine-tune your Medusa environment.</p>
-</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p><strong>Clone the Repository</strong></p>
+<p>First, clone the Medusa repository to your local machine using Git:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">/</span><span class="n">medusa</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Navigate to the Project Folder</strong></p>
+<p>Change your current directory to the project folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">medusa</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install Dependencies</strong></p>
+<p>Medusa relies on various Python packages. To install these dependencies, use pip and the provided requirements.txt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Configure the Application</strong></p>
+<p>You can create a <cite>.env</cite> file anywhere in the project directory. Or you can rename <cite>env-example</cite> in the project directory to just <cite>.env</cite>. Fill out your environment variables accordingly. Be sure to double-check the entire file is named just <cite>.env</cite>, including the dot.</p>
+</li>
+<li><p><strong>Run the Application</strong></p>
+<p>You can now run the application with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">run</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>This command will connect the database and start the web server is they are enabled in the environment variables</p>
+</li>
+</ol>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Indices and tables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="medusa.database.html" class="btn btn-neutral float-right" title="Database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

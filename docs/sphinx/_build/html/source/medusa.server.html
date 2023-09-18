@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Utils" href="medusa.utils.html" />
+    <link rel="next" title="Auth" href="medusa.auth.html" />
     <link rel="prev" title="Database" href="medusa.database.html" /> 
 </head>
 
@@ -42,7 +42,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Packages:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="medusa.database.html">Database</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Server</a><ul>
@@ -69,6 +73,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.utils.html">Utils</a></li>
 </ul>
 
@@ -116,7 +121,7 @@
 <li><p><cite>Exception</cite>: If there is an issue while registering the route, an exception is raised.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p>Callable: The decorator function.</p>
+<dt>Returns:</dt><dd><p><cite>Callable</cite>: The decorator function.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -130,9 +135,11 @@
 <dd><p>Set up the Werkzeug logger for the server. The Werkzeug logger already exists, so it intercepts the logger
 and replaces it with a custom logger.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>config (Config): The server configuration object.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>config</cite> (Config): The server configuration object.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>None</p>
+<dt>Returns:</dt><dd><p><cite>None</cite></p>
 </dd>
 </dl>
 </dd></dl>
@@ -234,7 +241,7 @@ and replaces it with a custom logger.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="medusa.database.html" class="btn btn-neutral float-left" title="Database" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="medusa.utils.html" class="btn btn-neutral float-right" title="Utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="medusa.auth.html" class="btn btn-neutral float-right" title="Auth" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

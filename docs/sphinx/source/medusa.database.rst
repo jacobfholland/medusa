@@ -1,18 +1,22 @@
 Database
 ========
 
-Classes
-^^^^^^^
+Variables
+^^^^^^^^^
 .. automodule:: medusa.database.base
    :members:
    :undoc-members:
    :show-inheritance:
 
+Config
+^^^^^^
 .. automodule:: medusa.database.config
    :members:
    :undoc-members:
    :show-inheritance:
 
+Classes
+^^^^^^^
 .. automodule:: medusa.database.database
    :members:
    :undoc-members:

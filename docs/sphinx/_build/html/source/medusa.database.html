@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Server" href="medusa.server.html" />
-    <link rel="prev" title="Getting Started" href="../index.html" /> 
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,10 +42,24 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Packages:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Database</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-medusa.database.base">Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-medusa.database.base">Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.database.base.Base"><code class="docutils literal notranslate"><span class="pre">Base</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.database.base.Base.metadata"><code class="docutils literal notranslate"><span class="pre">Base.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.database.base.Base.query"><code class="docutils literal notranslate"><span class="pre">Base.query</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.database.base.Base.registry"><code class="docutils literal notranslate"><span class="pre">Base.registry</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.database.base.Engine"><code class="docutils literal notranslate"><span class="pre">Engine</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-medusa.database.config">Config</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.database.config.DatabaseConfig"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.config.DatabaseConfig.DATABASE_HOSTNAME"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.DATABASE_HOSTNAME</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.config.DatabaseConfig.DATABASE_NAME"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.DATABASE_NAME</span></code></a></li>
@@ -56,6 +70,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.config.DatabaseConfig.DATABASE_USER"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.DATABASE_USER</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-medusa.database.database">Classes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.database.database.Database"><code class="docutils literal notranslate"><span class="pre">Database</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.database.Database.database_type"><code class="docutils literal notranslate"><span class="pre">Database.database_type()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.database.Database.generate_base"><code class="docutils literal notranslate"><span class="pre">Database.generate_base()</span></code></a></li>
@@ -81,6 +98,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.utils.html">Utils</a></li>
 </ul>
 
@@ -111,8 +129,41 @@
   <section id="database">
 <h1>Database<a class="headerlink" href="#database" title="Link to this heading"></a></h1>
 <section id="module-medusa.database.base">
-<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-medusa.database.base" title="Link to this heading"></a></h2>
-<dl class="py class" id="module-medusa.database.config">
+<span id="variables"></span><h2>Variables<a class="headerlink" href="#module-medusa.database.base" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="medusa.database.base.Base">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.database.base.</span></span><span class="sig-name descname"><span class="pre">Base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#medusa.database.base.Base" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The base class of the class hierarchy.</p>
+<p>When called, it accepts no arguments and returns a new featureless
+instance that has no instance attributes and cannot be given any.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="medusa.database.base.Base.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">MetaData</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">MetaData()</span></em><a class="headerlink" href="#medusa.database.base.Base.metadata" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="medusa.database.base.Base.query">
+<span class="sig-name descname"><span class="pre">query</span></span><a class="headerlink" href="#medusa.database.base.Base.query" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="medusa.database.base.Base.registry">
+<span class="sig-name descname"><span class="pre">registry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">registry</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;sqlalchemy.orm.decl_api.registry</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#medusa.database.base.Base.registry" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="medusa.database.base.Engine">
+<span class="sig-prename descclassname"><span class="pre">medusa.database.base.</span></span><span class="sig-name descname"><span class="pre">Engine</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Engine(sqlite:///storage/medusa.db)</span></em><a class="headerlink" href="#medusa.database.base.Engine" title="Link to this definition"></a></dt>
+<dd><p>Database engine (connection)</p>
+</dd></dl>
+
+</section>
+<section id="module-medusa.database.config">
+<span id="config"></span><h2>Config<a class="headerlink" href="#module-medusa.database.config" title="Link to this heading"></a></h2>
+<dl class="py class">
 <dt class="sig sig-object py" id="medusa.database.config.DatabaseConfig">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.database.config.</span></span><span class="sig-name descname"><span class="pre">DatabaseConfig</span></span><a class="headerlink" href="#medusa.database.config.DatabaseConfig" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="medusa.html#medusa.config.Config" title="medusa.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
@@ -172,7 +223,10 @@ configuration parameters using environment variables.</p>
 
 </dd></dl>
 
-<dl class="py class" id="module-medusa.database.database">
+</section>
+<section id="module-medusa.database.database">
+<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-medusa.database.database" title="Link to this heading"></a></h2>
+<dl class="py class">
 <dt class="sig sig-object py" id="medusa.database.database.Database">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.database.database.</span></span><span class="sig-name descname"><span class="pre">Database</span></span><a class="headerlink" href="#medusa.database.database.Database" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -325,7 +379,7 @@ and SQLAlchemy base for working with database models.</p>
 <dl class="py class" id="module-medusa.database.model">
 <span id="module-medusa.database.logger"></span><dt class="sig sig-object py" id="medusa.database.model.Model">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.database.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#medusa.database.model.Model" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="medusa.server.html#medusa.server.route.Route" title="medusa.server.route.Route"><code class="xref py py-class docutils literal notranslate"><span class="pre">Route</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="medusa.server.html#medusa.server.route.Route" title="medusa.server.route.Route"><code class="xref py py-class docutils literal notranslate"><span class="pre">Route</span></code></a>, <a class="reference internal" href="#medusa.database.base.Base" title="sqlalchemy.orm.decl_api.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a></p>
 <p>An abstract base class for all SQLAlchemy models in this project.</p>
 <p>This class contains common fields that are expected to be present in all derived models.</p>
 <dl class="simple">
@@ -404,7 +458,7 @@ and SQLAlchemy base for working with database models.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="medusa.server.html" class="btn btn-neutral float-right" title="Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

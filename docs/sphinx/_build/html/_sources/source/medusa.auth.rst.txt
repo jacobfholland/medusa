@@ -1,9 +1,8 @@
 Auth
 ===================
 
-User
------------------------
-
+Classes
+^^^^^^^
 .. automodule:: medusa.auth.user
    :members:
    :undoc-members:

@@ -1,20 +1,7 @@
 Medusa
-==============
+======
 
-Packages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   medusa.auth
-   medusa.database
-   medusa.server
-   medusa.utils
-
-
-
-App
+Functions
 -----------------
 
 .. automodule:: medusa.app
@@ -34,14 +21,6 @@ Logger
 --------------------
 
 .. automodule:: medusa.logger
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: medusa
    :members:
    :undoc-members:
    :show-inheritance:
