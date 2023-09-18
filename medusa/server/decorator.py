@@ -23,7 +23,7 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = 
     Raises:
         - `Exception`: If there is an issue while registering the route, an exception is raised.
     Returns:
-        Callable: The decorator function.
+        `Callable`: The decorator function.
     """
 
     try:
