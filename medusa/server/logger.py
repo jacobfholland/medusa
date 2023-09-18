@@ -16,7 +16,7 @@ def setup_werkzeug_logger(config: Config) -> None:
         - `config` (Config): The server configuration object.
 
     Returns:
-            `None`
+        `None`
     """
 
     if not os.path.exists(config.LOG_PATH):
