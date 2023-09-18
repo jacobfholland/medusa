@@ -1,17 +1,26 @@
 Utils
 ====================
 
+Classes
+^^^^^^^
+.. automodule:: medusa.utils.printable
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: medusa.utils.dummy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Functions
+^^^^^^^^^
 .. automodule:: medusa.utils
    :members:
    :undoc-members:
    :show-inheritance:
 
 .. automodule:: medusa.utils.decorator
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-.. automodule:: medusa.utils.dummy
    :members:
    :undoc-members:
    :show-inheritance:
@@ -41,10 +50,7 @@ Utils
 ..    :undoc-members:
 ..    :show-inheritance:
 
-.. automodule:: medusa.utils.printable
-   :members:
-   :undoc-members:
-   :show-inheritance:
+
 
 .. automodule:: medusa.utils.validation
    :members:

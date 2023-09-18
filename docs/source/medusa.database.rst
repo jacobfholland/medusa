@@ -1,5 +1,8 @@
 Database
-^^^^^^^^
+========
+
+Classes
+^^^^^^^
 .. automodule:: medusa.database.base
    :members:
    :undoc-members:

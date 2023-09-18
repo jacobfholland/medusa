@@ -23,21 +23,17 @@ class Model(Route, Base):
     This class contains common fields that are expected to be present in all derived models.
 
     Attributes:
-        id (Column): The primary key for the model.
-        uuid (Column): The UUID field for the model.
-        created_at (Column): The timestamp of creation.
-        updated_at (Column): The timestamp of the last update.
+        - **id** (Column): The primary key for the model.
+        - **uuid** (Column): The UUID field for the model.
+        - **created_at** (Column): The timestamp of creation.
+        - **updated_at** (Column): The timestamp of the last update.
 
     Note:
-        All method overrides should return `super()`
-
-        Subclasses of `Model` should override the `create()` method to define specific create behavior.
-
-        Subclasses of `Model` should override the `get()` method to define specific get behavior.
-
-        Subclasses of `Model` should override the `update()` method to define specific update behavior.
-
-        Subclasses of `Model` should override the `delete()` method to define specific delete behavior.
+        - All method overrides should return `super()`
+        - Subclasses of `Model` should override the `create()` method to define specific create behavior.
+        - Subclasses of `Model` should override the `get()` method to define specific get behavior.
+        - Subclasses of `Model` should override the `update()` method to define specific update behavior.
+        - Subclasses of `Model` should override the `delete()` method to define specific delete behavior.
     """
 
     __abstract__ = True  # Ignores database table creation
@@ -57,31 +53,6 @@ class Model(Route, Base):
         onupdate=datetime.utcnow,
         doc="Timestamp of the last update."
     )
-
-    @classmethod
-    def register_model(cls) -> None:
-        """Register the model with the database.
-
-        Creates the database table for the model and sets up CRUD routes if the app server is enabled.
-
-        Returns:
-            None
-
-        Raises:
-            Exception: If table creation fails.
-        """
-
-        try:
-            cls.metadata.create_all(Engine)
-            logger.debug(
-                f"Synced {cls.__name__} database table {snake_case(cls.__name__)}"
-            )
-        except Exception as e:
-            logger.error(
-                f"Unable to generate database table for {cls.__name__} {e}"
-            )
-        if not cls.__name__ == "Model" and Config.APP_SERVER:
-            cls.routes()
 
     def __init__(self) -> None:
         """Initialize a new `Model` instance.
@@ -184,3 +155,28 @@ class Model(Route, Base):
             """Ignores CRUD routes if `Server` package is missing"""
             pass
         return super().routes()
+
+    @classmethod
+    def register_model(cls) -> None:
+        """Register the model with the database.
+
+        Creates the database table for the model and sets up CRUD routes if the app server is enabled.
+
+        Returns:
+            None
+
+        Raises:
+            Exception: If table creation fails.
+        """
+
+        try:
+            cls.metadata.create_all(Engine)
+            logger.debug(
+                f"Synced {cls.__name__} database table {snake_case(cls.__name__)}"
+            )
+        except Exception as e:
+            logger.error(
+                f"Unable to generate database table for {cls.__name__} {e}"
+            )
+        if not cls.__name__ == "Model" and Config.APP_SERVER:
+            cls.routes()
