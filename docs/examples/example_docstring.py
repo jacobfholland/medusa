@@ -1,10 +1,3 @@
-# Docstrings and Type Hinting
-Adhering to a standardized set of guidelines for docstrings and type hinting is not merely an academic exercise but a pragmatic requirement. It ensures that the code remains readable, maintainable, and self-explanatory.
-
-**<span style="color: #dc3545;">IMPORTANT:</span>** Non-compliance with the guidelines for docstrings and type hinting laid out in this document will result in the rejection of pull requests.
-
-## Example
-```python
 import os
 
 from medusa.config import Config
@@ -121,5 +114,3 @@ class ExampleDocstring(Model):
         except Exception as e:
             return ["Failed in some unexpected way", e]
         return [foo, bar]
-
-```
