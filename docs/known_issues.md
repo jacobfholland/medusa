@@ -1,0 +1,2 @@
+- Decorator not showing on ReadTheDocs
+- Missing CRUD model functionality

@@ -13,7 +13,7 @@ def setup_werkzeug_logger(config: Config) -> None:
     and replaces it with a custom logger.
 
     Args:
-        config (Config): The server configuration object.
+        - `config` (Config): The server configuration object.
 
     Returns:
             None
