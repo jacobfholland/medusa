@@ -1,4 +1,5 @@
 import logging
+import os
 
 import coloredlogs
 
@@ -17,6 +18,9 @@ def setup_werkzeug_logger(config: Config) -> None:
     Returns:
             None
     """
+
+    if not os.path.exists(config.LOG_PATH):
+        os.makedirs(config.LOG_PATH)
 
     werkzeug_logger = logging.getLogger('werkzeug')
     werkzeug_logger.handlers.clear()

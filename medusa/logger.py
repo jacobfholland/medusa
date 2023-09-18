@@ -1,4 +1,5 @@
 import logging
+import os
 
 import coloredlogs
 
@@ -26,6 +27,9 @@ def setup_logger(name: str, config: Config) -> logging.Logger:
     Returns:
         `Logger`: A configured logger instance.
     """
+
+    if not os.path.exists(config.LOG_PATH):
+        os.makedirs(config.LOG_PATH)
 
     logger = logging.getLogger(name)
     logger.setLevel(LOG_LEVELS.get(config.LOG_LEVEL))
