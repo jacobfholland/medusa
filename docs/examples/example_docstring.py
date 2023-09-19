@@ -1,4 +1,5 @@
 import os
+from typing import List
 
 from medusa.config import Config
 from medusa.database.model import Model
@@ -78,7 +79,7 @@ class ExampleDocstring(Model):
         return output
 
     @require_envs(Config, ["ENV_VAR1", "ENV_VAR2"])
-    def example_method(self, foo: dict, bar: str = None) -> list:
+    def example_method(self, foo: dict, bar: str = None) -> List[dict, str]:
         """Short and easy to understand method description.
 
         Descriptions should be clear and may span multiple lines. Aim for lines

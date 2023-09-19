@@ -10,6 +10,7 @@ of pull requests.
 ## Example
 ```python
 import os
+from typing import List
 
 from medusa.config import Config
 from medusa.database.model import Model
@@ -89,7 +90,7 @@ class ExampleDocstring(Model):
         return output
 
     @require_envs(Config, ["ENV_VAR1", "ENV_VAR2"])
-    def example_method(self, foo: dict, bar: str = None) -> list:
+    def example_method(self, foo: dict, bar: str = None) -> List[dict, str]:
         """Short and easy to understand method description.
 
         Descriptions should be clear and may span multiple lines. Aim for lines
@@ -273,6 +274,15 @@ Section (custom):
 how to read it.
 - Follow other rules as closely as possible.
 - Include *(custom)* in the section name.
+
+#### 6. Returns:
+```
+Returns:
+    `List[str]`: Example list of strings.
+```
+- Can _not_ have multiple returns.
+- Does not require a leading hypen.
+- If returning *None* state if it is void or explicit.
 
 ### Module Variables
 ```
