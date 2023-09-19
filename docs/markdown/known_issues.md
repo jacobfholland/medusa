@@ -1,2 +1,4 @@
 - Decorator not showing on ReadTheDocs
 - Missing CRUD model functionality
+- Implement PIP Tools
+    - https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html#id6
