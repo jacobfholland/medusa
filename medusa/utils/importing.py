@@ -3,7 +3,7 @@ import glob
 import importlib.util
 import os
 import sys
-from typing import Any, List, Callable
+from typing import Any, Callable, List
 
 from .config import UtilsConfig as Config
 from .logger import logger

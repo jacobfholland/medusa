@@ -5,7 +5,6 @@ from medusa.config import Config
 from medusa.database.model import Model
 from medusa.utils.decorator import require_envs
 
-
 example_variable = "A variable outside of a function or class."
 """Relevant information about this variable."""
 
