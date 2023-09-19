@@ -118,7 +118,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Database</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/source/medusa.database.rst.txt" rel="nofollow"> View page source</a>
+              <a href="https://github.com/jacobfholland/medusa/blob/master/docs/sphinx/source/medusa.database.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -181,7 +181,7 @@ configuration parameters using environment variables.</p>
 <li><p><cite>DATABASE_TYPE</cite> (str): The path to the database file (if applicable).</p></li>
 </ul>
 </dd>
-<dt>Note:</dt><dd><ul class="simple">
+<dt>Notes:</dt><dd><ul class="simple">
 <li><p>All attribute values are obtained from corresponding environment variables.</p></li>
 </ul>
 </dd>
@@ -308,7 +308,7 @@ and SQLAlchemy base for working with database models.</p>
 <span class="sig-name descname"><span class="pre">generate_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.database.database.Database.generate_uri" title="Link to this definition"></a></dt>
 <dd><p>Constructs the database URI by calling the appropriate URI generation method based on the database type.</p>
 <dl class="simple">
-<dt>Note:</dt><dd><ul class="simple">
+<dt>Notes:</dt><dd><ul class="simple">
 <li><p>Requires valid environment variables</p></li>
 </ul>
 </dd>
@@ -336,7 +336,7 @@ and SQLAlchemy base for working with database models.</p>
 <span class="sig-name descname"><span class="pre">sqlite</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.database.database.Database.sqlite" title="Link to this definition"></a></dt>
 <dd><p>Generates the SQLite connection URI using environment variables.</p>
 <dl class="simple">
-<dt>Note:</dt><dd><ul class="simple">
+<dt>Notes:</dt><dd><ul class="simple">
 <li><p>Requires valid environment variables</p></li>
 </ul>
 </dd>
@@ -356,7 +356,7 @@ and SQLAlchemy base for working with database models.</p>
 <span class="sig-name descname"><span class="pre">standard</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.database.database.Database.standard" title="Link to this definition"></a></dt>
 <dd><p>Generates the standard connection URI for databases like MySQL, PostgreSQL, Oracle, etc.</p>
 <dl class="simple">
-<dt>Note:</dt><dd><ul class="simple">
+<dt>Notes:</dt><dd><ul class="simple">
 <li><p>Requires valid environment variables</p></li>
 </ul>
 </dd>
@@ -390,7 +390,7 @@ and SQLAlchemy base for working with database models.</p>
 <li><p><cite>updated_at</cite> (Column): The timestamp of the last update.</p></li>
 </ul>
 </dd>
-<dt>Note:</dt><dd><ul class="simple">
+<dt>Notes:</dt><dd><ul class="simple">
 <li><p>All method overrides should return <cite>super()</cite></p></li>
 <li><p>Subclasses of <cite>Model</cite> should override the <cite>create()</cite> method to define specific create behavior.</p></li>
 <li><p>Subclasses of <cite>Model</cite> should override the <cite>get()</cite> method to define specific get behavior.</p></li>

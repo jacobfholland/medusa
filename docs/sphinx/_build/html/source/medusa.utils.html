@@ -63,7 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.decorator.require_envs"><code class="docutils literal notranslate"><span class="pre">require_envs()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.format.generate_uuid"><code class="docutils literal notranslate"><span class="pre">generate_uuid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.format.snake_case"><code class="docutils literal notranslate"><span class="pre">snake_case()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.check_app_dir"><code class="docutils literal notranslate"><span class="pre">check_app_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.check_dir"><code class="docutils literal notranslate"><span class="pre">check_dir()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.import_class_from_file"><code class="docutils literal notranslate"><span class="pre">import_class_from_file()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.import_classes"><code class="docutils literal notranslate"><span class="pre">import_classes()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.import_model"><code class="docutils literal notranslate"><span class="pre">import_model()</span></code></a></li>
@@ -96,7 +96,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Utils</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/source/medusa.utils.rst.txt" rel="nofollow"> View page source</a>
+              <a href="https://github.com/jacobfholland/medusa/blob/master/docs/sphinx/source/medusa.utils.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -174,12 +174,12 @@ representation of the object’s class name and its attributes.</p>
 </dd></dl>
 
 <dl class="py function" id="module-medusa.utils.importing">
-<dt class="sig sig-object py" id="medusa.utils.importing.check_app_dir">
-<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">check_app_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.importing.check_app_dir" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="medusa.utils.importing.check_dir">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">check_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.importing.check_dir" title="Link to this definition"></a></dt>
 <dd><p>Check if the specified project directory exists.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>project_directory</cite> (str): The path to the project directory to check.</p></li>
+<li><p><cite>path</cite> (str): The path to the directory to check.</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p><cite>bool</cite>: True if the directory exists, False otherwise.</p>
@@ -288,11 +288,11 @@ representation of the object’s class name and its attributes.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="medusa.utils.importing.python_files">
-<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">python_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#medusa.utils.importing.python_files" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">python_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#medusa.utils.importing.python_files" title="Link to this definition"></a></dt>
 <dd><p>Get all Python files in a project directory recursively.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>project_directory</cite> (str): The path to the project directory.</p></li>
+<li><p><cite>path</cite> (str): The path to the project directory.</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p><cite>List[str]</cite>: List of paths to Python files.</p>
