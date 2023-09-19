@@ -12,29 +12,29 @@ example_variable = "A variable outside of a function or class."
 class ExampleDocstring(Model):
     """A short and easy to understand description of the class.
 
-    Sometimes they can span across multiple lines. Try and keep the lines under 80 characters.
-    Your descriptions should make it clear what your code does for the next person working on it.
+    Descriptions should be clear and may span multiple lines. Try to keep the
+    lines under 80 characters.
 
     Notes:
-        - Any notes that may be relevant. Often used for quick implementation information.
+        - Quick implementation notes may be relevant here.
 
     Inherits:
-        - `Model`: A parent model class used for database functionality.
+        - `Model`: Parent model class for database functionality.
 
     Args:
-        - `*args`: Positional arguments used when creating an object.
-        - `*kwargs`: Key word arguments used when creating an object.
+        - `*args`: Positional arguments for object creation.
+        - `**kwargs`: Keyword arguments for object creation.
 
     Attributes:
         - `attr1` (bool): A true or false class attribute.
         - `attr2` (int): An integer class attribute.
         - `attr3` (str): A string class attribute.
         - `attr4` (Model): An object class attribute.
-        - `attr5` (float): A float class attribute, assigned during initialization.
-        - `attr6` (str): A computed value that combines `attr2` and `attr3`.
+        - `attr5` (float): Float attribute, assigned during initialization.
+        - `attr6` (str): Combines `attr2` and `attr3` as a computed value.
 
     Methods:
-        - `example_method`: A class method example.
+        - `example_method`: Example class method.
     """
 
     attr1 = True
@@ -45,11 +45,11 @@ class ExampleDocstring(Model):
     def __init__(self, *args, **kwargs) -> None:
         """Initialize a new `Model` instance.
 
-        Initialization class functions should always return `None`.
+        Initialization should always return `None`.
 
         Args:
-            - `*args`: Positional arguments used when creating an object.
-            - `*kargs`: Key word arguments used when creating an object.
+            - `*args`: Positional arguments for object creation.
+            - `**kwargs`: Keyword arguments for object creation.
         """
 
         self.attr5 = 123.45
@@ -57,17 +57,16 @@ class ExampleDocstring(Model):
 
     @property
     def attr6(self) -> str:
-        """Computed class attribute
+        """Computed class attribute.
 
-        This special method is used when you want to assign an attribute on a class that requires 
-        calculation. It binds an attribute to a function.
+        Binds an attribute to a function for calculated assignment.
 
         Raises:
-            - `KeyError`: Gracefully handle failed concatenation.
-            - `Exception`: Bare catch-all for any unexpected exceptions.
+            - `KeyError`: Handles failed concatenation.
+            - `Exception`: Catch-all for unexpected exceptions.
 
         Returns:
-            - `str`: A concatenation of `attr2` and `attr3`.
+            - `str`: Concatenation of `attr2` and `attr3`.
         """
 
         try:
@@ -80,29 +79,28 @@ class ExampleDocstring(Model):
 
     @require_envs(Config, ["ENV_VAR1", "ENV_VAR2"])
     def example_method(self, foo: dict, bar: str = None) -> list:
-        """A short and easy to understand description of the method.
+        """Short and easy to understand method description.
 
-        Sometimes they can span across multiple lines. Try and keep the lines under 80 characters.
-        Your descriptions should make it clear what your code does for the next person working on it.
+        Descriptions should be clear and may span multiple lines. Aim for lines
+        under 80 characters.
 
         Notes:
-            - This function utilizes the `@require_envs` decorator, which requires select environment
-            variables to be set.
+            - Utilizes `@require_envs` requiring select environment variables.
 
         Args:
             - `foo` (dict): A dictionary input parameter.
             - `bar` (str, optional): An optional string parameter.
 
         Raises:
-            - `KeyError`: Gracefully handle failed dictionary key access.
-            - `Exception`: Bare catch-all for any unexpected exceptions.
+            - `KeyError`: Handles failed dictionary key access.
+            - `Exception`: Catch-all for unexpected exceptions.
 
         Environment Variables (custom):
-            - `ENV_VAR1`: An environment variable set in the `.env` file.
-            - `ENV_VAR2`: An different environment variable set in the `.env` file.
+            - `ENV_VAR1`: Set in the `.env` file.
+            - `ENV_VAR2`: Another variable set in the `.env` file.
 
         Returns:
-            `list`: A list of the input data.
+            - `list`: A list of the input data.
         """
 
         try:
