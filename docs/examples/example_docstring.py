@@ -30,8 +30,8 @@ class ExampleDocstring(Model):
         - `attr2` (int): An integer class attribute.
         - `attr3` (str): A string class attribute.
         - `attr4` (Model): An object class attribute.
-        - `attr5` (float): Float attribute, assigned during initialization.
-        - `attr6` (str): Combines `attr2` and `attr3` as a computed value.
+        - `attr5` (float, init): Float attribute, assigned during initialization.
+        - `attr6` (str, property): Combines `attr2` and `attr3` as a computed value.
 
     Methods:
         - `example_method`: Example class method.

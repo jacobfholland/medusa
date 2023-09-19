@@ -1,7 +1,11 @@
 # Docstrings and Type Hinting
-Adhering to a standardized set of guidelines for docstrings and type hinting is not merely an academic exercise but a pragmatic requirement. It ensures that the code remains readable, maintainable, and self-explanatory.
+Adhering to a standardized set of guidelines for docstrings and type hinting ensures 
+that the code remains readable, maintainable, and self-explanatory. Below are the 
+standards expected for making docstrings.
 
-**<span style="color: #dc3545;">IMPORTANT:</span>** Non-compliance with the guidelines for docstrings and type hinting laid out in this document will result in the rejection of pull requests.
+**<span style="color: #dc3545;">IMPORTANT:</span>** Non-compliance with the guidelines 
+for docstrings and type hinting laid out in this document will result in the rejection 
+of pull requests.
 
 ## Example
 ```python
@@ -37,8 +41,8 @@ class ExampleDocstring(Model):
         - `attr2` (int): An integer class attribute.
         - `attr3` (str): A string class attribute.
         - `attr4` (Model): An object class attribute.
-        - `attr5` (float): Float attribute, assigned during initialization.
-        - `attr6` (str): Combines `attr2` and `attr3` as a computed value.
+        - `attr5` (float, init): Float attribute, assigned during initialization.
+        - `attr6` (str, property): Combines `attr2` and `attr3` as a computed value.
 
     Methods:
         - `example_method`: Example class method.
@@ -121,59 +125,169 @@ class ExampleDocstring(Model):
         return [foo, bar]
 ```
 ## Rules
-- All classes, methods, and functions must have a docstring.
+- All classes, methods, functions, and module variables must have a docstring.
 - Docstring lines should ideally not exceed 80 characters.
+- The general rule of thumb for formatting a section line is: 
+`- 'key' (type): Lorem ipsum`
+    - **(The single quotes are actually backticks. Markdown limits displaying 
+    backticks on this page.)*
+- Use a single line break between sections.
+- References to data types, classes, functions, methods, etc. should use 
+backticks to indicate a reference.
+- Include periods at the end of sentences.
 
 ### Classes
-Class docstrings must include one or more sections. **Description** is mandatory. 
-They should appear in this order, if applicable. Only include applicable sections.
+Class docstrings must include one or more sections. **Description** 
+is mandatory. They should appear in this order, if applicable. Only include 
+applicable sections.
 
 
-1. Description:
+#### 1. Description:
 ```
 """Description text goes here
 
 Second line of text goes here
 """
 ```
+- Mandatory.
+- Uses `"""`.
+- Can be single or multiple lines.
+- Text begins on the same line the comment begins on.
+- If a single line, ending quotations stay on same line.
+- Left aligned with the opening quotations.
 
-2. Notes: *(if applicable)*
+#### 2. Notes: *(if applicable)*
 ```
 Notes:
     - Note about the class.
 ```
+- Can have multiple notes.
+- Usually for abnormal implementation hints.
+- Each note is a single line only.
 
-3. Inherits: *(if applicable)*
+#### 3. Inherits: *(if applicable)*
 ```
 Inherits:
     - `Class`: A parent class.
     - `OtherClass`: A second parent class.
 ```
+- Can have multiple inherited classes.
 
-4. Args *(if applicable)*
+#### 4. Args: *(if applicable)*
 ```
 Args:
-    - `example` (str): Example argument.
+    - `example` (str): Example argument, defaults to "Hello".
     - `opt_arg` (int, optional): An optional argument.
 ```
+- Can have multiple arguments.
+- Include the data type.
+- Mark any arguments optional as needed.
+- Include a default value if there is one.
 
-5. Attributes *(if applicable)*
+#### 5. Attributes: *(if applicable)*
 ```
 Attributes:
     - `attr1` (str): Example class attribute.
-    - `attr2` (int): A computed class property.
-    - `attr3` (bool): An attribute assigned during initialization.
+    - `attr2` (int, @property): A computed class property.
+    - `attr3` (bool, init): An attribute assigned during initialization.
 ```
+- Can have multiple attributes.
+- Include the data type.
+- Mark any attributes assigned via *@property* or in the *init* function
+as needed.
 
-6. Methods *(if applicable)*
+#### 6. Methods: *(if applicable)*
 ```
 Methods:
     - `example_method`: Example class method.
     - `cls_method_example` (@classmethod): A class method that doesn't require an object.
 ```
+- Can have multiple methods.
+- Do not include the *init* or any other internal methods.
+- Do not include parentheses *()*.
+- Mark any methods created with *@classmethod* as needed.
+#### 7. Custom: *(if applicable)*
+```
+Section (custom):
+    - `value` (type, condition): A custom line that follows standard formatting.
+```
+- Only make a custom docstring section if it is absolutely necessary.
+- It should be immediately obvious what your section is for and 
+how to read it.
+- Follow other rules as closely as possible.
+- Include *(custom)* in the section name.
 
-7. Custom *(if applicable)*
+### Methods/Functions
+Method and function docstrings must include one or more sections. **Description** 
+and **Returns** are mandatory. They should appear in this order, if applicable. 
+Only include applicable sections.
+
+#### 1. Description:
 ```
-Section:
-    - `value` (type): A custom line that follows standard formatting.
+"""Description text goes here.
+
+Second line of text goes here.
+"""
 ```
+- Mandatory.
+- Uses `"""`.
+- Can be single or multiple lines.
+- Text begins on the same line the comment begins on.
+- If a single line, ending quotations stay on same line.
+- Left aligned with the opening quotations.
+
+#### 2. Notes: *(if applicable)*
+```
+Notes:
+    - Note about the class.
+```
+- Can have multiple notes.
+- Usually for abnormal implementation hints.
+- Each note is a single line only.
+
+#### 3. Args: *(if applicable)*
+```
+Args:
+    - `example` (str): Example argument, defaults to "Hello".
+    - `opt_arg` (int, optional): An optional argument.
+```
+- Can have multiple arguments.
+- Include the data type.
+- Mark any arguments optional as needed.
+- Include a default value if there is one.
+
+#### 4. Raises: *(if applicable)*
+```
+Raises:
+    - `Exception`: Catch-all for unexpected exceptions.
+```
+- Can have multiple exceptions.
+
+#### 5. Custom: *(if applicable)*
+```
+Section (custom):
+    - `value` (type, condition): A custom line that follows standard formatting.
+```
+- Only make a custom docstring section if it is absolutely necessary.
+- It should be immediately obvious what your section is for and 
+how to read it.
+- Follow other rules as closely as possible.
+- Include *(custom)* in the section name.
+
+### Module Variables
+```
+"""Description text goes here
+
+Second line of text goes here
+"""
+```
+- Mandatory.
+- Uses `"""`.
+- Can be single or multiple lines.
+- Text begins on the same line the comment begins on.
+- If a single line, ending quotations stay on same line.
+- Left aligned with the opening quotations.
+
+### Type Hinting
+- Use Python >=3.5 compatible [type hinting](https://docs.python.org/3.8/library/typing.html).
+- Include both argument and return type hints.
