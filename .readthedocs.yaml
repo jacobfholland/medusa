@@ -3,7 +3,7 @@ python:
    install:
    - requirements: docs/sphinx/requirements.txt
    pre_install:
-    - pip install --upgrade pip
+    - echo "HELLO"
 sphinx:
   configuration: docs/sphinx/conf.py
   builder: html
