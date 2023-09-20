@@ -15,15 +15,13 @@ build:
       - echo post_create_environment
     pre_install:
       - echo pre_install
+      - python -m pip install --upgrade pip
     post_install:
       - echo post_install
     pre_build:
       - echo pre_build
-      - sed **/*.rst --in-place --expression "s|{VERSION}|${READTHEDOCS_VERSION_NAME}|g"
     post_build:
       - echo post_build
-      - echo $READTHEDOCS_OUTPUT
-      - find $READTHEDOCS_OUTPUT
   tools:
     python: "3"
 python:
