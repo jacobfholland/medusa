@@ -34,6 +34,7 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = 
         def decorator(f: Callable) -> Callable:
             @functools.wraps(f)
             def wrapped(request, *args, **kwargs):
+                # print(type(request), request)
                 result = f(request, *args, **kwargs)
                 if isinstance(result, Response):
                     return result

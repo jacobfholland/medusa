@@ -134,7 +134,7 @@ class ExampleDocstring(Model):
     backticks on this page.)*
 - Use a single line break between sections.
 - References to data types, classes, functions, methods, etc. should use 
-backticks to indicate a reference.
+backticks to indicate a reference. This includes if an argument is a reference.
 - Include periods at the end of sentences.
 
 ### Classes
@@ -156,6 +156,7 @@ Second line of text goes here
 - Text begins on the same line the comment begins on.
 - If a single line, ending quotations stay on same line.
 - Left aligned with the opening quotations.
+- A line break between the description and sections
 
 #### 2. Notes: *(if applicable)*
 ```
@@ -236,6 +237,7 @@ Second line of text goes here.
 - Text begins on the same line the comment begins on.
 - If a single line, ending quotations stay on same line.
 - Left aligned with the opening quotations.
+- A line break between the description and sections
 
 #### 2. Notes: *(if applicable)*
 ```
