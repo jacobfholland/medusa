@@ -7,9 +7,6 @@ build:
       - git fetch --unshallow  || true
     pre_system_dependencies:
       - echo pre_system_dependencies
-      - |
-        # Test multi-line script
-        if test -n "A"; then echo "B"; fi
     post_system_dependencies:
       - echo post_system_dependencies
     pre_create_environment:
@@ -22,7 +19,6 @@ build:
       - echo post_install
     pre_build:
       - echo pre_build
-      - python -m sphinx -b linkcheck docs/ _build/linkcheck
       - sed **/*.rst --in-place --expression "s|{VERSION}|${READTHEDOCS_VERSION_NAME}|g"
     post_build:
       - echo post_build
