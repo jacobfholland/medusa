@@ -1,9 +1,10 @@
 import base64
 from datetime import date, datetime, time
-from typing import Any, Union
+from typing import Any, Dict, Union
 
 from werkzeug.datastructures import EnvironHeaders
 from werkzeug.datastructures.file_storage import FileStorage
+from werkzeug.exceptions import UnsupportedMediaType
 from werkzeug.wrappers import Request
 
 from .logger import logger
@@ -84,13 +85,13 @@ def serializer(obj: Any) -> Union[str, dict, None]:
 
     if isinstance(obj, (datetime, date, time)):
         return obj.strftime('%Y-%m-%d %H:%M:%S')
-    if isinstance(obj, Request):
+    elif isinstance(obj, Request):
         return process_request(obj)
-    if isinstance(obj, bytes):
+    elif isinstance(obj, bytes):
         return base64.b64encode(obj).decode('utf-8')
-    if isinstance(obj, EnvironHeaders):
+    elif isinstance(obj, EnvironHeaders):
         return dict(obj)
-    if isinstance(obj, FileStorage):
+    elif isinstance(obj, FileStorage):
         file_content = obj.read()
         base64_encoded = base64.b64encode(file_content).decode('utf-8')
         obj.seek(0)  # Important if the obj will be read later
@@ -142,8 +143,13 @@ def bind_form(data: dict[Any], obj: Request) -> None:
 
     try:
         data["form"] = obj.form.to_dict()
+    except UnsupportedMediaType as e:
+        data["form"] = {}
     except KeyError as e:
-        data["form"] = None
+        data["form"] = {}
+        pass
+    except Exception as e:
+        data["form"] = {}
         pass
 
 
@@ -162,9 +168,14 @@ def bind_args(data: dict[Any], obj: Request) -> None:
     """
 
     try:
-        data["args"] = obj.args.to_dict()
+        data["args"] = obj.args
+    except UnsupportedMediaType as e:
+        data["args"] = {}
     except KeyError as e:
-        data["args"] = None
+        data["args"] = {}
+        pass
+    except Exception as e:
+        data["args"] = {}
         pass
 
 
@@ -184,8 +195,13 @@ def bind_json(data: dict[Any], obj: Request) -> None:
 
     try:
         data["json"] = obj.json
+    except UnsupportedMediaType as e:
+        data["json"] = {}
     except KeyError as e:
-        data["json"] = None
+        data["json"] = {}
+        pass
+    except Exception as e:
+        data["json"] = {}
         pass
 
 

@@ -1,6 +1,8 @@
+import ast
 import functools
 
-from .validation import is_iterable, is_model
+from .logger import logger
+from .validation import eval, is_iterable, is_model
 
 
 def merge(*args: any, **kwargs: any) -> dict:
@@ -33,31 +35,6 @@ def merge(*args: any, **kwargs: any) -> dict:
     return new_kwargs
 
 
-def merge_request_args_kwargs(request):
-    # TODO Handle form-data request type
-    new_kwargs = {}
-    new_args = {}
-    if request.headers.get('Content-Type') == 'application/json':
-        new_kwargs = merge(*request.json)
-    for k in request.args:
-        v = request.args.getlist(k)
-        for val in v:
-            if val.lower() == "null" or val.lower() == "none":
-                val = None
-            elif val.lower() == "false":
-                val = False
-            append_value_to_list(new_args, k, val)
-    return new_args, new_kwargs
-
-
-def merge_request(func):
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        request_args, request_kwargs = merge_request_args_kwargs(request)
-        return func(*request_args, **request_kwargs)
-    return wrapper
-
-
 def append_value_to_list(new_kwargs: dict, k: str, v: any) -> None:
     """
     Appends a value to a list in new_kwargs. If the key is not present, it 
@@ -82,6 +59,7 @@ def append_value_to_list(new_kwargs: dict, k: str, v: any) -> None:
             else:
                 new_kwargs[k] = [new_kwargs[k], v]
     else:
+        v = eval(v)
         new_kwargs[k] = v
 
 
@@ -140,14 +118,14 @@ def handle_obj(v: any, new_kwargs: dict) -> None:
                 append_value_to_list(new_kwargs, key, value)
 
 
-def merge_filter(func):
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        request_args, request_kwargs = merge_request_args_kwargs(request)
-        request_args = [merge(request_args)]
-        request_kwargs = merge(request_kwargs)
-        return func(*request_args, **request_kwargs)
-    return wrapper
+# def merge_filter(func):
+#     @functools.wraps(func)
+#     def wrapper(request, *args, **kwargs):
+#         request_args, request_kwargs = merge_request_args_kwargs(request)
+#         request_args = [merge(request_args)]
+#         request_kwargs = merge(request_kwargs)
+#         return func(*request_args, **request_kwargs)
+#     return wrapper
 
 
 def merge_values(func):
@@ -161,7 +139,8 @@ def merge_values(func):
         function: The decorated function.
     """
 
-    def wrapper(self, *args, **kwargs):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
         kwargs = merge(*args, **kwargs)
-        return func(self, *args, **kwargs)
+        return func(*args, **kwargs)
     return wrapper

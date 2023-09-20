@@ -97,8 +97,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.validation">Validation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.validation.eval"><code class="docutils literal notranslate"><span class="pre">eval()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.utils.validation.is_iterable"><code class="docutils literal notranslate"><span class="pre">is_iterable()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.utils.validation.is_model"><code class="docutils literal notranslate"><span class="pre">is_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.validation.is_request"><code class="docutils literal notranslate"><span class="pre">is_request()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -522,6 +524,11 @@ which can be base64 decoded at a later time.</p>
 <section id="module-medusa.utils.validation">
 <span id="validation"></span><h3>Validation<a class="headerlink" href="#module-medusa.utils.validation" title="Link to this heading"></a></h3>
 <dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.validation.eval">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.validation.</span></span><span class="sig-name descname"><span class="pre">eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#medusa.utils.validation.eval" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="medusa.utils.validation.is_iterable">
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.validation.</span></span><span class="sig-name descname"><span class="pre">is_iterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.validation.is_iterable" title="Link to this definition"></a></dt>
 <dd><p>Checks if the given argument is iterable, or if it has ‘is_model’ key.</p>
@@ -545,6 +552,20 @@ which can be base64 decoded at a later time.</p>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p><cite>bool</cite>: True if the object is an instance of ‘Model’, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.validation.is_request">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.validation.</span></span><span class="sig-name descname"><span class="pre">is_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Request</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.validation.is_request" title="Link to this definition"></a></dt>
+<dd><p>Checks if the given object is an instance of ‘Request’ class.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>obj</cite> (Any): Object to check.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>bool</cite>: True if the object is an instance of ‘Request’, False otherwise.</p>
 </dd>
 </dl>
 </dd></dl>

@@ -43,6 +43,7 @@ class Server:
             response = e
             logger.error(
                 f"Endpoint: {request.path}, Method: {request.method}, Response Status: {e}")
+        logger.debug(f"Request({vars(request)})")
         return response(environ, start_response)
 
     def run(self) -> None:

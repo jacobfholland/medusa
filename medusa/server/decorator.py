@@ -5,7 +5,7 @@ from typing import Callable, List
 from werkzeug.routing import Rule
 from werkzeug.wrappers import Response
 
-from medusa.utils.json import serializer
+from medusa.utils.json import process_request, serializer
 
 from .logger import logger
 from .server import url_map
@@ -17,38 +17,51 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = 
     Args:
         - `cls` (type): The class associated with the route. Must always be `cls`.
         - `rule` (str): The URL rule for the route.
-        - `methods` (List[str], optional): The HTTP methods supported by the route. Defaults to `['GET']`.
+        - `methods` (List[str], optional): The HTTP methods supported by the route. 
+            Defaults to `['GET']`.
         - `url_prefix` (str): The URL prefix for the route. Defaults to `None`.
 
     Raises:
-        - `Exception`: If there is an issue while registering the route, an exception is raised.
+        - `Exception`: If there is an issue while registering the route, an exception 
+            is raised.
     Returns:
         `Callable`: The decorator function.
     """
 
-    try:
-        if not url_prefix:
-            url_prefix = cls.__url_prefix__()
+    if not url_prefix:
+        url_prefix = cls.__url_prefix__()
         rule = f"{url_prefix}{rule}"
-
-        def decorator(f: Callable) -> Callable:
-            @functools.wraps(f)
+    try:
+        def decorator(func: Callable) -> Callable:
+            @functools.wraps(func)
             def wrapped(request, *args, **kwargs):
-                # print(type(request), request)
-                result = f(request, *args, **kwargs)
-                if isinstance(result, Response):
-                    return result
-                if isinstance(result, str) and result.strip().startswith("<"):
-                    return Response(result, content_type="text/html; charset=utf-8")
-                return Response(json.dumps(result, default=serializer), content_type="application/json; charset=utf-8")
-
-            if not any([rule == r.rule for r in url_map.iter_rules()]):
-                url_map.add(Rule(rule, endpoint=wrapped, methods=methods))
-            logger.debug(f"Registered {cls.__name__} route {rule}")
+                return build_response(cls, request, func, *args, **kwargs)
+            register_route(cls, rule, wrapped, methods)
             return wrapped
-
         return decorator
     except Exception as e:
-        logger.error(
-            f"Failed to register {cls.__name__} route {rule}")
+        logger.error(f"Failed to register {cls.__name__} route {rule}")
         pass
+
+
+def build_response(cls, request, func, *args, **kwargs):
+    request = process_request(request)
+
+    result = func(cls, request, *args, **kwargs)
+    if isinstance(result, Response):
+        return result
+    if isinstance(result, str) and result.strip().startswith("<"):
+        return Response(
+            result.strip(),
+            content_type="text/html; charset=utf-8"
+        )
+    return Response(
+        json.dumps(result, default=serializer),
+        content_type="application/json; charset=utf-8"
+    )
+
+
+def register_route(cls, rule, wrapped, methods):
+    if not any([rule == r.rule for r in url_map.iter_rules()]):
+        url_map.add(Rule(rule, endpoint=wrapped, methods=methods))
+        logger.debug(f"Registered {cls.__name__} route {rule}")

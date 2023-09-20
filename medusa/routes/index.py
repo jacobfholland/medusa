@@ -44,7 +44,7 @@ class IndexRoute(Route):
         """
 
         @route(cls, "/", methods=["GET"])
-        def index(request: Request) -> Response:
+        def index(cls, request: Request) -> Response:
             """Handler function for the index endpoint.
 
             Args:
