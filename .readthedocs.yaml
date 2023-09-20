@@ -30,7 +30,7 @@ build:
       - echo pre_install
       - echo `date`
       # https://github.com/readthedocs/readthedocs.org/issues/8201#issuecomment-1018511443
-      - git update-index --assume-unchanged docs/index.rst docs/conf.py
+      - git update-index --assume-unchanged docs/sphinx/index.rst docs/conf.py
     post_install:
       - echo post_install
       - echo `date`
