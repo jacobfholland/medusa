@@ -4,7 +4,7 @@ python:
    - requirements: docs/sphinx/requirements.txt
 build:
   jobs:
-    pre_build:
+    post_checkout:
       - echo "HELO"
 sphinx:
   configuration: docs/sphinx/conf.py
