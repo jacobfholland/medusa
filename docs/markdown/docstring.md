@@ -185,6 +185,9 @@ Args:
 - Include the data type.
 - Mark any arguments optional as needed.
 - Include a default value if there is one.
+- If the argument is non-standard library object only include the
+class name. Do not include the full module path. Note the full module
+path in the `Notes` section
 
 #### 5. Attributes: *(if applicable)*
 ```
@@ -258,6 +261,9 @@ Args:
 - Include the data type.
 - Mark any arguments optional as needed.
 - Include a default value if there is one.
+- If the argument is non-standard library object only include the
+class name. Do not include the full module path. Note the full module
+path in the `Notes` section
 
 #### 4. Raises: *(if applicable)*
 ```
