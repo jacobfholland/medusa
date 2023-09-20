@@ -4,8 +4,8 @@ python:
    - requirements: docs/sphinx/requirements.txt
 build:
   jobs:
-    post_checkout:
-      - echo "HELO"
+    post_create_environment:
+      - echo `date`
 sphinx:
   configuration: docs/sphinx/conf.py
   builder: html
