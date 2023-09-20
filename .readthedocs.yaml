@@ -2,8 +2,10 @@ version: 2
 python:
    install:
    - requirements: docs/sphinx/requirements.txt
-   pre_install:
-    - echo "HELLO"
+build:
+  jobs:
+    pre_install:
+      - echo "HELO"
 sphinx:
   configuration: docs/sphinx/conf.py
   builder: html
