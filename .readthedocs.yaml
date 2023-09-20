@@ -2,6 +2,8 @@ version: 2
 python:
    install:
    - requirements: docs/sphinx/requirements.txt
+   before_install:
+    - pip install --upgrade pip
 sphinx:
   configuration: docs/sphinx/conf.py
   builder: html
