@@ -42,6 +42,7 @@ def setup_werkzeug_logger(config: Config) -> None:
 
 # Intercepts and sets up the werkzeug logger
 werkzeug_logger = setup_werkzeug_logger(Config)
+"""Create a Werkzeug logger instance"""
 
-# Create a logger instance
 logger = setup_logger(f"{Config.APP_NAME.lower()}.route", Config)
+"""Create a server logger instance"""

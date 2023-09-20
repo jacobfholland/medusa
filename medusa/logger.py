@@ -52,5 +52,5 @@ def setup_logger(name: str, config: Config) -> logging.Logger:
     return logger
 
 
-# Create a logger instance
 logger = setup_logger(f"{Config.APP_NAME.lower()}.app", Config)
+"""Create an app logger instance"""

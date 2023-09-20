@@ -59,29 +59,48 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-medusa.utils">Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.decorator.require_envs"><code class="docutils literal notranslate"><span class="pre">require_envs()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.format.generate_uuid"><code class="docutils literal notranslate"><span class="pre">generate_uuid()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.format.snake_case"><code class="docutils literal notranslate"><span class="pre">snake_case()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.check_dir"><code class="docutils literal notranslate"><span class="pre">check_dir()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.import_class_from_file"><code class="docutils literal notranslate"><span class="pre">import_class_from_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.import_classes"><code class="docutils literal notranslate"><span class="pre">import_classes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.import_model"><code class="docutils literal notranslate"><span class="pre">import_model()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.import_route"><code class="docutils literal notranslate"><span class="pre">import_route()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.log_completed"><code class="docutils literal notranslate"><span class="pre">log_completed()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.log_starting"><code class="docutils literal notranslate"><span class="pre">log_starting()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.python_files"><code class="docutils literal notranslate"><span class="pre">python_files()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.IGNORE_KEYS"><code class="docutils literal notranslate"><span class="pre">IGNORE_KEYS</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.bind_args"><code class="docutils literal notranslate"><span class="pre">bind_args()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.bind_form"><code class="docutils literal notranslate"><span class="pre">bind_form()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.bind_json"><code class="docutils literal notranslate"><span class="pre">bind_json()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.delete_ignored"><code class="docutils literal notranslate"><span class="pre">delete_ignored()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.delete_value"><code class="docutils literal notranslate"><span class="pre">delete_value()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.process_request"><code class="docutils literal notranslate"><span class="pre">process_request()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.serializer"><code class="docutils literal notranslate"><span class="pre">serializer()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.sort_response"><code class="docutils literal notranslate"><span class="pre">sort_response()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.validation.is_iterable"><code class="docutils literal notranslate"><span class="pre">is_iterable()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.validation.is_model"><code class="docutils literal notranslate"><span class="pre">is_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.decorator">Decorator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.decorator.require_envs"><code class="docutils literal notranslate"><span class="pre">require_envs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.format">Format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.format.generate_uuid"><code class="docutils literal notranslate"><span class="pre">generate_uuid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.format.snake_case"><code class="docutils literal notranslate"><span class="pre">snake_case()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.importing">Importing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.importing.check_dir"><code class="docutils literal notranslate"><span class="pre">check_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.importing.import_class_from_file"><code class="docutils literal notranslate"><span class="pre">import_class_from_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.importing.import_classes"><code class="docutils literal notranslate"><span class="pre">import_classes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.importing.import_model"><code class="docutils literal notranslate"><span class="pre">import_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.importing.import_route"><code class="docutils literal notranslate"><span class="pre">import_route()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.importing.log_completed"><code class="docutils literal notranslate"><span class="pre">log_completed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.importing.log_starting"><code class="docutils literal notranslate"><span class="pre">log_starting()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.importing.python_files"><code class="docutils literal notranslate"><span class="pre">python_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.json">JSON</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.json.IGNORE_KEYS"><code class="docutils literal notranslate"><span class="pre">IGNORE_KEYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.json.bind_args"><code class="docutils literal notranslate"><span class="pre">bind_args()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.json.bind_form"><code class="docutils literal notranslate"><span class="pre">bind_form()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.json.bind_json"><code class="docutils literal notranslate"><span class="pre">bind_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.json.delete_ignored"><code class="docutils literal notranslate"><span class="pre">delete_ignored()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.json.delete_value"><code class="docutils literal notranslate"><span class="pre">delete_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.json.process_request"><code class="docutils literal notranslate"><span class="pre">process_request()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.json.serializer"><code class="docutils literal notranslate"><span class="pre">serializer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.json.sort_response"><code class="docutils literal notranslate"><span class="pre">sort_response()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.logger">Logger</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.logger.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.validation">Validation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.validation.is_iterable"><code class="docutils literal notranslate"><span class="pre">is_iterable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.validation.is_model"><code class="docutils literal notranslate"><span class="pre">is_model()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -140,9 +159,11 @@ representation of the object’s class name and its attributes.</p>
 </dd></dl>
 
 </section>
-<section id="module-medusa.utils">
-<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-medusa.utils" title="Link to this heading"></a></h2>
-<dl class="py function" id="module-medusa.utils.decorator">
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<section id="module-medusa.utils.decorator">
+<span id="decorator"></span><h3>Decorator<a class="headerlink" href="#module-medusa.utils.decorator" title="Link to this heading"></a></h3>
+<dl class="py function">
 <dt class="sig sig-object py" id="medusa.utils.decorator.require_envs">
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.decorator.</span></span><span class="sig-name descname"><span class="pre">require_envs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#medusa.utils.decorator.require_envs" title="Link to this definition"></a></dt>
 <dd><p>A decorator that checks if the specified environment variables are present.</p>
@@ -157,7 +178,10 @@ representation of the object’s class name and its attributes.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function" id="module-medusa.utils.format">
+</section>
+<section id="module-medusa.utils.format">
+<span id="format"></span><h3>Format<a class="headerlink" href="#module-medusa.utils.format" title="Link to this heading"></a></h3>
+<dl class="py function">
 <dt class="sig sig-object py" id="medusa.utils.format.generate_uuid">
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.format.</span></span><span class="sig-name descname"><span class="pre">generate_uuid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.utils.format.generate_uuid" title="Link to this definition"></a></dt>
 <dd><p>Generate a unique identifier using UUID.</p>
@@ -181,7 +205,10 @@ representation of the object’s class name and its attributes.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function" id="module-medusa.utils.importing">
+</section>
+<section id="module-medusa.utils.importing">
+<span id="importing"></span><h3>Importing<a class="headerlink" href="#module-medusa.utils.importing" title="Link to this heading"></a></h3>
+<dl class="py function">
 <dt class="sig sig-object py" id="medusa.utils.importing.check_dir">
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">check_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.importing.check_dir" title="Link to this definition"></a></dt>
 <dd><p>Check if the specified project directory exists.</p>
@@ -308,7 +335,10 @@ representation of the object’s class name and its attributes.</p>
 </dl>
 </dd></dl>
 
-<dl class="py data" id="module-medusa.utils.json">
+</section>
+<section id="module-medusa.utils.json">
+<span id="json"></span><h3>JSON<a class="headerlink" href="#module-medusa.utils.json" title="Link to this heading"></a></h3>
+<dl class="py data">
 <dt class="sig sig-object py" id="medusa.utils.json.IGNORE_KEYS">
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">IGNORE_KEYS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['wsgi.input',</span> <span class="pre">'wsgi.errors',</span> <span class="pre">'werkzeug.socket',</span> <span class="pre">'werkzeug.request']</span></em><a class="headerlink" href="#medusa.utils.json.IGNORE_KEYS" title="Link to this definition"></a></dt>
 <dd><p>List of keys to be ignored during the serialization process.</p>
@@ -479,7 +509,19 @@ which can be base64 decoded at a later time.</p>
 </dl>
 </dd></dl>
 
-<span class="target" id="module-medusa.utils.logger"></span><dl class="py function" id="module-medusa.utils.validation">
+</section>
+<section id="module-medusa.utils.logger">
+<span id="logger"></span><h3>Logger<a class="headerlink" href="#module-medusa.utils.logger" title="Link to this heading"></a></h3>
+<dl class="py data">
+<dt class="sig sig-object py" id="medusa.utils.logger.logger">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.logger.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Logger</span> <span class="pre">medusa.utils</span> <span class="pre">(WARNING)&gt;</span></em><a class="headerlink" href="#medusa.utils.logger.logger" title="Link to this definition"></a></dt>
+<dd><p>Create a utils logger instance</p>
+</dd></dl>
+
+</section>
+<section id="module-medusa.utils.validation">
+<span id="validation"></span><h3>Validation<a class="headerlink" href="#module-medusa.utils.validation" title="Link to this heading"></a></h3>
+<dl class="py function">
 <dt class="sig sig-object py" id="medusa.utils.validation.is_iterable">
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.validation.</span></span><span class="sig-name descname"><span class="pre">is_iterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.validation.is_iterable" title="Link to this definition"></a></dt>
 <dd><p>Checks if the given argument is iterable, or if it has ‘is_model’ key.</p>
@@ -507,6 +549,7 @@ which can be base64 decoded at a later time.</p>
 </dl>
 </dd></dl>
 
+</section>
 </section>
 </section>
 

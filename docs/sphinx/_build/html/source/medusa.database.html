@@ -84,6 +84,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.database.Database.standard"><code class="docutils literal notranslate"><span class="pre">Database.standard()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.database.logger.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.database.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.model.Model.created_at"><code class="docutils literal notranslate"><span class="pre">Model.created_at</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.model.Model.id"><code class="docutils literal notranslate"><span class="pre">Model.id</span></code></a></li>
@@ -376,8 +377,14 @@ and SQLAlchemy base for working with database models.</p>
 
 </dd></dl>
 
+<dl class="py data" id="module-medusa.database.logger">
+<dt class="sig sig-object py" id="medusa.database.logger.logger">
+<span class="sig-prename descclassname"><span class="pre">medusa.database.logger.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Logger</span> <span class="pre">medusa.database</span> <span class="pre">(WARNING)&gt;</span></em><a class="headerlink" href="#medusa.database.logger.logger" title="Link to this definition"></a></dt>
+<dd><p>Create a database logger instance</p>
+</dd></dl>
+
 <dl class="py class" id="module-medusa.database.model">
-<span id="module-medusa.database.logger"></span><dt class="sig sig-object py" id="medusa.database.model.Model">
+<dt class="sig sig-object py" id="medusa.database.model.Model">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.database.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#medusa.database.model.Model" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="medusa.server.html#medusa.server.route.Route" title="medusa.server.route.Route"><code class="xref py py-class docutils literal notranslate"><span class="pre">Route</span></code></a>, <a class="reference internal" href="#medusa.database.base.Base" title="sqlalchemy.orm.decl_api.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a></p>
 <p>An abstract base class for all SQLAlchemy models in this project.</p>
