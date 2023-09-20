@@ -71,7 +71,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.log_completed"><code class="docutils literal notranslate"><span class="pre">log_completed()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.log_starting"><code class="docutils literal notranslate"><span class="pre">log_starting()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.importing.python_files"><code class="docutils literal notranslate"><span class="pre">python_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.IGNORE_KEYS"><code class="docutils literal notranslate"><span class="pre">IGNORE_KEYS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.bind_args"><code class="docutils literal notranslate"><span class="pre">bind_args()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.bind_form"><code class="docutils literal notranslate"><span class="pre">bind_form()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.bind_json"><code class="docutils literal notranslate"><span class="pre">bind_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.delete_ignored"><code class="docutils literal notranslate"><span class="pre">delete_ignored()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.delete_value"><code class="docutils literal notranslate"><span class="pre">delete_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.process_request"><code class="docutils literal notranslate"><span class="pre">process_request()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.serializer"><code class="docutils literal notranslate"><span class="pre">serializer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.json.sort_response"><code class="docutils literal notranslate"><span class="pre">sort_response()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.validation.is_iterable"><code class="docutils literal notranslate"><span class="pre">is_iterable()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.validation.is_model"><code class="docutils literal notranslate"><span class="pre">is_model()</span></code></a></li>
 </ul>
@@ -300,20 +308,173 @@ representation of the object’s class name and its attributes.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function" id="module-medusa.utils.json">
-<dt class="sig sig-object py" id="medusa.utils.json.serializer">
-<span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">serializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">time</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.utils.json.serializer" title="Link to this definition"></a></dt>
-<dd><p>Serialize datetime, date, or time objects into string representations.</p>
+<dl class="py data" id="module-medusa.utils.json">
+<dt class="sig sig-object py" id="medusa.utils.json.IGNORE_KEYS">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">IGNORE_KEYS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['wsgi.input',</span> <span class="pre">'wsgi.errors',</span> <span class="pre">'werkzeug.socket',</span> <span class="pre">'werkzeug.request']</span></em><a class="headerlink" href="#medusa.utils.json.IGNORE_KEYS" title="Link to this definition"></a></dt>
+<dd><p>List of keys to be ignored during the serialization process.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.json.bind_args">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">bind_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Request</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.json.bind_args" title="Link to this definition"></a></dt>
+<dd><p>Bind arguments to the dictionary.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>obj</cite> (Union[datetime, date, time]): The object to be serialized.</p></li>
+<li><p><cite>data</cite> (dict[Any]): The dictionary to which the arguments will be bound.</p></li>
+<li><p><cite>obj</cite> (<cite>Request</cite>): The Werkzeug Request object.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>TypeError</cite>: If the input object is not a supported type for serialization.</p></li>
+<li><p><cite>KeyError</cite>: If the value doesn’t exist gracefully ignore it.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>str</cite>: The serialized string representation of the input object.</p>
+<dt>Returns:</dt><dd><p><cite>None</cite>: Void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.json.bind_form">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">bind_form</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Request</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.json.bind_form" title="Link to this definition"></a></dt>
+<dd><p>Bind form data to the dictionary.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>data</cite> (dict[Any]): The dictionary to which the form data will be bound.</p></li>
+<li><p><cite>obj</cite> (<cite>Request</cite>): The Werkzeug Request object.</p></li>
+</ul>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>KeyError</cite>: If the value doesn’t exist gracefully ignore it.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>None</cite>: Void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.json.bind_json">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">bind_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Request</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.json.bind_json" title="Link to this definition"></a></dt>
+<dd><p>Bind JSON data to the dictionary.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>data</cite> (dict[Any]): The dictionary to which the JSON data will be bound.</p></li>
+<li><p><cite>obj</cite> (<cite>Request</cite>): The Werkzeug Request object.</p></li>
+</ul>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>KeyError</cite>: If the value doesn’t exist gracefully ignore it.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>None</cite>: Void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.json.delete_ignored">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">delete_ignored</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.json.delete_ignored" title="Link to this definition"></a></dt>
+<dd><p>Delete ignored keys from the dictionary.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><cite>data</cite> (dict[Any]): The dictionary from which the ignored keys will be </dt><dd><p>deleted.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>KeyError</cite>: If the value doesn’t exist gracefully ignore it.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>None</cite>: Void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.json.delete_value">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">delete_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.json.delete_value" title="Link to this definition"></a></dt>
+<dd><p>Delete a specific key-value pair from a dictionary.</p>
+<p>Attempts to remove a key from the dictionary’s <cite>environ</cite> key.</p>
+<dl class="simple">
+<dt>Notes:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>The function is primarily used during the serilization of Werkzeug’s </dt><dd><p>Request object.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Args:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><cite>data</cite> (dict[Any]): The dictionary from which the key-value pair will </dt><dd><p>be deleted.</p>
+</dd>
+</dl>
+</li>
+<li><p><cite>key</cite> (str): The key that needs to be deleted.</p></li>
+</ul>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>KeyError</cite>: If the value doesn’t exist gracefully ignore it.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.json.process_request">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">process_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Request</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#medusa.utils.json.process_request" title="Link to this definition"></a></dt>
+<dd><p>Process a Werkzeug Request object and return a serialized dictionary 
+representation.</p>
+<p>Takes a Werkzeug Request object and processes it into a dictionary suitable 
+for serialization. It binds various parts of the request to the dictionary, 
+deletes ignored keys, and sorts the keys in the dictionary.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>obj</cite> (<cite>Request</cite>): The Werkzeug Request object to be processed.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>dict</cite>: A dictionary representation of the processed request.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.json.serializer">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">serializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.json.serializer" title="Link to this definition"></a></dt>
+<dd><p>Custom JSON serializer function.</p>
+<p>This function is intended to serialize various types of objects into 
+JSON-friendly formats. It turns datetime objects into string format and 
+Werkzeug’s Request object into a simplified dictionary. It encodes files
+which can be base64 decoded at a later time.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>obj</cite> (Any): The object that needs to be serialized.</p></li>
+</ul>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>TypeError</cite>: If the object type is not serializable.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p><cite>Union[str, dict, None]</cite>: The serialized object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.json.sort_response">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.json.</span></span><span class="sig-name descname"><span class="pre">sort_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.json.sort_response" title="Link to this definition"></a></dt>
+<dd><p>Sort dictionary keys and relocate the ‘files’ key.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>data</cite> (dict[Any]): The dictionary that needs sorting.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>None</cite>: Void</p>
 </dd>
 </dl>
 </dd></dl>

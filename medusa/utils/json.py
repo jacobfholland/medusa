@@ -24,15 +24,15 @@ def delete_value(data: dict[Any], key: str) -> None:
 
     Notes:
         - The function is primarily used during the serilization of Werkzeug's 
-        Request object.
+            Request object. 
 
     Args:
         - `data` (dict[Any]): The dictionary from which the key-value pair will 
-        be deleted.
-        - `key` (str): The key that needs to be deleted.
+            be deleted. 
+        - `key` (str): The key that needs to be deleted. 
 
     Raises:
-        - `KeyError`: If the value doesn't exist gracefully ignore it.
+        - `KeyError`: If the value doesn't exist gracefully ignore it. 
     """
 
     try:
@@ -40,6 +40,28 @@ def delete_value(data: dict[Any], key: str) -> None:
     except KeyError as e:
         logger.debug(f"Key {key} not found on object during serilization")
         pass
+
+
+def delete_ignored(data: dict[Any]) -> None:
+    """Delete ignored keys from the dictionary.
+
+    Args:
+        - `data` (dict[Any]): The dictionary from which the ignored keys will be 
+            deleted.
+
+    Raises:
+        - `KeyError`: If the value doesn't exist gracefully ignore it.
+
+    Returns:
+        `None`: Void
+    """
+
+    try:
+        del data["stream"]
+    except KeyError as e:
+        pass
+    for key in IGNORE_KEYS:
+        delete_value(data, key)
 
 
 def serializer(obj: Any) -> Union[str, dict, None]:
@@ -165,28 +187,6 @@ def bind_json(data: dict[Any], obj: Request) -> None:
     except KeyError as e:
         data["json"] = None
         pass
-
-
-def delete_ignored(data: dict[Any]) -> None:
-    """Delete ignored keys from the dictionary.
-
-    Args:
-        - `data` (dict[Any]): The dictionary from which the ignored keys will be 
-        deleted.
-
-    Raises:
-        - `KeyError`: If the value doesn't exist gracefully ignore it.
-
-    Returns:
-        `None`: Void
-    """
-
-    try:
-        del data["stream"]
-    except KeyError as e:
-        pass
-    for key in IGNORE_KEYS:
-        delete_value(data, key)
 
 
 def sort_response(data: dict[Any]) -> None:
