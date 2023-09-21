@@ -13,10 +13,10 @@ def check_dir(path: str) -> bool:
     """Check if the specified project directory exists.
 
     Args:
-        - `path` (str): The path to the directory to check.
+        - ``path`` (str): The path to the directory to check.
 
     Returns:
-        `bool`: True if the directory exists, False otherwise.
+        ``bool``: True if the directory exists, False otherwise.
     """
 
     if not os.path.exists(path):
@@ -30,10 +30,10 @@ def python_files(path: str) -> List[str]:
     """Get all Python files in a project directory recursively.
 
     Args:
-        - `path` (str): The path to the project directory.
+        - ``path`` (str): The path to the project directory.
 
     Returns:
-        `List[str]`: List of paths to Python files.
+        ``List[str]``: List of paths to Python files.
     """
     # Use os.path.join to construct file path
     pattern = os.path.join(path, "**", "*.py")
@@ -49,11 +49,11 @@ def import_class_from_file(python_file: str, class_name: str) -> Any:
     """Import a Python class from a file.
 
     Args:
-        - `python_file` (str): The path to the Python file.
-        - `class_name` (str): The name of the class to import.
+        - ``python_file`` (str): The path to the Python file.
+        - ``class_name`` (str): The name of the class to import.
 
     Returns:
-        `Any`: The imported class object.
+        ``Any``: The imported class object.
     """
 
     spec = importlib.util.spec_from_file_location("module", python_file)
@@ -66,11 +66,11 @@ def import_classes(func: Callable, import_type: str) -> List[str]:
     """Import classes from Python files in the project directory.
 
     Args:
-        - `func` (Callable): The import function (`import_model` or `import_route`).
-        - `import_type` (str): The type of import (`"model"` or `"route"`).
+        - ``func`` (``Callable``): The import function (`import_model` or `import_route`).
+        - ``import_type`` (str): The type of import (`"model"` or `"route"`).
 
     Returns:
-        `List[str]`: List of imported class names.
+        ``List[str]``: List of imported class names.
     """
 
     app_dir = Config.APP_DIR
@@ -92,10 +92,10 @@ def log_starting(import_type: str) -> None:
     """Log the start of the import process.
 
     Args:
-        - `import_type` (str): The type of import ("model" or "route").
+        - ``import_type`` (str): The type of import ("model" or "route").
 
     Returns:
-        `None`
+        ``None``: Void.
     """
 
     if import_type == "model":
@@ -108,11 +108,11 @@ def log_completed(import_type: str, classes: List[str]) -> None:
     """Log the completion of the import process.
 
     Args:
-        - `import_type` (str): The type of import ("model" or "route").
-        - `classes` (List[str]): List of imported class names.
+        - ``import_type`` (str): The type of import ("model" or "route").
+        - ``classes`` (List[str]): List of imported class names.
 
     Returns:
-        `None`
+        ``None``: Void.
     """
 
     if import_type == "model":
@@ -128,16 +128,16 @@ def import_model(node: ast.AST, python_file: str, models: List[str]) -> None:
     'Model' base class.
 
     Args:
-        - `node` (ast.AST): The AST node representing a class definition.
-        - `python_file` (str): The path to the Python file.
-        - `models` (List[str]): List of imported model class names.
+        - ``node`` (``AST``): The AST node representing a class definition.
+        - ``python_file`` (str): The path to the Python file.
+        - ``models`` (List[str]): List of imported model class names.
 
     Raises:
-        - `ImportError`: If the 'Database' package is missing, models won't be 
+        - ``ImportError``: If the 'Database' package is missing, models won't be 
           registered.
 
     Returns:
-        `None`
+        ``None``: Void.
     """
 
     if isinstance(node, ast.ClassDef):
@@ -161,16 +161,16 @@ def import_route(node: ast.AST, python_file: str, routes: List[str]) -> None:
     """Register routes from Python files if they inherit from the 'Route' base class.
 
     Args:
-        - `node` (ast.AST): The AST node representing a class definition.
-        - `python_file` (str): The path to the Python file.
-        - `routes` (List[str]): List of registered route class names.
+        - ``node`` (``AST``): The AST node representing a class definition.
+        - ``python_file`` (str): The path to the Python file.
+        - ``routes`` (List[str]): List of registered route class names.
 
     Raises:
-        - `ImportError`: If the 'Server' package is missing, routes won't be 
+        - ``ImportError``: If the 'Server' package is missing, routes won't be 
           registered.
 
     Returns:
-        `None`
+        ``None``: Void.
     """
 
     if isinstance(node, ast.ClassDef):

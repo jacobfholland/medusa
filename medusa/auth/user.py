@@ -10,14 +10,14 @@ class User(Model):
     user data in the database.
 
     Methods:
-        - `routes`: Define custom User routes.
+        - ``routes``: Define custom User routes.
     """
 
     def __init__(self) -> None:
         """Initialize a new `User` instance.
 
         Returns:
-            `None`
+            ``None``: Void.
         """
         super().__init__()
 
@@ -26,10 +26,11 @@ class User(Model):
         """Defines custom `User` routes.
 
         Args:
-            - `cls` (type): The class associated with the routes. Must always be `cls`.
+            - ``cls``: (type): The class associated with the routes. Must always be 
+              ``cls``.
 
         Returns:
-            `super()`: Parent `routes()` method.
+            ``super``: Parent `routes()` method.
         """
 
         @route(cls, "/login", methods=["GET"])

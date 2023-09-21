@@ -24,13 +24,13 @@ class Model(Route, Base):
     models.
 
     Attributes:
-        - `id` (Column): The primary key for the model.
-        - `uuid` (Column): The UUID field for the model.
-        - `created_at` (Column): The timestamp of creation.
-        - `updated_at` (Column): The timestamp of the last update.
+        - ``id`` (Column): The primary key for the model.
+        - ``uuid`` (Column): The UUID field for the model.
+        - ``created_at`` (Column): The timestamp of creation.
+        - ``updated_at`` (Column): The timestamp of the last update.
 
     Notes:
-        - All method overrides should return `super()`
+        - All method overrides should return `super`
         - Subclasses of `Model` should override the `create()` method to define 
           specific create behavior.
         - Subclasses of `Model` should override the `get()` method to define 
@@ -63,7 +63,7 @@ class Model(Route, Base):
         """Initialize a new `Model` instance.
 
         Returns:
-            `None`: Void
+            ``None``: Void.
         """
 
         super().__init__()
@@ -75,7 +75,7 @@ class Model(Route, Base):
         Table name is derived from the class name using snake_case.
 
         Returns:
-            `str`: The table name for the model.
+            ``str``: The table name for the model.
         """
 
         return snake_case(cls.__name__)
@@ -85,7 +85,7 @@ class Model(Route, Base):
         """Sets SQLAlchemy to extend an existing table instead of recreating it.
 
         Returns:
-            `dict`: Arguments to extend existing tables (value Boolean).
+            ``dict``: Arguments to extend existing tables (value Boolean).
         """
 
         return {'extend_existing': True}
@@ -98,10 +98,11 @@ class Model(Route, Base):
         instances.
 
         Args:
-            - `cls` (type): The class associated with the routes. Must always be `cls`.
+            - ``cls`` (type): The class associated with the routes. Must always be 
+              ``cls``.
 
         Returns:
-            `super()`: Parent `routes()` method
+            ``super``: Parent ``routes()`` method
         """
 
         try:
@@ -112,10 +113,10 @@ class Model(Route, Base):
                     """Handler function for the create endpoint.
 
                     Args:
-                        - `request` (Request): The HTTP request object.
+                        - ``request`` (Request): The HTTP request object.
 
                     Returns:
-                        `Response`: The HTTP response object.
+                        ``Response``: The HTTP response object.
                     """
 
                     return "<html>OK<html>"
@@ -125,10 +126,10 @@ class Model(Route, Base):
                     """Handler function for the get endpoint.
 
                     Args:
-                        - `request` (Request): The HTTP request object.
+                        - ``request`` (Request): The HTTP request object.
 
                     Returns:
-                        `Response`: The HTTP response object.
+                        ``Response``: The HTTP response object.
                     """
 
                     return "<html>MODEL GET<html>"
@@ -138,10 +139,10 @@ class Model(Route, Base):
                     """Handler function for the update endpoint.
 
                     Args:
-                        - `request` (Request): The HTTP request object.
+                        - ``request`` (Request): The HTTP request object.
 
                     Returns:
-                        `Response`: The HTTP response object.
+                        ``Response``: The HTTP response object.
                     """
 
                     return "<html>OK<html>"
@@ -151,10 +152,10 @@ class Model(Route, Base):
                     """Handler function for the delete endpoint.
 
                     Args:
-                        - `request` (Request): The HTTP request object.
+                        - ``request`` (Request): The HTTP request object.
 
                     Returns:
-                        `Response`: The HTTP response object.
+                        ``Response``: The HTTP response object.
                     """
 
                     return "<html>OK<html>"
@@ -171,10 +172,10 @@ class Model(Route, Base):
         server is enabled.
 
         Raises:
-            - `Exception`: If table creation fails.
+            - ``Exception``: If table creation fails.
 
         Returns:
-            `None`
+            ``None``: Void.
         """
 
         try:

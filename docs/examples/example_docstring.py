@@ -34,7 +34,7 @@ class ExampleDocstring(Model):
         - `attr6` (str, property): Combines `attr2` and `attr3` as a computed value.
 
     Methods:
-        - `example_method`: Example class method.
+        - ``example_method``: Example class method.
     """
 
     attr1 = True
@@ -63,7 +63,7 @@ class ExampleDocstring(Model):
 
         Raises:
             - `KeyError`: Handles failed concatenation.
-            - `Exception`: Catch-all for unexpected exceptions.
+            - ``Exception``: Catch-all for unexpected exceptions.
 
         Returns:
             - `str`: Concatenation of `attr2` and `attr3`.
@@ -93,7 +93,7 @@ class ExampleDocstring(Model):
 
         Raises:
             - `KeyError`: Handles failed dictionary key access.
-            - `Exception`: Catch-all for unexpected exceptions.
+            - ``Exception``: Catch-all for unexpected exceptions.
 
         Environment Variables (custom):
             - `ENV_VAR1`: Set in the `.env` file.

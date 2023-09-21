@@ -9,9 +9,9 @@ class Route(Printable):
     specific endpoints.
 
     Methods:
-        - `__url_prefix__()`: Generate the URL prefix for the route based on the 
+        - ``__url_prefix__``: Generate the URL prefix for the route based on the 
           class name.
-        - `routes()`: Define routes for the `Route` subclass.
+        - ``routes``: Define routes for the `Route` subclass.
 
     Notes:
         - Subclasses of `Route` should override the `__url_prefix__()` method to 
@@ -28,10 +28,11 @@ class Route(Printable):
         specific URL prefix
 
         Args:
-            - `cls` (type): The class associated with the routes. Must always be `cls`.
+            - ``cls`` (type): The class associated with the routes. Must always be 
+              ``cls``.
 
         Returns:
-            `str`: The generated URL prefix for the route.
+            ``str``: The generated URL prefix for the route.
         """
 
         return f"/{snake_case(cls.__name__)}"
@@ -41,10 +42,11 @@ class Route(Printable):
         """Define routes for the `Route``.
 
         Args:
-            - `cls` (type): The class associated with the routes. Must always be `cls`.
+            - ``cls`` (type): The class associated with the routes. Must always be 
+              ``cls``.
 
         Returns:
-            `None`
+            ``None``: Void.
         """
 
         pass

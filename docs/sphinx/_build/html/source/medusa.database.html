@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Server" href="medusa.server.html" />
-    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+    <link rel="prev" title="Environment Variables" href="envs.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,6 +45,7 @@
               <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="envs.html">Environment Variables</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
 <ul class="current">
@@ -99,8 +100,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.routes.html">Routes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.html">Medusa</a></li>
 </ul>
 
         </div>
@@ -169,17 +173,17 @@ instance that has no instance attributes and cannot be given any.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.database.config.</span></span><span class="sig-name descname"><span class="pre">DatabaseConfig</span></span><a class="headerlink" href="#medusa.database.config.DatabaseConfig" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="medusa.html#medusa.config.Config" title="medusa.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
 <p>Configuration class for the database settings.</p>
-<p>This class inherits from the <cite>Config</cite> class and defines database-related
+<p>This class inherits from the <code class="docutils literal notranslate"><span class="pre">Config</span></code> class and defines database-related
 configuration parameters using environment variables.</p>
 <dl class="simple">
 <dt>Attributes:</dt><dd><ul class="simple">
-<li><p><cite>DATABASE_NAME</cite> (str): The name of the database.</p></li>
-<li><p><cite>DATABASE_USER</cite> (str): The username for database authentication.</p></li>
-<li><p><cite>DATABASE_PASSWORD</cite> (str): The password for database authentication.</p></li>
-<li><p><cite>DATABASE_HOSTNAME</cite> (str): The host where the database server is located.</p></li>
-<li><p><cite>DATABASE_PORT</cite> (str): The port on which the database server is listening.</p></li>
-<li><p><cite>DATABASE_TYPE</cite> (str): The type or dialect of the database.</p></li>
-<li><p><cite>DATABASE_TYPE</cite> (str): The path to the database file (if applicable).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_NAME</span></code> (str): The name of the database.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_USER</span></code> (str): The username for database authentication.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_PASSWORD</span></code> (str): The password for database authentication.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_HOSTNAME</span></code> (str): The host where the database server is located.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_PORT</span></code> (str): The port on which the database server is listening.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_TYPE</span></code> (str): The type or dialect of the database.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_TYPE</span></code> (str): The path to the database file (if applicable).</p></li>
 </ul>
 </dd>
 <dt>Notes:</dt><dd><ul class="simple">
@@ -236,10 +240,10 @@ configuration parameters using environment variables.</p>
 and SQLAlchemy base for working with database models.</p>
 <dl class="simple">
 <dt>Attributes:</dt><dd><ul class="simple">
-<li><p><cite>uri</cite> (str): The database URI used for connection.</p></li>
-<li><p><cite>engine</cite> (Engine): The SQLAlchemy engine for database communication.</p></li>
-<li><p><cite>db</cite> (Session): The database session for interacting with the database.</p></li>
-<li><p><cite>base</cite> (Base): The SQLAlchemy base class for defining database models.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code> (str): The database URI used for connection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">engine</span></code> (<code class="docutils literal notranslate"><span class="pre">Engine</span></code>): The SQLAlchemy engine for database communication.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">db</span></code> (<code class="docutils literal notranslate"><span class="pre">Session</span></code>): The database session for interacting with the database.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base</span></code> (<code class="docutils literal notranslate"><span class="pre">Base</span></code>): The SQLAlchemy base class for defining database models.</p></li>
 </ul>
 </dd>
 </dl>
@@ -250,14 +254,14 @@ and SQLAlchemy base for working with database models.</p>
 appropriate connection URI.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>db_type</cite> (str): A string representing the database type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">db_type</span></code> (str): A string representing the database type.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>SystemExit</cite>: If the database type is unrecognized.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SystemExit</span></code>: If the database type is unrecognized.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>str</cite>: Connection URI for the specified database type.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: Connection URI for the specified database type.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -268,10 +272,10 @@ appropriate connection URI.</p>
 <dd><p>Generates the SQLAlchemy declarative base for defining models.</p>
 <dl class="simple">
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>SystemExit</cite>: If an exception occurs while creating the declarative base.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SystemExit</span></code>: If an exception occurs while creating the declarative base.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>DeclarativeMeta</cite>: The SQLAlchemy declarative base.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">DeclarativeMeta</span></code>: The SQLAlchemy declarative base.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -282,11 +286,11 @@ appropriate connection URI.</p>
 <dd><p>Creates and returns a scoped session for transaction management.</p>
 <dl class="simple">
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>SystemExit</cite>: If an exception occurs during the creation of the scoped 
+<li><p><code class="docutils literal notranslate"><span class="pre">SystemExit</span></code>: If an exception occurs during the creation of the scoped 
 session.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>scoped_session</cite>: A SQLAlchemy scoped_session object.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">scoped_session</span></code>: A SQLAlchemy scoped_session object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -297,11 +301,11 @@ session.</p></li>
 <dd><p>Creates an SQLAlchemy Engine for query execution.</p>
 <dl class="simple">
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>ArgumentError</cite>: If the URI for database connection is malformed.</p></li>
-<li><p><cite>SystemExit</cite>: For generic exceptions that cause engine creation to fail.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ArgumentError</span></code>: If the URI for database connection is malformed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SystemExit</span></code>: For generic exceptions that cause engine creation to fail.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>Engine</cite>: An SQLAlchemy Engine object.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">Engine</span></code>: An SQLAlchemy Engine object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -317,10 +321,10 @@ method based on the database type.</p>
 </ul>
 </dd>
 <dt>Environment Variables:</dt><dd><ul class="simple">
-<li><p><cite>DATABASE_TYPE</cite> (str): The type of the database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_TYPE</span></code> (str): The type of the database</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>str</cite>: The database connection URI.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: The database connection URI.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -330,7 +334,7 @@ method based on the database type.</p>
 <span class="sig-name descname"><span class="pre">memory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.database.database.Database.memory" title="Link to this definition"></a></dt>
 <dd><p>Create an SQLite in-memory database URI. Useful for unit testing.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p><cite>str</cite>: The SQLite in-memory database URI.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: The SQLite in-memory database URI.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -345,12 +349,13 @@ method based on the database type.</p>
 </ul>
 </dd>
 <dt>Environment Variables:</dt><dd><ul class="simple">
-<li><p><cite>DATABASE_PATH</cite> (str, optional): Optional storage path for the database</p></li>
-<li><p><cite>DATABASE_TYPE</cite> (str): The type of the database</p></li>
-<li><p><cite>DATABASE_NAME</cite> (str): The name of the database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_PATH</span></code> (str, optional): Optional storage path for the 
+database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_TYPE</span></code> (str): The type of the database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_NAME</span></code> (str): The name of the database</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>str</cite>: The SQLite database connection URI.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: The SQLite database connection URI.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -365,15 +370,15 @@ method based on the database type.</p>
 </ul>
 </dd>
 <dt>Environment Variables:</dt><dd><ul class="simple">
-<li><p><cite>DATABASE_USER</cite> (str, optional): The database user credential</p></li>
-<li><p><cite>DATABASE_PASSWORD</cite> (str, optional): The database password credential</p></li>
-<li><p><cite>DATABASE_HOSTNAME</cite> (str): The database hostname</p></li>
-<li><p><cite>DATABASE_PORT</cite> (int): The database connection port</p></li>
-<li><p><cite>DATABASE_TYPE</cite> (str): The type of the database</p></li>
-<li><p><cite>DATABASE_NAME</cite> (str): The name of the database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_USER</span></code> (str, optional): The database user credential</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_PASSWORD</span></code> (str, optional): The database password credential</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_HOSTNAME</span></code> (str): The database hostname</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_PORT</span></code> (int): The database connection port</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_TYPE</span></code> (str): The type of the database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_NAME</span></code> (str): The name of the database</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>str</cite>: The standard database connection URI.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: The standard database connection URI.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -389,14 +394,14 @@ method based on the database type.</p>
 models.</p>
 <dl class="simple">
 <dt>Attributes:</dt><dd><ul class="simple">
-<li><p><cite>id</cite> (Column): The primary key for the model.</p></li>
-<li><p><cite>uuid</cite> (Column): The UUID field for the model.</p></li>
-<li><p><cite>created_at</cite> (Column): The timestamp of creation.</p></li>
-<li><p><cite>updated_at</cite> (Column): The timestamp of the last update.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> (Column): The primary key for the model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uuid</span></code> (Column): The UUID field for the model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">created_at</span></code> (Column): The timestamp of creation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updated_at</span></code> (Column): The timestamp of the last update.</p></li>
 </ul>
 </dd>
 <dt>Notes:</dt><dd><ul class="simple">
-<li><p>All method overrides should return <cite>super()</cite></p></li>
+<li><p>All method overrides should return <cite>super</cite></p></li>
 <li><p>Subclasses of <cite>Model</cite> should override the <cite>create()</cite> method to define 
 specific create behavior.</p></li>
 <li><p>Subclasses of <cite>Model</cite> should override the <cite>get()</cite> method to define 
@@ -426,10 +431,10 @@ specific delete behavior.</p></li>
 server is enabled.</p>
 <dl class="simple">
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>Exception</cite>: If table creation fails.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Exception</span></code>: If table creation fails.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -442,10 +447,11 @@ server is enabled.</p>
 instances.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>cls</cite> (type): The class associated with the routes. Must always be <cite>cls</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cls</span></code> (type): The class associated with the routes. Must always be 
+<code class="docutils literal notranslate"><span class="pre">cls</span></code>.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>super()</cite>: Parent <cite>routes()</cite> method</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">super</span></code>: Parent <code class="docutils literal notranslate"><span class="pre">routes()</span></code> method</p>
 </dd>
 </dl>
 </dd></dl>
@@ -475,7 +481,7 @@ instances.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="envs.html" class="btn btn-neutral float-left" title="Environment Variables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="medusa.server.html" class="btn btn-neutral float-right" title="Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

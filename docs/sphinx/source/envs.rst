@@ -6,49 +6,49 @@ Medusa uses environment variables for configuration and customization. Below is 
 
 Application Configuration
 -------------------------
-- **APP_NAME** (str): The name of your application.
-- **APP_ENV** (str): The environment in which your application is running.
+- ``APP_NAME`` (str): The name of your application.
+- ``APP_ENV`` (str): The environment in which your application is running.
   
   Options:
-  - `dev`
-  - `production`
+    - ``dev``
+    - ``production``
 
-- **APP_DATABASE** (bool): Set to `True` to enable the Database component of Medusa. Set to `False` to disable it.
-- **APP_SERVER** (bool): Set to `True` to enable the Server component of Medusa. Set to `False` to disable it.
+- ``APP_DATABASE`` (bool): Set to `True` to enable the Database component of Medusa. Set to `False` to disable it.
+- ``APP_SERVER`` (bool): Set to `True` to enable the Server component of Medusa. Set to `False` to disable it.
 
 Database Configuration
 ----------------------
-These environment variables are used if **APP_DATABASE** is `True`.
+These environment variables are used if ``APP_DATABASE`` is `True`.
 
-- **DATABASE_HOST** (str): The host or IP address of your database server. Default is `localhost`.
-- **DATABASE_NAME** (str): The name of the database Medusa should connect to. Default is `medusa`.
-- **DATABASE_USER** (str): The username used to authenticate with the database.
-- **DATABASE_PASSWORD** (str): The password for the database user. Ensure to keep this secure.
-- **DATABASE_PORT** (int): The port number used for database connections. Default is `5432` for PostgreSQL.
-- **DATABASE_TYPE** (str, required): The type of database to use.
+- ``DATABASE_HOST`` (str): The host or IP address of your database server. Default is `localhost`.
+- ``DATABASE_NAME`` (str): The name of the database Medusa should connect to. Default is `medusa`.
+- ``DATABASE_USER`` (str): The username used to authenticate with the database.
+- ``DATABASE_PASSWORD`` (str): The password for the database user. Ensure to keep this secure.
+- ``DATABASE_PORT`` (int): The port number used for database connections. Default is `5432` for PostgreSQL.
+- ``DATABASE_TYPE`` (str, required): The type of database to use.
   
   Options:
-  - `sqlite`
-  - `mysql`
-  - `postgresql`
-  - `oracle`
-  - `mssql+pymssql`
-  - `firebird`
-  - `memory`
+    - ``sqlite``
+    - ``mysql``
+    - ``postgresql``
+    - ``oracle``
+    - ``mssql+pymssql``
+    - ``firebird``
+    - ``memory``
   
-- **DATABASE_PATH** (str): For SQLite databases, specify the path to the database file. Default is `storage`.
+- ``DATABASE_PATH`` (str): For SQLite databases, specify the path to the database file. Default is `storage`.
 
 Logging Configuration
 ---------------------
-- **LOG_LEVEL** (str): The log level for internal logging.
+- ``LOG_LEVEL`` (str): The log level for internal logging.
   
   Options:
-  - `debug`
-  - `info`
-  - `warning`
-  - `error`
+    - ``debug``
+    - ``info``
+    - ``warning``
+    - ``error``
   
-- **LOG_PATH**: The directory where log files should be stored.
+- ``LOG_PATH``: The directory where log files should be stored.
 
 Example
 -------

@@ -18,7 +18,9 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Auth" href="medusa.auth.html" />
+    <link rel="prev" title="Controllers" href="medusa.controllers.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,10 +48,20 @@
 <li class="toctree-l1"><a class="reference internal" href="envs.html">Environment Variables</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="medusa.database.html">Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.controllers.html">Controllers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-medusa.routes.index">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.routes.index.IndexRoute"><code class="docutils literal notranslate"><span class="pre">IndexRoute</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.routes.index.IndexRoute.routes"><code class="docutils literal notranslate"><span class="pre">IndexRoute.routes()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.html">Medusa</a></li>
@@ -88,17 +100,18 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.routes.index.</span></span><span class="sig-name descname"><span class="pre">IndexRoute</span></span><a class="headerlink" href="#medusa.routes.index.IndexRoute" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="medusa.server.html#medusa.server.route.Route" title="medusa.server.route.Route"><code class="xref py py-class docutils literal notranslate"><span class="pre">Route</span></code></a></p>
 <p>A route class representing the index endpoint of the application.</p>
-<p>This class inherits from the <cite>Route</cite> base class and defines the index endpoint.</p>
+<p>This class inherits from the <code class="docutils literal notranslate"><span class="pre">Route</span></code> base class and defines the index endpoint.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="medusa.routes.index.IndexRoute.routes">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">routes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#medusa.routes.index.IndexRoute.routes" title="Link to this definition"></a></dt>
 <dd><p>Define routes for handling HTTP requests at the index endpoint.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>cls</cite> (type): The class associated with the routes. Must always be <cite>cls</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cls</span></code> (type): The class associated with the routes. Must always be 
+<code class="docutils literal notranslate"><span class="pre">cls</span></code>.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>super()</cite>: Parent <cite>routes()</cite> method</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">super</span></code>: Parent <cite>routes()</cite> method</p>
 </dd>
 </dl>
 </dd></dl>
@@ -111,7 +124,10 @@
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="medusa.controllers.html" class="btn btn-neutral float-left" title="Controllers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="medusa.auth.html" class="btn btn-neutral float-right" title="Auth" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

@@ -10,14 +10,14 @@ from medusa.server.route import Route
 class IndexRoute(Route):
     """A route class representing the index endpoint of the application.
 
-    This class inherits from the `Route` base class and defines the index endpoint.
+    This class inherits from the ``Route`` base class and defines the index endpoint.
     """
 
     def __init__(self) -> None:
-        """Initialize a new IndexRoute instance.
+        """Initialize a new ``IndexRoute`` instance.
 
         Returns:
-            `None`
+            ``None``: Void.
         """
 
         super().__init__()
@@ -27,7 +27,7 @@ class IndexRoute(Route):
         """Define the URL prefix for the index route.
 
         Returns:
-            `str`: The URL prefix for the index route (empty string).
+            ``str``: The URL prefix for the index route (empty string).
         """
 
         return ""
@@ -37,10 +37,11 @@ class IndexRoute(Route):
         """Define routes for handling HTTP requests at the index endpoint.
 
         Args:
-            - `cls` (type): The class associated with the routes. Must always be `cls`.
+            - ``cls`` (type): The class associated with the routes. Must always be 
+              ``cls``.
 
         Returns:
-            `super()`: Parent `routes()` method
+            ``super``: Parent `routes()` method
         """
 
         @route(cls, "/", methods=["GET"])
@@ -48,10 +49,10 @@ class IndexRoute(Route):
             """Handler function for the index endpoint.
 
             Args:
-                - `request` (Request): The HTTP request object.
+                - ``request`` (Request): The HTTP request object.
 
             Returns:
-                `Response`: The HTTP response object.
+                ``Response``: The HTTP response object.
             """
 
             return IndexController.index(request)

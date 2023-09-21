@@ -22,15 +22,15 @@ def merge(*args: Any, **kwargs: Any) -> dict:
     attribute on the returned dictionary.
 
     Args:
-        - `*args` (Any): Arbitrary positional arguments.
-        - `**kwargs` (Any): Arbitrary keyword arguments.
+        - ``*args`` (Any): Arbitrary positional arguments.
+        - ``**kwargs`` (Any): Arbitrary keyword arguments.
 
     Raises:
-        - `Exception`: Catch-all exception if anything unexpect happens while 
+        - ``Exception``: Catch-all exception if anything unexpect happens while 
           merging values.
 
     Returns:
-        `dict`: The new dictionary merging all inputs.
+        ``dict``: The new dictionary merging all inputs.
     """
 
     try:
@@ -51,16 +51,16 @@ def evaluate_arg(kwargs: dict, k: str, v: Any) -> None:
     to `kwargs`. Handles iterable and model object cases.
 
     Args:
-        - `kwargs` (dict): Dictionary to which to append the value.
-        - `k` (str): The key for the for the argument.
-        - `v` (Any): The value to evaluate and add.
+        - ``kwargs`` (dict): Dictionary to which to append the value.
+        - ``k`` (str): The key for the for the argument.
+        - ``v`` (Any): The value to evaluate and add.
 
     Raises:
-        - Exception (Exception): Catch-all exception if anything unexpect happens 
+        - ``Exception``: Catch-all exception if anything unexpect happens 
           while evaluating the arg. 
 
     Returns:
-        `None`: Void.
+        ``None``: Void.
     """
 
     try:
@@ -79,17 +79,17 @@ def handle_iterable(kwargs: dict, k: str, arg: Union[list, tuple, set, dict]) ->
     """Handles iterable arguments for evalution.
 
     Args:
-        - `kwargs` (dict): Dictionary to which to append the value.
-        - `k` (str): The key in the kwargs dictionary.
-        - `arg` (Union[list, tuple, set, dict]): The iterable argument.
+        - ``kwargs`` (dict): Dictionary to which to append the value.
+        - ``k`` (str): The key in the kwargs dictionary.
+        - ``arg`` (Union[list, tuple, set, dict]): The iterable argument.
 
     Raises:
-        - `Exception`: Catch-all exception if anything unexpect happens while 
+        - ``Exception``: Catch-all exception if anything unexpect happens while 
           handling the iterable arg.
 
 
     Returns:
-        `None`: Void.
+        ``None``: Void.
     """
 
     try:
@@ -110,15 +110,15 @@ def handle_obj(v: Any, kwargs: dict) -> None:
     the `kwargs` dictionary if the key doesn't start with an underscore.
 
     Args:
-        - `v` (Any): The object whose variables to handle.
-        - `kwargs` (dict): Dictionary to which to append the values.
+        - ``v`` (Any): The object whose variables to handle.
+        - ``kwargs`` (dict): Dictionary to which to append the values.
 
     Raises:
-        - `Exception`: Catch-all exception if anything unexpect happens while 
+        - ``Exception``: Catch-all exception if anything unexpect happens while 
           handling the object arg.
 
     Returns:
-        `None`: Void.
+        ``None``: Void.
     """
 
     try:
@@ -135,16 +135,16 @@ def bind_value(kwargs: dict, k: str, v: Any) -> None:
     """Binds a value to a key in the `kwargs` dictionary.
 
     Args:
-        - `kwargs` (dict): Dictionary to which to append the values.
-        - `k` (str): The key for appending to the `kwargs` dictionary.
-        - `v` (Any): The value to be bound.
+        - ``kwargs`` (dict): Dictionary to which to append the values.
+        - ``k`` (str): The key for appending to the `kwargs` dictionary.
+        - ``v`` (Any): The value to be bound.
 
     Raises:
-        - `Exception`: Catch-all exception if anything unexpect happens while 
+        - ``Exception``: Catch-all exception if anything unexpect happens while 
           handling the iterable arg.
 
     Returns:
-        `None`: Void.
+        ``None``: Void.
     """
 
     try:
@@ -173,18 +173,18 @@ def merge_values(func: Callable):
     attribute on the returned dictionary.
 
     Args:
-        - `func` (Callable): The function being decorated
+        - ``func`` (``Callable``): The function being decorated
 
     Func Args:
-        - `*args` (Any): Arbitrary positional arguments.
-        - `**kwargs` (Any): Arbitrary keyword arguments.
+        - ``*args`` (Any): Arbitrary positional arguments.
+        - ``**kwargs`` (Any): Arbitrary keyword arguments.
 
     Raises:
-        - `Exception`: Catch-all exception if anything unexpect happens while 
+        - ``Exception``: Catch-all exception if anything unexpect happens while 
           merging values.
 
     Returns:
-        `None`: Void.
+        ``None``: Void.
     """
 
     try:

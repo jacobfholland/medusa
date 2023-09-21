@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Utils" href="medusa.utils.html" />
-    <link rel="prev" title="Server" href="medusa.server.html" /> 
+    <link rel="prev" title="Routes" href="medusa.routes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,11 +45,14 @@
               <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="envs.html">Environment Variables</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="medusa.database.html">Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.routes.html">Routes</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Auth</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-medusa.auth.user">Classes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.auth.user.User"><code class="docutils literal notranslate"><span class="pre">User</span></code></a><ul>
@@ -65,6 +68,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.html">Medusa</a></li>
 </ul>
 
         </div>
@@ -105,7 +109,7 @@ and functionality for database models. It is used to define and interact with
 user data in the database.</p>
 <dl class="simple">
 <dt>Methods:</dt><dd><ul class="simple">
-<li><p><cite>routes</cite>: Define custom User routes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">routes</span></code>: Define custom User routes.</p></li>
 </ul>
 </dd>
 </dl>
@@ -127,10 +131,11 @@ user data in the database.</p>
 <dd><p>Defines custom <cite>User</cite> routes.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>cls</cite> (type): The class associated with the routes. Must always be <cite>cls</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cls</span></code>: (type): The class associated with the routes. Must always be 
+<code class="docutils literal notranslate"><span class="pre">cls</span></code>.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>super()</cite>: Parent <cite>routes()</cite> method.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">super</span></code>: Parent <cite>routes()</cite> method.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -156,7 +161,7 @@ user data in the database.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="medusa.server.html" class="btn btn-neutral float-left" title="Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="medusa.routes.html" class="btn btn-neutral float-left" title="Routes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="medusa.utils.html" class="btn btn-neutral float-right" title="Utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

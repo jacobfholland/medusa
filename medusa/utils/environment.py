@@ -9,16 +9,16 @@ def require_envs(config: object, envs: List[str]) -> Callable:
     """A decorator that checks if the specified environment variables are present.
 
     Args:
-        - `config` (object): The configuration object that should contain the 
+        - ``config`` (object): The configuration object that should contain the 
           environment variables.
-        - `envs` (List[str]): A list of environment variable names to check for.
+        - ``envs`` (List[str]): A list of environment variable names to check for.
 
     Func Args:
-        - `args` (dict): Source function positional arguments.
-        - `kwargs` (dict): Source function key word arguments.
+        - ``**args`` (dict): Source function positional arguments.
+        - ``**kwargs`` (dict): Source function key word arguments.
 
     Returns:
-        `Callable`: The decorated function.
+        ``Callable``: The decorated function.
     """
 
     def decorator(func: Callable) -> Callable:
@@ -35,16 +35,16 @@ def check_envs(config: object, envs: List[str]) -> bool:
     environment variables are not present, it will exit running the application.
 
     Args:
-        - `config` (object): The configuration object that should contain the 
+        - ``config`` (object): The configuration object that should contain the 
           environment variables.
-        - `envs` (List[str]): A list of environment variable names to check for.
+        - ``envs`` (List[str]): A list of environment variable names to check for.
 
     Func Args:
-        - `args` (dict): Source function positional arguments.
-        - `kwargs` (dict): Source function key word arguments.
+        - ``**args`` (dict): Source function positional arguments.
+        - ``**kwargs`` (dict): Source function key word arguments.
 
     Returns:
-        `bool`: If the environment variable is present.
+        ``bool``: If the environment variable is present.
     """
 
     false_envs = [

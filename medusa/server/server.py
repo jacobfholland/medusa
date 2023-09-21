@@ -18,9 +18,9 @@ class Server:
     This class is responsible for handling HTTP requests and starting the server.
 
     Methods:
-        - `application(environ, start_response)`: Main application method for handling
+        - ``application``: Main application method for handling
           HTTP requests.
-        - `run()`: Start the server and listen for incoming requests.
+        - ``run``: Start the server and listen for incoming requests.
     """
 
     def application(self, environ: dict, start_response: Callable) -> Callable:
@@ -28,11 +28,11 @@ class Server:
         Main application method for handling HTTP requests.
 
         Args:
-            - `environ` (dict): The WSGI environment dictionary.
-            - `start_response` (Callable): The callable for starting the response.
+            - ``environ`` (dict): The WSGI environment dictionary.
+            - ``start_response`` (```Callable```): The callable for starting the response.
 
         Returns:
-            `Callable`: The response callable.
+            ```Callable```: The response callable.
         """
 
         request = Request(environ)
@@ -52,10 +52,10 @@ class Server:
         Start the server and listen for incoming requests.
 
         Raises:
-            - `SystemExit`: If an exception occurs while starting the server.
+            - ``SystemExit``: If an exception occurs while starting the server.
 
         Returns:
-            `None`        
+            ``None``: Void.
         """
 
         try:

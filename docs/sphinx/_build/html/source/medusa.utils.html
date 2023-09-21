@@ -19,6 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Medusa" href="medusa.html" />
     <link rel="prev" title="Auth" href="medusa.auth.html" /> 
 </head>
 
@@ -44,11 +45,14 @@
               <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="envs.html">Environment Variables</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="medusa.database.html">Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.routes.html">Routes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Utils</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-medusa.utils.config">Config</a><ul>
@@ -122,6 +126,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.html">Medusa</a></li>
 </ul>
 
         </div>
@@ -201,17 +206,17 @@ with the server.</p>
 environment variables are not present, it will exit running the application.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>config</cite> (object): The configuration object that should contain the 
+<li><p><code class="docutils literal notranslate"><span class="pre">config</span></code> (object): The configuration object that should contain the 
 environment variables.</p></li>
-<li><p><cite>envs</cite> (List[str]): A list of environment variable names to check for.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">envs</span></code> (List[str]): A list of environment variable names to check for.</p></li>
 </ul>
 </dd>
 <dt>Func Args:</dt><dd><ul class="simple">
-<li><p><cite>args</cite> (dict): Source function positional arguments.</p></li>
-<li><p><cite>kwargs</cite> (dict): Source function key word arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**args</span></code> (dict): Source function positional arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> (dict): Source function key word arguments.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>bool</cite>: If the environment variable is present.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: If the environment variable is present.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -222,17 +227,17 @@ environment variables.</p></li>
 <dd><p>A decorator that checks if the specified environment variables are present.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>config</cite> (object): The configuration object that should contain the 
+<li><p><code class="docutils literal notranslate"><span class="pre">config</span></code> (object): The configuration object that should contain the 
 environment variables.</p></li>
-<li><p><cite>envs</cite> (List[str]): A list of environment variable names to check for.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">envs</span></code> (List[str]): A list of environment variable names to check for.</p></li>
 </ul>
 </dd>
 <dt>Func Args:</dt><dd><ul class="simple">
-<li><p><cite>args</cite> (dict): Source function positional arguments.</p></li>
-<li><p><cite>kwargs</cite> (dict): Source function key word arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**args</span></code> (dict): Source function positional arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> (dict): Source function key word arguments.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>Callable</cite>: The decorated function.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">Callable</span></code>: The decorated function.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -245,7 +250,7 @@ environment variables.</p></li>
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.format.</span></span><span class="sig-name descname"><span class="pre">generate_uuid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.utils.format.generate_uuid" title="Link to this definition"></a></dt>
 <dd><p>Generate a unique identifier using UUID.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p><cite>str</cite>: The generated unique identifier.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: The generated unique identifier.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -256,10 +261,10 @@ environment variables.</p></li>
 <dd><p>Convert a string to snake_case.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>input_str</cite> (str): The input string to be converted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_str</span></code> (str): The input string to be converted.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>str</cite>: The snake_case representation of the input string.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: The snake_case representation of the input string.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -273,10 +278,10 @@ environment variables.</p></li>
 <dd><p>Check if the specified project directory exists.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>path</cite> (str): The path to the directory to check.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code> (str): The path to the directory to check.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>bool</cite>: True if the directory exists, False otherwise.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: True if the directory exists, False otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -287,11 +292,11 @@ environment variables.</p></li>
 <dd><p>Import a Python class from a file.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>python_file</cite> (str): The path to the Python file.</p></li>
-<li><p><cite>class_name</cite> (str): The name of the class to import.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python_file</span></code> (str): The path to the Python file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class_name</span></code> (str): The name of the class to import.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>Any</cite>: The imported class object.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">Any</span></code>: The imported class object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -302,11 +307,11 @@ environment variables.</p></li>
 <dd><p>Import classes from Python files in the project directory.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>func</cite> (Callable): The import function (<cite>import_model</cite> or <cite>import_route</cite>).</p></li>
-<li><p><cite>import_type</cite> (str): The type of import (<cite>“model”</cite> or <cite>“route”</cite>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">func</span></code> (<code class="docutils literal notranslate"><span class="pre">Callable</span></code>): The import function (<cite>import_model</cite> or <cite>import_route</cite>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import_type</span></code> (str): The type of import (<cite>“model”</cite> or <cite>“route”</cite>).</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>List[str]</cite>: List of imported class names.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">List[str]</span></code>: List of imported class names.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -318,17 +323,17 @@ environment variables.</p></li>
 ‘Model’ base class.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>node</cite> (ast.AST): The AST node representing a class definition.</p></li>
-<li><p><cite>python_file</cite> (str): The path to the Python file.</p></li>
-<li><p><cite>models</cite> (List[str]): List of imported model class names.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">node</span></code> (<code class="docutils literal notranslate"><span class="pre">AST</span></code>): The AST node representing a class definition.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python_file</span></code> (str): The path to the Python file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">models</span></code> (List[str]): List of imported model class names.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>ImportError</cite>: If the ‘Database’ package is missing, models won’t be 
+<li><p><code class="docutils literal notranslate"><span class="pre">ImportError</span></code>: If the ‘Database’ package is missing, models won’t be 
 registered.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -339,17 +344,17 @@ registered.</p></li>
 <dd><p>Register routes from Python files if they inherit from the ‘Route’ base class.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>node</cite> (ast.AST): The AST node representing a class definition.</p></li>
-<li><p><cite>python_file</cite> (str): The path to the Python file.</p></li>
-<li><p><cite>routes</cite> (List[str]): List of registered route class names.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">node</span></code> (<code class="docutils literal notranslate"><span class="pre">AST</span></code>): The AST node representing a class definition.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python_file</span></code> (str): The path to the Python file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">routes</span></code> (List[str]): List of registered route class names.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>ImportError</cite>: If the ‘Server’ package is missing, routes won’t be 
+<li><p><code class="docutils literal notranslate"><span class="pre">ImportError</span></code>: If the ‘Server’ package is missing, routes won’t be 
 registered.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -360,11 +365,11 @@ registered.</p></li>
 <dd><p>Log the completion of the import process.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>import_type</cite> (str): The type of import (“model” or “route”).</p></li>
-<li><p><cite>classes</cite> (List[str]): List of imported class names.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import_type</span></code> (str): The type of import (“model” or “route”).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">classes</span></code> (List[str]): List of imported class names.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -375,10 +380,10 @@ registered.</p></li>
 <dd><p>Log the start of the import process.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>import_type</cite> (str): The type of import (“model” or “route”).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import_type</span></code> (str): The type of import (“model” or “route”).</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -389,10 +394,10 @@ registered.</p></li>
 <dd><p>Get all Python files in a project directory recursively.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>path</cite> (str): The path to the project directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code> (str): The path to the project directory.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>List[str]</cite>: List of paths to Python files.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">List[str]</span></code>: List of paths to Python files.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -412,15 +417,15 @@ registered.</p></li>
 <dd><p>Bind arguments to the dictionary.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>data</cite> (dict[Any]): The dictionary to which the arguments will be bound.</p></li>
-<li><p><cite>obj</cite> (<cite>Request</cite>): The Werkzeug Request object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dict[Any]): The dictionary to which the arguments will be bound.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj</span></code> (<code class="docutils literal notranslate"><span class="pre">Request</span></code>): The Werkzeug Request object.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>KeyError</cite>: If the value doesn’t exist gracefully ignore it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: If the value doesn’t exist gracefully ignore it.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite>: Void</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -431,15 +436,15 @@ registered.</p></li>
 <dd><p>Bind form data to the dictionary.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>data</cite> (dict[Any]): The dictionary to which the form data will be bound.</p></li>
-<li><p><cite>obj</cite> (<cite>Request</cite>): The Werkzeug Request object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dict[Any]): The dictionary to which the form data will be bound.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj</span></code> (<code class="docutils literal notranslate"><span class="pre">Request</span></code>): The Werkzeug Request object.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>KeyError</cite>: If the value doesn’t exist gracefully ignore it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: If the value doesn’t exist gracefully ignore it.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite>: Void</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -450,15 +455,15 @@ registered.</p></li>
 <dd><p>Bind JSON data to the dictionary.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>data</cite> (dict[Any]): The dictionary to which the JSON data will be bound.</p></li>
-<li><p><cite>obj</cite> (<cite>Request</cite>): The Werkzeug Request object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dict[Any]): The dictionary to which the JSON data will be bound.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj</span></code> (<code class="docutils literal notranslate"><span class="pre">Request</span></code>): The Werkzeug Request object.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>KeyError</cite>: If the value doesn’t exist gracefully ignore it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: If the value doesn’t exist gracefully ignore it.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite>: Void</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -469,15 +474,15 @@ registered.</p></li>
 <dd><p>Delete ignored keys from the dictionary.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>data</cite> (dict[Any]): The dictionary from which the ignored keys will be 
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dict[Any]): The dictionary from which the ignored keys will be 
 deleted.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>KeyError</cite>: If the value doesn’t exist gracefully ignore it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: If the value doesn’t exist gracefully ignore it.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite>: Void</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -494,13 +499,13 @@ Request object.</p></li>
 </ul>
 </dd>
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>data</cite> (dict[Any]): The dictionary from which the key-value pair will 
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dict[Any]): The dictionary from which the key-value pair will 
 be deleted.</p></li>
-<li><p><cite>key</cite> (str): The key that needs to be deleted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code> (str): The key that needs to be deleted.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>KeyError</cite>: If the value doesn’t exist gracefully ignore it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: If the value doesn’t exist gracefully ignore it.</p></li>
 </ul>
 </dd>
 </dl>
@@ -516,10 +521,10 @@ for serialization. It binds various parts of the request to the dictionary,
 deletes ignored keys, and sorts the keys in the dictionary.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>obj</cite> (<cite>Request</cite>): The Werkzeug Request object to be processed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj</span></code> (<code class="docutils literal notranslate"><span class="pre">Request</span></code>): The Werkzeug Request object to be processed.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>dict</cite>: A dictionary representation of the processed request.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">dict</span></code>: A dictionary representation of the processed request.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -534,15 +539,15 @@ Werkzeug’s Request object into a simplified dictionary. It encodes files
 which can be base64 decoded at a later time.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>obj</cite> (Any): The object that needs to be serialized.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj</span></code> (Any): The object that needs to be serialized.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>TypeError</cite>: If the object type is not serializable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TypeError</span></code>: If the object type is not serializable.</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><ul class="simple">
-<li><p><cite>Union[str, dict, None]</cite>: The serialized object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Union[str,</span> <span class="pre">dict,</span> <span class="pre">None]</span></code>: The serialized object.</p></li>
 </ul>
 </dd>
 </dl>
@@ -554,10 +559,10 @@ which can be base64 decoded at a later time.</p>
 <dd><p>Sort dictionary keys and relocate the ‘files’ key.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>data</cite> (dict[Any]): The dictionary that needs sorting.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dict[Any]): The dictionary that needs sorting.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite>: Void</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -592,17 +597,17 @@ which can be base64 decoded at a later time.</p>
 <dd><p>Binds a value to a key in the <cite>kwargs</cite> dictionary.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>kwargs</cite> (dict): Dictionary to which to append the values.</p></li>
-<li><p><cite>k</cite> (str): The key for appending to the <cite>kwargs</cite> dictionary.</p></li>
-<li><p><cite>v</cite> (Any): The value to be bound.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> (dict): Dictionary to which to append the values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span></code> (str): The key for appending to the <cite>kwargs</cite> dictionary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> (Any): The value to be bound.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>Exception</cite>: Catch-all exception if anything unexpect happens while 
+<li><p><code class="docutils literal notranslate"><span class="pre">Exception</span></code>: Catch-all exception if anything unexpect happens while 
 handling the iterable arg.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite>: Void.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -615,17 +620,17 @@ handling the iterable arg.</p></li>
 to <cite>kwargs</cite>. Handles iterable and model object cases.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>kwargs</cite> (dict): Dictionary to which to append the value.</p></li>
-<li><p><cite>k</cite> (str): The key for the for the argument.</p></li>
-<li><p><cite>v</cite> (Any): The value to evaluate and add.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> (dict): Dictionary to which to append the value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span></code> (str): The key for the for the argument.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> (Any): The value to evaluate and add.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p>Exception (Exception): Catch-all exception if anything unexpect happens 
+<li><p><code class="docutils literal notranslate"><span class="pre">Exception</span></code>: Catch-all exception if anything unexpect happens 
 while evaluating the arg.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite>: Void.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -636,17 +641,17 @@ while evaluating the arg.</p></li>
 <dd><p>Handles iterable arguments for evalution.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>kwargs</cite> (dict): Dictionary to which to append the value.</p></li>
-<li><p><cite>k</cite> (str): The key in the kwargs dictionary.</p></li>
-<li><p><cite>arg</cite> (Union[list, tuple, set, dict]): The iterable argument.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> (dict): Dictionary to which to append the value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span></code> (str): The key in the kwargs dictionary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arg</span></code> (Union[list, tuple, set, dict]): The iterable argument.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>Exception</cite>: Catch-all exception if anything unexpect happens while 
+<li><p><code class="docutils literal notranslate"><span class="pre">Exception</span></code>: Catch-all exception if anything unexpect happens while 
 handling the iterable arg.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite>: Void.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -659,16 +664,16 @@ handling the iterable arg.</p></li>
 the <cite>kwargs</cite> dictionary if the key doesn’t start with an underscore.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>v</cite> (Any): The object whose variables to handle.</p></li>
-<li><p><cite>kwargs</cite> (dict): Dictionary to which to append the values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> (Any): The object whose variables to handle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> (dict): Dictionary to which to append the values.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>Exception</cite>: Catch-all exception if anything unexpect happens while 
+<li><p><code class="docutils literal notranslate"><span class="pre">Exception</span></code>: Catch-all exception if anything unexpect happens while 
 handling the object arg.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite>: Void.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -684,16 +689,16 @@ found into a list. If the value has no key, it will be bound to the <cite>vals</
 attribute on the returned dictionary.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>*args</cite> (Any): Arbitrary positional arguments.</p></li>
-<li><p><cite>**kwargs</cite> (Any): Arbitrary keyword arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*args</span></code> (Any): Arbitrary positional arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> (Any): Arbitrary keyword arguments.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>Exception</cite>: Catch-all exception if anything unexpect happens while 
+<li><p><code class="docutils literal notranslate"><span class="pre">Exception</span></code>: Catch-all exception if anything unexpect happens while 
 merging values.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>dict</cite>: The new dictionary merging all inputs.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">dict</span></code>: The new dictionary merging all inputs.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -710,20 +715,20 @@ found into a list. If the value has no key, it will be bound to the <cite>vals</
 attribute on the returned dictionary.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>func</cite> (Callable): The function being decorated</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">func</span></code> (<code class="docutils literal notranslate"><span class="pre">Callable</span></code>): The function being decorated</p></li>
 </ul>
 </dd>
 <dt>Func Args:</dt><dd><ul class="simple">
-<li><p><cite>*args</cite> (Any): Arbitrary positional arguments.</p></li>
-<li><p><cite>**kwargs</cite> (Any): Arbitrary keyword arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*args</span></code> (Any): Arbitrary positional arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> (Any): Arbitrary keyword arguments.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>Exception</cite>: Catch-all exception if anything unexpect happens while 
+<li><p><code class="docutils literal notranslate"><span class="pre">Exception</span></code>: Catch-all exception if anything unexpect happens while 
 merging values.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite>: Void.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -742,10 +747,10 @@ merging values.</p></li>
 <dd><p>Checks if the given argument is iterable, or if it has ‘is_model’ key.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>arg</cite> (Any): Argument to check.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arg</span></code> (Any): Argument to check.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>bool</cite>: True if the argument is iterable or has ‘is_model’ key, False otherwise.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: True if the argument is iterable or has ‘is_model’ key, False otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -756,10 +761,10 @@ merging values.</p></li>
 <dd><p>Checks if the given object is an instance of ‘Model’ class.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>obj</cite> (Any): Object to check.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj</span></code> (Any): Object to check.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>bool</cite>: True if the object is an instance of ‘Model’, False otherwise.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: True if the object is an instance of ‘Model’, False otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -770,10 +775,10 @@ merging values.</p></li>
 <dd><p>Checks if the given object is an instance of ‘Request’ class.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>obj</cite> (Any): Object to check.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj</span></code> (Any): Object to check.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>bool</cite>: True if the object is an instance of ‘Request’, False otherwise.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: True if the object is an instance of ‘Request’, False otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -787,6 +792,7 @@ merging values.</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="medusa.auth.html" class="btn btn-neutral float-left" title="Auth" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="medusa.html" class="btn btn-neutral float-right" title="Medusa" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

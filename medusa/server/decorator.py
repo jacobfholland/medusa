@@ -16,22 +16,22 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = 
     """A decorator for registering routes in the server.
 
     Args:
-        - `cls` (type): The class associated with the route. Must always be `cls`.
-        - `rule` (str): The URL rule for the route.
-        - `methods` (List[str], optional): The HTTP methods supported by the route. 
+        - ``cls`` (type): The class associated with the route. Must always be ``cls``.
+        - ``rule`` (str): The URL rule for the route.
+        - ``methods`` (List[str], optional): The HTTP methods supported by the route. 
           Defaults to `['GET']`.
-        - `url_prefix` (str): The URL prefix for the route. Defaults to `None`.
+        - ``url_prefix`` (str): The URL prefix for the route. Defaults to `None`.
 
     Func Args:
-        - `args` (dict): Source function positional arguments.
-        - `kwargs` (dict): Source function key word arguments.
+        - ``args`` (dict): Source function positional arguments.
+        - ``kwargs`` (dict): Source function key word arguments.
 
     Raises:
-        - `Exception`: If there is an issue while registering the route, an exception 
+        - ``Exception``: If there is an issue while registering the route, an exception 
           is raised.
 
     Returns:
-        `Callable`: The decorator function.
+        ```Callable```: The decorator function.
     """
 
     if not url_prefix:
@@ -75,10 +75,10 @@ def merge_request(func):
     """A decorator that merges positional and keyword arguments.
 
     Args:
-        func (function): The function to decorate.
+        ``func`` (function): The function to decorate.
 
     Returns:
-        function: The decorated function.
+        ``function``: The decorated function.
     """
 
     @functools.wraps(func)

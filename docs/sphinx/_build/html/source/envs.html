@@ -57,6 +57,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="medusa.database.html">Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.routes.html">Routes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.html">Medusa</a></li>
@@ -92,49 +94,61 @@
 <section id="application-configuration">
 <h2>Application Configuration<a class="headerlink" href="#application-configuration" title="Link to this heading"></a></h2>
 <ul>
-<li><p><strong>APP_NAME</strong> (str): The name of your application.</p></li>
-<li><p><strong>APP_ENV</strong> (str): The environment in which your application is running.</p>
-<p>Options:
-- <cite>dev</cite>
-- <cite>production</cite></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_NAME</span></code> (str): The name of your application.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_ENV</span></code> (str): The environment in which your application is running.</p>
+<dl class="simple">
+<dt>Options:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">production</span></code></p></li>
+</ul>
+</dd>
+</dl>
 </li>
-<li><p><strong>APP_DATABASE</strong> (bool): Set to <cite>True</cite> to enable the Database component of Medusa. Set to <cite>False</cite> to disable it.</p></li>
-<li><p><strong>APP_SERVER</strong> (bool): Set to <cite>True</cite> to enable the Server component of Medusa. Set to <cite>False</cite> to disable it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_DATABASE</span></code> (bool): Set to <cite>True</cite> to enable the Database component of Medusa. Set to <cite>False</cite> to disable it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_SERVER</span></code> (bool): Set to <cite>True</cite> to enable the Server component of Medusa. Set to <cite>False</cite> to disable it.</p></li>
 </ul>
 </section>
 <section id="database-configuration">
 <h2>Database Configuration<a class="headerlink" href="#database-configuration" title="Link to this heading"></a></h2>
-<p>These environment variables are used if <strong>APP_DATABASE</strong> is <cite>True</cite>.</p>
+<p>These environment variables are used if <code class="docutils literal notranslate"><span class="pre">APP_DATABASE</span></code> is <cite>True</cite>.</p>
 <ul>
-<li><p><strong>DATABASE_HOST</strong> (str): The host or IP address of your database server. Default is <cite>localhost</cite>.</p></li>
-<li><p><strong>DATABASE_NAME</strong> (str): The name of the database Medusa should connect to. Default is <cite>medusa</cite>.</p></li>
-<li><p><strong>DATABASE_USER</strong> (str): The username used to authenticate with the database.</p></li>
-<li><p><strong>DATABASE_PASSWORD</strong> (str): The password for the database user. Ensure to keep this secure.</p></li>
-<li><p><strong>DATABASE_PORT</strong> (int): The port number used for database connections. Default is <cite>5432</cite> for PostgreSQL.</p></li>
-<li><p><strong>DATABASE_TYPE</strong> (str, required): The type of database to use.</p>
-<p>Options:
-- <cite>sqlite</cite>
-- <cite>mysql</cite>
-- <cite>postgresql</cite>
-- <cite>oracle</cite>
-- <cite>mssql+pymssql</cite>
-- <cite>firebird</cite>
-- <cite>memory</cite></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_HOST</span></code> (str): The host or IP address of your database server. Default is <cite>localhost</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_NAME</span></code> (str): The name of the database Medusa should connect to. Default is <cite>medusa</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_USER</span></code> (str): The username used to authenticate with the database.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_PASSWORD</span></code> (str): The password for the database user. Ensure to keep this secure.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_PORT</span></code> (int): The port number used for database connections. Default is <cite>5432</cite> for PostgreSQL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_TYPE</span></code> (str, required): The type of database to use.</p>
+<dl class="simple">
+<dt>Options:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sqlite</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mysql</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">postgresql</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oracle</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mssql+pymssql</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">firebird</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memory</span></code></p></li>
+</ul>
+</dd>
+</dl>
 </li>
-<li><p><strong>DATABASE_PATH</strong> (str): For SQLite databases, specify the path to the database file. Default is <cite>storage</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_PATH</span></code> (str): For SQLite databases, specify the path to the database file. Default is <cite>storage</cite>.</p></li>
 </ul>
 </section>
 <section id="logging-configuration">
 <h2>Logging Configuration<a class="headerlink" href="#logging-configuration" title="Link to this heading"></a></h2>
 <ul>
-<li><p><strong>LOG_LEVEL</strong> (str): The log level for internal logging.</p>
-<p>Options:
-- <cite>debug</cite>
-- <cite>info</cite>
-- <cite>warning</cite>
-- <cite>error</cite></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOG_LEVEL</span></code> (str): The log level for internal logging.</p>
+<dl class="simple">
+<dt>Options:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">debug</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warning</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code></p></li>
+</ul>
+</dd>
+</dl>
 </li>
-<li><p><strong>LOG_PATH</strong>: The directory where log files should be stored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOG_PATH</span></code>: The directory where log files should be stored.</p></li>
 </ul>
 </section>
 <section id="example">

@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Auth" href="medusa.auth.html" />
+    <link rel="next" title="Controllers" href="medusa.controllers.html" />
     <link rel="prev" title="Database" href="medusa.database.html" /> 
 </head>
 
@@ -45,6 +45,7 @@
               <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="envs.html">Environment Variables</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
 <ul class="current">
@@ -81,8 +82,11 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.routes.html">Routes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.html">Medusa</a></li>
 </ul>
 
         </div>
@@ -123,9 +127,9 @@
 <span class="sig-prename descclassname"><span class="pre">medusa.server.decorator.</span></span><span class="sig-name descname"><span class="pre">merge_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#medusa.server.decorator.merge_request" title="Link to this definition"></a></dt>
 <dd><p>A decorator that merges positional and keyword arguments.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>func (function): The function to decorate.</p>
+<dt>Args:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">func</span></code> (function): The function to decorate.</p>
 </dd>
-<dt>Returns:</dt><dd><p>function: The decorated function.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">function</span></code>: The decorated function.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -141,24 +145,24 @@
 <dd><p>A decorator for registering routes in the server.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>cls</cite> (type): The class associated with the route. Must always be <cite>cls</cite>.</p></li>
-<li><p><cite>rule</cite> (str): The URL rule for the route.</p></li>
-<li><p><cite>methods</cite> (List[str], optional): The HTTP methods supported by the route. 
+<li><p><code class="docutils literal notranslate"><span class="pre">cls</span></code> (type): The class associated with the route. Must always be <code class="docutils literal notranslate"><span class="pre">cls</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rule</span></code> (str): The URL rule for the route.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">methods</span></code> (List[str], optional): The HTTP methods supported by the route. 
 Defaults to <cite>[‘GET’]</cite>.</p></li>
-<li><p><cite>url_prefix</cite> (str): The URL prefix for the route. Defaults to <cite>None</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">url_prefix</span></code> (str): The URL prefix for the route. Defaults to <cite>None</cite>.</p></li>
 </ul>
 </dd>
 <dt>Func Args:</dt><dd><ul class="simple">
-<li><p><cite>args</cite> (dict): Source function positional arguments.</p></li>
-<li><p><cite>kwargs</cite> (dict): Source function key word arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> (dict): Source function positional arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> (dict): Source function key word arguments.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>Exception</cite>: If there is an issue while registering the route, an exception 
+<li><p><code class="docutils literal notranslate"><span class="pre">Exception</span></code>: If there is an issue while registering the route, an exception 
 is raised.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>Callable</cite>: The decorator function.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">`Callable`</span></code>: The decorator function.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -185,9 +189,9 @@ is raised.</p></li>
 specific endpoints.</p>
 <dl class="simple">
 <dt>Methods:</dt><dd><ul class="simple">
-<li><p><cite>__url_prefix__()</cite>: Generate the URL prefix for the route based on the 
+<li><p><code class="docutils literal notranslate"><span class="pre">__url_prefix__</span></code>: Generate the URL prefix for the route based on the 
 class name.</p></li>
-<li><p><cite>routes()</cite>: Define routes for the <cite>Route</cite> subclass.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">routes</span></code>: Define routes for the <cite>Route</cite> subclass.</p></li>
 </ul>
 </dd>
 <dt>Notes:</dt><dd><ul class="simple">
@@ -205,10 +209,11 @@ specific routes.</p></li>
 <dd><p>Define routes for the <cite>Route`</cite>.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>cls</cite> (type): The class associated with the routes. Must always be <cite>cls</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cls</span></code> (type): The class associated with the routes. Must always be 
+<code class="docutils literal notranslate"><span class="pre">cls</span></code>.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -223,9 +228,9 @@ specific routes.</p></li>
 <p>This class is responsible for handling HTTP requests and starting the server.</p>
 <dl class="simple">
 <dt>Methods:</dt><dd><ul class="simple">
-<li><p><cite>application(environ, start_response)</cite>: Main application method for handling
+<li><p><code class="docutils literal notranslate"><span class="pre">application</span></code>: Main application method for handling
 HTTP requests.</p></li>
-<li><p><cite>run()</cite>: Start the server and listen for incoming requests.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run</span></code>: Start the server and listen for incoming requests.</p></li>
 </ul>
 </dd>
 </dl>
@@ -235,11 +240,11 @@ HTTP requests.</p></li>
 <dd><p>Main application method for handling HTTP requests.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>environ</cite> (dict): The WSGI environment dictionary.</p></li>
-<li><p><cite>start_response</cite> (Callable): The callable for starting the response.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">environ</span></code> (dict): The WSGI environment dictionary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_response</span></code> (<code class="docutils literal notranslate"><span class="pre">`Callable`</span></code>): The callable for starting the response.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>Callable</cite>: The response callable.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">`Callable`</span></code>: The response callable.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -250,10 +255,10 @@ HTTP requests.</p></li>
 <dd><p>Start the server and listen for incoming requests.</p>
 <dl class="simple">
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>SystemExit</cite>: If an exception occurs while starting the server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SystemExit</span></code>: If an exception occurs while starting the server.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -276,10 +281,10 @@ HTTP requests.</p></li>
 and replaces it with a custom logger.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>config</cite> (Config): The server configuration object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config</span></code> (<code class="docutils literal notranslate"><span class="pre">Config</span></code>): The server configuration object.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -298,7 +303,7 @@ and replaces it with a custom logger.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="medusa.database.html" class="btn btn-neutral float-left" title="Database" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="medusa.auth.html" class="btn btn-neutral float-right" title="Auth" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="medusa.controllers.html" class="btn btn-neutral float-right" title="Controllers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

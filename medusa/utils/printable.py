@@ -11,7 +11,7 @@ class Printable:
         """Return a string representation of the object suitable for debugging.
 
         Returns:
-            `str`: A string containing the class name and the object's attributes.
+            ``str``: A string containing the class name and the object's attributes.
         """
         return self.__str__()
 
@@ -19,7 +19,7 @@ class Printable:
         """Return a string representation of the object.
 
         Returns:
-            `str`: A string containing the class name and the object's attributes.
+            ``str``: A string containing the class name and the object's attributes.
         """
 
         return f"{self.__class__.__name__}({vars(self)})"

@@ -28,12 +28,12 @@ def delete_value(data: dict[Any], key: str) -> None:
           Request object. 
 
     Args:
-        - `data` (dict[Any]): The dictionary from which the key-value pair will 
+        - ``data`` (dict[Any]): The dictionary from which the key-value pair will 
           be deleted. 
-        - `key` (str): The key that needs to be deleted. 
+        - ``key`` (str): The key that needs to be deleted. 
 
     Raises:
-        - `KeyError`: If the value doesn't exist gracefully ignore it. 
+        - ``KeyError``: If the value doesn't exist gracefully ignore it. 
     """
 
     try:
@@ -47,14 +47,14 @@ def delete_ignored(data: dict[Any]) -> None:
     """Delete ignored keys from the dictionary.
 
     Args:
-        - `data` (dict[Any]): The dictionary from which the ignored keys will be 
+        - ``data`` (dict[Any]): The dictionary from which the ignored keys will be 
           deleted.
 
     Raises:
-        - `KeyError`: If the value doesn't exist gracefully ignore it.
+        - ``KeyError``: If the value doesn't exist gracefully ignore it.
 
     Returns:
-        `None`: Void
+        ``None``: Void.
     """
 
     try:
@@ -74,13 +74,13 @@ def serializer(obj: Any) -> Union[str, dict, None]:
     which can be base64 decoded at a later time.
 
     Args:
-        - `obj` (Any): The object that needs to be serialized.
+        - ``obj`` (Any): The object that needs to be serialized.
 
     Raises:
-        - `TypeError`: If the object type is not serializable.
+        - ``TypeError``: If the object type is not serializable.
 
     Returns:
-        - `Union[str, dict, None]`: The serialized object.
+        - ``Union[str, dict, None]``: The serialized object.
     """
 
     if isinstance(obj, (datetime, date, time)):
@@ -112,10 +112,10 @@ def process_request(obj: Request) -> dict:
     deletes ignored keys, and sorts the keys in the dictionary.
 
     Args:
-        - `obj` (`Request`): The Werkzeug Request object to be processed.
+        - ``obj`` (``Request``): The Werkzeug Request object to be processed.
 
     Returns:
-        `dict`: A dictionary representation of the processed request.
+        ``dict``: A dictionary representation of the processed request.
     """
 
     data = vars(obj)
@@ -131,14 +131,14 @@ def bind_form(data: dict[Any], obj: Request) -> None:
     """Bind form data to the dictionary.
 
     Args:
-        - `data` (dict[Any]): The dictionary to which the form data will be bound.
-        - `obj` (`Request`): The Werkzeug Request object.
+        - ``data`` (dict[Any]): The dictionary to which the form data will be bound.
+        - ``obj`` (``Request``): The Werkzeug Request object.
 
     Raises:
-        - `KeyError`: If the value doesn't exist gracefully ignore it.
+        - ``KeyError``: If the value doesn't exist gracefully ignore it.
 
     Returns:
-        `None`: Void
+        ``None``: Void.
     """
 
     try:
@@ -157,14 +157,14 @@ def bind_args(data: dict[Any], obj: Request) -> None:
     """Bind arguments to the dictionary.
 
     Args:
-        - `data` (dict[Any]): The dictionary to which the arguments will be bound.
-        - `obj` (`Request`): The Werkzeug Request object.
+        - ``data`` (dict[Any]): The dictionary to which the arguments will be bound.
+        - ``obj`` (``Request``): The Werkzeug Request object.
 
     Raises:
-        - `KeyError`: If the value doesn't exist gracefully ignore it.
+        - ``KeyError``: If the value doesn't exist gracefully ignore it.
 
     Returns:
-        `None`: Void
+        ``None``: Void.
     """
 
     try:
@@ -183,14 +183,14 @@ def bind_json(data: dict[Any], obj: Request) -> None:
     """Bind JSON data to the dictionary.
 
     Args:
-        - `data` (dict[Any]): The dictionary to which the JSON data will be bound.
-        - `obj` (`Request`): The Werkzeug Request object.
+        - ``data`` (dict[Any]): The dictionary to which the JSON data will be bound.
+        - ``obj`` (``Request``): The Werkzeug Request object.
 
     Raises:
-        - `KeyError`: If the value doesn't exist gracefully ignore it.
+        - ``KeyError``: If the value doesn't exist gracefully ignore it.
 
     Returns:
-        `None`: Void
+        ``None``: Void.
     """
 
     try:
@@ -209,10 +209,10 @@ def sort_response(data: dict[Any]) -> None:
     """Sort dictionary keys and relocate the 'files' key.
 
     Args:
-        - `data` (dict[Any]): The dictionary that needs sorting.
+        - ``data`` (dict[Any]): The dictionary that needs sorting.
 
     Returns:
-        `None`: Void
+        ``None``: Void.
     """
 
     data = {

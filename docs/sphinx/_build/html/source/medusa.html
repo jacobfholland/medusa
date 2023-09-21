@@ -50,6 +50,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="medusa.database.html">Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.routes.html">Routes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.utils.html">Utils</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Medusa</a><ul>
@@ -115,12 +117,12 @@
 <p>Configuration class for the application.</p>
 <dl class="simple">
 <dt>Attributes:</dt><dd><ul class="simple">
-<li><p><cite>APP_NAME</cite> (str): The name of the application obtained from the environment 
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_NAME</span></code> (str): The name of the application obtained from the environment 
 variables.</p></li>
-<li><p><cite>APP_DIR</cite> (str): The application’s directory path.</p></li>
-<li><p><cite>LOG_LEVEL</cite> (str): The log level for the application obtained from the 
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_DIR</span></code> (str): The application’s directory path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOG_LEVEL</span></code> (str): The log level for the application obtained from the 
 environment variables.</p></li>
-<li><p><cite>LOG_PATH</cite> (str): The path where log files should be stored obtained from 
+<li><p><code class="docutils literal notranslate"><span class="pre">LOG_PATH</span></code> (str): The path where log files should be stored obtained from 
 the environment variables.</p></li>
 </ul>
 </dd>
@@ -163,10 +165,10 @@ the environment variables.</p></li>
 <dd><p>Load environment variables from .env files found in the specified directory and its subdirectories.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>directory</cite> (str): The directory where .env files should be searched and loaded from.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">directory</span></code> (str): The directory where .env files should be searched and loaded from.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -177,10 +179,10 @@ the environment variables.</p></li>
 <dd><p>Strip the last two components from a file path.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>input</cite> (str): Input file path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code> (str): Input file path.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>str</cite>: File path with the last two components removed.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: File path with the last two components removed.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -197,11 +199,11 @@ It enables or disables the database and server components based on the
 environment variables.</p>
 <dl class="simple">
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>ImportError</cite>: If the server package is missing.</p></li>
-<li><p><cite>Exception</cite>: If an unexpected error occurs while starting the server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ImportError</span></code>: If the server package is missing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Exception</span></code>: If an unexpected error occurs while starting the server.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Void.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -221,11 +223,11 @@ environment variables.</p>
 <dd><p>Set up a logger with the given name and configuration.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>name</cite> (str): The name of the logger.</p></li>
-<li><p><cite>config</cite> (Config): An instance of the Config class containing logging settings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (str): The name of the logger.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config</span></code> (<cite>Config</cite>): An instance of the Config class containing logging settings.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p><cite>Logger</cite>: A configured logger instance.</p>
+<dt>Returns:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">Logger</span></code>: A configured logger instance.</p>
 </dd>
 </dl>
 </dd></dl>
