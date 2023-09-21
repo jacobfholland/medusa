@@ -1,7 +1,8 @@
 from medusa.utils.format import snake_case
+from medusa.utils.printable import Printable
 
 
-class Route:
+class Route(Printable):
     """A base class for defining routes in the application.
 
     This class provides a foundation for defining URL prefixes and routes for specific endpoints.
@@ -17,10 +18,13 @@ class Route:
     """
 
     @classmethod
-    def __url_prefix__(cls) -> str:
+    def __url_prefix__(cls: type) -> str:
         """Generate the URL prefix for the route based on the class name. Defaults to 
         `/<class_name>` but is meant to be overridden in subclasses to define a specific
         URL prefix
+
+        Args:
+            - `cls` (type): The class associated with the routes. Must always be `cls`.
 
         Returns:
             `str`: The generated URL prefix for the route.
@@ -29,7 +33,7 @@ class Route:
         return f"/{snake_case(cls.__name__)}"
 
     @classmethod
-    def routes(cls) -> None:
+    def routes(cls: type) -> None:
         """Define routes for the `Route``.
 
         Args:

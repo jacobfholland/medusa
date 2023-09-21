@@ -72,8 +72,7 @@ def register_route(cls, rule, wrapped, methods):
 
 
 def merge_request(func):
-    """
-    A decorator that merges positional and keyword arguments.
+    """A decorator that merges positional and keyword arguments.
 
     Args:
         func (function): The function to decorate.

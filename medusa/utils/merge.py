@@ -1,11 +1,15 @@
 import functools
 from typing import Any, Callable, Union
 
+from .logger import logger
 from .validation import evaluate, is_iterable, is_model
 
-from .logger import logger
-
 DEFAULT_KEY = "vals"
+"""Default key to be used when no key exists
+
+TODO:
+    - Make this an environment variable    
+"""
 
 
 def merge(*args: Any, **kwargs: Any) -> dict:
