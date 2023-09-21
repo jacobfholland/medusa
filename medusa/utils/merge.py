@@ -2,7 +2,7 @@ import ast
 import functools
 
 from .logger import logger
-from .validation import eval, is_iterable, is_model
+from .validation import evaluate, is_iterable, is_model
 
 
 def merge(*args: any, **kwargs: any) -> dict:
@@ -20,19 +20,42 @@ def merge(*args: any, **kwargs: any) -> dict:
 
     new_kwargs = {}
     for k, v in kwargs.items():
-        if is_iterable(v):
-            handle_iterable(k, v, new_kwargs)
-        elif is_model(v):
-            handle_obj(v, new_kwargs)
-        else:
-            append_value_to_list(new_kwargs, k, v)
+        evaluate_arg(new_kwargs, k, v)
     for v in args:
-        # TODO: Is model?
-        if is_iterable(v):
-            handle_iterable("vals", v, new_kwargs)
-        else:
-            append_value_to_list(new_kwargs, "vals", v)
+        evaluate_arg(new_kwargs, "vals", v)
     return new_kwargs
+
+
+def handle_iterable(new_kwargs: dict, k: str, arg: list | tuple | set | dict) -> None:
+    """
+    Handles iterable arguments. For dictionaries, it also appends the items 
+    to the new_kwargs dictionary.
+
+    Args:
+        k (str): The key in the new_kwargs dictionary.
+        arg (list | tuple | set | dict): The iterable argument.
+        new_kwargs (dict): Dictionary to which to append the value.
+
+    Returns:
+        None
+    """
+
+    if isinstance(arg, (list, tuple, set)):
+        for v in arg:
+            evaluate_arg(new_kwargs, k, v)
+    if isinstance(arg, dict):
+        for k, v in arg.items():
+            evaluate_arg(new_kwargs, k, v)
+
+
+def evaluate_arg(new_kwargs, k, v):
+    v = evaluate(v)
+    if is_iterable(v):
+        handle_iterable(new_kwargs, k, v)
+    elif is_model(v):
+        handle_obj(v, new_kwargs)
+    else:
+        append_value_to_list(new_kwargs, k, v)
 
 
 def append_value_to_list(new_kwargs: dict, k: str, v: any) -> None:
@@ -59,41 +82,7 @@ def append_value_to_list(new_kwargs: dict, k: str, v: any) -> None:
             else:
                 new_kwargs[k] = [new_kwargs[k], v]
     else:
-        v = eval(v)
         new_kwargs[k] = v
-
-
-def handle_iterable(k: str, arg: list | tuple | set | dict, new_kwargs: dict) -> None:
-    """
-    Handles iterable arguments. For dictionaries, it also appends the items 
-    to the new_kwargs dictionary.
-
-    Args:
-        k (str): The key in the new_kwargs dictionary.
-        arg (list | tuple | set | dict): The iterable argument.
-        new_kwargs (dict): Dictionary to which to append the value.
-
-    Returns:
-        None
-    """
-
-    if isinstance(arg, (list, tuple, set)):
-        if isinstance(arg, tuple):
-            for v in arg:
-                if is_iterable(v):
-                    handle_iterable(k, v, new_kwargs)
-            handle_iterable("new_args", v, new_kwargs)
-        for v in arg:
-            if is_iterable(v):
-                handle_iterable(k, v, new_kwargs)
-            else:
-                append_value_to_list(new_kwargs, k, v)
-    elif isinstance(arg, dict):
-        for k, v in arg.items():
-            if is_iterable(v):
-                handle_iterable(k, v, new_kwargs)
-            else:
-                append_value_to_list(new_kwargs, k, v)
 
 
 def handle_obj(v: any, new_kwargs: dict) -> None:
@@ -118,16 +107,6 @@ def handle_obj(v: any, new_kwargs: dict) -> None:
                 append_value_to_list(new_kwargs, key, value)
 
 
-# def merge_filter(func):
-#     @functools.wraps(func)
-#     def wrapper(request, *args, **kwargs):
-#         request_args, request_kwargs = merge_request_args_kwargs(request)
-#         request_args = [merge(request_args)]
-#         request_kwargs = merge(request_kwargs)
-#         return func(*request_args, **request_kwargs)
-#     return wrapper
-
-
 def merge_values(func):
     """
     A decorator that merges positional and keyword arguments.
@@ -144,3 +123,13 @@ def merge_values(func):
         kwargs = merge(*args, **kwargs)
         return func(*args, **kwargs)
     return wrapper
+
+
+# def merge_filter(func):
+#     @functools.wraps(func)
+#     def wrapper(request, *args, **kwargs):
+#         request_args, request_kwargs = merge_request_args_kwargs(request)
+#         request_args = [merge(request_args)]
+#         request_kwargs = merge(request_kwargs)
+#         return func(*request_args, **request_kwargs)
+#     return wrapper

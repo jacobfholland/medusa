@@ -54,13 +54,8 @@ def is_request(obj: Request) -> bool:
     return False
 
 
-def eval(arg):
+def evaluate(arg):
     try:
-        arg = ast.literal_eval(arg)
+        return ast.literal_eval(arg)
+    except (ValueError, SyntaxError):
         return arg
-    except ValueError as e:
-        logger.debug(f"Failed to evaluate {arg}: {e}")
-        pass
-    except Exception as e:
-        logger.debug(f"Failed to evaluate {arg} in an unexpected way: {e}")
-        pass

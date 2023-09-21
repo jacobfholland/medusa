@@ -11,7 +11,7 @@ from sqlalchemy.orm.scoping import scoped_session
 # Uses absolute paths for auto-import functionality
 from medusa.database.config import DatabaseConfig as Config
 from medusa.database.logger import logger
-from medusa.utils.decorator import require_envs
+from medusa.utils.environment import require_envs
 
 
 class Database:

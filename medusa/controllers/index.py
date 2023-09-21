@@ -1,11 +1,11 @@
 from medusa.controllers.controller import Controller
+from medusa.server.decorator import merge_request
+from medusa.utils.merge import merge
 
 
 class IndexController(Controller):
     @classmethod
-    def index(cls, request=None):
-        return f"""
-        <h1>Index Page</h1>
-        <br>
-        {request}
-        """
+    @merge_request
+    def index(cls, request, *args, **kwargs):
+
+        return request
