@@ -128,13 +128,16 @@ class ExampleDocstring(Model):
 ## Rules
 - All classes, methods, functions, and module variables must have a docstring.
 - Docstring lines should ideally not exceed 80 characters.
+    - A good rule of thumb is if you have no panes open in VSCode, then 
+        dock it to one side of your monitor, your lines should not exceed the
+        width and require scrolling.
 - The general rule of thumb for formatting a section line is: 
 `- 'key' (type): Lorem ipsum`
     - **(The single quotes are actually backticks. Markdown limits displaying 
     backticks on this page.)*
 - Use a single line break between sections.
 - References to data types, classes, functions, methods, etc. should use 
-backticks to indicate a reference. This includes if an argument is a reference.
+    backticks to indicate a reference. This includes if an argument is a reference.
 - Include periods at the end of sentences.
 
 ### Classes
@@ -290,7 +293,7 @@ Returns:
 ```
 - Can _not_ have multiple returns.
 - Does not require a leading hypen.
-- If returning *None* state if it is void or explicit.
+- If returning *None* the return value description should be `"Void"`
 
 ### Module Variables
 ```

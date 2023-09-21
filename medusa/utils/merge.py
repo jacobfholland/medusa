@@ -1,7 +1,5 @@
-import ast
 import functools
 
-from .logger import logger
 from .validation import evaluate, is_iterable, is_model
 
 
@@ -55,10 +53,10 @@ def evaluate_arg(new_kwargs, k, v):
     elif is_model(v):
         handle_obj(v, new_kwargs)
     else:
-        append_value_to_list(new_kwargs, k, v)
+        bind_value(new_kwargs, k, v)
 
 
-def append_value_to_list(new_kwargs: dict, k: str, v: any) -> None:
+def bind_value(new_kwargs: dict, k: str, v: any) -> None:
     """
     Appends a value to a list in new_kwargs. If the key is not present, it 
     adds the key with the value. If the key is present and its value is not 
@@ -78,7 +76,7 @@ def append_value_to_list(new_kwargs: dict, k: str, v: any) -> None:
             new_kwargs[k].append(v)
         else:
             if not k:
-                append_value_to_list(new_kwargs, "vals", v)
+                bind_value(new_kwargs, "vals", v)
             else:
                 new_kwargs[k] = [new_kwargs[k], v]
     else:
@@ -99,12 +97,11 @@ def handle_obj(v: any, new_kwargs: dict) -> None:
         None
     """
 
-    for key, value in vars(v).items():
-        if is_iterable(value):
-            handle_iterable(key, value, new_kwargs)
+    for k, v in vars(v).items():
+        if is_iterable(v):
+            handle_iterable(k, v, new_kwargs)
         else:
-            if not key.startswith("_"):
-                append_value_to_list(new_kwargs, key, value)
+            bind_value(new_kwargs, k, v)
 
 
 def merge_values(func):
