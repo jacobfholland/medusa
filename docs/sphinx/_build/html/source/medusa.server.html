@@ -57,14 +57,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#medusa.server.decorator.route"><code class="docutils literal notranslate"><span class="pre">route()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-medusa.server.logger">Logger</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.server.logger.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.server.logger.setup_werkzeug_logger"><code class="docutils literal notranslate"><span class="pre">setup_werkzeug_logger()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.server.logger.werkzeug_logger"><code class="docutils literal notranslate"><span class="pre">werkzeug_logger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-medusa.server.config">Config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.server.config.ServerConfig"><code class="docutils literal notranslate"><span class="pre">ServerConfig</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-medusa.server.config">Classes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.server.config.ServerConfig"><code class="docutils literal notranslate"><span class="pre">ServerConfig</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-medusa.server.route">Classes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.server.route.Route"><code class="docutils literal notranslate"><span class="pre">Route</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.server.route.Route.routes"><code class="docutils literal notranslate"><span class="pre">Route.routes()</span></code></a></li>
 </ul>
@@ -74,6 +71,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#medusa.server.server.Server.run"><code class="docutils literal notranslate"><span class="pre">Server.run()</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-medusa.server.logger">Logger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.server.logger.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.server.logger.setup_werkzeug_logger"><code class="docutils literal notranslate"><span class="pre">setup_werkzeug_logger()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.server.logger.werkzeug_logger"><code class="docutils literal notranslate"><span class="pre">werkzeug_logger</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -161,38 +164,8 @@ is raised.</p></li>
 </dd></dl>
 
 </section>
-<section id="module-medusa.server.logger">
-<span id="logger"></span><h2>Logger<a class="headerlink" href="#module-medusa.server.logger" title="Link to this heading"></a></h2>
-<dl class="py data">
-<dt class="sig sig-object py" id="medusa.server.logger.logger">
-<span class="sig-prename descclassname"><span class="pre">medusa.server.logger.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Logger</span> <span class="pre">medusa.route</span> <span class="pre">(DEBUG)&gt;</span></em><a class="headerlink" href="#medusa.server.logger.logger" title="Link to this definition"></a></dt>
-<dd><p>Create a server logger instance</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="medusa.server.logger.setup_werkzeug_logger">
-<span class="sig-prename descclassname"><span class="pre">medusa.server.logger.</span></span><span class="sig-name descname"><span class="pre">setup_werkzeug_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#medusa.server.config.ServerConfig" title="medusa.server.config.ServerConfig"><span class="pre">ServerConfig</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.server.logger.setup_werkzeug_logger" title="Link to this definition"></a></dt>
-<dd><p>Set up the Werkzeug logger for the server. The Werkzeug logger already exists, so it intercepts the logger
-and replaces it with a custom logger.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>config</cite> (Config): The server configuration object.</p></li>
-</ul>
-</dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="medusa.server.logger.werkzeug_logger">
-<span class="sig-prename descclassname"><span class="pre">medusa.server.logger.</span></span><span class="sig-name descname"><span class="pre">werkzeug_logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#medusa.server.logger.werkzeug_logger" title="Link to this definition"></a></dt>
-<dd><p>Create a Werkzeug logger instance</p>
-</dd></dl>
-
-</section>
 <section id="module-medusa.server.config">
-<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-medusa.server.config" title="Link to this heading"></a></h2>
+<span id="config"></span><h2>Config<a class="headerlink" href="#module-medusa.server.config" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="medusa.server.config.ServerConfig">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.server.config.</span></span><span class="sig-name descname"><span class="pre">ServerConfig</span></span><a class="headerlink" href="#medusa.server.config.ServerConfig" title="Link to this definition"></a></dt>
@@ -200,7 +173,10 @@ and replaces it with a custom logger.</p>
 <p>Configuration settings for the server component of the application.</p>
 </dd></dl>
 
-<dl class="py class" id="module-medusa.server.route">
+</section>
+<section id="module-medusa.server.route">
+<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-medusa.server.route" title="Link to this heading"></a></h2>
+<dl class="py class">
 <dt class="sig sig-object py" id="medusa.server.route.Route">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.server.route.</span></span><span class="sig-name descname"><span class="pre">Route</span></span><a class="headerlink" href="#medusa.server.route.Route" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="medusa.utils.html#medusa.utils.printable.Printable" title="medusa.utils.printable.Printable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Printable</span></code></a></p>
@@ -282,6 +258,36 @@ HTTP requests.</p></li>
 </dl>
 </dd></dl>
 
+</dd></dl>
+
+</section>
+<section id="module-medusa.server.logger">
+<span id="logger"></span><h2>Logger<a class="headerlink" href="#module-medusa.server.logger" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="medusa.server.logger.logger">
+<span class="sig-prename descclassname"><span class="pre">medusa.server.logger.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Logger</span> <span class="pre">medusa.route</span> <span class="pre">(DEBUG)&gt;</span></em><a class="headerlink" href="#medusa.server.logger.logger" title="Link to this definition"></a></dt>
+<dd><p>Create a server logger instance</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.server.logger.setup_werkzeug_logger">
+<span class="sig-prename descclassname"><span class="pre">medusa.server.logger.</span></span><span class="sig-name descname"><span class="pre">setup_werkzeug_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#medusa.server.config.ServerConfig" title="medusa.server.config.ServerConfig"><span class="pre">ServerConfig</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.server.logger.setup_werkzeug_logger" title="Link to this definition"></a></dt>
+<dd><p>Set up the Werkzeug logger for the server. The Werkzeug logger already exists, so it intercepts the logger
+and replaces it with a custom logger.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>config</cite> (Config): The server configuration object.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>None</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="medusa.server.logger.werkzeug_logger">
+<span class="sig-prename descclassname"><span class="pre">medusa.server.logger.</span></span><span class="sig-name descname"><span class="pre">werkzeug_logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#medusa.server.logger.werkzeug_logger" title="Link to this definition"></a></dt>
+<dd><p>Create a Werkzeug logger instance</p>
 </dd></dl>
 
 </section>

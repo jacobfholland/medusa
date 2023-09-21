@@ -84,7 +84,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.database.Database.standard"><code class="docutils literal notranslate"><span class="pre">Database.standard()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#medusa.database.logger.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.database.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.model.Model.created_at"><code class="docutils literal notranslate"><span class="pre">Model.created_at</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.model.Model.id"><code class="docutils literal notranslate"><span class="pre">Model.id</span></code></a></li>
@@ -94,6 +93,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#medusa.database.model.Model.uuid"><code class="docutils literal notranslate"><span class="pre">Model.uuid</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.database.logger.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -380,12 +380,6 @@ method based on the database type.</p>
 
 </dd></dl>
 
-<dl class="py data" id="module-medusa.database.logger">
-<dt class="sig sig-object py" id="medusa.database.logger.logger">
-<span class="sig-prename descclassname"><span class="pre">medusa.database.logger.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Logger</span> <span class="pre">medusa.database</span> <span class="pre">(DEBUG)&gt;</span></em><a class="headerlink" href="#medusa.database.logger.logger" title="Link to this definition"></a></dt>
-<dd><p>Create a database logger instance</p>
-</dd></dl>
-
 <dl class="py class" id="module-medusa.database.model">
 <dt class="sig sig-object py" id="medusa.database.model.Model">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.database.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#medusa.database.model.Model" title="Link to this definition"></a></dt>
@@ -466,6 +460,12 @@ instances.</p>
 <span class="sig-name descname"><span class="pre">uuid</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Column(None,</span> <span class="pre">String(),</span> <span class="pre">table=None,</span> <span class="pre">default=CallableColumnDefault(&lt;function</span> <span class="pre">generate_uuid&gt;))</span></em><a class="headerlink" href="#medusa.database.model.Model.uuid" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py data" id="module-medusa.database.logger">
+<dt class="sig sig-object py" id="medusa.database.logger.logger">
+<span class="sig-prename descclassname"><span class="pre">medusa.database.logger.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Logger</span> <span class="pre">medusa.database</span> <span class="pre">(DEBUG)&gt;</span></em><a class="headerlink" href="#medusa.database.logger.logger" title="Link to this definition"></a></dt>
+<dd><p>Create a database logger instance</p>
 </dd></dl>
 
 </section>

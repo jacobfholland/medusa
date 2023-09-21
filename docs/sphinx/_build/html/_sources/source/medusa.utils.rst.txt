@@ -1,13 +1,15 @@
 Utils
 ====================
-
-Classes
+Config
 ^^^^^^^
 
 .. automodule:: medusa.utils.config
    :members:
    :undoc-members:
    :show-inheritance:
+
+Classes
+^^^^^^^
 .. automodule:: medusa.utils.printable
    :members:
    :undoc-members:

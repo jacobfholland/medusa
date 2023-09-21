@@ -22,12 +22,12 @@ Classes
    :undoc-members:
    :show-inheritance:
 
-.. automodule:: medusa.database.logger
+.. automodule:: medusa.database.model
    :members:
    :undoc-members:
    :show-inheritance:
 
-.. automodule:: medusa.database.model
+.. automodule:: medusa.database.logger
    :members:
    :undoc-members:
    :show-inheritance:
