@@ -1,4 +1,4 @@
-Medusa
+App
 ======
 
 Config
