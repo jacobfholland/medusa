@@ -52,6 +52,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Server</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-medusa.server.decorator">Decorator</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.server.decorator.build_response"><code class="docutils literal notranslate"><span class="pre">build_response()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.server.decorator.merge_request"><code class="docutils literal notranslate"><span class="pre">merge_request()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.server.decorator.register_route"><code class="docutils literal notranslate"><span class="pre">register_route()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.server.decorator.route"><code class="docutils literal notranslate"><span class="pre">route()</span></code></a></li>
 </ul>
@@ -115,6 +116,18 @@
 <dd></dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="medusa.server.decorator.merge_request">
+<span class="sig-prename descclassname"><span class="pre">medusa.server.decorator.</span></span><span class="sig-name descname"><span class="pre">merge_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#medusa.server.decorator.merge_request" title="Link to this definition"></a></dt>
+<dd><p>A decorator that merges positional and keyword arguments.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>func (function): The function to decorate.</p>
+</dd>
+<dt>Returns:</dt><dd><p>function: The decorated function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="medusa.server.decorator.register_route">
 <span class="sig-prename descclassname"><span class="pre">medusa.server.decorator.</span></span><span class="sig-name descname"><span class="pre">register_route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapped</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">methods</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#medusa.server.decorator.register_route" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -127,20 +140,19 @@
 <dt>Args:</dt><dd><ul class="simple">
 <li><p><cite>cls</cite> (type): The class associated with the route. Must always be <cite>cls</cite>.</p></li>
 <li><p><cite>rule</cite> (str): The URL rule for the route.</p></li>
-<li><dl class="simple">
-<dt><cite>methods</cite> (List[str], optional): The HTTP methods supported by the route. </dt><dd><p>Defaults to <cite>[‘GET’]</cite>.</p>
-</dd>
-</dl>
-</li>
+<li><p><cite>methods</cite> (List[str], optional): The HTTP methods supported by the route. 
+Defaults to <cite>[‘GET’]</cite>.</p></li>
 <li><p><cite>url_prefix</cite> (str): The URL prefix for the route. Defaults to <cite>None</cite>.</p></li>
 </ul>
 </dd>
-<dt>Raises:</dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt><cite>Exception</cite>: If there is an issue while registering the route, an exception </dt><dd><p>is raised.</p>
+<dt>Func Args:</dt><dd><ul class="simple">
+<li><p><cite>args</cite> (dict): Source function positional arguments.</p></li>
+<li><p><cite>kwargs</cite> (dict): Source function key word arguments.</p></li>
+</ul>
 </dd>
-</dl>
-</li>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>Exception</cite>: If there is an issue while registering the route, an exception 
+is raised.</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p><cite>Callable</cite>: The decorator function.</p>
@@ -191,19 +203,23 @@ and replaces it with a custom logger.</p>
 <dl class="py class" id="module-medusa.server.route">
 <dt class="sig sig-object py" id="medusa.server.route.Route">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.server.route.</span></span><span class="sig-name descname"><span class="pre">Route</span></span><a class="headerlink" href="#medusa.server.route.Route" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="medusa.utils.html#medusa.utils.printable.Printable" title="medusa.utils.printable.Printable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Printable</span></code></a></p>
 <p>A base class for defining routes in the application.</p>
-<p>This class provides a foundation for defining URL prefixes and routes for specific endpoints.</p>
+<p>This class provides a foundation for defining URL prefixes and routes for 
+specific endpoints.</p>
 <dl class="simple">
 <dt>Methods:</dt><dd><ul class="simple">
-<li><p><cite>__url_prefix__()</cite>: Generate the URL prefix for the route based on the class name.</p></li>
+<li><p><cite>__url_prefix__()</cite>: Generate the URL prefix for the route based on the 
+class name.</p></li>
 <li><p><cite>routes()</cite>: Define routes for the <cite>Route</cite> subclass.</p></li>
 </ul>
 </dd>
 <dt>Notes:</dt><dd><ul class="simple">
-<li><p>Subclasses of <cite>Route</cite> should override the <cite>__url_prefix__()</cite> method to define specific</p></li>
+<li><p>Subclasses of <cite>Route</cite> should override the <cite>__url_prefix__()</cite> method to 
+define specific</p></li>
 <li><p>URL prefixes for their routes.</p></li>
-<li><p>Subclasses of <cite>Route</cite> should override the <cite>routes()</cite> method to define specific routes.</p></li>
+<li><p>Subclasses of <cite>Route</cite> should override the <cite>routes()</cite> method to define 
+specific routes.</p></li>
 </ul>
 </dd>
 </dl>
@@ -231,7 +247,8 @@ and replaces it with a custom logger.</p>
 <p>This class is responsible for handling HTTP requests and starting the server.</p>
 <dl class="simple">
 <dt>Methods:</dt><dd><ul class="simple">
-<li><p><cite>application(environ, start_response)</cite>: Main application method for handling HTTP requests.</p></li>
+<li><p><cite>application(environ, start_response)</cite>: Main application method for handling
+HTTP requests.</p></li>
 <li><p><cite>run()</cite>: Start the server and listen for incoming requests.</p></li>
 </ul>
 </dd>

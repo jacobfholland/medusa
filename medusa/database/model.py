@@ -32,13 +32,13 @@ class Model(Route, Base):
     Notes:
         - All method overrides should return `super()`
         - Subclasses of `Model` should override the `create()` method to define 
-        specific create behavior.
+          specific create behavior.
         - Subclasses of `Model` should override the `get()` method to define 
-        specific get behavior.
+          specific get behavior.
         - Subclasses of `Model` should override the `update()` method to define 
-        specific update behavior.
+          specific update behavior.
         - Subclasses of `Model` should override the `delete()` method to define 
-        specific delete behavior.
+          specific delete behavior.
     """
 
     __abstract__ = True  # Ignores database table creation
@@ -63,8 +63,9 @@ class Model(Route, Base):
         """Initialize a new `Model` instance.
 
         Returns:
-            `None`
+            `None`: Void
         """
+
         super().__init__()
 
     @declared_attr

@@ -22,7 +22,7 @@ Functions
 ^^^^^^^^^
 
 Environment
----------
+-----------
 .. automodule:: medusa.utils.environment
    :members:
    :undoc-members:

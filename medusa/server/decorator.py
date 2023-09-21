@@ -19,7 +19,7 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = 
         - `cls` (type): The class associated with the route. Must always be `cls`.
         - `rule` (str): The URL rule for the route.
         - `methods` (List[str], optional): The HTTP methods supported by the route. 
-        Defaults to `['GET']`.
+          Defaults to `['GET']`.
         - `url_prefix` (str): The URL prefix for the route. Defaults to `None`.
 
     Func Args:
@@ -28,7 +28,7 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = 
 
     Raises:
         - `Exception`: If there is an issue while registering the route, an exception 
-        is raised.
+          is raised.
 
     Returns:
         `Callable`: The decorator function.

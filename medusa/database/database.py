@@ -173,7 +173,7 @@ class Database:
 
         Raises:
             - `SystemExit`: If an exception occurs during the creation of the scoped 
-            session.
+              session.
 
         Returns:
             `scoped_session`: A SQLAlchemy scoped_session object.        

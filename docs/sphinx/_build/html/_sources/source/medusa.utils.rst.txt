@@ -3,6 +3,11 @@ Utils
 
 Classes
 ^^^^^^^
+
+.. automodule:: medusa.utils.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
 .. automodule:: medusa.utils.printable
    :members:
    :undoc-members:
@@ -15,9 +20,10 @@ Classes
 
 Functions
 ^^^^^^^^^
-Decorator
----------
-.. automodule:: medusa.utils.decorator
+
+Environment
+-----------
+.. automodule:: medusa.utils.environment
    :members:
    :undoc-members:
    :show-inheritance:
@@ -46,6 +52,13 @@ JSON
 Logger
 ------
 .. automodule:: medusa.utils.logger
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Merge
+------
+.. automodule:: medusa.utils.merge
    :members:
    :undoc-members:
    :show-inheritance:

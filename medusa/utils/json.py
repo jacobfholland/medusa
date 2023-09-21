@@ -25,11 +25,11 @@ def delete_value(data: dict[Any], key: str) -> None:
 
     Notes:
         - The function is primarily used during the serilization of Werkzeug's 
-        Request object. 
+          Request object. 
 
     Args:
         - `data` (dict[Any]): The dictionary from which the key-value pair will 
-        be deleted. 
+          be deleted. 
         - `key` (str): The key that needs to be deleted. 
 
     Raises:
@@ -48,7 +48,7 @@ def delete_ignored(data: dict[Any]) -> None:
 
     Args:
         - `data` (dict[Any]): The dictionary from which the ignored keys will be 
-        deleted.
+          deleted.
 
     Raises:
         - `KeyError`: If the value doesn't exist gracefully ignore it.

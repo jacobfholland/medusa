@@ -51,7 +51,8 @@
 <li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Utils</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-medusa.utils.printable">Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-medusa.utils.config">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.utils.config.UtilsConfig"><code class="docutils literal notranslate"><span class="pre">UtilsConfig</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.printable.Printable"><code class="docutils literal notranslate"><span class="pre">Printable</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#medusa.utils.dummy.DummyRoute"><code class="docutils literal notranslate"><span class="pre">DummyRoute</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.utils.dummy.DummyRoute.routes"><code class="docutils literal notranslate"><span class="pre">DummyRoute.routes()</span></code></a></li>
@@ -60,8 +61,9 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.decorator">Decorator</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.decorator.require_envs"><code class="docutils literal notranslate"><span class="pre">require_envs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.environment">Environment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.environment.check_envs"><code class="docutils literal notranslate"><span class="pre">check_envs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.environment.require_envs"><code class="docutils literal notranslate"><span class="pre">require_envs()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.format">Format</a><ul>
@@ -96,8 +98,18 @@
 <li class="toctree-l4"><a class="reference internal" href="#medusa.utils.logger.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.merge">Merge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.merge.DEFAULT_KEY"><code class="docutils literal notranslate"><span class="pre">DEFAULT_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.merge.bind_value"><code class="docutils literal notranslate"><span class="pre">bind_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.merge.evaluate_arg"><code class="docutils literal notranslate"><span class="pre">evaluate_arg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.merge.handle_iterable"><code class="docutils literal notranslate"><span class="pre">handle_iterable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.merge.handle_obj"><code class="docutils literal notranslate"><span class="pre">handle_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.merge.merge"><code class="docutils literal notranslate"><span class="pre">merge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.merge.merge_values"><code class="docutils literal notranslate"><span class="pre">merge_values()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-medusa.utils.validation">Validation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.validation.eval"><code class="docutils literal notranslate"><span class="pre">eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.utils.validation.evaluate"><code class="docutils literal notranslate"><span class="pre">evaluate()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.utils.validation.is_iterable"><code class="docutils literal notranslate"><span class="pre">is_iterable()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.utils.validation.is_model"><code class="docutils literal notranslate"><span class="pre">is_model()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#medusa.utils.validation.is_request"><code class="docutils literal notranslate"><span class="pre">is_request()</span></code></a></li>
@@ -135,27 +147,38 @@
              
   <section id="utils">
 <h1>Utils<a class="headerlink" href="#utils" title="Link to this heading"></a></h1>
-<section id="module-medusa.utils.printable">
-<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-medusa.utils.printable" title="Link to this heading"></a></h2>
+<section id="module-medusa.utils.config">
+<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-medusa.utils.config" title="Link to this heading"></a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="medusa.utils.config.UtilsConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.utils.config.</span></span><span class="sig-name descname"><span class="pre">UtilsConfig</span></span><a class="headerlink" href="#medusa.utils.config.UtilsConfig" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="medusa.html#medusa.config.Config" title="medusa.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<p>Configuration settings for utility functions and components in the application.</p>
+</dd></dl>
+
+<dl class="py class" id="module-medusa.utils.printable">
 <dt class="sig sig-object py" id="medusa.utils.printable.Printable">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.utils.printable.</span></span><span class="sig-name descname"><span class="pre">Printable</span></span><a class="headerlink" href="#medusa.utils.printable.Printable" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>A mixin class for objects that can be represented as strings and have a printable representation.</p>
-<p>This class provides default implementations for the <cite>__str__</cite> and <cite>__repr__</cite> methods, which return a string
-representation of the object’s class name and its attributes.</p>
+<p>A mixin class for objects that can be represented as strings and have a 
+printable representation.</p>
+<p>This class provides default implementations for the <cite>__str__</cite> and <cite>__repr__</cite> 
+methods, which return a string representation of the object’s class name and its 
+attributes.</p>
 </dd></dl>
 
 <dl class="py class" id="module-medusa.utils.dummy">
 <dt class="sig sig-object py" id="medusa.utils.dummy.DummyRoute">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.utils.dummy.</span></span><span class="sig-name descname"><span class="pre">DummyRoute</span></span><a class="headerlink" href="#medusa.utils.dummy.DummyRoute" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>A dummy class to be imported when the Server package is otherwise not installed.</p>
+<p>A dummy class to be imported when the Server package is otherwise not 
+installed.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="medusa.utils.dummy.DummyRoute.routes">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">routes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#medusa.utils.dummy.DummyRoute.routes" title="Link to this definition"></a></dt>
 <dd><p>Placeholder method for registering routes.</p>
-<p>Subclasses should override this method to register their specific routes with the server.</p>
+<p>Subclasses should override this method to register their specific routes 
+with the server.</p>
 </dd></dl>
 
 </dd></dl>
@@ -163,16 +186,44 @@ representation of the object’s class name and its attributes.</p>
 </section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
-<section id="module-medusa.utils.decorator">
-<span id="decorator"></span><h3>Decorator<a class="headerlink" href="#module-medusa.utils.decorator" title="Link to this heading"></a></h3>
+<section id="module-medusa.utils.environment">
+<span id="environment"></span><h3>Environment<a class="headerlink" href="#module-medusa.utils.environment" title="Link to this heading"></a></h3>
 <dl class="py function">
-<dt class="sig sig-object py" id="medusa.utils.decorator.require_envs">
-<span class="sig-prename descclassname"><span class="pre">medusa.utils.decorator.</span></span><span class="sig-name descname"><span class="pre">require_envs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#medusa.utils.decorator.require_envs" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="medusa.utils.environment.check_envs">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.environment.</span></span><span class="sig-name descname"><span class="pre">check_envs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.utils.environment.check_envs" title="Link to this definition"></a></dt>
+<dd><p>Checks if the specified environment variables are present. If specified 
+environment variables are not present, it will exit running the application.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>config</cite> (object): The configuration object that should contain the 
+environment variables.</p></li>
+<li><p><cite>envs</cite> (List[str]): A list of environment variable names to check for.</p></li>
+</ul>
+</dd>
+<dt>Func Args:</dt><dd><ul class="simple">
+<li><p><cite>args</cite> (dict): Source function positional arguments.</p></li>
+<li><p><cite>kwargs</cite> (dict): Source function key word arguments.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>bool</cite>: If the environment variable is present.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.environment.require_envs">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.environment.</span></span><span class="sig-name descname"><span class="pre">require_envs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#medusa.utils.environment.require_envs" title="Link to this definition"></a></dt>
 <dd><p>A decorator that checks if the specified environment variables are present.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>config</cite> (object): The configuration object that should contain the environment variables.</p></li>
+<li><p><cite>config</cite> (object): The configuration object that should contain the 
+environment variables.</p></li>
 <li><p><cite>envs</cite> (List[str]): A list of environment variable names to check for.</p></li>
+</ul>
+</dd>
+<dt>Func Args:</dt><dd><ul class="simple">
+<li><p><cite>args</cite> (dict): Source function positional arguments.</p></li>
+<li><p><cite>kwargs</cite> (dict): Source function key word arguments.</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p><cite>Callable</cite>: The decorated function.</p>
@@ -257,7 +308,8 @@ representation of the object’s class name and its attributes.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="medusa.utils.importing.import_model">
 <span class="sig-prename descclassname"><span class="pre">medusa.utils.importing.</span></span><span class="sig-name descname"><span class="pre">import_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AST</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.importing.import_model" title="Link to this definition"></a></dt>
-<dd><p>Import models from Python files and register them if they inherit from the ‘Model’ base class.</p>
+<dd><p>Import models from Python files and register them if they inherit from the 
+‘Model’ base class.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
 <li><p><cite>node</cite> (ast.AST): The AST node representing a class definition.</p></li>
@@ -266,7 +318,8 @@ representation of the object’s class name and its attributes.</p>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>ImportError</cite>: If the ‘Database’ package is missing, models won’t be registered.</p></li>
+<li><p><cite>ImportError</cite>: If the ‘Database’ package is missing, models won’t be 
+registered.</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p><cite>None</cite></p>
@@ -286,7 +339,8 @@ representation of the object’s class name and its attributes.</p>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>ImportError</cite>: If the ‘Server’ package is missing, routes won’t be registered.</p></li>
+<li><p><cite>ImportError</cite>: If the ‘Server’ package is missing, routes won’t be 
+registered.</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p><cite>None</cite></p>
@@ -409,11 +463,8 @@ representation of the object’s class name and its attributes.</p>
 <dd><p>Delete ignored keys from the dictionary.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt><cite>data</cite> (dict[Any]): The dictionary from which the ignored keys will be </dt><dd><p>deleted.</p>
-</dd>
-</dl>
-</li>
+<li><p><cite>data</cite> (dict[Any]): The dictionary from which the ignored keys will be 
+deleted.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
@@ -432,19 +483,13 @@ representation of the object’s class name and its attributes.</p>
 <p>Attempts to remove a key from the dictionary’s <cite>environ</cite> key.</p>
 <dl class="simple">
 <dt>Notes:</dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt>The function is primarily used during the serilization of Werkzeug’s </dt><dd><p>Request object.</p>
-</dd>
-</dl>
-</li>
+<li><p>The function is primarily used during the serilization of Werkzeug’s 
+Request object.</p></li>
 </ul>
 </dd>
 <dt>Args:</dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt><cite>data</cite> (dict[Any]): The dictionary from which the key-value pair will </dt><dd><p>be deleted.</p>
-</dd>
-</dl>
-</li>
+<li><p><cite>data</cite> (dict[Any]): The dictionary from which the key-value pair will 
+be deleted.</p></li>
 <li><p><cite>key</cite> (str): The key that needs to be deleted.</p></li>
 </ul>
 </dd>
@@ -521,11 +566,168 @@ which can be base64 decoded at a later time.</p>
 </dd></dl>
 
 </section>
+<section id="module-medusa.utils.merge">
+<span id="merge"></span><h3>Merge<a class="headerlink" href="#module-medusa.utils.merge" title="Link to this heading"></a></h3>
+<dl class="py data">
+<dt class="sig sig-object py" id="medusa.utils.merge.DEFAULT_KEY">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.merge.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'vals'</span></em><a class="headerlink" href="#medusa.utils.merge.DEFAULT_KEY" title="Link to this definition"></a></dt>
+<dd><p>Default key to be used when no key exists</p>
+<dl class="simple">
+<dt>TODO:</dt><dd><ul class="simple">
+<li><p>Make this an environment variable</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.merge.bind_value">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.merge.</span></span><span class="sig-name descname"><span class="pre">bind_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.merge.bind_value" title="Link to this definition"></a></dt>
+<dd><p>Binds a value to a key in the <cite>kwargs</cite> dictionary.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>kwargs</cite> (dict): Dictionary to which to append the values.</p></li>
+<li><p><cite>k</cite> (str): The key for appending to the <cite>kwargs</cite> dictionary.</p></li>
+<li><p><cite>v</cite> (Any): The value to be bound.</p></li>
+</ul>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>Exception</cite>: Catch-all exception if anything unexpect happens while 
+handling the iterable arg.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>None</cite>: Void.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.merge.evaluate_arg">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.merge.</span></span><span class="sig-name descname"><span class="pre">evaluate_arg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.merge.evaluate_arg" title="Link to this definition"></a></dt>
+<dd><p>Evaluates and processes a single argument.</p>
+<p>The function takes a key-value pair and evaluates the value before adding it 
+to <cite>kwargs</cite>. Handles iterable and model object cases.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>kwargs</cite> (dict): Dictionary to which to append the value.</p></li>
+<li><p><cite>k</cite> (str): The key for the for the argument.</p></li>
+<li><p><cite>v</cite> (Any): The value to evaluate and add.</p></li>
+</ul>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p>Exception (Exception): Catch-all exception if anything unexpect happens 
+while evaluating the arg.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>None</cite>: Void.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.merge.handle_iterable">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.merge.</span></span><span class="sig-name descname"><span class="pre">handle_iterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">set</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.merge.handle_iterable" title="Link to this definition"></a></dt>
+<dd><p>Handles iterable arguments for evalution.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>kwargs</cite> (dict): Dictionary to which to append the value.</p></li>
+<li><p><cite>k</cite> (str): The key in the kwargs dictionary.</p></li>
+<li><p><cite>arg</cite> (Union[list, tuple, set, dict]): The iterable argument.</p></li>
+</ul>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>Exception</cite>: Catch-all exception if anything unexpect happens while 
+handling the iterable arg.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>None</cite>: Void.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.merge.handle_obj">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.merge.</span></span><span class="sig-name descname"><span class="pre">handle_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.utils.merge.handle_obj" title="Link to this definition"></a></dt>
+<dd><p>Handles object arguments.</p>
+<p>For each key-value pair in the object variables, it appends the value to 
+the <cite>kwargs</cite> dictionary if the key doesn’t start with an underscore.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>v</cite> (Any): The object whose variables to handle.</p></li>
+<li><p><cite>kwargs</cite> (dict): Dictionary to which to append the values.</p></li>
+</ul>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>Exception</cite>: Catch-all exception if anything unexpect happens while 
+handling the object arg.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>None</cite>: Void.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.merge.merge">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.merge.</span></span><span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#medusa.utils.merge.merge" title="Link to this definition"></a></dt>
+<dd><p>Merges the input arguments into a single dictionary.</p>
+<p>Handles special cases for iterable and model objects. The function takes
+any number of arguments and keyword arguments and returns a dictionary that
+merges them all. If a key is found multiple times, it will join those values
+found into a list. If the value has no key, it will be bound to the <cite>vals</cite>
+attribute on the returned dictionary.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>*args</cite> (Any): Arbitrary positional arguments.</p></li>
+<li><p><cite>**kwargs</cite> (Any): Arbitrary keyword arguments.</p></li>
+</ul>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>Exception</cite>: Catch-all exception if anything unexpect happens while 
+merging values.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>dict</cite>: The new dictionary merging all inputs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.utils.merge.merge_values">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.merge.</span></span><span class="sig-name descname"><span class="pre">merge_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#medusa.utils.merge.merge_values" title="Link to this definition"></a></dt>
+<dd><p>Decorator that auto merges arguments. Merges the input arguments into a single 
+dictionary. Uses the <cite>merge()</cite> functionality.</p>
+<p>Handles special cases for iterable and model objects. The function takes
+any number of arguments and keyword arguments and returns a dictionary that
+merges them all. If a key is found multiple times, it will join those values
+found into a list. If the value has no key, it will be bound to the <cite>vals</cite>
+attribute on the returned dictionary.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>func</cite> (Callable): The function being decorated</p></li>
+</ul>
+</dd>
+<dt>Func Args:</dt><dd><ul class="simple">
+<li><p><cite>*args</cite> (Any): Arbitrary positional arguments.</p></li>
+<li><p><cite>**kwargs</cite> (Any): Arbitrary keyword arguments.</p></li>
+</ul>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>Exception</cite>: Catch-all exception if anything unexpect happens while 
+merging values.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>None</cite>: Void.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="module-medusa.utils.validation">
 <span id="validation"></span><h3>Validation<a class="headerlink" href="#module-medusa.utils.validation" title="Link to this heading"></a></h3>
 <dl class="py function">
-<dt class="sig sig-object py" id="medusa.utils.validation.eval">
-<span class="sig-prename descclassname"><span class="pre">medusa.utils.validation.</span></span><span class="sig-name descname"><span class="pre">eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#medusa.utils.validation.eval" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="medusa.utils.validation.evaluate">
+<span class="sig-prename descclassname"><span class="pre">medusa.utils.validation.</span></span><span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#medusa.utils.validation.evaluate" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">

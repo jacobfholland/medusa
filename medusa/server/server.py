@@ -19,7 +19,7 @@ class Server:
 
     Methods:
         - `application(environ, start_response)`: Main application method for handling
-        HTTP requests.
+          HTTP requests.
         - `run()`: Start the server and listen for incoming requests.
     """
 

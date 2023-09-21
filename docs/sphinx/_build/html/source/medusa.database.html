@@ -178,7 +178,7 @@ configuration parameters using environment variables.</p>
 <li><p><cite>DATABASE_PASSWORD</cite> (str): The password for database authentication.</p></li>
 <li><p><cite>DATABASE_HOSTNAME</cite> (str): The host where the database server is located.</p></li>
 <li><p><cite>DATABASE_PORT</cite> (str): The port on which the database server is listening.</p></li>
-<li><p><cite>DATABASE_TYPE</cite> (str): The type or dialect of the database (e.g., ‘mysql’, ‘postgresql’).</p></li>
+<li><p><cite>DATABASE_TYPE</cite> (str): The type or dialect of the database.</p></li>
 <li><p><cite>DATABASE_TYPE</cite> (str): The path to the database file (if applicable).</p></li>
 </ul>
 </dd>
@@ -246,10 +246,11 @@ and SQLAlchemy base for working with database models.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="medusa.database.database.Database.database_type">
 <span class="sig-name descname"><span class="pre">database_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.database.database.Database.database_type" title="Link to this definition"></a></dt>
-<dd><p>Determines the database type based on the provided string and returns the appropriate connection URI.</p>
+<dd><p>Determines the database type based on the provided string and returns the 
+appropriate connection URI.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p><cite>db_type</cite> (str): A string representing the database type (e.g., “sqlite”, “mysql”).</p></li>
+<li><p><cite>db_type</cite> (str): A string representing the database type.</p></li>
 </ul>
 </dd>
 <dt>Raises:</dt><dd><ul class="simple">
@@ -281,7 +282,8 @@ and SQLAlchemy base for working with database models.</p>
 <dd><p>Creates and returns a scoped session for transaction management.</p>
 <dl class="simple">
 <dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>SystemExit</cite>: If an exception occurs during the creation of the scoped session.</p></li>
+<li><p><cite>SystemExit</cite>: If an exception occurs during the creation of the scoped 
+session.</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p><cite>scoped_session</cite>: A SQLAlchemy scoped_session object.</p>
@@ -307,7 +309,8 @@ and SQLAlchemy base for working with database models.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="medusa.database.database.Database.generate_uri">
 <span class="sig-name descname"><span class="pre">generate_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#medusa.database.database.Database.generate_uri" title="Link to this definition"></a></dt>
-<dd><p>Constructs the database URI by calling the appropriate URI generation method based on the database type.</p>
+<dd><p>Constructs the database URI by calling the appropriate URI generation 
+method based on the database type.</p>
 <dl class="simple">
 <dt>Notes:</dt><dd><ul class="simple">
 <li><p>Requires valid environment variables</p></li>
@@ -388,7 +391,8 @@ and SQLAlchemy base for working with database models.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.database.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#medusa.database.model.Model" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="medusa.server.html#medusa.server.route.Route" title="medusa.server.route.Route"><code class="xref py py-class docutils literal notranslate"><span class="pre">Route</span></code></a>, <a class="reference internal" href="#medusa.database.base.Base" title="sqlalchemy.orm.decl_api.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a></p>
 <p>An abstract base class for all SQLAlchemy models in this project.</p>
-<p>This class contains common fields that are expected to be present in all derived models.</p>
+<p>This class contains common fields that are expected to be present in all derived 
+models.</p>
 <dl class="simple">
 <dt>Attributes:</dt><dd><ul class="simple">
 <li><p><cite>id</cite> (Column): The primary key for the model.</p></li>
@@ -399,10 +403,14 @@ and SQLAlchemy base for working with database models.</p>
 </dd>
 <dt>Notes:</dt><dd><ul class="simple">
 <li><p>All method overrides should return <cite>super()</cite></p></li>
-<li><p>Subclasses of <cite>Model</cite> should override the <cite>create()</cite> method to define specific create behavior.</p></li>
-<li><p>Subclasses of <cite>Model</cite> should override the <cite>get()</cite> method to define specific get behavior.</p></li>
-<li><p>Subclasses of <cite>Model</cite> should override the <cite>update()</cite> method to define specific update behavior.</p></li>
-<li><p>Subclasses of <cite>Model</cite> should override the <cite>delete()</cite> method to define specific delete behavior.</p></li>
+<li><p>Subclasses of <cite>Model</cite> should override the <cite>create()</cite> method to define 
+specific create behavior.</p></li>
+<li><p>Subclasses of <cite>Model</cite> should override the <cite>get()</cite> method to define 
+specific get behavior.</p></li>
+<li><p>Subclasses of <cite>Model</cite> should override the <cite>update()</cite> method to define 
+specific update behavior.</p></li>
+<li><p>Subclasses of <cite>Model</cite> should override the <cite>delete()</cite> method to define 
+specific delete behavior.</p></li>
 </ul>
 </dd>
 </dl>
@@ -420,7 +428,8 @@ and SQLAlchemy base for working with database models.</p>
 <dt class="sig sig-object py" id="medusa.database.model.Model.register_model">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.database.model.Model.register_model" title="Link to this definition"></a></dt>
 <dd><p>Register the model with the database.</p>
-<p>Creates the database table for the model and sets up CRUD routes if the app server is enabled.</p>
+<p>Creates the database table for the model and sets up CRUD routes if the app 
+server is enabled.</p>
 <dl class="simple">
 <dt>Raises:</dt><dd><ul class="simple">
 <li><p><cite>Exception</cite>: If table creation fails.</p></li>
@@ -435,7 +444,8 @@ and SQLAlchemy base for working with database models.</p>
 <dt class="sig sig-object py" id="medusa.database.model.Model.routes">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">routes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#medusa.database.model.Model.routes" title="Link to this definition"></a></dt>
 <dd><p>Define routes for the model.</p>
-<p>If the app server is enabled, this method defines routes for CRUD on model instances.</p>
+<p>If the app server is enabled, this method defines routes for CRUD on model 
+instances.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
 <li><p><cite>cls</cite> (type): The class associated with the routes. Must always be <cite>cls</cite>.</p></li>

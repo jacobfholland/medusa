@@ -131,6 +131,8 @@ class ExampleDocstring(Model):
     - A good rule of thumb is if you have no panes open in VSCode, then 
         dock it to one side of your monitor, your lines should not exceed the
         width and require scrolling.
+    - If a Section line needs to be broken into multiple lines, add two spaces
+        at the begging of every additional line
 - The general rule of thumb for formatting a section line is: 
 `- 'key' (type): Lorem ipsum`
     - **(The single quotes are actually backticks. Markdown limits displaying 

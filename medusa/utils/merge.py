@@ -27,7 +27,7 @@ def merge(*args: Any, **kwargs: Any) -> dict:
 
     Raises:
         - `Exception`: Catch-all exception if anything unexpect happens while 
-        merging values.
+          merging values.
 
     Returns:
         `dict`: The new dictionary merging all inputs.
@@ -56,8 +56,8 @@ def evaluate_arg(kwargs: dict, k: str, v: Any) -> None:
         - `v` (Any): The value to evaluate and add.
 
     Raises:
-        - `Exception`: Catch-all exception if anything unexpect happens while 
-        evaluating the arg.
+        - Exception (Exception): Catch-all exception if anything unexpect happens 
+          while evaluating the arg. 
 
     Returns:
         `None`: Void.
@@ -85,7 +85,7 @@ def handle_iterable(kwargs: dict, k: str, arg: Union[list, tuple, set, dict]) ->
 
     Raises:
         - `Exception`: Catch-all exception if anything unexpect happens while 
-        handling the iterable arg.
+          handling the iterable arg.
 
 
     Returns:
@@ -115,7 +115,7 @@ def handle_obj(v: Any, kwargs: dict) -> None:
 
     Raises:
         - `Exception`: Catch-all exception if anything unexpect happens while 
-        handling the object arg.
+          handling the object arg.
 
     Returns:
         `None`: Void.
@@ -141,7 +141,7 @@ def bind_value(kwargs: dict, k: str, v: Any) -> None:
 
     Raises:
         - `Exception`: Catch-all exception if anything unexpect happens while 
-        handling the iterable arg.
+          handling the iterable arg.
 
     Returns:
         `None`: Void.
@@ -181,7 +181,7 @@ def merge_values(func: Callable):
 
     Raises:
         - `Exception`: Catch-all exception if anything unexpect happens while 
-        merging values.
+          merging values.
 
     Returns:
         `None`: Void.
