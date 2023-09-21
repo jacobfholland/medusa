@@ -30,7 +30,7 @@ class IndexRoute(Route):
             ``str``: The URL prefix for the index route (empty string).
         """
 
-        return ""
+        return "/"
 
     @classmethod
     def routes(cls) -> Callable:

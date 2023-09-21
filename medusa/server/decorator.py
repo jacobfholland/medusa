@@ -36,6 +36,10 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = 
 
     if not url_prefix:
         rule = f"{cls.__url_prefix__()}{rule}"
+    else:
+        rule = f"{url_prefix}{rule}"
+    if rule.startswith("//"):
+        rule = rule[1:]
     try:
         def decorator(func: Callable) -> Callable:
             @functools.wraps(func)

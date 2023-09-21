@@ -33,11 +33,11 @@ class User(Model):
             ``super``: Parent `routes()` method.
         """
 
-        @route(cls, "/login", methods=["GET"])
+        @route(cls, "/login", methods=["GET"], url_prefix="/")
         def login(request):
             return "<html>LOGIN<html>"
 
-        @route(cls, "/logout", methods=["POST"])
+        @route(cls, "/logout", methods=["POST"], url_prefix="/")
         def logout(request):
             return "<html>LOGOUT<html>"
         return super().routes()
