@@ -8,6 +8,7 @@
    :caption: Getting Started:
 
    source/getting_started
+   source/envs.rst
 
 .. toctree::
    :maxdepth: 2
@@ -15,9 +16,12 @@
 
    source/medusa.database
    source/medusa.server
+   source/medusa.controllers
+   source/medusa.routes
    source/medusa.auth
    source/medusa.utils
-
+   source/medusa.rst
+   
 
 
 

@@ -1,4 +1,4 @@
-## Environment Variables
+# Environment Variables
 
 Medusa uses environment variables for configuration and customization. Below is a list of important environment variables you can set to tailor your application to your specific needs.
 

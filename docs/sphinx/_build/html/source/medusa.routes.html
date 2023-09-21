@@ -43,13 +43,16 @@
               <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="envs.html">Environment Variables</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="medusa.database.html">Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.controllers.html">Controllers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medusa.html">Medusa</a></li>
 </ul>
 
         </div>
@@ -78,8 +81,30 @@
              
   <section id="routes">
 <h1>Routes<a class="headerlink" href="#routes" title="Link to this heading"></a></h1>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<section id="module-medusa.routes.index">
+<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-medusa.routes.index" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="medusa.routes.index.IndexRoute">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">medusa.routes.index.</span></span><span class="sig-name descname"><span class="pre">IndexRoute</span></span><a class="headerlink" href="#medusa.routes.index.IndexRoute" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="medusa.server.html#medusa.server.route.Route" title="medusa.server.route.Route"><code class="xref py py-class docutils literal notranslate"><span class="pre">Route</span></code></a></p>
+<p>A route class representing the index endpoint of the application.</p>
+<p>This class inherits from the <cite>Route</cite> base class and defines the index endpoint.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="medusa.routes.index.IndexRoute.routes">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">routes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#medusa.routes.index.IndexRoute.routes" title="Link to this definition"></a></dt>
+<dd><p>Define routes for handling HTTP requests at the index endpoint.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><cite>cls</cite> (type): The class associated with the routes. Must always be <cite>cls</cite>.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>super()</cite>: Parent <cite>routes()</cite> method</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 

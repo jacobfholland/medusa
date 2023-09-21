@@ -1,6 +1,14 @@
 Medusa
 ======
 
+Config
+--------------------
+
+.. automodule:: medusa.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Functions
 -----------------
 
@@ -9,13 +17,7 @@ Functions
    :undoc-members:
    :show-inheritance:
 
-Config
---------------------
 
-.. automodule:: medusa.config
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 Logger
 --------------------

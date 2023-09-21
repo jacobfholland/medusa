@@ -3,12 +3,7 @@ Controllers
 
 Classes
 ^^^^^^^^^
-.. automodule:: medusa.server.controller
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-.. automodule:: medusa.server.index
+.. automodule:: medusa.controllers.controller
    :members:
    :undoc-members:
    :show-inheritance:

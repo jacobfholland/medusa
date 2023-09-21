@@ -3,7 +3,7 @@ Routes
 
 Classes
 ^^^^^^^^^
-.. automodule:: medusa.database.index
+.. automodule:: medusa.routes.index
    :members:
    :undoc-members:
    :show-inheritance:

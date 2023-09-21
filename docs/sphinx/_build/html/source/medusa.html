@@ -18,7 +18,8 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Utils" href="medusa.utils.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,13 +44,40 @@
               <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="envs.html">Environment Variables</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="medusa.database.html">Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.server.html">Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.auth.html">Auth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="medusa.utils.html">Utils</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Medusa</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-medusa.config">Config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.config.Config.APP_DATABASE"><code class="docutils literal notranslate"><span class="pre">Config.APP_DATABASE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.config.Config.APP_DIR"><code class="docutils literal notranslate"><span class="pre">Config.APP_DIR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.config.Config.APP_NAME"><code class="docutils literal notranslate"><span class="pre">Config.APP_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.config.Config.APP_SERVER"><code class="docutils literal notranslate"><span class="pre">Config.APP_SERVER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.config.Config.LOG_LEVEL"><code class="docutils literal notranslate"><span class="pre">Config.LOG_LEVEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medusa.config.Config.LOG_PATH"><code class="docutils literal notranslate"><span class="pre">Config.LOG_PATH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.config.load_envs"><code class="docutils literal notranslate"><span class="pre">load_envs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.config.strip"><code class="docutils literal notranslate"><span class="pre">strip()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-medusa.app">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.app.run"><code class="docutils literal notranslate"><span class="pre">run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-medusa.logger">Logger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.logger.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medusa.logger.setup_logger"><code class="docutils literal notranslate"><span class="pre">setup_logger()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -78,27 +106,6 @@
              
   <section id="medusa">
 <h1>Medusa<a class="headerlink" href="#medusa" title="Link to this heading"></a></h1>
-<section id="module-medusa.app">
-<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-medusa.app" title="Link to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="medusa.app.run">
-<span class="sig-prename descclassname"><span class="pre">medusa.app.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.app.run" title="Link to this definition"></a></dt>
-<dd><p>Run the Medusa Application.</p>
-<p>This function starts the application based on the configuration in the object. 
-It enables or disables the database and server components based on the 
-environment variables.</p>
-<dl class="simple">
-<dt>Raises:</dt><dd><ul class="simple">
-<li><p><cite>ImportError</cite>: If the server package is missing.</p></li>
-<li><p><cite>Exception</cite>: If an unexpected error occurs while starting the server.</p></li>
-</ul>
-</dd>
-<dt>Returns:</dt><dd><p><cite>None</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
 <section id="module-medusa.config">
 <span id="config"></span><h2>Config<a class="headerlink" href="#module-medusa.config" title="Link to this heading"></a></h2>
 <dl class="py class">
@@ -179,6 +186,27 @@ the environment variables.</p></li>
 </dd></dl>
 
 </section>
+<section id="module-medusa.app">
+<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-medusa.app" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="medusa.app.run">
+<span class="sig-prename descclassname"><span class="pre">medusa.app.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#medusa.app.run" title="Link to this definition"></a></dt>
+<dd><p>Run the Medusa Application.</p>
+<p>This function starts the application based on the configuration in the object. 
+It enables or disables the database and server components based on the 
+environment variables.</p>
+<dl class="simple">
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p><cite>ImportError</cite>: If the server package is missing.</p></li>
+<li><p><cite>Exception</cite>: If an unexpected error occurs while starting the server.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><cite>None</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="module-medusa.logger">
 <span id="logger"></span><h2>Logger<a class="headerlink" href="#module-medusa.logger" title="Link to this heading"></a></h2>
 <dl class="py data">
@@ -208,7 +236,9 @@ the environment variables.</p></li>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="medusa.utils.html" class="btn btn-neutral float-left" title="Utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 
