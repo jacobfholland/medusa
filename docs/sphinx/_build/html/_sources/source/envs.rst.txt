@@ -4,8 +4,8 @@ Environment Variables
 
 Medusa uses environment variables for configuration and customization. Below is a list of important environment variables you can set to tailor your application to your specific needs.
 
-Application Configuration
--------------------------
+Application
+-----------
 - ``APP_NAME`` (str): The name of your application.
 - ``APP_ENV`` (str): The environment in which your application is running.
   
@@ -16,8 +16,8 @@ Application Configuration
 - ``APP_DATABASE`` (bool): Set to `True` to enable the Database component of Medusa. Set to `False` to disable it.
 - ``APP_SERVER`` (bool): Set to `True` to enable the Server component of Medusa. Set to `False` to disable it.
 
-Database Configuration
-----------------------
+Database
+--------
 These environment variables are used if ``APP_DATABASE`` is `True`.
 
 - ``DATABASE_HOST`` (str): The host or IP address of your database server. Default is `localhost`.
@@ -38,8 +38,8 @@ These environment variables are used if ``APP_DATABASE`` is `True`.
   
 - ``DATABASE_PATH`` (str): For SQLite databases, specify the path to the database file. Default is `storage`.
 
-Logging Configuration
----------------------
+Logging
+-------
 - ``LOG_LEVEL`` (str): The log level for internal logging.
   
   Options:

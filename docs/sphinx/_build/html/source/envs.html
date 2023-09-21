@@ -46,9 +46,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Environment Variables</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#application-configuration">Application Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#database-configuration">Database Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#logging-configuration">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#application">Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#database">Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging">Logging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -91,8 +91,8 @@
   <section id="environment-variables">
 <h1>Environment Variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h1>
 <p>Medusa uses environment variables for configuration and customization. Below is a list of important environment variables you can set to tailor your application to your specific needs.</p>
-<section id="application-configuration">
-<h2>Application Configuration<a class="headerlink" href="#application-configuration" title="Link to this heading"></a></h2>
+<section id="application">
+<h2>Application<a class="headerlink" href="#application" title="Link to this heading"></a></h2>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">APP_NAME</span></code> (str): The name of your application.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">APP_ENV</span></code> (str): The environment in which your application is running.</p>
@@ -108,8 +108,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">APP_SERVER</span></code> (bool): Set to <cite>True</cite> to enable the Server component of Medusa. Set to <cite>False</cite> to disable it.</p></li>
 </ul>
 </section>
-<section id="database-configuration">
-<h2>Database Configuration<a class="headerlink" href="#database-configuration" title="Link to this heading"></a></h2>
+<section id="database">
+<h2>Database<a class="headerlink" href="#database" title="Link to this heading"></a></h2>
 <p>These environment variables are used if <code class="docutils literal notranslate"><span class="pre">APP_DATABASE</span></code> is <cite>True</cite>.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_HOST</span></code> (str): The host or IP address of your database server. Default is <cite>localhost</cite>.</p></li>
@@ -134,8 +134,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_PATH</span></code> (str): For SQLite databases, specify the path to the database file. Default is <cite>storage</cite>.</p></li>
 </ul>
 </section>
-<section id="logging-configuration">
-<h2>Logging Configuration<a class="headerlink" href="#logging-configuration" title="Link to this heading"></a></h2>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h2>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">LOG_LEVEL</span></code> (str): The log level for internal logging.</p>
 <dl class="simple">
