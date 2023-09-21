@@ -32,7 +32,8 @@ def require_envs(config: object, envs: List[str]) -> Callable:
 
 
 def check_envs(config: object, envs: List[str]) -> bool:
-    """Checks if the specified environment variables are present.
+    """Checks if the specified environment variables are present. If specified 
+    environment variables are not present it will exit running the application.
 
     Args:
         - `config` (object): The configuration object that should contain the 
