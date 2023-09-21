@@ -15,7 +15,7 @@ class DatabaseConfig(Config):
         - `DATABASE_PASSWORD` (str): The password for database authentication.
         - `DATABASE_HOSTNAME` (str): The host where the database server is located.
         - `DATABASE_PORT` (str): The port on which the database server is listening.
-        - `DATABASE_TYPE` (str): The type or dialect of the database (e.g., 'mysql', 'postgresql').
+        - `DATABASE_TYPE` (str): The type or dialect of the database.
         - `DATABASE_TYPE` (str): The path to the database file (if applicable).
 
     Notes:

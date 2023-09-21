@@ -18,7 +18,8 @@ class Server:
     This class is responsible for handling HTTP requests and starting the server.
 
     Methods:
-        - `application(environ, start_response)`: Main application method for handling HTTP requests.
+        - `application(environ, start_response)`: Main application method for handling
+        HTTP requests.
         - `run()`: Start the server and listen for incoming requests.
     """
 

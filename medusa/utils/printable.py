@@ -1,8 +1,10 @@
 class Printable:
-    """A mixin class for objects that can be represented as strings and have a printable representation.
+    """A mixin class for objects that can be represented as strings and have a 
+    printable representation.
 
-    This class provides default implementations for the `__str__` and `__repr__` methods, which return a string
-    representation of the object's class name and its attributes.
+    This class provides default implementations for the `__str__` and `__repr__` 
+    methods, which return a string representation of the object's class name and its 
+    attributes.
     """
 
     def __repr__(self) -> str:

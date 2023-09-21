@@ -20,7 +20,8 @@ except ImportError:
 class Model(Route, Base):
     """An abstract base class for all SQLAlchemy models in this project.
 
-    This class contains common fields that are expected to be present in all derived models.
+    This class contains common fields that are expected to be present in all derived 
+    models.
 
     Attributes:
         - `id` (Column): The primary key for the model.
@@ -30,10 +31,14 @@ class Model(Route, Base):
 
     Notes:
         - All method overrides should return `super()`
-        - Subclasses of `Model` should override the `create()` method to define specific create behavior.
-        - Subclasses of `Model` should override the `get()` method to define specific get behavior.
-        - Subclasses of `Model` should override the `update()` method to define specific update behavior.
-        - Subclasses of `Model` should override the `delete()` method to define specific delete behavior.
+        - Subclasses of `Model` should override the `create()` method to define 
+        specific create behavior.
+        - Subclasses of `Model` should override the `get()` method to define 
+        specific get behavior.
+        - Subclasses of `Model` should override the `update()` method to define 
+        specific update behavior.
+        - Subclasses of `Model` should override the `delete()` method to define 
+        specific delete behavior.
     """
 
     __abstract__ = True  # Ignores database table creation
@@ -88,7 +93,8 @@ class Model(Route, Base):
     def routes(cls) -> bool:
         """Define routes for the model.
 
-        If the app server is enabled, this method defines routes for CRUD on model instances.
+        If the app server is enabled, this method defines routes for CRUD on model 
+        instances.
 
         Args:
             - `cls` (type): The class associated with the routes. Must always be `cls`.
@@ -160,7 +166,8 @@ class Model(Route, Base):
     def register_model(cls) -> None:
         """Register the model with the database.
 
-        Creates the database table for the model and sets up CRUD routes if the app server is enabled.
+        Creates the database table for the model and sets up CRUD routes if the app 
+        server is enabled.
 
         Raises:
             - `Exception`: If table creation fails.

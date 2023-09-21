@@ -44,10 +44,13 @@ class Config:
     """Configuration class for the application.
 
     Attributes:
-        - `APP_NAME` (str): The name of the application obtained from the environment variables.
+        - `APP_NAME` (str): The name of the application obtained from the environment 
+        variables.
         - `APP_DIR` (str): The application's directory path.
-        - `LOG_LEVEL` (str): The log level for the application obtained from the environment variables.
-        - `LOG_PATH` (str): The path where log files should be stored obtained from the environment variables.
+        - `LOG_LEVEL` (str): The log level for the application obtained from the 
+        environment variables.
+        - `LOG_PATH` (str): The path where log files should be stored obtained from 
+        the environment variables.
     """
 
     APP_NAME = os.environ.get("APP_NAME")

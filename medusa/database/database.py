@@ -30,7 +30,8 @@ class Database:
     def __init__(self) -> None:
         """Initialize the Database instance.
 
-        This method sets up the database URI, engine, session, and base for database operations.
+        This method sets up the database URI, engine, session, and base for database 
+        operations.
 
         Raises:
             - `Exception`: If there's an issue during database initialization.
@@ -48,7 +49,8 @@ class Database:
 
     @require_envs(Config, ["DATABASE_TYPE"])
     def generate_uri(self) -> str:
-        """Constructs the database URI by calling the appropriate URI generation method based on the database type.
+        """Constructs the database URI by calling the appropriate URI generation 
+        method based on the database type.
 
         Notes:
             - Requires valid environment variables
@@ -65,10 +67,11 @@ class Database:
         return uri
 
     def database_type(self, db_type: str) -> str:
-        """Determines the database type based on the provided string and returns the appropriate connection URI.
+        """Determines the database type based on the provided string and returns the 
+        appropriate connection URI.
 
         Args:
-            - `db_type` (str): A string representing the database type (e.g., "sqlite", "mysql").
+            - `db_type` (str): A string representing the database type.
 
         Raises:
             - `SystemExit`: If the database type is unrecognized.
@@ -169,7 +172,8 @@ class Database:
         """Creates and returns a scoped session for transaction management.
 
         Raises:
-            - `SystemExit`: If an exception occurs during the creation of the scoped session.
+            - `SystemExit`: If an exception occurs during the creation of the scoped 
+            session.
 
         Returns:
             `scoped_session`: A SQLAlchemy scoped_session object.        

@@ -10,7 +10,7 @@ from medusa.server.route import Route
 class IndexRoute(Route):
     """A route class representing the index endpoint of the application.
 
-    This class inherits from the `Route` base class and defines the index endpoint ("/").
+    This class inherits from the `Route` base class and defines the index endpoint.
     """
 
     def __init__(self) -> None:

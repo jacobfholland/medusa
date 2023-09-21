@@ -10,7 +10,7 @@ def require_envs(config: object, envs: List[str]) -> Callable:
 
     Args:
         - `config` (object): The configuration object that should contain the 
-            environment variables.
+        environment variables.
         - `envs` (List[str]): A list of environment variable names to check for.
 
     Func Args:
@@ -37,7 +37,7 @@ def check_envs(config: object, envs: List[str]) -> bool:
 
     Args:
         - `config` (object): The configuration object that should contain the 
-            environment variables.
+        environment variables.
         - `envs` (List[str]): A list of environment variable names to check for.
 
     Func Args:
