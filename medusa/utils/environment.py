@@ -34,5 +34,4 @@ def require_envs(config: object, envs: List[str]) -> Callable:
             if check_envs(config, envs):
                 return func(*args, **kwargs)
         return wrapper
-
     return decorator

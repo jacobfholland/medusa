@@ -22,9 +22,14 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = 
             Defaults to `['GET']`.
         - `url_prefix` (str): The URL prefix for the route. Defaults to `None`.
 
+    Func Args:
+        - `args` (dict): Source function positional arguments.
+        - `kwargs` (dict): Source function key word arguments.
+
     Raises:
         - `Exception`: If there is an issue while registering the route, an exception 
             is raised.
+
     Returns:
         `Callable`: The decorator function.
     """
