@@ -1,6 +1,6 @@
 import sys
 
-from sqlalchemy import create_engine
+from sqlalchemy import MetaData, create_engine
 from sqlalchemy.engine.base import Engine
 from sqlalchemy.exc import ArgumentError
 from sqlalchemy.ext.declarative import declarative_base
@@ -14,7 +14,17 @@ from medusa.database.logger import logger
 from medusa.utils.environment import require_envs
 
 
-class Database:
+class Singleton(type):
+    _instances = {}
+
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(
+                Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+
+class Database(metaclass=Singleton):
     """Represents the database configuration and initialization.
 
     This class is responsible for initializing the database engine, database object,
@@ -42,10 +52,16 @@ class Database:
 
         logger.info("Initializing database")
         self.uri = self.generate_uri()
-        self.engine = self.generate_engine(self.uri)
-        self.db = self.generate_database(self.engine)
-        self.base = self.generate_base(self.uri, self.db)
+        self.engine = create_engine(self.uri)
+        self.metadata = MetaData()
+        self.SessionLocal = sessionmaker(
+            autocommit=False, autoflush=False, bind=self.engine)
+        self.base = declarative_base(metadata=self.metadata)
         logger.info("Database initialization completed")
+
+    def create_tables(self):
+        with self.engine.begin() as connection:
+            self.base.metadata.create_all(connection)
 
     @require_envs(Config, ["DATABASE_TYPE"])
     def generate_uri(self) -> str:
@@ -209,6 +225,7 @@ class Database:
         try:
             base = declarative_base()
             base.query = db.query_property()
+
             logger.debug("SQLAlchemy declarative base and query created")
             return base
         except Exception as e:

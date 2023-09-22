@@ -1,5 +1,10 @@
+from medusa.controllers.controller import Controller
+from medusa.database.decorator import attribute
 from medusa.utils.format import snake_case
+from medusa.utils.merge import merge_request
 from medusa.utils.printable import Printable
+from medusa.server.config import Config
+from medusa.server.decorator import route
 
 
 class Route(Printable):
@@ -21,32 +26,85 @@ class Route(Printable):
           specific routes.
     """
 
-    @classmethod
-    def __url_prefix__(cls: type) -> str:
-        """Generate the URL prefix for the route based on the class name. Defaults to 
-        `/<class_name>` but is meant to be overridden in subclasses to define a 
-        specific URL prefix
+    url_prefix = "/"
+    __abstract__ = True
 
-        Args:
-            - ``cls`` (type): The class associated with the routes. Must always be 
-              ``cls``.
-
-        Returns:
-            ``str``: The generated URL prefix for the route.
-        """
-
-        return f"/{snake_case(cls.__name__)}"
+    @attribute
+    def controller(cls):
+        return Controller
 
     @classmethod
-    def routes(cls: type) -> None:
-        """Define routes for the `Route``.
+    def routes(cls, __class__):
 
-        Args:
-            - ``cls`` (type): The class associated with the routes. Must always be 
-              ``cls``.
+        if "Model" in [name.__name__ for name in __class__.mro()]:
 
-        Returns:
-            ``None``: Void.
-        """
+            @route(__class__, "/", methods=["POST", "GET", "PUT", "PATCH", "DELETE"])
+            def index(__class__, request):
+                """Handler function for the index endpoint.
 
-        pass
+                Args:
+                    - ``request`` (``Request``): The HTTP request object.
+
+                Returns:
+                    ``Response``: The HTTP response object.
+                """
+
+                # TODO Handle all request types in the index
+                request = merge_request(request)
+                return __class__.controller.index(request)
+
+            @route(__class__, "/create", methods=["POST"])
+            def create(__class__, request):
+                """Handler function for the create endpoint.
+
+                Args:
+                    - ``request`` (``Request``): The HTTP request object.
+
+                Returns:
+                    ``Response``: The HTTP response object.
+                """
+
+                request = merge_request(request)
+                return __class__.controller.create(request)
+
+            @route(__class__, "/get", methods=["GET"])
+            def get(__class__, request):
+                """Handler function for the get endpoint.
+
+                Args:
+                    - ``request`` (``Request``): The HTTP request object.
+
+                Returns:
+                    ``Response``: The HTTP response object.
+                """
+
+                request = merge_request(request)
+                return __class__.controller.get(request)
+
+            @route(__class__, "/update", methods=["PATCH", "PUT"])
+            def update(__class__, request):
+                """Handler function for the update endpoint.
+
+                Args:
+                    - ``request`` (``Request``): The HTTP request object.
+
+                Returns:
+                    ``Response``: The HTTP response object.
+                """
+
+                request = merge_request(request)
+                return __class__.controller.update(request)
+
+            @route(__class__, "/delete", methods=["GET"])
+            def delete(__class__, request):
+                """Handler function for the get endpoint.
+
+                Args:
+                    - ``request`` (``Request``): The HTTP request object.
+
+                Returns:
+                    ``Response``: The HTTP response object.
+                """
+
+                request = merge_request(request)
+                return __class__.controller.delete(request)

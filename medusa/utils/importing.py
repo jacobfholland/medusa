@@ -4,6 +4,9 @@ import importlib.util
 import os
 import sys
 from typing import Any, Callable, List
+from medusa.database.base import Engine
+
+from medusa.database.model import Model
 
 from .config import UtilsConfig as Config
 from .logger import logger
@@ -143,18 +146,18 @@ def import_model(node: ast.AST, python_file: str, models: List[str]) -> None:
     if isinstance(node, ast.ClassDef):
         class_obj = import_class_from_file(python_file, node.name)
         cls_name = class_obj.__name__
-        if 'Model' in [base.__name__ for base in class_obj.mro()]:
-            if not cls_name == "Model":
-
-                try:
-                    from medusa.database.database import Database
-                    class_obj.register_model()
-                    models.append(cls_name)
-                    logger.debug(
-                        f"Imported model {node.name} from {python_file}")
-                except ImportError as e:
-                    logger.warning(
-                        f"Did not import model {cls_name} - Database package missing")
+        if Model in class_obj.__mro__:
+            class_obj.metadata.create_all(Engine)
+            models.append(cls_name)
+            class_obj.routes(class_obj)
+            logger.debug(f"Imported model {node.name} from {python_file}")
+        # if 'Model' in [base.__name__ for base in class_obj.mro()]:
+        #     if not cls_name == "Model":
+        #         try:
+        #
+        #         except ImportError as e:
+        #             logger.warning(
+        #                 f"Did not import model {cls_name} - Database package missing")
 
 
 def import_route(node: ast.AST, python_file: str, routes: List[str]) -> None:
@@ -175,13 +178,15 @@ def import_route(node: ast.AST, python_file: str, routes: List[str]) -> None:
 
     if isinstance(node, ast.ClassDef):
         parent_names = [
-            base.id for base in node.bases if isinstance(base, ast.Name)]
-        if "Route" in parent_names and not node.name == "Model":
+            base.id
+            for base in node.bases
+            if isinstance(base, ast.Name)
+        ]
+        if "Route" in parent_names and not node.name == "Route":
             class_obj = import_class_from_file(python_file, node.name)
             cls_name = class_obj.__name__
             try:
-                from medusa.server.server import Server
-                class_obj.routes()
+                class_obj.routes(class_obj)
                 routes.append(cls_name)
                 logger.debug(
                     f"Registered routes for {node.name} from {python_file}")

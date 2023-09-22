@@ -1,5 +1,8 @@
+from typing import Callable
 from medusa.database.model import Model
 from medusa.server.decorator import route
+from medusa.server.route import Route
+from medusa.utils.format import snake_case
 
 
 class User(Model):
@@ -13,31 +16,28 @@ class User(Model):
         - ``routes``: Define custom User routes.
     """
 
+    url_prefix = "/user"
+
     def __init__(self) -> None:
         """Initialize a new `User` instance.
 
         Returns:
             ``None``: Void.
         """
+
         super().__init__()
 
     @classmethod
-    def routes(cls):
-        """Defines custom `User` routes.
+    def routes(cls, __class__) -> Callable:
+        @route(__class__, "/login", methods=["GET"])
+        def login(__class__, request):
+            """Handler function for the get endpoint.
 
-        Args:
-            - ``cls``: (type): The class associated with the routes. Must always be 
-              ``cls``.
+            Args:
+                - ``request`` (Request): The HTTP request object.
 
-        Returns:
-            ``super``: Parent `routes()` method.
-        """
-
-        @route(cls, "/login", methods=["GET"], url_prefix="/")
-        def login(request):
-            return "<html>LOGIN<html>"
-
-        @route(cls, "/logout", methods=["POST"], url_prefix="/")
-        def logout(request):
-            return "<html>LOGOUT<html>"
-        return super().routes()
+            Returns:
+                ``Response``: The HTTP response object.
+            """
+            return "login"
+        super(cls, __class__).routes()

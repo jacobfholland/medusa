@@ -35,11 +35,13 @@ def route(cls: type, rule: str, methods: List[str] = ["GET"], url_prefix: str = 
     """
 
     if not url_prefix:
-        rule = f"{cls.__url_prefix__()}{rule}"
+        rule = f"{cls.url_prefix}{rule}"
     else:
         rule = f"{url_prefix}{rule}"
     if rule.startswith("//"):
         rule = rule[1:]
+    if rule.endswith("/") and not rule == "/":
+        rule = rule[:-1]
     try:
         def decorator(func: Callable) -> Callable:
             @functools.wraps(func)
@@ -73,23 +75,3 @@ def register_route(cls, rule, wrapped, methods):
     if not any([rule == r.rule for r in url_map.iter_rules()]):
         url_map.add(Rule(rule, endpoint=wrapped, methods=methods))
         logger.debug(f"Registered {cls.__name__} route {rule}")
-
-
-def merge_request(func):
-    """A decorator that merges positional and keyword arguments.
-
-    Args:
-        ``func`` (function): The function to decorate.
-
-    Returns:
-        ``function``: The decorated function.
-    """
-
-    @functools.wraps(func)
-    def wrapper(cls, request, *args, **kwargs):
-        args = request.get("args")
-        form = request.get("form")
-        json = request.get("json")
-        request = merge(**args, **form, **json)
-        return func(cls, request, *args, **kwargs)
-    return wrapper

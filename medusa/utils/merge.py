@@ -189,13 +189,29 @@ def merge_values(func: Callable):
 
     try:
         @functools.wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(cls, *args, **kwargs):
             kwargs = merge(*args, **kwargs)
-            return func(*args, **kwargs)
+            return func(cls, *args, **kwargs)
         return wrapper
     except Exception as e:
         logger.warning(f"Failed to merge values in decorator: {e}")
 
+
+def merge_request(request, *args, **kwargs):
+    """Merges a request into a more managable data format.
+
+    Args:
+        ``func`` (function): The function to decorate.
+
+    Returns:
+        ``function``: The decorated function.
+    """
+
+    args = request.get("args")
+    form = request.get("form")
+    json = request.get("json")
+    request = merge(**args, **form, **json)
+    return request
 
 # def merge_filter(func):
 #     @functools.wraps(func)
