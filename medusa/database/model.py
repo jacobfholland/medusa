@@ -45,6 +45,7 @@ class Model(Base):
 
     __table_args__ = {'extend_existing': True}
     __abstract__ = True  # Ignores database table creation
+    route = Route
     id = Column(Integer, primary_key=True, doc="Primary key for the model.")
     uuid = Column(
         String, default=generate_uuid,
@@ -72,10 +73,6 @@ class Model(Base):
         super().__init__()
 
     @attribute
-    def route(cls):
-        return Route
-
-    @attribute
     def controller(cls):
         return Controller
 
@@ -91,16 +88,6 @@ class Model(Base):
 
         return snake_case(cls.__name__)
 
-    @declared_attr
-    def __table_args__(cls) -> dict:
-        """Sets SQLAlchemy to extend an existing table instead of recreating it.
-
-        Returns:
-            ``dict``: Arguments to extend existing tables (value Boolean).
-        """
-
-        return {'extend_existing': True}
-
     @classmethod
-    def routes(cls):
+    def routes(cls, _class):
         return cls.route.routes(cls)

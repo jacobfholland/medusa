@@ -14,32 +14,30 @@ class Route(Printable):
     specific endpoints.
 
     Methods:
-        - ``__url_prefix__``: Generate the URL prefix for the route based on the 
+        - ``url_prefix``: Generate the URL prefix for the route based on the 
           class name.
         - ``routes``: Define routes for the `Route` subclass.
 
     Notes:
-        - Subclasses of `Route` should override the `__url_prefix__()` method to 
+        - Subclasses of `Route` should override the `url_prefix` method to 
           define specific
         - URL prefixes for their routes.
         - Subclasses of `Route` should override the `routes()` method to define 
           specific routes.
     """
 
-    url_prefix = "/"
     __abstract__ = True
+    url_prefix = "/"
 
     @attribute
     def controller(cls):
         return Controller
 
     @classmethod
-    def routes(cls, __class__):
-
-        if "Model" in [name.__name__ for name in __class__.mro()]:
-
-            @route(__class__, "/", methods=["POST", "GET", "PUT", "PATCH", "DELETE"])
-            def index(__class__, request):
+    def routes(cls, import_class):
+        if "Model" in [name.__name__ for name in import_class.mro()]:
+            @route(import_class, "/", methods=["POST", "GET", "PUT", "PATCH", "DELETE"])
+            def index(import_class, request):
                 """Handler function for the index endpoint.
 
                 Args:
@@ -51,10 +49,10 @@ class Route(Printable):
 
                 # TODO Handle all request types in the index
                 request = merge_request(request)
-                return __class__.controller.index(request)
+                return import_class.controller.index(request)
 
-            @route(__class__, "/create", methods=["POST"])
-            def create(__class__, request):
+            @route(import_class, "/create", methods=["POST"])
+            def create(import_class, request):
                 """Handler function for the create endpoint.
 
                 Args:
@@ -65,10 +63,10 @@ class Route(Printable):
                 """
 
                 request = merge_request(request)
-                return __class__.controller.create(request)
+                return import_class.controller.create(request)
 
-            @route(__class__, "/get", methods=["GET"])
-            def get(__class__, request):
+            @route(import_class, "/get", methods=["GET"])
+            def get(import_class, request):
                 """Handler function for the get endpoint.
 
                 Args:
@@ -79,10 +77,10 @@ class Route(Printable):
                 """
 
                 request = merge_request(request)
-                return __class__.controller.get(request)
+                return import_class.controller.get(request)
 
-            @route(__class__, "/update", methods=["PATCH", "PUT"])
-            def update(__class__, request):
+            @route(import_class, "/update", methods=["PATCH", "PUT"])
+            def update(import_class, request):
                 """Handler function for the update endpoint.
 
                 Args:
@@ -93,10 +91,10 @@ class Route(Printable):
                 """
 
                 request = merge_request(request)
-                return __class__.controller.update(request)
+                return import_class.controller.update(request)
 
-            @route(__class__, "/delete", methods=["GET"])
-            def delete(__class__, request):
+            @route(import_class, "/delete", methods=["GET"])
+            def delete(import_class, request):
                 """Handler function for the get endpoint.
 
                 Args:
@@ -107,4 +105,4 @@ class Route(Printable):
                 """
 
                 request = merge_request(request)
-                return __class__.controller.delete(request)
+                return import_class.controller.delete(request)

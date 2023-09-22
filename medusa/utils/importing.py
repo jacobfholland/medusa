@@ -146,18 +146,11 @@ def import_model(node: ast.AST, python_file: str, models: List[str]) -> None:
     if isinstance(node, ast.ClassDef):
         class_obj = import_class_from_file(python_file, node.name)
         cls_name = class_obj.__name__
-        if Model in class_obj.__mro__:
+        if Model in class_obj.__mro__ and not isinstance(class_obj, Model):
             class_obj.metadata.create_all(Engine)
             models.append(cls_name)
             class_obj.routes(class_obj)
             logger.debug(f"Imported model {node.name} from {python_file}")
-        # if 'Model' in [base.__name__ for base in class_obj.mro()]:
-        #     if not cls_name == "Model":
-        #         try:
-        #
-        #         except ImportError as e:
-        #             logger.warning(
-        #                 f"Did not import model {cls_name} - Database package missing")
 
 
 def import_route(node: ast.AST, python_file: str, routes: List[str]) -> None:
