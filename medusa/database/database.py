@@ -52,16 +52,10 @@ class Database(metaclass=Singleton):
 
         logger.info("Initializing database")
         self.uri = self.generate_uri()
-        self.engine = create_engine(self.uri)
-        self.metadata = MetaData()
-        self.SessionLocal = sessionmaker(
-            autocommit=False, autoflush=False, bind=self.engine)
-        self.base = declarative_base(metadata=self.metadata)
+        self.engine = self.generate_engine(self.uri)
+        self.session = self.generate_session(self.engine)
+        self.base = self.generate_base(self.uri)
         logger.info("Database initialization completed")
-
-    def create_tables(self):
-        with self.engine.begin() as connection:
-            self.base.metadata.create_all(connection)
 
     @require_envs(Config, ["DATABASE_TYPE"])
     def generate_uri(self) -> str:
@@ -169,25 +163,26 @@ class Database(metaclass=Singleton):
 
         Raises:
             - ``ArgumentError``: If the URI for database connection is malformed.
-            - ``SystemExit``: For generic exceptions that cause engine creation to fail.
+            - ``SystemExit``: For generic exceptions that cause engine creation to 
+              fail.
 
         Returns:
             ``Engine``: An SQLAlchemy Engine object.
         """
 
         try:
-            engine = create_engine(uri)
             logger.debug("Database engine created")
-            return engine
+            return create_engine(uri)
         except ArgumentError:
             logger.error(
-                "Failed to create database engine due to malformed database URI")
+                "Failed to create database engine due to malformed database URI"
+            )
             return sys.exit(1)
         except Exception as e:
             logger.error(f"Failed to create database engine: {e}")
             return sys.exit(1)
 
-    def generate_database(self, engine) -> scoped_session:
+    def generate_session(self, engine) -> scoped_session:
         """Creates and returns a scoped session for transaction management.
 
         Raises:
@@ -199,20 +194,17 @@ class Database(metaclass=Singleton):
         """
 
         try:
-            db = scoped_session(
-                sessionmaker(
-                    autocommit=False,
-                    autoflush=False,
-                    bind=engine,
-                )
-            )
             logger.debug("Scoped session created")
-            return db
+            return sessionmaker(
+                autocommit=False,
+                autoflush=False,
+                bind=self.engine
+            )
         except Exception as e:
             logger.error(f"Failed to screate scoped session: {e}")
             return sys.exit(1)
 
-    def generate_base(self, uri, db) -> DeclarativeMeta:
+    def generate_base(self, uri) -> DeclarativeMeta:
         """Generates the SQLAlchemy declarative base for defining models.
 
         Raises:
@@ -223,11 +215,7 @@ class Database(metaclass=Singleton):
         """
 
         try:
-            base = declarative_base()
-            base.query = db.query_property()
-
-            logger.debug("SQLAlchemy declarative base and query created")
-            return base
+            return declarative_base(metadata=MetaData())
         except Exception as e:
             logger.error(f"Failed to connect to {uri}: {e}")
             return sys.exit(1)
