@@ -12,10 +12,12 @@ class UserRoute(Route):
     This class inherits from the ``Route`` base class and defines the index endpoint.
     """
 
+    url_prefix = "/user"
+
     @classmethod
     def routes(cls, _class) -> Callable:
-        @route(cls, "/test", methods=["GET"])
-        def test(cls, request: Request) -> Response:
+        @route(cls, "/get", methods=["GET"])
+        def get(cls, request: Request) -> Response:
             """Handler function for the test endpoint.
 
             Args:

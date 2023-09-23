@@ -14,17 +14,7 @@ from medusa.database.logger import logger
 from medusa.utils.environment import require_envs
 
 
-class Singleton(type):
-    _instances = {}
-
-    def __call__(cls, *args, **kwargs):
-        if cls not in cls._instances:
-            cls._instances[cls] = super(
-                Singleton, cls).__call__(*args, **kwargs)
-        return cls._instances[cls]
-
-
-class Database(metaclass=Singleton):
+class Database():
     """Represents the database configuration and initialization.
 
     This class is responsible for initializing the database engine, database object,

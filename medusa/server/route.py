@@ -1,10 +1,9 @@
 from medusa.controllers.controller import Controller
 from medusa.database.decorator import attribute
+from medusa.server.decorator import route
 from medusa.utils.format import snake_case
 from medusa.utils.merge import merge_request
 from medusa.utils.printable import Printable
-from medusa.server.config import Config
-from medusa.server.decorator import route
 
 
 class Route(Printable):
@@ -49,7 +48,7 @@ class Route(Printable):
 
                 # TODO Handle all request types in the index
                 request = merge_request(request)
-                return import_class.controller.index(request)
+                return import_class._controller.index(request)
 
             @route(import_class, "/create", methods=["POST"])
             def create(import_class, request):
@@ -63,7 +62,7 @@ class Route(Printable):
                 """
 
                 request = merge_request(request)
-                return import_class.controller.create(request)
+                return import_class._controller.create(request)
 
             @route(import_class, "/get", methods=["GET"])
             def get(import_class, request):
@@ -77,7 +76,7 @@ class Route(Printable):
                 """
 
                 request = merge_request(request)
-                return import_class.controller.get(request)
+                return import_class._controller.get(request)
 
             @route(import_class, "/update", methods=["PATCH", "PUT"])
             def update(import_class, request):
@@ -91,7 +90,7 @@ class Route(Printable):
                 """
 
                 request = merge_request(request)
-                return import_class.controller.update(request)
+                return import_class._controller.update(request)
 
             @route(import_class, "/delete", methods=["GET"])
             def delete(import_class, request):
@@ -105,4 +104,4 @@ class Route(Printable):
                 """
 
                 request = merge_request(request)
-                return import_class.controller.delete(request)
+                return import_class._controller.delete(request)

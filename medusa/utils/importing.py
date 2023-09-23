@@ -4,8 +4,8 @@ import importlib.util
 import os
 import sys
 from typing import Any, Callable, List
-from medusa.database.base import Engine
 
+from medusa.database.base import Engine
 from medusa.database.model import Model
 
 from .config import UtilsConfig as Config

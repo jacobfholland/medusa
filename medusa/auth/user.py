@@ -1,4 +1,5 @@
 from typing import Callable
+
 from medusa.auth.route import UserRoute
 from medusa.database.decorator import attribute
 from medusa.database.model import Model
@@ -17,14 +18,4 @@ class User(Model):
         - ``routes``: Define custom User routes.
     """
 
-    url_prefix = "/user"
     route = UserRoute
-
-    def __init__(self) -> None:
-        """Initialize a new `User` instance.
-
-        Returns:
-            ``None``: Void.
-        """
-
-        super().__init__()

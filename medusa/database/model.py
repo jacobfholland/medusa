@@ -2,21 +2,13 @@ from datetime import datetime
 
 from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
-from medusa.controllers.controller import Controller
 
 # Uses absolute paths for auto-import functionality
+from medusa.controllers.controller import Controller
 from medusa.database.base import Base
-from medusa.database.config import DatabaseConfig as Config
 from medusa.database.decorator import attribute
-from medusa.database.logger import logger
-
-from medusa.utils.format import generate_uuid, snake_case
-from medusa.utils.merge import merge_request
-
-# Attempt to use `Route` functionality if `Server` package is installed
-# If package is missing, will use an empty class to not break the inheritance
-
 from medusa.server.route import Route
+from medusa.utils.format import generate_uuid, snake_case
 
 
 class Model(Base):
@@ -45,7 +37,8 @@ class Model(Base):
 
     __table_args__ = {'extend_existing': True}
     __abstract__ = True  # Ignores database table creation
-    route = Route
+    _route = Route
+    _controller = Controller
     id = Column(Integer, primary_key=True, doc="Primary key for the model.")
     uuid = Column(
         String, default=generate_uuid,
@@ -63,18 +56,9 @@ class Model(Base):
         doc="Timestamp of the last update."
     )
 
-    def __init__(self) -> None:
-        """Initialize a new `Model` instance.
-
-        Returns:
-            ``None``: Void.
-        """
-
-        super().__init__()
-
     @attribute
-    def controller(cls):
-        return Controller
+    def url_prefix(cls):
+        return f"/{snake_case(cls.__name__)}"
 
     @declared_attr
     def __tablename__(cls) -> str:
@@ -90,4 +74,4 @@ class Model(Base):
 
     @classmethod
     def routes(cls, _class):
-        return cls.route.routes(cls)
+        return cls._route.routes(cls)

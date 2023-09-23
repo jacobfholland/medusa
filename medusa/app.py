@@ -1,7 +1,6 @@
 
 from medusa.config import Config
 from medusa.logger import logger
-from medusa.utils.importing import import_classes, import_model, import_route
 
 
 def run() -> None:
@@ -18,9 +17,9 @@ def run() -> None:
     Returns:
         ``None``: Void.
     """
-
-    logger.warning(f"Starting {Config.APP_NAME} application")
+    logger.warning(f"Starting application {Config.APP_NAME}")
     if Config.APP_DATABASE:
+        from medusa.utils.importing import import_classes, import_model
         logger.info(f"Application database enabled")
         import_classes(import_model, "model")
     else:
@@ -29,6 +28,7 @@ def run() -> None:
         logger.info(f"Application server enabled")
         try:
             from medusa.server.server import Server
+            from medusa.utils.importing import import_classes, import_route
             import_classes(import_route, "route")
             Server().run()
         except ImportError:
