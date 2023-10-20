@@ -60,7 +60,7 @@ def check_envs(config: object, envs: List[str]) -> bool:
     return True
 
 
-def log_env_vars(Config: object, logger: Logger):
+def log_env_vars(Config: object, logger: Logger) -> None:
     """Logs the environment variables from the provided configuration. If the 
     `APP_MASK` attribute is set to True in the Config, the variable values will be 
     redacted in the logs.
