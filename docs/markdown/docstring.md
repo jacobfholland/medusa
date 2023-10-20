@@ -314,3 +314,5 @@ Second line of text goes here
 ### Type Hinting
 - Use Python >=3.5 compatible [type hinting](https://docs.python.org/3.8/library/typing.html).
 - Include both argument and return type hints.
+
+Sphinx Test
