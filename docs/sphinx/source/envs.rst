@@ -15,6 +15,7 @@ Application
 
 - ``APP_DATABASE`` (bool): Set to `True` to enable the Database component of Medusa. Set to `False` to disable it.
 - ``APP_SERVER`` (bool): Set to `True` to enable the Server component of Medusa. Set to `False` to disable it.
+- ``APP_MASK`` (bool): Set to `True` to enable redacting sensitive data from logs.
 
 Database
 --------
