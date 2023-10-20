@@ -14,8 +14,7 @@ from typing import List
 
 from medusa.config import Config
 from medusa.database.model import Model
-from medusa.utils.decorator import require_envs
-
+from medusa.utils.environment import require_envs
 
 example_variable = "A variable outside of a function or class."
 """Relevant information about this variable."""
@@ -31,22 +30,22 @@ class ExampleDocstring(Model):
         - Quick implementation notes may be relevant here.
 
     Inherits:
-        - `Model`: Parent model class for database functionality.
+        - ``Model``: Parent model class for database functionality.
 
     Args:
-        - `*args`: Positional arguments for object creation.
-        - `**kwargs`: Keyword arguments for object creation.
+        - ``*args``: Positional arguments for object creation.
+        - ``**kwargs``: Keyword arguments for object creation.
 
     Attributes:
-        - `attr1` (bool): A true or false class attribute.
-        - `attr2` (int): An integer class attribute.
-        - `attr3` (str): A string class attribute.
-        - `attr4` (Model): An object class attribute.
-        - `attr5` (float, init): Float attribute, assigned during initialization.
-        - `attr6` (str, property): Combines `attr2` and `attr3` as a computed value.
+        - ``attr1`` (bool): A true or false class attribute.
+        - ``attr2`` (int): An integer class attribute.
+        - ``attr3`` (str): A string class attribute.
+        - ``attr4`` (Model): An object class attribute.
+        - ``attr5`` (float, init): Float attribute, assigned during initialization.
+        - ``attr6`` (str, property): Combines `attr2` and `attr3` as a computed value.
 
     Methods:
-        - `example_method`: Example class method.
+        - ``example_method``: Example class method.
     """
 
     attr1 = True
@@ -60,8 +59,8 @@ class ExampleDocstring(Model):
         Initialization should always return `None`.
 
         Args:
-            - `*args`: Positional arguments for object creation.
-            - `**kwargs`: Keyword arguments for object creation.
+            - ``*args``: Positional arguments for object creation.
+            - ``**kwargs``: Keyword arguments for object creation.
         """
 
         self.attr5 = 123.45
@@ -74,11 +73,11 @@ class ExampleDocstring(Model):
         Binds an attribute to a function for calculated assignment.
 
         Raises:
-            - `KeyError`: Handles failed concatenation.
-            - `Exception`: Catch-all for unexpected exceptions.
+            - ``KeyError``: Handles failed concatenation.
+            - ``Exception``: Catch-all for unexpected exceptions.
 
         Returns:
-            - `str`: Concatenation of `attr2` and `attr3`.
+            - ``str``: Concatenation of `attr2` and `attr3`.
         """
 
         try:
@@ -100,19 +99,19 @@ class ExampleDocstring(Model):
             - Utilizes `@require_envs` requiring select environment variables.
 
         Args:
-            - `foo` (dict): A dictionary input parameter.
-            - `bar` (str, optional): An optional string parameter.
+            - ``foo`` (dict): A dictionary input parameter.
+            - ``bar`` (str, optional): An optional string parameter.
 
         Raises:
-            - `KeyError`: Handles failed dictionary key access.
-            - `Exception`: Catch-all for unexpected exceptions.
+            - ``KeyError``: Handles failed dictionary key access.
+            - ``Exception``: Catch-all for unexpected exceptions.
 
         Environment Variables (custom):
-            - `ENV_VAR1`: Set in the `.env` file.
-            - `ENV_VAR2`: Another variable set in the `.env` file.
+            - ``ENV_VAR1``: Set in the `.env` file.
+            - ``ENV_VAR2``: Another variable set in the `.env` file.
 
         Returns:
-            - `list`: A list of the input data.
+            ``list``: A list of the input data.
         """
 
         try:
@@ -124,6 +123,7 @@ class ExampleDocstring(Model):
         except Exception as e:
             return ["Failed in some unexpected way", e]
         return [foo, bar]
+
 ```
 ## Rules
 - All classes, methods, functions, and module variables must have a docstring.
