@@ -4,6 +4,7 @@ import os
 import coloredlogs
 
 from medusa.logger import FORMATTER, LOG_LEVELS, setup_logger
+from medusa.utils.environment import log_env_vars
 
 from .config import ServerConfig as Config
 
@@ -46,3 +47,5 @@ werkzeug_logger = setup_werkzeug_logger(Config)
 
 logger = setup_logger(f"{Config.APP_NAME.lower()}.route", Config)
 """Create a server logger instance"""
+
+log_env_vars(Config, logger)

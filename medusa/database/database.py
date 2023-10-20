@@ -63,7 +63,10 @@ class Database():
         """
 
         uri = self.database_type(Config.DATABASE_TYPE)
-        logger.debug(f"Generated database URI: {uri}")
+        if Config.APP_MASK:
+            logger.debug(f"Generated database URI: [REDACTED]")
+        else:
+            logger.debug(f"Generated database URI: {uri}")
         return uri
 
     def database_type(self, db_type: str) -> str:

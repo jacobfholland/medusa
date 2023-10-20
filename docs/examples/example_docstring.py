@@ -92,15 +92,15 @@ class ExampleDocstring(Model):
             - `bar` (str, optional): An optional string parameter.
 
         Raises:
-            - `KeyError`: Handles failed dictionary key access.
+            - ``KeyError``: Handles failed dictionary key access.
             - ``Exception``: Catch-all for unexpected exceptions.
 
         Environment Variables (custom):
-            - `ENV_VAR1`: Set in the `.env` file.
-            - `ENV_VAR2`: Another variable set in the `.env` file.
+            - ``ENV_VAR1``: Set in the `.env` file.
+            - ``ENV_VAR2``: Another variable set in the `.env` file.
 
         Returns:
-            - `list`: A list of the input data.
+            ``list``: A list of the input data.
         """
 
         try:

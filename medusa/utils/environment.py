@@ -1,4 +1,5 @@
 import functools
+from logging import Logger
 import sys
 from typing import Callable, List
 
@@ -57,3 +58,26 @@ def check_envs(config: object, envs: List[str]) -> bool:
         )
         sys.exit(1)
     return True
+
+
+def log_env_vars(Config: object, logger: Logger):
+    """Logs the environment variables from the provided configuration. If the 
+    `APP_MASK` attribute is set to True in the Config, the variable values will be 
+    redacted in the logs.
+
+    Args:
+        - ``Config`` (object): The configuration object containing the environment 
+          variables to be logged.
+        - ``logger`` (Logger): The logger instance to which the environment variables 
+          will be logged.
+
+    Returns:
+        ``None``: Void.
+    """
+
+    print(type(logger))
+    for k, v in Config.__dict__.items():
+        if not k.startswith("_"):
+            if Config.APP_MASK:
+                v = "[REDACTED]"
+            logger.debug(f"{k}: {v}")

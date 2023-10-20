@@ -1,6 +1,7 @@
 
 from medusa.config import Config
 from medusa.logger import logger
+from medusa.utils.environment import log_env_vars
 
 
 def run() -> None:
@@ -17,7 +18,9 @@ def run() -> None:
     Returns:
         ``None``: Void.
     """
+
     logger.warning(f"Starting application {Config.APP_NAME}")
+    log_env_vars(Config, logger)
     if Config.APP_DATABASE:
         from medusa.utils.importing import import_classes, import_model
         logger.info(f"Application database enabled")
