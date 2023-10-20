@@ -48,6 +48,7 @@ class Route(Printable):
                 """
 
                 data = merge_request(request)
+                data["_import_class"] = import_class
                 methods = {
                     "POST": import_class._controller.create,
                     "GET": import_class._controller.get,
@@ -72,6 +73,7 @@ class Route(Printable):
                 """
 
                 request = merge_request(request)
+
                 return import_class._controller.create(request)
 
             @route(import_class, "/get", methods=["GET"])

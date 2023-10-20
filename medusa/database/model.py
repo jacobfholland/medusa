@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declared_attr
 
 # Uses absolute paths for auto-import functionality
 from medusa.controllers.controller import Controller
-from medusa.database.base import Base
+from medusa.database.base import Base, db
 from medusa.database.decorator import attribute
 from medusa.server.route import Route
 from medusa.utils.format import generate_uuid, snake_case
@@ -55,6 +55,10 @@ class Model(Base):
         onupdate=datetime.utcnow,
         doc="Timestamp of the last update."
     )
+    name = Column(
+        String,
+        doc="Name"
+    )
 
     @attribute
     def url_prefix(cls):
@@ -75,3 +79,31 @@ class Model(Base):
     @classmethod
     def routes(cls, _class):
         return cls._route.routes(cls)
+
+    @classmethod
+    def create(cls, **kwargs):
+        cls.bind_values(kwargs)
+
+        db.session.add(cls())
+        db.session.commit()
+        return True
+        # return kwargs
+
+    @classmethod
+    def get(cls, **kwargs):
+        return "get"
+
+    @classmethod
+    def update(cls, **kwargs):
+        return "update"
+
+    @classmethod
+    def delete(cls, **kwargs):
+        return "delete"
+
+    @classmethod
+    def bind_values(cls, kwargs):
+        del kwargs["_import_class"]
+        for k, v in kwargs.items():
+            if k in cls.__dict__.keys():
+                setattr(cls, k, v)

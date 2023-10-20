@@ -1,5 +1,7 @@
 
 
+import functools
+from typing import Callable
 from medusa.utils.merge import merge, merge_values
 
 
@@ -9,19 +11,23 @@ class Controller:
     @classmethod
     @merge_values
     def create(cls, *args, **kwargs):
-        return kwargs
+        _import_class = kwargs.get("_import_class")
+        return _import_class.create(**kwargs)
 
     @classmethod
     @merge_values
     def get(cls, *args, **kwargs):
-        return kwargs
+        _import_class = kwargs.get("_import_class")
+        return _import_class.get(**kwargs)
 
     @classmethod
     @merge_values
     def update(cls, *args, **kwargs):
-        return kwargs
+        _import_class = kwargs.get("_import_class")
+        return _import_class.update(**kwargs)
 
     @classmethod
     @merge_values
     def delete(cls, *args, **kwargs):
-        return kwargs
+        _import_class = kwargs.get("_import_class")
+        return _import_class.delete(**kwargs)

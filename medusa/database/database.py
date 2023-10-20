@@ -188,11 +188,12 @@ class Database():
 
         try:
             logger.debug("Scoped session created")
-            return sessionmaker(
+            Session = sessionmaker(
                 autocommit=False,
                 autoflush=False,
                 bind=self.engine
             )
+            return scoped_session(Session)
         except Exception as e:
             logger.error(f"Failed to screate scoped session: {e}")
             return sys.exit(1)
