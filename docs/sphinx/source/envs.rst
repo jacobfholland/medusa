@@ -55,6 +55,15 @@ Example
 -------
 .. code-block:: ini
 
+    APP_NAME=Medusa
+    APP_ENV=dev
+    APP_DATABASE=True
+    APP_SERVER=True
+    APP_MASK=False
+
+    LOG_LEVEL=debug
+    LOG_PATH=logs
+
     DATABASE_HOST=localhost
     DATABASE_NAME=medusa
     DATABASE_USER=user
@@ -62,11 +71,3 @@ Example
     DATABASE_PORT=5432
     DATABASE_TYPE=sqlite
     DATABASE_PATH=storage
-
-    LOG_LEVEL=debug
-    LOG_PATH=logs
-
-    APP_NAME=Medusa
-    APP_ENV=dev
-    APP_DATABASE=True
-    APP_SERVER=True
