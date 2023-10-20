@@ -57,7 +57,7 @@ class Config:
     APP_DIR = APP_DIR
     APP_DATABASE = eval(os.environ.get("APP_DATABASE", "False"))
     APP_SERVER = eval(os.environ.get("APP_SERVER", "False"))
-    APP_MASK = eval(os.environ.get("APP_MASK"))
+    APP_MASK = eval(os.environ.get("APP_MASK", "False"))
 
     LOG_LEVEL = os.environ.get("LOG_LEVEL").upper()
     LOG_PATH = os.environ.get("LOG_PATH")
