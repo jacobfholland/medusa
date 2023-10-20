@@ -75,7 +75,6 @@ def log_env_vars(Config: object, logger: Logger):
         ``None``: Void.
     """
 
-    print(type(logger))
     for k, v in Config.__dict__.items():
         if not k.startswith("_"):
             if Config.APP_MASK:
