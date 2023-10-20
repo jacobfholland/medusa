@@ -19,19 +19,19 @@ class ExampleDocstring(Model):
         - Quick implementation notes may be relevant here.
 
     Inherits:
-        - `Model`: Parent model class for database functionality.
+        - ``Model``: Parent model class for database functionality.
 
     Args:
-        - `*args`: Positional arguments for object creation.
-        - `**kwargs`: Keyword arguments for object creation.
+        - ``*args``: Positional arguments for object creation.
+        - ``**kwargs``: Keyword arguments for object creation.
 
     Attributes:
-        - `attr1` (bool): A true or false class attribute.
-        - `attr2` (int): An integer class attribute.
-        - `attr3` (str): A string class attribute.
-        - `attr4` (Model): An object class attribute.
-        - `attr5` (float, init): Float attribute, assigned during initialization.
-        - `attr6` (str, property): Combines `attr2` and `attr3` as a computed value.
+        - ``attr1`` (bool): A true or false class attribute.
+        - ``attr2`` (int): An integer class attribute.
+        - ``attr3`` (str): A string class attribute.
+        - ``attr4`` (Model): An object class attribute.
+        - ``attr5`` (float, init): Float attribute, assigned during initialization.
+        - ``attr6`` (str, property): Combines `attr2` and `attr3` as a computed value.
 
     Methods:
         - ``example_method``: Example class method.
@@ -48,8 +48,8 @@ class ExampleDocstring(Model):
         Initialization should always return `None`.
 
         Args:
-            - `*args`: Positional arguments for object creation.
-            - `**kwargs`: Keyword arguments for object creation.
+            - ``*args``: Positional arguments for object creation.
+            - ``**kwargs``: Keyword arguments for object creation.
         """
 
         self.attr5 = 123.45
@@ -62,11 +62,11 @@ class ExampleDocstring(Model):
         Binds an attribute to a function for calculated assignment.
 
         Raises:
-            - `KeyError`: Handles failed concatenation.
+            - ``KeyError``: Handles failed concatenation.
             - ``Exception``: Catch-all for unexpected exceptions.
 
         Returns:
-            - `str`: Concatenation of `attr2` and `attr3`.
+            - ``str``: Concatenation of `attr2` and `attr3`.
         """
 
         try:
@@ -88,8 +88,8 @@ class ExampleDocstring(Model):
             - Utilizes `@require_envs` requiring select environment variables.
 
         Args:
-            - `foo` (dict): A dictionary input parameter.
-            - `bar` (str, optional): An optional string parameter.
+            - ``foo`` (dict): A dictionary input parameter.
+            - ``bar`` (str, optional): An optional string parameter.
 
         Raises:
             - ``KeyError``: Handles failed dictionary key access.
