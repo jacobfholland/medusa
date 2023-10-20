@@ -2,6 +2,7 @@ APP_NAME=Medusa
 APP_ENV=dev
 APP_DATABASE=True
 APP_SERVER=True
+APP_MASK=False
 
 LOG_LEVEL=debug
 LOG_PATH=logs
