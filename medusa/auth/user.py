@@ -18,4 +18,5 @@ class User(Model):
         - ``routes``: Define custom User routes.
     """
 
-    _route = UserRoute
+    # _route = UserRoute
+    pass

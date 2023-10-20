@@ -40,15 +40,25 @@ class Route(Printable):
                 """Handler function for the index endpoint.
 
                 Args:
-                    - ``request`` (``Request``): The HTTP request object.
+                    - ``import_class``: Class that contains the controller for handling HTTP methods.
+                    - ``request`` (Request): The HTTP request object.
 
                 Returns:
                     ``Response``: The HTTP response object.
                 """
 
-                # TODO Handle all request types in the index
-                request = merge_request(request)
-                return import_class._controller.index(request)
+                data = merge_request(request)
+                methods = {
+                    "POST": import_class._controller.create,
+                    "GET": import_class._controller.get,
+                    "PUT": import_class._controller.update,
+                    "PATCH": import_class._controller.update,
+                    "DELETE": import_class._controller.delete
+                }
+                controller_method = methods.get(
+                    request.get("method")
+                )
+                return controller_method(data)
 
             @route(import_class, "/create", methods=["POST"])
             def create(import_class, request):
@@ -92,7 +102,7 @@ class Route(Printable):
                 request = merge_request(request)
                 return import_class._controller.update(request)
 
-            @route(import_class, "/delete", methods=["GET"])
+            @route(import_class, "/delete", methods=["DELETE"])
             def delete(import_class, request):
                 """Handler function for the get endpoint.
 
